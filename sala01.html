@@ -2,7 +2,8 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta tag ajustada para permitir rotação e ajuste livre de escala -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Sala 01 | Português Estratégico</title>
 
     <link rel="icon" type="image/png" href="estrategia.jpg">
@@ -23,6 +24,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            width: 100%;
         }
 
         /* BARRA FIXA SUPERIOR */
@@ -181,7 +183,24 @@
             margin-top: auto;
         }
 
-        /* AJUSTES PARA TELAS MENORES (CELULARES) */
+        /* AJUSTES PARA DISPOSITIVOS NA HORIZONTAL E TELAS MENORES */
+        @media (max-width: 900px) and (orientation: landscape) {
+            .header-banner {
+                height: 140px;
+                margin-bottom: 50px;
+            }
+
+            .perfil-container {
+                width: 90px;
+                height: 90px;
+                bottom: -35px;
+            }
+
+            .main-container {
+                width: 95%;
+            }
+        }
+
         @media (max-width: 600px) {
             .header-banner {
                 height: 160px;
@@ -224,7 +243,8 @@
     <header class="header-banner">
         <img class="capa-img" src="imagem1.jpg" alt="Capa Português Estratégico">
         <div class="perfil-container">
-            <img class="perfil-img" src="Imagem2.jpg" alt="Prof. William Queiroz">
+            <!-- Corrigido para imagem2.jpg com i minúsculo -->
+            <img class="perfil-img" src="imagem2.jpg" alt="Prof. William Queiroz">
         </div>
     </header>
 
@@ -301,7 +321,7 @@
                 <li>7. O auditório da faculdade foi reformado pelos operários.</li>
                 <li>8. Caros colegas, a confiança no progresso exige trabalho constante.</li>
                 <li>9. O renomado cientista obedeceu rigorosamente às leis da física.</li>
-                <li>10. A população ofereceu suprimentos aos desabrigados com generosidade.</li>
+                <li>10. A população offered suprimentos aos desabrigados com generosidade.</li>
             </ol>
         </article>
 
