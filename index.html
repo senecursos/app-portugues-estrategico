@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Português Estratégico | Prof. William Queiroz</title>
+
+    <link rel="icon" type="image/png" href="estrategia.jpg">
+    <meta property="og:image" content="https://portugues.senebr.com.br/estrategia.jpg">
+    
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0b0f19">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="Estrategia.jpg">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b0f19; 
+            color: #ffffff; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .hub-container {
+            width: 100%;
+            max-width: 450px;
+            background-color: #111827; 
+            border: 1px solid #1f2937;
+            border-radius: 24px;
+            padding-bottom: 32px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            overflow: hidden; 
+        }
+
+        .facebook-header {
+            position: relative;
+            width: 100%;
+            height: 180px; 
+            margin-bottom: 60px; 
+        }
+
+        .capa-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background-color: #1f2937; 
+        }
+
+        .perfil-container {
+            position: absolute;
+            bottom: -50px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background-color: #ffffff;
+            border: 4px solid #111827; 
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .perfil-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 24px; 
+            color: #ffffff;
+            padding: 0 24px;
+        }
+
+        .content-body {
+            padding: 0 24px;
+        }
+
+        /* CARD SUAVIZADO */
+        .card-secao {
+            background-color: #f8f9fa; 
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-header-block {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 10px;
+        }
+
+        .miniatura-card {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #d1d5db;
+            background-color: #e5e7eb;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #111827; 
+        }
+
+        .card-title-center {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* TITULO SALAS DE AULA MAIOR E CENTRALIZADO */
+        .salas-title-header {
+            font-size: 20px;
+            font-weight: 700;
+            color: #111827;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* GRADE PARA OS 10 BOTÕES MENORES DAS SALAS */
+        .salas-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* GRADE PARA OS BOTÕES DE SERVIÇOS */
+        .servicos-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        /* BOTÃO PADRÃO (AZUL - SALAS E ESCALE) */
+        .btn-link {
+            display: block;
+            width: 100%;
+            background-color: #254077; 
+            color: #ffffff;
+            text-align: center;
+            padding: 12px 8px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.2s;
+            text-shadow: 
+                -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        .btn-link:hover {
+            background-color: #1d3360;
+        }
+
+        /* BOTÃO DE SERVIÇOS (VERDE MAIS ESCURO E FECHADO) */
+        .btn-link-servico {
+            display: block;
+            width: 100%;
+            background-color: #133E25; 
+            color: #ffffff;
+            text-align: center;
+            padding: 12px 8px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.2s;
+            text-shadow: 
+                -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        .btn-link-servico:hover {
+            background-color: #0D2B1A;
+        }
+
+        .sub-redes {
+            margin-top: 4px;
+            padding-top: 16px;
+            border-top: 2px solid #e5e7eb;
+        }
+        
+        .redes-header-block {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .miniatura-rede {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #d1d5db;
+            background-color: #e5e7eb;
+        }
+
+        .sub-redes-titulo {
+            font-size: 12px;
+            font-weight: 700;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .redes-links-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .btn-rede {
+            background-color: #0b0f19;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 2px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background-color 0.2s;
+        }
+
+        .footer {
+            margin-top: 24px;
+            font-size: 11px;
+            color: #6b7280;
+            text-align: center;
+        }
+
+        /* ESTILOS DO MODAL / POP-UP FLUTUANTE */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.75);
+            display: none; /* Inicialmente oculto, acionado via JavaScript */
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .modal-card {
+            position: relative;
+            background-color: #ffffff;
+            color: #111827;
+            width: 100%;
+            max-width: 380px;
+            border-radius: 20px;
+            padding: 24px 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            text-align: left;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .btn-fechar {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            font-weight: bold;
+            color: #6b7280;
+            cursor: pointer;
+            padding: 4px 8px;
+            line-height: 1;
+        }
+
+        .btn-fechar:hover {
+            color: #111827;
+        }
+
+        .modal-titulo {
+            font-size: 17px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 10px;
+            padding-right: 25px;
+        }
+
+        .modal-texto {
+            font-size: 13px;
+            color: #374151;
+            line-height: 1.4;
+            margin-bottom: 14px;
+        }
+
+        .instrucoes-box {
+            background-color: #f3f4f6;
+            border-left: 4px solid #254077;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 12px;
+            color: #1f2937;
+        }
+
+        .instrucoes-box strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #111827;
+        }
+
+        .instrucoes-box ol {
+            padding-left: 18px;
+            margin-bottom: 8px;
+        }
+
+        .instrucoes-box ol li {
+            margin-bottom: 4px;
+        }
+
+        .btn-entendi {
+            display: block;
+            width: 100%;
+            background-color: #254077;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            border: none;
+            margin-top: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- POP-UP FLUTUANTE DE INSTRUÇÃO -->
+    <div id="modalInstalacao" class="modal-overlay">
+        <div class="modal-card">
+            <button class="btn-fechar" onclick="fecharModal()">&times;</button>
+            <div class="modal-titulo">📲 Instale o Aplicativo em seu Celular</div>
+            <p class="modal-texto">
+                Para facilitar o seu acesso às salas de aula e ter uma experiência completa, instale o aplicativo na tela inicial do seu celular.
+            </p>
+            
+            <div class="instrucoes-box">
+                <strong>No Android (Google Chrome):</strong>
+                <ol>
+                    <li>Toque nos <strong>três pontinhos</strong> (⋮) no canto superior direito.</li>
+                    <li>Selecione <strong>"Adicionar à tela inicial"</strong> ou <strong>"Instalar aplicativo"</strong>.</li>
+                </ol>
+
+                <strong>No iPhone (Safari):</strong>
+                <ol>
+                    <li>Toque no botão de <strong>Compartilhar</strong> (ícone do quadrado com a seta para cima).</li>
+                    <li>Role para baixo e selecione <strong>"Adicionar à Tela de Início"</strong>.</li>
+                </ol>
+            </div>
+
+            <button class="btn-entendi" onclick="fecharModal()">Entendi, continuar para o site</button>
+        </div>
+    </div>
+
+    <div class="hub-container">
+        <div class="facebook-header">
+            <img class="capa-img" src="imagem1.jpg" alt="Capa Português Estratégico">
+            <div class="perfil-container">
+                <img class="perfil-img" src="Imagem2.jpg" alt="Prof. William Queiroz">
+            </div>
+        </div>
+
+        <h1></h1>
+
+        <div class="content-body">
+            <!-- 1º BLOCO: SALAS DE AULA -->
+            <div class="card-secao">
+                <div class="card-header-block" style="justify-content: center;">
+                    <div class="salas-title-header">🏫 Salas de Aula</div>
+                </div>
+                <div class="salas-grid">
+                    <a href="sala01.html" class="btn-link">Sala 01</a>
+                    <a href="sala06.html" class="btn-link">Sala 06</a>
+                    <a href="sala02.html" class="btn-link">Sala 02</a>
+                    <a href="sala07.html" class="btn-link">Sala 07</a>
+                    <a href="sala03.html" class="btn-link">Sala 03</a>
+                    <a href="sala08.html" class="btn-link">Sala 08</a>
+                    <a href="sala04.html" class="btn-link">Sala 04</a>
+                    <a href="sala09.html" class="btn-link">Sala 09</a>
+                    <a href="sala05.html" class="btn-link">Sala 05</a>
+                    <a href="sala10.html" class="btn-link">Sala 10</a>
+                </div>
+                <!-- BOTÃO GRANDE AUDITÓRIO -->
+                <a href="auditorio.html" class="btn-link">Auditório</a>
+            </div>
+
+            <!-- 2º BLOCO: SERVIÇOS E NOSSAS REDES SOCIAIS -->
+            <div class="card-secao">
+                <!-- PARTE SUPERIOR: SERVIÇOS -->
+                <div class="card-header-block" style="justify-content: center;">
+                    <div class="card-title card-title-center">🛠️ Serviços</div>
+                </div>
+                <div class="servicos-grid">
+                    <a href="https://portugues.senebr.com.br/#aulas-particulares" class="btn-link-servico">Aulas Particulares</a>
+                    <a href="https://portugues.senebr.com.br/#produtos" class="btn-link-servico">Curso Online - Português Estratégico</a>
+                    <a href="https://portugues.senebr.com.br/#produtos" class="btn-link-servico">Grupo VIP (whatsApp)</a>
+                    <a href="https://api.whatsapp.com/send?phone=5588994409549&text=Ol%C3%A1%2C%20quero%20comprar%20um%20pacote%20de%20corre%C3%A7%C3%A3o%20de%20reda%C3%A7%C3%B5es.%20Como%20funciona%3F" class="btn-link-servico" target="_blank">Correção de Redações</a>
+                    <a href="https://go.hotmart.com/O94195857S?dp=1" class="btn-link-servico">E-book - Noções de Língua Portuguesa</a>
+                    <a href="https://portugues.senebr.com.br/" class="btn-link-servico" target="_blank">Ir para o site</a>
+                </div>
+
+                <!-- PARTE INFERIOR: REDES SOCIAIS -->
+                <div class="sub-redes">
+                    <div class="card-header-block" style="justify-content: center; border-bottom: none; margin-bottom: 8px; padding-bottom: 0;">
+                        <div class="card-title card-title-center">🌐 Nossas Redes Sociais</div>
+                    </div>
+                    <div class="redes-header-block">
+                        <img class="miniatura-rede" src="imagem3.jpg" alt="Show de Português">
+                        <div class="sub-redes-titulo">Show de Português</div>
+                    </div>
+                    <div class="redes-links-container">
+                        <a href="https://www.facebook.com/share/1JhGHpy4NC/" class="btn-rede" target="_blank">Facebook</a>
+                        <a href="https://youtube.com/@professorwilliamqueiroz?si=gpb1o5kh3u-4QWnc" class="btn-rede" target="_blank">YouTube</a>
+                        <a href="https://www.tiktok.com/@showdeportugues?_r=1&_t=ZS-97vA7zsESR8" class="btn-rede" target="_blank">TikTok</a>
+                        <a href="https://www.instagram.com/showdeportugues?igsh=ejZsbTBkc2xkaG9z" class="btn-rede" target="_blank">Instagram</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3º BLOCO: ESCALE CONCURSOS -->
+            <div class="card-secao">
+                <div class="card-header-block">
+                    <img class="miniatura-card" src="logoescale.jpg" alt="Escale Concursos">
+                    <div class="card-title">Escale Concursos</div>
+                </div>
+                <a href="https://escaleconcursos.senebr.com.br/" class="btn-link" target="_blank">Escale Concursos</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 SENE. Todos os direitos reservados.
+        </div>
+    </div>
+
+    <!-- SCRIPT DE VERIFICAÇÃO, CONTROLE DO MODAL E REGISTRO DO SERVICE WORKER -->
+    <script>
+        function fecharModal() {
+            document.getElementById('modalInstalacao').style.display = 'none';
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            // Verifica se a página está sendo executada como aplicativo instalado (standalone)
+            const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+            // Se NÃO estiver no modo aplicativo (ou seja, está no navegador), exibe o pop-up
+            if (!isStandalone) {
+                document.getElementById('modalInstalacao').style.display = 'flex';
+            }
+        });
+
+        // REGISTRO DO SERVICE WORKER PARA SUPORTE A PWA / OFFLINE
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('Service Worker registrado com sucesso!', reg))
+                    .catch(err => console.error('Erro ao registrar Service Worker:', err));
+            });
+        }
+    </script>
+
+</body>
+</html>
