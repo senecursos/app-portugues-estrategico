@@ -9,6 +9,12 @@
     <link rel="icon" type="image/png" href="estrategico.jpg">
     <meta name="theme-color" content="#0b0f19">
 
+    <!-- 1. Métrica de Acessos -->
+    <script src="analytics.js"></script>
+
+    <!-- 2. Gerenciador Central de Anúncios -->
+    <script src="anuncios.js"></script>
+
     <style>
         * {
             box-sizing: border-box;
@@ -121,44 +127,107 @@
             font-weight: 800;
             color: #000000;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
         }
 
-        /* QUESTÕES E FRASES EM PRETO E FONTE MAIOR */
-        .bloco-questao {
-            margin-bottom: 42px;
+        .subtitulo-simulado {
+            font-size: 22px;
+            font-weight: 700;
+            color: #254077;
+            text-align: center;
+            margin-bottom: 40px;
         }
 
-        .enunciado {
-            font-size: 20px;
+        /* ESTILO DAS QUESTÕES DO SIMULADO DE MÚLTIPLA ESCOLHA */
+        .quiz-card {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .question-number {
             font-weight: 800;
+            color: #254077;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .question-text {
+            font-size: 1.05rem;
             color: #000000;
             margin-bottom: 18px;
-            line-height: 1.5;
-            border-left: 5px solid #254077;
-            padding-left: 14px;
-        }
-
-        .lista-frases {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .lista-frases li {
-            font-size: 18px;
-            font-weight: 500;
-            color: #000000;
-            padding: 12px 0;
-            border-bottom: 1px dashed #cbd5e1;
             line-height: 1.6;
+            text-align: justify;
+            font-weight: 500;
         }
 
-        .lista-frases li:last-child {
-            border-bottom: none;
+        .options-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn-option-mc {
+            padding: 12px 16px;
+            font-size: 0.98rem;
+            font-weight: 600;
+            border: 2px solid #cbd5e1;
+            background: #ffffff;
+            color: #000000;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+            width: 100%;
+        }
+
+        .btn-option-mc:hover {
+            border-color: #254077;
+            background-color: #f8fafc;
+        }
+
+        .btn-option-mc.selected {
+            background-color: #254077;
+            color: #ffffff;
+            border-color: #254077;
+        }
+
+        /* CAIXA DE FEEDBACK SEM REVELAR GABARITO */
+        .feedback-box {
+            display: none;
+            padding: 14px 16px;
+            border-radius: 6px;
+            margin-top: 16px;
+            font-size: 1rem;
+            font-weight: 700;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feedback-box.correct {
+            background-color: #f0fdf4;
+            border-left: 5px solid #16a34a;
+            color: #14532d;
+        }
+
+        .feedback-box.incorrect {
+            background-color: #fef2f2;
+            border-left: 5px solid #dc2626;
+            color: #7f1d1d;
         }
 
         /* NOTA DISCRETA DE DIREITOS AUTORAIS */
@@ -217,12 +286,8 @@
                 font-size: 22px;
             }
 
-            .enunciado {
+            .subtitulo-simulado {
                 font-size: 18px;
-            }
-
-            .lista-frases li {
-                font-size: 17px;
             }
 
             .nota-propriedade {
@@ -243,7 +308,6 @@
     <header class="header-banner">
         <img class="capa-img" src="imagem1.jpg" alt="Capa Português Estratégico">
         <div class="perfil-container">
-            <!-- Corrigido para imagem2.jpg com i minúsculo -->
             <img class="perfil-img" src="imagem2.jpg" alt="Prof. William Queiroz">
         </div>
     </header>
@@ -257,72 +321,327 @@
             Conteúdo da Semana <span style="font-size: 24px;">⬇️</span>
         </h1>
 
-        <!-- QUESTÃO 1 -->
-        <article class="bloco-questao">
-            <h2 class="enunciado">1) Identifique e classifique os adjuntos adverbiais presentes nas frases abaixo:</h2>
-            <ol class="lista-frases">
-                <li>1. Os alunos estudaram com entusiasmo para a prova.</li>
-                <li>2. O palestrante falou calmamente durante o seminário.</li>
-                <li>3. Não sairemos de casa por causa do mau tempo.</li>
-                <li>4. Talvez os encomendados cheguem amanhã cedo.</li>
-                <li>5. O garoto cortou o papel com uma tesoura afiada.</li>
-                <li>6. Morávamos longe da escola no ano passado.</li>
-                <li>7. O professor explicou o conteúdo com muita clareza.</li>
-                <li>8. Certamente os convidados virão de carro para a festa.</li>
-                <li>9. Ela chorou de alegria com o resultado do concurso.</li>
-                <li>10. Caminhávamos bastante pela praia ao entardecer.</li>
-            </ol>
+        <h2 class="subtitulo-simulado">
+            Avaliação para análise pedagógica.
+        </h2>
+
+        <!-- QUESTÃO 01 -->
+        <article class="quiz-card" id="q1">
+            <span class="question-number">Questão 01</span>
+            <p class="question-text">
+                Indique a alternativa em que o termo sublinhado pertence à classe gramatical indicada entre parênteses.
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q1', 'A', 'C')">a) O <u>amanhã</u> a todos pertence, mas poucos o planejam. (Advérbio)</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q1', 'B', 'C')">b) Ele falou <u>baixo</u> durante a reunião para não ser ouvido. (Adjetivo)</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q1', 'C', 'C')">c) O <u>segundo</u> colocado recebeu a medalha de prata. (Numeral)</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q1', 'D', 'C')">d) Ela caminhava <u>só</u> pelas ruas desertas. (Conjunção)</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q1', 'E', 'C')">e) O artista pintou um belo quadro ao <u>anoitecer</u>. (Substantivo)</button>
+            </div>
+            <div class="feedback-box"></div>
         </article>
 
-        <!-- QUESTÃO 2 -->
-        <article class="bloco-questao">
-            <h2 class="enunciado">2) Identifique e classifique o aposto presente em cada uma das frases abaixo em: Explicativo, Especificativo, Enumerativo ou Comparativo.</h2>
-            <ol class="lista-frases">
-                <li>1. O poeta Castro Alves, autor de "O Navio Negreiro", viveu no século XIX.</li>
-                <li>2. O romancista Machado de Assis renovou a literatura brasileira.</li>
-                <li>3. Comprei vários materiais para o semestre: cadernos, canetas, réguas e pastas.</li>
-                <li>4. O jovem correu rápido pela rua, um verdadeiro atleta em prova de velocidade.</li>
-                <li>5. A cidade de Fortaleza recebe milhares de turistas durante o ano.</li>
-                <li>6. A professora chamou os três responsáveis: o pai, a mãe e o avô do aluno.</li>
-                <li>7. O garoto, um pequeno leão em campo, não desistiu da partida de futebol.</li>
-                <li>8. A física Albert Einstein revolucionou a ciência moderna no século XX.</li>
-                <li>9. Três virtudes são fundamentais para o convívio social: paciência, respeito e empatia.</li>
-                <li>10. O rio São Francisco atravessa diversos estados do Nordeste brasileiro.</li>
-            </ol>
+        <!-- QUESTÃO 02 -->
+        <article class="quiz-card" id="q2">
+            <span class="question-number">Questão 02</span>
+            <p class="question-text">
+                Assinale a opção em que a palavra destacada exerce a função de pronome adjetivo.
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q2', 'A', 'C')">a) <u>Todos</u> disseram que a prova estava difícil.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q2', 'B', 'C')">b) <u>Alguém</u> deixou o livro na mesa da recepção.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q2', 'C', 'C')">c) <u>Estes</u> documentos precisam ser assinados até hoje.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q2', 'D', 'C')">d) O garoto que chegou <u>nada</u> sabia sobre o assunto.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q2', 'E', 'C')">e) <u>Poucos</u> entenderam a gravidade da situação.</button>
+            </div>
+            <div class="feedback-box"></div>
         </article>
 
-        <!-- QUESTÃO 3 -->
-        <article class="bloco-questao">
-            <h2 class="enunciado">3) Analise o termo em negrito nas orações abaixo e classifique-o sintaticamente em: Adjunto Adnominal, Complemento Nominal ou Predicativo do Objeto.</h2>
-            <ol class="lista-frases">
-                <li>1. O juiz declarou o réu <strong>inocente</strong> após o julgamento.</li>
-                <li>2. A <strong>leitura do livro</strong> enriqueceu o vocabulário dos alunos.</li>
-                <li>3. O arquiteto projetou uma casa <strong>de madeira</strong> na montanha.</li>
-                <li>4. Os moradores consideraram a decisão <strong>injusta</strong>.</li>
-                <li>5. A <strong>construção do prédio</strong> demorou cerca de dois anos.</li>
-                <li>6. As alunas <strong>do colégio</strong> organizaram uma campanha comunitária.</li>
-                <li>7. O diretor nomeou o funcionário <strong>gerente da filial</strong>.</li>
-                <li>8. A <strong>confiança nos resultados</strong> motivou toda a equipe.</li>
-                <li>9. Aquela tempestade <strong>de neve</strong> bloqueou as estradas da região.</li>
-                <li>10. Os alunos acharam a prova <strong>difícil</strong>.</li>
-            </ol>
+        <!-- QUESTÃO 03 -->
+        <article class="quiz-card" id="q3">
+            <span class="question-number">Questão 03</span>
+            <p class="question-text">
+                Considere a frase: "O rapaz respondeu <u>com</u> calma, <u>mas</u> a bancada continuou irritada." As palavras destacadas pertencem, respectivamente, às seguintes classes gramaticais:
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q3', 'A', 'A')">a) Preposição e Conjunção</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q3', 'B', 'A')">b) Advérbio e Conjunção</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q3', 'C', 'A')">c) Preposição e Advérbio</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q3', 'D', 'A')">d) Conjunção e Preposição</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q3', 'E', 'A')">e) Advérbio e Pronome</button>
+            </div>
+            <div class="feedback-box"></div>
         </article>
 
-        <!-- QUESTÃO 4 -->
-        <article class="bloco-questao">
-            <h2 class="enunciado">4) Faça a análise sintática completa de cada um dos termos que compõem as orações abaixo:</h2>
-            <ol class="lista-frases">
-                <li>1. O famoso médico permaneceu calmo durante a cirurgia.</li>
-                <li>2. Os livros de literatura foram lidos pelos alunos da escola.</li>
-                <li>3. Alunos, a entrega dos certificados ocorreu ontem à tarde.</li>
-                <li>4. O jovem empresário necessitava de apoio financeiro na crise.</li>
-                <li>5. Os cidadãos julgaram o parecer do juiz sensato.</li>
-                <li>6. A pequena cidade parecia deserta naquela noite fria.</li>
-                <li>7. O auditório da faculdade foi reformado pelos operários.</li>
-                <li>8. Caros colegas, a confiança no progresso exige trabalho constante.</li>
-                <li>9. O renomado cientista obedeceu rigorosamente às leis da física.</li>
-                <li>10. A população offered suprimentos aos desabrigados com generosidade.</li>
-            </ol>
+        <!-- QUESTÃO 04 -->
+        <article class="quiz-card" id="q4">
+            <span class="question-number">Questão 04</span>
+            <p class="question-text">
+                Assinale a alternativa em que a palavra "que" funciona como pronome relativo.
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q4', 'A', 'B')">a) É preciso que você estude mais para a prova.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q4', 'B', 'B')">b) A cidade que conhecemos no ano passado é belíssima.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q4', 'C', 'B')">c) Tenho certeza de que venceremos este desafio.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q4', 'D', 'B')">d) Que dia agradável para passear no parque!</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q4', 'E', 'B')">e) Fale mais alto, que não estou ouvindo nada.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 05 -->
+        <article class="quiz-card" id="q5">
+            <span class="question-number">Questão 05</span>
+            <p class="question-text">
+                Em todas as alternativas, a palavra sublinhada é um substantivo, EXCETO em:
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q5', 'A', 'C')">a) O <u>saber</u> não ocupa lugar.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q5', 'B', 'C')">b) Sentiu um <u>vazio</u> imenso no peito.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q5', 'C', 'C')">c) Ficou <u>junto</u> da parede até a chuva passar.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q5', 'D', 'C')">d) O <u>verde</u> das árvores alegrava o ambiente.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 06 -->
+        <article class="quiz-card" id="q6">
+            <span class="question-number">Questão 06</span>
+            <p class="question-text">
+                Indique a alternativa em que o pronome destacado está classificado INCORRETAMENTE.
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q6', 'A', 'D')">a) Ninguém veio à reunião. (Pronome Indefinido)</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q6', 'B', 'D')">b) Esta é a casa onde cresci. (Pronome Relativo)</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q6', 'C', 'D')">c) Qual de vocês fez isso? (Pronome Interrogativo)</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q6', 'D', 'D')">d) Guardo consigo boas recordações. (Pronome Pessoal do Caso Reto)</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q6', 'E', 'D')">e) Deixei meu casaco sobre a cadeira. (Pronome Possessivo)</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 07 -->
+        <article class="quiz-card" id="q7">
+            <span class="question-number">Questão 07</span>
+            <p class="question-text">
+                Assinale a opção em que a classe de palavra sublinhada altera o seu sentido de acordo com a posição (antes ou depois do substantivo).
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q7', 'A', 'B')">a) Ele comprou um carro novo.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q7', 'B', 'B')">b) Encontramos um <u>pobre</u> homem na calçada.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q7', 'C', 'B')">c) A menina usava um vestido azul.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q7', 'D', 'B')">d) Foi um resultado excelente para a equipe.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q7', 'E', 'B')">e) A professora fez uma pergunta difícil.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 08 -->
+        <article class="quiz-card" id="q8">
+            <span class="question-number">Questão 08</span>
+            <p class="question-text">
+                Na frase "Ela falava <u>bastante</u> sobre as viagens, pois lia <u>bastantes</u> livros", as palavras destacadas são, respectivamente:
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q8', 'A', 'B')">a) Advérbio e Adjetivo</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q8', 'B', 'B')">b) Advérbio e Pronome Indefinido</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q8', 'C', 'B')">c) Pronome Indefinido e Pronome Indefinido</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q8', 'D', 'B')">d) Adjetivo e Advérbio</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q8', 'E', 'B')">e) Pronome Indefinido e Adjetivo</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 09 -->
+        <article class="quiz-card" id="q9">
+            <span class="question-number">Questão 09</span>
+            <p class="question-text">
+                Assinale a alternativa que apresenta uma interjeição.
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q9', 'A', 'A')">a) Ora, não faça essa cara de surpresa!</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q9', 'B', 'A')">b) Chegou tarde, porém conseguiu entrar.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q9', 'C', 'A')">c) Ele comprou dez canetas azuis.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q9', 'D', 'A')">d) Nós caminhamos rápido até o ponto de ônibus.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q9', 'E', 'A')">e) O livro que você pediu está aqui.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 10 -->
+        <article class="quiz-card" id="q10">
+            <span class="question-number">Questão 10</span>
+            <p class="question-text">
+                Em qual das opções a palavra "a" funciona como artigo definido?
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q10', 'A', 'B')">a) Refiro-me a ela com muito respeito.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q10', 'B', 'B')">b) A aluna entregou a redação no prazo.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q10', 'C', 'B')">c) Ele começou a cantar no meio da aula.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q10', 'D', 'B')">d) Encontrei-a na biblioteca esta manhã.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q10', 'E', 'B')">e) Estamos a poucos dias do evento.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 11 -->
+        <article class="quiz-card" id="q11">
+            <span class="question-number">Questão 11</span>
+            <p class="question-text">
+                Assinale a frase em que o verbo está flexionado no pretérito imperfeito do indicativo.
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q11', 'A', 'B')">a) Nós vendemos a casa no ano passado.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q11', 'B', 'B')">b) Eu estudava todas as noites após o trabalho.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q11', 'C', 'B')">c) Eles cantarão no coral da igreja.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q11', 'D', 'B')">d) Quando eu chegar, faremos a refeição.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q11', 'E', 'B')">e) Tu fizeste o trabalho corretamente.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 12 -->
+        <article class="quiz-card" id="q12">
+            <span class="question-number">Questão 12</span>
+            <p class="question-text">
+                Indique a alternativa em que a locução adjetiva corresponde corretamente ao adjetivo sublinhado: "dor de estômago".
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q12', 'A', 'B')">a) Hepática</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q12', 'B', 'B')">b) Gástrica</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q12', 'C', 'B')">c) Pluvial</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q12', 'D', 'B')">d) Renal</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q12', 'E', 'B')">e) Cardíaca</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 13 -->
+        <article class="quiz-card" id="q13">
+            <span class="question-number">Questão 13</span>
+            <p class="question-text">
+                Em "Não aprovo <u>tais</u> atitudes de sua parte", a palavra destacada é um:
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q13', 'A', 'A')">a) Pronome demonstrativo</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q13', 'B', 'A')">b) Pronome indefinido</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q13', 'C', 'A')">c) Adjetivo qualificativo</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q13', 'D', 'A')">d) Advérbio de modo</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q13', 'E', 'A')">e) Artigo indefinido</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 14 -->
+        <article class="quiz-card" id="q14">
+            <span class="question-number">Questão 14</span>
+            <p class="question-text">
+                Assinale a opção em que a palavra destacada pertence à classe dos numerais fracionários.
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q14', 'A', 'B')">a) Ele foi o terceiro a chegar.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q14', 'B', 'B')">b) Comeu metade da pizza sozinho.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q14', 'C', 'B')">c) Recebeu o dobro do valor cobrado.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q14', 'D', 'B')">d) A equipe conseguiu duas vitórias seguidas.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q14', 'E', 'B')">e) Ele tem ambos os documentos necessários.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 15 -->
+        <article class="quiz-card" id="q15">
+            <span class="question-number">Questão 15</span>
+            <p class="question-text">
+                Na frase "Nossa equipe correu <u>muito</u>, mas obteve <u>pouco</u> resultado", os termos destacados classificam-se, respectivamente, como:
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q15', 'A', 'A')">a) Advérbio e Pronome Indefinido</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q15', 'B', 'A')">b) Advérbio e Advérbio</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q15', 'C', 'A')">c) Pronome Indefinido e Advérbio</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q15', 'D', 'A')">d) Adjetivo e Pronome Indefinido</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q15', 'E', 'A')">e) Advérbio e Adjetivo</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 16 -->
+        <article class="quiz-card" id="q16">
+            <span class="question-number">Questão 16</span>
+            <p class="question-text">
+                Assinale a alternativa em que a conjunção destacada estabelece relação de oposição (adversativa).
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q16', 'A', 'C')">a) Estudou muito, portanto passou no exame.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q16', 'B', 'C')">b) Não foi à aula porque estava doente.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q16', 'C', 'C')">c) Trabalhou duro durante a semana, contudo não recebeu o pagamento.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q16', 'D', 'C')">d) Se fizer sol amanhã, iremos à praia.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q16', 'E', 'C')">e) Ela canta e dança muito bem.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 17 -->
+        <article class="quiz-card" id="q17">
+            <span class="question-number">Questão 17</span>
+            <p class="question-text">
+                Em "Cuidado! O piso está escorregadio", a palavra "Cuidado!" classifica-se como:
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q17', 'A', 'C')">a) Substantivo</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q17', 'B', 'C')">b) Adjetivo</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q17', 'C', 'C')">c) Interjeição</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q17', 'D', 'C')">d) Advérbio</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q17', 'E', 'C')">e) Verbo</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 18 -->
+        <article class="quiz-card" id="q18">
+            <span class="question-number">Questão 18</span>
+            <p class="question-text">
+                Identifique a frase em que a palavra "como" exerce a função de preposição acidental.
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q18', 'A', 'C')">a) Como você não veio, começamos sem você.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q18', 'B', 'C')">b) Ele dormia como um urso no inverno.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q18', 'C', 'C')">c) Ele atuava como diretor do departamento.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q18', 'D', 'C')">d) Não sei como resolver este problema.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q18', 'E', 'C')">e) O professor explicou como funciona o sistema.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 19 -->
+        <article class="quiz-card" id="q19">
+            <span class="question-number">Questão 19</span>
+            <p class="question-text">
+                Assinale a alternativa que apresenta um verbo no modo subjuntivo.
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q19', 'A', 'B')">a) Escreva a resposta no caderno.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q19', 'B', 'B')">b) Talvez nós possamos ajudar amanhã.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q19', 'C', 'B')">c) Eles saíram mais cedo da escola.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q19', 'D', 'B')">d) Eu faria o trabalho se tivesse tempo.</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q19', 'E', 'B')">e) Feche a porta ao sair da sala.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 20 -->
+        <article class="quiz-card" id="q20">
+            <span class="question-number">Questão 20</span>
+            <p class="question-text">
+                Observe o termo destacado: "Os alunos <u>mesmos</u> organizaram o evento." A palavra sublinhada é morfologicamente um:
+            </p>
+            <div class="options-vertical">
+                <button class="btn-option-mc" onclick="checkAnswerMC('q20', 'A', 'C')">a) Advérbio</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q20', 'B', 'C')">b) Pronome demonstrativo</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q20', 'C', 'C')">c) Adjetivo</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q20', 'D', 'C')">d) Pronome pessoal</button>
+                <button class="btn-option-mc" onclick="checkAnswerMC('q20', 'E', 'C')">e) Substantivo</button>
+            </div>
+            <div class="feedback-box"></div>
         </article>
 
         <!-- NOTA DE AUTORIA E PROPRIEDADE -->
@@ -336,6 +655,31 @@
     <footer class="footer-site">
         &copy; 2026 SENE. Todos os direitos reservados.
     </footer>
+
+    <!-- SCRIPT DE LÓGICA SEM REVELAR O GABARITO NO ERRO -->
+    <script>
+        function checkAnswerMC(questionId, selectedOption, correctOption) {
+            const card = document.getElementById(questionId);
+            const buttons = card.querySelectorAll('.btn-option-mc');
+            const feedbackBox = card.querySelector('.feedback-box');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('selected');
+                if (btn.innerText.toLowerCase().startsWith(selectedOption.toLowerCase() + ')')) {
+                    btn.classList.add('selected');
+                }
+            });
+
+            feedbackBox.style.display = 'block';
+            if (selectedOption.toLowerCase() === correctOption.toLowerCase()) {
+                feedbackBox.className = 'feedback-box correct';
+                feedbackBox.innerHTML = `✓ Resposta Correta!`;
+            } else {
+                feedbackBox.className = 'feedback-box incorrect';
+                feedbackBox.innerHTML = `✕ Resposta Incorreta. Tente novamente!`;
+            }
+        }
+    </script>
 
 </body>
 </html>
