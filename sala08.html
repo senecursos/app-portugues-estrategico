@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Sala 01 | Português Estratégico</title>
+
+    <link rel="icon" type="image/png" href="estrategico.jpg">
+    <meta name="theme-color" content="#0b0f19">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff; /* BRANCO PURO */
+            filter: brightness(0.98);   /* SUAVIZA A INTENSIDADE DO BRILHO PARA NÃO CANSAR A VISTA */
+            color: #000000;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        /* BARRA SUPERIOR (ROLA NORMALMENTE COM A PÁGINA) */
+        .top-navbar {
+            background-color: #0b0f19;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .btn-voltar {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .btn-voltar:hover {
+            color: #ffffff;
+        }
+
+        .badge-sala {
+            background-color: #254077;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        /* CABEÇALHO DA PÁGINA (CAPA E PERFIL CIRCULAR) */
+        .header-banner {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background-color: #0b0f19;
+            margin-bottom: 70px;
+        }
+
+        .capa-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+        }
+
+        .perfil-container {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 120px;
+            background-color: #ffffff;
+            border: 4px solid #0b0f19;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .perfil-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* BLOCO DE BOAS-VINDAS E ADVERTÊNCIA */
+        .secao-boas-vindas {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .subtexto-sala {
+            font-size: 0.95rem;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .saudacao-principal {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #254077;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            white-space: nowrap;
+        }
+
+        .caixa-advertencia {
+            background-color: #fef2f2;
+            border-left: 5px solid #dc2626;
+            border-radius: 8px;
+            padding: 16px 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            color: #7f1d1d;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        /* CONTEÚDO PRINCIPAL RESPONSIVO */
+        .main-container {
+            max-width: 900px;
+            width: 92%;
+            margin: 0 auto 60px auto;
+            flex: 1;
+        }
+
+        .divisor-linha {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #94a3b8, transparent);
+            margin-bottom: 28px;
+        }
+
+        .titulo-secao {
+            font-size: 28px;
+            font-weight: 800;
+            color: #000000;
+            text-align: center;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* QUESTÕES E ENUNCIADOS */
+        .bloco-questao {
+            margin-bottom: 42px;
+        }
+
+        .enunciado {
+            font-size: 20px;
+            font-weight: 800;
+            color: #000000;
+            margin-bottom: 18px;
+            line-height: 1.5;
+            border-left: 5px solid #254077;
+            padding-left: 14px;
+        }
+
+        .lista-frases {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        /* PADRÃO ÚNICO E FIXO PARA TODAS AS FRASES */
+        .lista-frases li {
+            font-size: 18px;
+            font-weight: 500;
+            color: #000000;
+            padding: 12px 0;
+            border-bottom: 1px dashed #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .lista-frases li:last-child {
+            border-bottom: none;
+        }
+
+        /* ESTILO DOS DESTAQUES DENTRO DAS FRASES */
+        .lista-frases span {
+            font-size: 1.1em;
+            font-weight: 700;
+        }
+
+        /* NOTA DISCRETA DE DIREITOS AUTORAIS */
+        .nota-propriedade {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #cbd5e1;
+            font-size: 13px;
+            font-weight: 600;
+            color: #475569;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* RODAPÉ INSTITUCIONAL */
+        .footer-site {
+            background-color: #0b0f19;
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+            margin-top: auto;
+        }
+
+        /* AJUSTES DE TELA */
+        @media (max-width: 900px) and (orientation: landscape) {
+            .header-banner {
+                height: 140px;
+                margin-bottom: 50px;
+            }
+
+            .perfil-container {
+                width: 90px;
+                height: 90px;
+                bottom: -35px;
+            }
+
+            .main-container {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-banner {
+                height: 160px;
+                margin-bottom: 55px;
+            }
+
+            .perfil-container {
+                width: 95px;
+                height: 95px;
+                bottom: -40px;
+            }
+
+            .saudacao-principal {
+                font-size: 1.2rem;
+                white-space: normal;
+            }
+
+            .titulo-secao {
+                font-size: 22px;
+            }
+
+            .enunciado {
+                font-size: 18px;
+            }
+
+            .nota-propriedade {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR DE NAVEGAÇÃO -->
+    <nav class="top-navbar">
+        <a href="index.html" class="btn-voltar">&#8592; Voltar ao Início</a>
+        <span class="badge-sala">Sala 01</span>
+    </nav>
+
+    <!-- CABEÇALHO (CAPA E PERFIL CIRCULAR) -->
+    <header class="header-banner">
+        <img class="capa-img" src="imagem1.jpg" alt="Capa Português Estratégico">
+        <div class="perfil-container">
+            <img class="perfil-img" src="imagem2.jpg" alt="Prof. William Queiroz">
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-container">
+        
+        <hr class="divisor-linha">
+
+        <!-- BLOCO DE SAUDAÇÃO E ADVERTÊNCIA -->
+        <section class="secao-boas-vindas">
+            <div class="subtexto-sala">(Se esta é a sua sala...)</div>
+            <h2 class="saudacao-principal">SEJA MUITO BEM-VINDO(A)!</h2>
+            
+            <div class="caixa-advertencia">
+                <b>ENTRETANTO</b>, se esta não é a sua sala, você deveria gastar melhor o seu tempo estudando e concluindo as suas próprias missões em sua sala.
+            </div>
+        </section>
+
+        <h1 class="titulo-secao">
+            Conteúdo da Semana <span style="font-size: 24px;">⬇️</span>
+        </h1>
+
+        <!-- QUESTÃO 1 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">1) Classifique o verbo de cada frase em transitivo ou intransitivo:</h2>
+            <ul class="lista-frases">
+                <li>a) O professor caminhou pela praia durante a manhã.</li>
+                <li>b) A criança precisa de atenção imediata.</li>
+                <li>c) Os alunos leram o livro com bastante atenção.</li>
+                <li>d) O avião partiu no horário previsto.</li>
+                <li>e) O paciente necessitava do remédio com urgência.</li>
+                <li>f) A árvore antiga caiu na rua principal da cidade.</li>
+                <li>g) O garoto enviou uma carta ao amigo distante.</li>
+                <li>h) As flores do jardim desabrocharam na primavera.</li>
+                <li>i) O jovem comprou um carro novo semana passada.</li>
+                <li>j) O cão dormiu no sofá da sala confortavelmente.</li>
+            </ul>
+        </article>
+
+        <!-- QUESTÃO 2 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">2) Classifique o termo destacado em objeto indireto ou complemento nominal:</h2>
+            <ul class="lista-frases">
+                <li>a) O jovem tinha certeza <span>da vitória</span>.</li>
+                <li>b) O garoto gosta <span>de música clássica</span>.</li>
+                <li>c) O público se manteve fiel <span>ao time</span>.</li>
+                <li>d) O trabalhador necessita <span>de apoio</span>.</li>
+                <li>e) Todos mantêm confiança <span>nos alunos</span>.</li>
+                <li>f) A mãe precisa <span>de ajuda</span>.</li>
+                <li>g) Eles ficaram indignados <span>com a injustiça</span>.</li>
+                <li>h) O professor confia <span>em seus estudantes</span>.</li>
+                <li>i) A decisão foi favorável <span>ao réu</span>.</li>
+                <li>j) A população tem medo <span>da violência</span>.</li>
+                <li>k) O aluno respondeu <span>ao questionário</span>.</li>
+                <li>l) O garoto estava consciente <span>do perigo</span>.</li>
+            </ul>
+        </article>
+
+        <!-- QUESTÃO 3 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">3) Classifique o termo destacado em predicativo do sujeito ou predicativo do objeto:</h2>
+            <ul class="lista-frases">
+                <li>a) O juiz julgou o réu <span>inocente</span>.</li>
+                <li>b) Os alunos caminhavam pelo corredor <span>ansiosos</span>.</li>
+                <li>c) A professora considerou a prova <span>difícil</span>.</li>
+                <li>d) O atleta chegou <span>exausto</span> ao final da corrida.</li>
+                <li>e) Os moradores acharam o bairro <span>perigoso</span>.</li>
+                <li>f) A mãe observava o filho <span>orgulhosa</span>.</li>
+                <li>g) O público declarou o filme <span>excelente</span>.</li>
+                <li>h) A água do rio permanece <span>limpa</span>.</li>
+                <li>i) Os jurados elegeram a candidata <span>vencedora</span>.</li>
+                <li>j) O garoto voltou para casa <span>triste</span>.</li>
+            </ul>
+        </article>
+
+        <!-- QUESTÃO 4 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">4) Faça a análise sintática completa dos termos das frases a seguir:</h2>
+            <ul class="lista-frases">
+                <li>a) O técnico considerou a estratégia perfeita.</li>
+                <li>b) A população tinha necessidade de mudanças urgentes.</li>
+                <li>c) O aluno ofereceu um presente ao professor.</li>
+                <li>d) O réu foi absolvido pelo juiz na semana passada.</li>
+                <li>e) Os convidados saíram da festa bastante satisfeitos.</li>
+                <li>f) A construção do prédio foi interrompida pelas autoridades.</li>
+                <li>g) O garoto enviou uma mensagem para a mãe.</li>
+                <li>h) O juiz declarou o réu culpado do crime.</li>
+                <li>i) Os atletas chegaram exaustos ao estádio.</li>
+                <li>j) O morador mantinha grande respeito pelos vizinhos.</li>
+                <li>k) O projeto foi aprovado pela diretoria da empresa.</li>
+                <li>l) A jovem estava consciente da importância do estudo.</li>
+            </ul>
+        </article>
+
+        <!-- NOTA DE AUTORIA E PROPRIEDADE -->
+        <div class="nota-propriedade">
+            Todo o material contido nesta página é de autoria e propriedade do professor William Queiroz.
+        </div>
+
+    </main>
+
+    <!-- RODAPÉ INSTITUCIONAL -->
+    <footer class="footer-site">
+        &copy; 2026 SENE. Todos os direitos reservados.
+    </footer>
+
+</body>
+</html>
