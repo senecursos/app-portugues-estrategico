@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Sala 10 | Português Estratégico</title>
+
+    <link rel="icon" type="image/png" href="estrategico.jpg">
+    <meta name="theme-color" content="#0b0f19">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff; /* BRANCO PURO */
+            filter: brightness(0.98);   /* SUAVIZA A INTENSIDADE DO BRILHO PARA NÃO CANSAR A VISTA */
+            color: #000000;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        /* BARRA SUPERIOR (ROLA NORMALMENTE COM A PÁGINA) */
+        .top-navbar {
+            background-color: #0b0f19;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .btn-voltar {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .btn-voltar:hover {
+            color: #ffffff;
+        }
+
+        .badge-sala {
+            background-color: #254077;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        /* CABEÇALHO DA PÁGINA (CAPA E PERFIL CIRCULAR) */
+        .header-banner {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background-color: #0b0f19;
+            margin-bottom: 70px;
+        }
+
+        .capa-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+        }
+
+        .perfil-container {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 120px;
+            background-color: #ffffff;
+            border: 4px solid #0b0f19;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .perfil-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* BLOCO DE BOAS-VINDAS E ADVERTÊNCIA */
+        .secao-boas-vindas {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .subtexto-sala {
+            font-size: 0.95rem;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .saudacao-principal {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #254077;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            white-space: nowrap;
+        }
+
+        .caixa-advertencia {
+            background-color: #fef2f2;
+            border-left: 5px solid #dc2626;
+            border-radius: 8px;
+            padding: 16px 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            color: #7f1d1d;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        /* CONTEÚDO PRINCIPAL RESPONSIVO */
+        .main-container {
+            max-width: 900px;
+            width: 92%;
+            margin: 0 auto 60px auto;
+            flex: 1;
+        }
+
+        .divisor-linha {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #94a3b8, transparent);
+            margin-bottom: 28px;
+        }
+
+        .titulo-secao {
+            font-size: 28px;
+            font-weight: 800;
+            color: #000000;
+            text-align: center;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* QUESTÕES E ENUNCIADOS */
+        .bloco-questao {
+            margin-bottom: 42px;
+        }
+
+        .enunciado {
+            font-size: 20px;
+            font-weight: 800;
+            color: #000000;
+            margin-bottom: 18px;
+            line-height: 1.5;
+            border-left: 5px solid #254077;
+            padding-left: 14px;
+        }
+
+        .lista-frases {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        /* PADRÃO ÚNICO E FIXO PARA TODAS AS FRASES */
+        .lista-frases li {
+            font-size: 18px;
+            font-weight: 500;
+            color: #000000;
+            padding: 12px 0;
+            border-bottom: 1px dashed #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .lista-frases li:last-child {
+            border-bottom: none;
+        }
+
+        /* ESTILO DOS DESTAQUES DENTRO DAS FRASES */
+        .lista-frases span {
+            font-size: 1.1em;
+            font-weight: 700;
+        }
+
+        /* NOTA DISCRETA DE DIREITOS AUTORAIS */
+        .nota-propriedade {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #cbd5e1;
+            font-size: 13px;
+            font-weight: 600;
+            color: #475569;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* RODAPÉ INSTITUCIONAL */
+        .footer-site {
+            background-color: #0b0f19;
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+            margin-top: auto;
+        }
+
+        /* AJUSTES DE TELA */
+        @media (max-width: 900px) and (orientation: landscape) {
+            .header-banner {
+                height: 140px;
+                margin-bottom: 50px;
+            }
+
+            .perfil-container {
+                width: 90px;
+                height: 90px;
+                bottom: -35px;
+            }
+
+            .main-container {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-banner {
+                height: 160px;
+                margin-bottom: 55px;
+            }
+
+            .perfil-container {
+                width: 95px;
+                height: 95px;
+                bottom: -40px;
+            }
+
+            .saudacao-principal {
+                font-size: 1.2rem;
+                white-space: normal;
+            }
+
+            .titulo-secao {
+                font-size: 22px;
+            }
+
+            .enunciado {
+                font-size: 18px;
+            }
+
+            .nota-propriedade {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR DE NAVEGAÇÃO -->
+    <nav class="top-navbar">
+        <a href="index.html" class="btn-voltar">&#8592; Voltar ao Início</a>
+        <span class="badge-sala">Sala 10</span>
+    </nav>
+
+    <!-- CABEÇALHO (CAPA E PERFIL CIRCULAR) -->
+    <header class="header-banner">
+        <img class="capa-img" src="imagem1.jpg" alt="Capa Português Estratégico">
+        <div class="perfil-container">
+            <img class="perfil-img" src="imagem2.jpg" alt="Prof. William Queiroz">
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-container">
+        
+        <hr class="divisor-linha">
+
+        <!-- BLOCO DE SAUDAÇÃO E ADVERTÊNCIA -->
+        <section class="secao-boas-vindas">
+            <div class="subtexto-sala">(Se esta é a sua sala...)</div>
+            <h2 class="saudacao-principal">SEJA MUITO BEM-VINDO(A)!</h2>
+            
+            <div class="caixa-advertencia">
+                <b>ENTRETANTO</b>, se esta não é a sua sala, você deveria gastar melhor o seu tempo estudando e concluindo as suas próprias missões em sua sala.
+            </div>
+        </section>
+
+        <h1 class="titulo-secao">
+            Conteúdo da Semana <span style="font-size: 24px;">⬇️</span>
+        </h1>
+
+        <!-- QUESTÃO 1 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">1) Identifique a função morfossintática do vocábulo que presente em cada uma das orações abaixo, classificando-o como Conjunção Integrante ou Pronome Relativo.</h2>
+            <ul class="lista-frases">
+                <li>a) O professor garantiu que todos os alunos seriam aprovados.</li>
+                <li>b) O livro que eu comprei ontem é fascinante.</li>
+                <li>c) As dúvidas que você apresentou foram esclarecidas.</li>
+                <li>d) É fundamental que você faça os exercícios com atenção.</li>
+                <li>e) Os alunos que estudaram bastante tiraram notas excelentes.</li>
+                <li>f) Percebi que a turma estava bastante concentrada na aula.</li>
+                <li>g) Ela tem certeza de que fez a melhor escolha.</li>
+                <li>h) Convém que iniciemos a reunião no horário marcado.</li>
+                <li>i) A casa que fica na esquina foi reformada recentemente.</li>
+                <li>j) A proposta que o diretor apresentou agradou a todos.</li>
+                <li>k) Ninguém sabia que o teste seria aplicado hoje.</li>
+                <li>l) O filme a que me referi ganhou vários prêmios.</li>
+                <li>m) Desejo que você tenha muito sucesso na nova jornada.</li>
+                <li>n) Os documentos que estavam sobre a mesa sumiram.</li>
+                <li>o) A garota que ganhou a competição treinou por meses.</li>
+                <li>p) É preciso que haja mais empatia nas relações humanas.</li>
+                <li>q) Lembrei-me de que precisava enviar aquele e-mail importante.</li>
+                <li>r) O público exigiu que o show continuasse.</li>
+                <li>s) As cidades que visitamos na viagem eram históricas.</li>
+                <li>t) A ferramenta que você está usando é muito eficiente.</li>
+            </ul>
+        </article>
+
+        <!-- QUESTÃO 2 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">2) Identifique e classifique a oração subordinada substantiva destacada em cada um dos períodos abaixo em: Subjetiva, Predicativa ou Objetiva Direta.</h2>
+            <ul class="lista-frases">
+                <li>a) É indispensável que todos apresentem o documento de identificação na entrada.</li>
+                <li>b) A verdade é que a equipe não estava preparada para o debate.</li>
+                <li>c) O diretor informou que a reunião seria adiada para a próxima semana.</li>
+                <li>d) Os alunos perceberam que o prazo de entrega do projeto havia terminado.</li>
+                <li>e) Nossa intenção era que o projeto terminasse antes do prazo final.</li>
+                <li>f) Constatou-se que os dados apresentados no relatório estavam incorretos.</li>
+                <li>g) Ficou provado que a testemunha dizia a verdade durante o depoimento.</li>
+                <li>h) É necessário que revisemos todo o conteúdo antes da avaliação.</li>
+                <li>i) O desejo dos professores era que a turma obtivesse excelente desempenho.</li>
+                <li>j) O professor prometeu que divulgaria as notas até o fim da tarde.</li>
+            </ul>
+        </article>
+
+        <!-- QUESTÃO 3 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">3) Identifique e classifique a oração subordinada substantiva destacada em cada um dos períodos abaixo em: Objetiva Indireta ou Completiva Nominal.</h2>
+            <ul class="lista-frases">
+                <li>a) O gerente da empresa necessita de que todos os relatórios sejam entregues hoje.</li>
+                <li>b) Os alunos tinham certeza de que a prova seria adiada para a próxima semana.</li>
+                <li>c) O candidato estava consciente de que enfrentaria um exame bastante rigoroso.</li>
+                <li>d) A diretoria deu garantia de que os pagamentos seriam efetuados no prazo.</li>
+                <li>e) O professor insiste em que os exercícios sejam feitos manualmente.</li>
+                <li>f) Todos os cidadãos duvidavam de que as promessas da campanha fossem cumpridas.</li>
+                <li>g) Ninguém tinha dúvida de que o projeto seria aprovado pela comissão.</li>
+                <li>h) A equipe permaneceu convicta de que alcançaria as metas estabelecidas.</li>
+                <li>i) O jovem gostava de que suas opiniões fossem ouvidas pelos colegas.</li>
+                <li>j) O advogado fez menção de que apresentaria novas provas durante o julgamento.</li>
+            </ul>
+        </article>
+
+        <!-- QUESTÃO 4 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">4) Identifique e classifique a oração subordinada substantiva destacada em cada um dos períodos abaixo em uma das seis modalidades: Subjetiva, Predicativa, Objetiva Direta, Objetiva Indireta, Completiva Nominal ou Apositiva.</h2>
+            <ul class="lista-frases">
+                <li>a) O diretor apenas desejava isto: que todos colaborassem durante a transição.</li>
+                <li>b) É indispensável que os candidatos apresentem o documento com foto.</li>
+                <li>c) O candidato estava confiante de que obteria uma excelente pontuação.</li>
+                <li>d) A testemunha jurou que disse a verdade durante todo o depoimento.</li>
+                <li>e) Todos os funcionários necessitavam de que o pagamento fosse antecipado.</li>
+                <li>f) A nossa maior esperança era que o projeto fosse aprovado pela comissão.</li>
+                <li>g) Ficou provado que a documentação apresentada era autêntica.</li>
+                <li>h) O professor fez a seguinte exigência: que os trabalhos fossem entregues na data limite.</li>
+                <li>i) Os alunos tinham receio de que a avaliação fosse remarcada.</li>
+                <li>j) O parecerista garantiu que a análise técnica seria concluída hoje.</li>
+                <li>k) O cliente insistiu em que a entrega do produto ocorresse no prazo.</li>
+                <li>l) O seu único medo é que a empresa não consiga manter os postos de trabalho.</li>
+            </ul>
+        </article>
+
+        <!-- NOTA DE AUTORIA E PROPRIEDADE -->
+        <div class="nota-propriedade">
+            Todo o material contido nesta página é de autoria e propriedade do professor William Queiroz.
+        </div>
+
+    </main>
+
+    <!-- RODAPÉ INSTITUCIONAL -->
+    <footer class="footer-site">
+        &copy; 2026 SENE. Todos os direitos reservados.
+    </footer>
+
+</body>
+</html>
