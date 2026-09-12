@@ -71,21 +71,35 @@
         const db = getDatabase(app);
 
         // =========================================================================
-        // BANCO DE QUESTÕES (CADASTRE SUAS QUESTÕES DIRETAMENTE NESTA LISTA)
+        // BANCO DE QUESTÕES (MODELO PADRÃO AJUSTADO)
         // =========================================================================
         const questoes = [
+            // MODELO 1: CERTO / ERRADO (3 OPÇÕES)
             {
                 id: 1,
                 pergunta: "A palavra 'estratégico' é acentuada por ser uma proparoxítona?",
-                tipo: "VF",
-                opcoes: ["Certo", "Errado"],
+                tipo: "V/F",
+                opcoes: [
+                    "Certo",
+                    "Errado",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
                 gabarito: "Certo"
             },
+            
+            // MODELO 2: MÚLTIPLA ESCOLHA (6 OPÇÕES)
             {
                 id: 2,
                 pergunta: "Assinale a opção em que todas as palavras estão grafadas corretamente de acordo com a norma-padrão:",
-                tipo: "ABCDE",
-                opcoes: ["Opção A: Exceção, Paralisar, Chícara", "Opção B: Exceção, Paralisar, Xícara", "Opção C: Esceção, Paralizar, Xícara", "Opção D: Exceção, Paralizar, Chícara"],
+                tipo: "A-E",
+                opcoes: [
+                    "Opção A: Exceção, Paralisar, Chícara",
+                    "Opção B: Exceção, Paralisar, Xícara",
+                    "Opção C: Esceção, Paralizar, Xícara",
+                    "Opção D: Exceção, Paralizar, Chícara",
+                    "Opção E: Esceção, Paralisar, Chícara",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
                 gabarito: "Opção B: Exceção, Paralisar, Xícara"
             }
         ];
@@ -103,7 +117,7 @@
                         <button class="btn btn-success" onclick="ativarQuestao(${q.id})">▶️ Lançar para os Alunos</button>
                     </div>
                     <p style="margin-bottom: 15px; color: #f1f5f9;"><b>${q.pergunta}</b></p>
-                    <p style="font-size: 0.85rem; color: #4ade80; margin-bottom: 15px;">Gabarito: ${q.gabarito}</p>
+                    <p style="font-size: 0.85rem; color: #4ade80; margin-bottom: 15px;">Gabarito: 🟢 ${q.gabarito}</p>
                     
                     <div id="resultados-q${q.id}"></div>
                     <div class="estatisticas-gerais" id="total-q${q.id}">Total de Votos: 0</div>
@@ -148,10 +162,19 @@
                         const qtd = contagem[op];
                         const pct = totalVotos > 0 ? ((qtd / totalVotos) * 100).toFixed(1) : 0;
                         const ehGabarito = op === questao.gabarito;
-                        const corBarra = ehGabarito ? "#16a34a" : "#2563eb";
+                        const ehChute = op.includes("Chutei");
+                        
+                        let corBarra = "#2563eb";
+                        if (ehGabarito) corBarra = "#16a34a";
+                        else if (ehChute) corBarra = "#d97706";
+
+                        // A bolinha verde 🟢 agora é exibida SEMPRE no início da linha da alternativa correta!
+                        const prefixo = ehGabarito ? '🟢 ' : '';
 
                         resDiv.innerHTML += `
-                            <div style="font-size: 0.9rem; margin-top: 5px;">${op} ${ehGabarito ? '🟢 (Correta)' : ''}</div>
+                            <div style="font-size: 0.9rem; margin-top: 5px; ${ehGabarito ? 'font-weight: bold; color: #4ade80;' : ''}">
+                                ${prefixo}${op}
+                            </div>
                             <div class="barra-progresso-bg">
                                 <div class="barra-progresso-fill" style="width: ${pct}%; background-color: ${corBarra};"></div>
                                 <div class="barra-texto">${pct}% (${qtd} votos)</div>
