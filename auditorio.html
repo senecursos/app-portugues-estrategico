@@ -17,8 +17,8 @@
         }
 
         body {
-            background-color: #ffffff; /* BRANCO PURO */
-            filter: brightness(0.98);   /* SUAVIZA A INTENSIDADE DO BRILHO PARA NÃO CANSAR A VISTA */
+            background-color: #ffffff;
+            filter: brightness(0.98);
             color: #000000;
             line-height: 1.6;
             min-height: 100vh;
@@ -27,7 +27,7 @@
             width: 100%;
         }
 
-        /* BARRA SUPERIOR (ROLA NORMALMENTE COM A PÁGINA) */
+        /* BARRA SUPERIOR */
         .top-navbar {
             background-color: #0b0f19;
             padding: 12px 24px;
@@ -48,9 +48,7 @@
             transition: color 0.2s;
         }
 
-        .btn-voltar:hover {
-            color: #ffffff;
-        }
+        .btn-voltar:hover { color: #ffffff; }
 
         .badge-sala {
             background-color: #254077;
@@ -62,7 +60,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* CABEÇALHO DA PÁGINA (CAPA E PERFIL CIRCULAR) */
+        /* CABEÇALHO DA PÁGINA */
         .header-banner {
             position: relative;
             width: 100%;
@@ -99,18 +97,8 @@
         }
 
         /* BLOCO DE BOAS-VINDAS E ADVERTÊNCIA */
-        .secao-boas-vindas {
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .subtexto-sala {
-            font-size: 0.95rem;
-            color: #64748b;
-            font-weight: 600;
-            margin-bottom: 6px;
-        }
-
+        .secao-boas-vindas { margin-bottom: 30px; text-align: center; }
+        .subtexto-sala { font-size: 0.95rem; color: #64748b; font-weight: 600; margin-bottom: 6px; }
         .saudacao-principal {
             font-size: 1.5rem;
             font-weight: 900;
@@ -133,7 +121,7 @@
             text-align: justify;
         }
 
-        /* CONTEÚDO PRINCIPAL RESPONSIVO */
+        /* CONTEÚDO PRINCIPAL */
         .main-container {
             max-width: 900px;
             width: 92%;
@@ -153,14 +141,82 @@
             font-weight: 800;
             color: #000000;
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
         }
 
-        /* MENSAGEM TEMPORÁRIA DE AGUARDE */
+        /* ÁREA DE INTERAÇÃO DO QUIZ (ALUNO) */
+        .card-quiz {
+            background-color: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        .quiz-pergunta {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0b0f19;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .quiz-opcoes {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-opcao {
+            background-color: #ffffff;
+            border: 2px solid #254077;
+            color: #254077;
+            padding: 14px 20px;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+
+        .btn-opcao:hover:not(:disabled) {
+            background-color: #254077;
+            color: #ffffff;
+        }
+
+        .btn-opcao:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .feedback-resposta {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-align: center;
+            display: none;
+        }
+
+        .feedback-acerto {
+            background-color: #dcfce7;
+            color: #166534;
+            border: 1px solid #86efac;
+        }
+
+        .feedback-erro {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+
         .caixa-em-breve {
             background-color: #f8fafc;
             border: 2px dashed #cbd5e1;
@@ -173,7 +229,6 @@
             margin-bottom: 40px;
         }
 
-        /* NOTA DISCRETA DE DIREITOS AUTORAIS */
         .nota-propriedade {
             margin-top: 50px;
             padding-top: 20px;
@@ -185,7 +240,6 @@
             font-style: italic;
         }
 
-        /* RODAPÉ INSTITUCIONAL */
         .footer-site {
             background-color: #0b0f19;
             color: #94a3b8;
@@ -195,48 +249,11 @@
             margin-top: auto;
         }
 
-        /* AJUSTES DE TELA */
-        @media (max-width: 900px) and (orientation: landscape) {
-            .header-banner {
-                height: 140px;
-                margin-bottom: 50px;
-            }
-
-            .perfil-container {
-                width: 90px;
-                height: 90px;
-                bottom: -35px;
-            }
-
-            .main-container {
-                width: 95%;
-            }
-        }
-
         @media (max-width: 600px) {
-            .header-banner {
-                height: 160px;
-                margin-bottom: 55px;
-            }
-
-            .perfil-container {
-                width: 95px;
-                height: 95px;
-                bottom: -40px;
-            }
-
-            .saudacao-principal {
-                font-size: 1.2rem;
-                white-space: normal;
-            }
-
-            .titulo-secao {
-                font-size: 22px;
-            }
-
-            .nota-propriedade {
-                font-size: 12px;
-            }
+            .header-banner { height: 160px; margin-bottom: 55px; }
+            .perfil-container { width: 95px; height: 95px; bottom: -40px; }
+            .saudacao-principal { font-size: 1.2rem; white-space: normal; }
+            .titulo-secao { font-size: 22px; }
         }
     </style>
 </head>
@@ -248,7 +265,7 @@
         <span class="badge-sala">Auditório</span>
     </nav>
 
-    <!-- CABEÇALHO (CAPA E PERFIL CIRCULAR) -->
+    <!-- CABEÇALHO -->
     <header class="header-banner">
         <img class="capa-img" src="imagem1.jpg" alt="Capa Português Estratégico">
         <div class="perfil-container">
@@ -258,39 +275,135 @@
 
     <!-- CONTEÚDO PRINCIPAL -->
     <main class="main-container">
-        
         <hr class="divisor-linha">
 
-        <!-- BLOCO DE SAUDAÇÃO E ADVERTÊNCIA -->
         <section class="secao-boas-vindas">
             <div class="subtexto-sala">(Se esta é a sua sala...)</div>
             <h2 class="saudacao-principal">SEJA MUITO BEM-VINDO(A)!</h2>
-            
             <div class="caixa-advertencia">
                 <b>ENTRETANTO</b>, se esta não é a sua sala, você deveria gastar melhor o seu tempo estudando e concluindo as suas próprias missões em sua sala.
             </div>
         </section>
 
-        <h1 class="titulo-secao">
-            Apresentação de hoje <span style="font-size: 24px;">⬇️</span>
-        </h1>
+        <h1 class="titulo-secao">Apresentação de hoje ⬇️</h1>
 
-        <!-- MENSAGEM TEMPORÁRIA (SUBSTITUIR PELAS QUESTÕES) -->
-        <div class="caixa-em-breve">
-            📝 Não há evento agendado para hoje, porém haverá em breve. Fique atento!
+        <!-- ÁREA INTERATIVA DO QUIZ -->
+        <div id="area-quiz" class="card-quiz" style="display: none;">
+            <div id="enunciado" class="quiz-pergunta">Carregando pergunta...</div>
+            <div id="opcoes-container" class="quiz-opcoes"></div>
+            <div id="feedback" class="feedback-resposta"></div>
         </div>
 
-        <!-- NOTA DE AUTORIA E PROPRIEDADE -->
+        <!-- MENSAGEM QUANDO NÃO HÁ QUESTÃO ATIVA -->
+        <div id="mensagem-espera" class="caixa-em-breve">
+            📝  Não há evento agendado para hoje, porém haverá em breve. Fique atento(a)!
+        </div>
+
         <div class="nota-propriedade">
             Todo o material contido nesta página é de autoria e propriedade do professor William Queiroz.
         </div>
-
     </main>
 
-    <!-- RODAPÉ INSTITUCIONAL -->
     <footer class="footer-site">
         &copy; 2026 SENE. Todos os direitos reservados.
     </footer>
 
+    <!-- INTEGRAÇÃO COM O FIREBASE EM TEMPO REAL -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, onValue, set, get } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBaAP0E4TMCmSzP_-UNOSQn3n1-lQOJWJw",
+            authDomain: "questoes-para-auditorio.firebaseapp.com",
+            databaseURL: "https://questoes-para-auditorio-default-rtdb.firebaseio.com",
+            projectId: "questoes-para-auditorio",
+            storageBucket: "questoes-para-auditorio.firebasestorage.app",
+            messagingSenderId: "199541594520",
+            appId: "1:199541594520:web:66f48f6848fadba8d133ed"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Identificador Anônimo do Aluno (Garante 1 voto por questão por dispositivo)
+        let alunoId = localStorage.getItem("aluno_uid");
+        if (!alunoId) {
+            alunoId = "aluno_" + Math.random().toString(36).substr(2, 9);
+            localStorage.setItem("aluno_uid", alunoId);
+        }
+
+        const areaQuiz = document.getElementById("area-quiz");
+        const msgEspera = document.getElementById("mensagem-espera");
+        const enunciadoEl = document.getElementById("enunciado");
+        const opcoesContainer = document.getElementById("opcoes-container");
+        const feedbackEl = document.getElementById("feedback");
+
+        // Escuta em tempo real qual questão está ativa no painel do professor
+        const questaoAtivaRef = ref(db, "sessao/questaoAtiva");
+        onValue(questaoAtivaRef, (snapshot) => {
+            const questao = snapshot.val();
+            if (!questao || !questao.ativa) {
+                areaQuiz.style.display = "none";
+                msgEspera.style.display = "block";
+                return;
+            }
+
+            msgEspera.style.display = "none";
+            areaQuiz.style.display = "block";
+            enunciadoEl.innerText = `${questao.id}. ${questao.pergunta}`;
+            opcoesContainer.innerHTML = "";
+            feedbackEl.style.display = "none";
+
+            // Verifica se o aluno já respondeu a esta questão específica
+            const votoRef = ref(db, `votos/${questao.id}/${alunoId}`);
+            get(votoRef).then((votoSnap) => {
+                const jaVotou = votoSnap.exists();
+                const respostaAnterior = jaVotou ? votoSnap.val().opcao : null;
+
+                questao.opcoes.forEach((opcao) => {
+                    const btn = document.createElement("button");
+                    btn.className = "btn-opcao";
+                    btn.innerText = opcao;
+
+                    if (jaVotou) {
+                        btn.disabled = true;
+                        if (opcao === respostaAnterior) {
+                            btn.style.backgroundColor = "#254077";
+                            btn.style.color = "#ffffff";
+                        }
+                    } else {
+                        btn.onclick = () => enviarVoto(questao, opcao);
+                    }
+
+                    opcoesContainer.appendChild(btn);
+                });
+
+                if (jaVotou) {
+                    exibirFeedback(respostaAnterior === questao.gabarito, questao.gabarito);
+                }
+            });
+        });
+
+        function enviarVoto(questao, opcaoEscolhida) {
+            const votoRef = ref(db, `votos/${questao.id}/${alunoId}`);
+            set(votoRef, { opcao: opcaoEscolhida }).then(() => {
+                const botoes = opcoesContainer.querySelectorAll("button");
+                botoes.forEach(btn => btn.disabled = true);
+                exibirFeedback(opcaoEscolhida === questao.gabarito, questao.gabarito);
+            });
+        }
+
+        function exibirFeedback(acertou, gabarito) {
+            feedbackEl.style.display = "block";
+            if (acertou) {
+                feedbackEl.className = "feedback-resposta feedback-acerto";
+                feedbackEl.innerHTML = "🟢 PARABÉNS! Você acertou!";
+            } else {
+                feedbackEl.className = "feedback-resposta feedback-erro";
+                feedbackEl.innerHTML = `🔴 INCORRETO! A resposta certa é: <b>${gabarito}</b>`;
+            }
+        }
+    </script>
 </body>
 </html>

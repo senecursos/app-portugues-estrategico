@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Professor | Controle de Votação</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: #0b0f19; color: #ffffff; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        
+        header { text-align: center; margin-bottom: 30px; border-bottom: 2px solid #1e293b; padding-bottom: 20px; }
+        h1 { color: #ffffff; font-size: 1.8rem; }
+        p { color: #94a3b8; font-size: 0.95rem; }
+
+        .card { background-color: #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .card-title { font-weight: 700; font-size: 1.1rem; color: #38bdf8; }
+
+        .btn { padding: 10px 18px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+        .btn-success { background-color: #16a34a; color: #fff; }
+        .btn-danger { background-color: #dc2626; color: #fff; }
+        .btn-secondary { background-color: #475569; color: #fff; }
+        .btn:hover { opacity: 0.85; }
+
+        .barra-progresso-bg { background-color: #0f172a; border-radius: 8px; height: 35px; width: 100%; margin: 8px 0 15px 0; overflow: hidden; position: relative; border: 1px solid #334155; }
+        .barra-progresso-fill { background-color: #2563eb; height: 100%; transition: width 0.4s ease; }
+        .barra-texto { position: absolute; top: 0; left: 12px; height: 100%; display: flex; align-items: center; font-weight: 700; font-size: 0.9rem; color: #fff; text-shadow: 1px 1px 2px #000; }
+
+        .estatisticas-gerais { font-size: 1.1rem; font-weight: 700; color: #f8fafc; margin-top: 15px; text-align: right; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Painel do Professor - Controle do Auditório</h1>
+            <p>Selecione a questão para disparar nos celulares dos alunos e veja os resultados em tempo real.</p>
+        </header>
+
+        <div class="card" style="text-align: center;">
+            <button class="btn btn-danger" onclick="encerrarVotacao()">🛑 Encerrar / Limpar Votação da Tela dos Alunos</button>
+        </div>
+
+        <div id="lista-questoes"></div>
+    </div>
+
+    <!-- FIREBASE REALTIME DATABASE -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+        // Proteção por senha simples de acesso
+        const senha = prompt("Digite a senha do professor:");
+        if (senha !== "123456") { // <--- Altere sua senha de acesso aqui se desejar
+            alert("Senha incorreta!");
+            window.location.href = "auditorio.html";
+        }
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBaAP0E4TMCmSzP_-UNOSQn3n1-lQOJWJw",
+            authDomain: "questoes-para-auditorio.firebaseapp.com",
+            databaseURL: "https://questoes-para-auditorio-default-rtdb.firebaseio.com",
+            projectId: "questoes-para-auditorio",
+            storageBucket: "questoes-para-auditorio.firebasestorage.app",
+            messagingSenderId: "199541594520",
+            appId: "1:199541594520:web:66f48f6848fadba8d133ed"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // =========================================================================
+        // BANCO DE QUESTÕES (CADASTRE SUAS QUESTÕES DIRETAMENTE NESTA LISTA)
+        // =========================================================================
+        const questoes = [
+            {
+                id: 1,
+                pergunta: "A palavra 'estratégico' é acentuada por ser uma proparoxítona?",
+                tipo: "VF",
+                opcoes: ["Certo", "Errado"],
+                gabarito: "Certo"
+            },
+            {
+                id: 2,
+                pergunta: "Assinale a opção em que todas as palavras estão grafadas corretamente de acordo com a norma-padrão:",
+                tipo: "ABCDE",
+                opcoes: ["Opção A: Exceção, Paralisar, Chícara", "Opção B: Exceção, Paralisar, Xícara", "Opção C: Esceção, Paralizar, Xícara", "Opção D: Exceção, Paralizar, Chícara"],
+                gabarito: "Opção B: Exceção, Paralisar, Xícara"
+            }
+        ];
+
+        const container = document.getElementById("lista-questoes");
+
+        function renderizarQuestoes() {
+            container.innerHTML = "";
+            questoes.forEach((q) => {
+                const card = document.createElement("div");
+                card.className = "card";
+                card.innerHTML = `
+                    <div class="card-header">
+                        <span class="card-title">Questão ${q.id} (${q.tipo})</span>
+                        <button class="btn btn-success" onclick="ativarQuestao(${q.id})">▶️ Lançar para os Alunos</button>
+                    </div>
+                    <p style="margin-bottom: 15px; color: #f1f5f9;"><b>${q.pergunta}</b></p>
+                    <p style="font-size: 0.85rem; color: #4ade80; margin-bottom: 15px;">Gabarito: ${q.gabarito}</p>
+                    
+                    <div id="resultados-q${q.id}"></div>
+                    <div class="estatisticas-gerais" id="total-q${q.id}">Total de Votos: 0</div>
+                `;
+                container.appendChild(card);
+                ouvirVotos(q);
+            });
+        }
+
+        window.ativarQuestao = function(id) {
+            const q = questoes.find(item => item.id === id);
+            set(ref(db, "sessao/questaoAtiva"), { ...q, ativa: true });
+            alert(`Questão ${id} enviada com sucesso para a tela dos alunos!`);
+        };
+
+        window.encerrarVotacao = function() {
+            set(ref(db, "sessao/questaoAtiva"), { ativa: false });
+            alert("Votação encerrada! A tela dos alunos voltou ao estado padrão.");
+        };
+
+        function ouvirVotos(questao) {
+            const votosRef = ref(db, `votos/${questao.id}`);
+            onValue(votosRef, (snapshot) => {
+                const votos = snapshot.val() || {};
+                const totalVotos = Object.keys(votos).length;
+                
+                let contagem = {};
+                questao.opcoes.forEach(op => contagem[op] = 0);
+
+                Object.values(votos).forEach(v => {
+                    if (contagem[v.opcao] !== undefined) {
+                        contagem[v.opcao]++;
+                    }
+                });
+
+                const resDiv = document.getElementById(`resultados-q${questao.id}`);
+                const totalDiv = document.getElementById(`total-q${questao.id}`);
+                
+                if (resDiv) {
+                    resDiv.innerHTML = "";
+                    questao.opcoes.forEach(op => {
+                        const qtd = contagem[op];
+                        const pct = totalVotos > 0 ? ((qtd / totalVotos) * 100).toFixed(1) : 0;
+                        const ehGabarito = op === questao.gabarito;
+                        const corBarra = ehGabarito ? "#16a34a" : "#2563eb";
+
+                        resDiv.innerHTML += `
+                            <div style="font-size: 0.9rem; margin-top: 5px;">${op} ${ehGabarito ? '🟢 (Correta)' : ''}</div>
+                            <div class="barra-progresso-bg">
+                                <div class="barra-progresso-fill" style="width: ${pct}%; background-color: ${corBarra};"></div>
+                                <div class="barra-texto">${pct}% (${qtd} votos)</div>
+                            </div>
+                        `;
+                    });
+                }
+
+                if (totalDiv) {
+                    totalDiv.innerText = `Total de Respostas: ${totalVotos}`;
+                }
+            });
+        }
+
+        renderizarQuestoes();
+    </script>
+</body>
+</html>
