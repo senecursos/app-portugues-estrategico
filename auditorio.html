@@ -217,6 +217,13 @@
             border: 1px solid #fca5a5;
         }
 
+        /* FEEDBACK EXCLUSIVO DE CHUTE / INCERTEZA */
+        .feedback-chute {
+            background-color: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fcd34d;
+        }
+
         .caixa-em-breve {
             background-color: #f8fafc;
             border: 2px dashed #cbd5e1;
@@ -380,7 +387,7 @@
                 });
 
                 if (jaVotou) {
-                    exibirFeedback(respostaAnterior === questao.gabarito, questao.gabarito);
+                    exibirFeedback(respostaAnterior, questao.gabarito);
                 }
             });
         });
@@ -390,13 +397,18 @@
             set(votoRef, { opcao: opcaoEscolhida }).then(() => {
                 const botoes = opcoesContainer.querySelectorAll("button");
                 botoes.forEach(btn => btn.disabled = true);
-                exibirFeedback(opcaoEscolhida === questao.gabarito, questao.gabarito);
+                exibirFeedback(opcaoEscolhida, questao.gabarito);
             });
         }
 
-        function exibirFeedback(acertou, gabarito) {
+        function exibirFeedback(opcaoEscolhida, gabarito) {
             feedbackEl.style.display = "block";
-            if (acertou) {
+
+            // Se o aluno escolheu a alternativa de chute/incerteza
+            if (opcaoEscolhida && opcaoEscolhida.includes("Chutei")) {
+                feedbackEl.className = "feedback-resposta feedback-chute";
+                feedbackEl.innerHTML = "🤝 Obrigado pela sinceridade. Aguarde pela explicação!";
+            } else if (opcaoEscolhida === gabarito) {
                 feedbackEl.className = "feedback-resposta feedback-acerto";
                 feedbackEl.innerHTML = "🟢 PARABÉNS! Você acertou!";
             } else {

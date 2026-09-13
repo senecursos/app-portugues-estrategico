@@ -71,36 +71,176 @@
         const db = getDatabase(app);
 
         // =========================================================================
-        // BANCO DE QUESTÕES (MODELO PADRÃO AJUSTADO)
+        // BANCO DE QUESTÕES (12 QUESTÕES CARREGADAS)
         // =========================================================================
         const questoes = [
-            // MODELO 1: CERTO / ERRADO (3 OPÇÕES)
             {
                 id: 1,
-                pergunta: "A palavra 'estratégico' é acentuada por ser uma proparoxítona?",
-                tipo: "V/F",
-                opcoes: [
-                    "Certo",
-                    "Errado",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "Certo"
-            },
-            
-            // MODELO 2: MÚLTIPLA ESCOLHA (6 OPÇÕES)
-            {
-                id: 2,
-                pergunta: "Assinale a opção em que todas as palavras estão grafadas corretamente de acordo com a norma-padrão:",
+                pergunta: "Assinale a alternativa em que a colocação pronominal atende rigorosamente ao padrão culto da língua.",
                 tipo: "A-E",
                 opcoes: [
-                    "Opção A: Exceção, Paralisar, Chícara",
-                    "Opção B: Exceção, Paralisar, Xícara",
-                    "Opção C: Esceção, Paralizar, Xícara",
-                    "Opção D: Exceção, Paralizar, Chícara",
-                    "Opção E: Esceção, Paralisar, Chícara",
+                    "A) Não me disseram que a reunião havia sido cancelada ontem.",
+                    "B) Me disseram que a reunião havia sido cancelada ontem.",
+                    "C) Nunca disseram-me que a reunião havia sido cancelada ontem.",
+                    "D) Disseram-me não que a reunião havia sido cancelada ontem.",
+                    "E) Ninguém havia falado-me sobre o cancelamento da reunião ontem.",
                     "🤷🏽‍♂️ Chutei (não tenho certeza.)"
                 ],
-                gabarito: "Opção B: Exceção, Paralisar, Xícara"
+                gabarito: "A) Não me disseram que a reunião havia sido cancelada ontem."
+            },
+            {
+                id: 2,
+                pergunta: "A próclise é obrigatória na seguinte opção:",
+                tipo: "A-E",
+                opcoes: [
+                    "A) Entregou os relatórios, posicionando-se contra o parecer final.",
+                    "B) Em se tratando de negociações contratuais, a prudência é indispensável.",
+                    "C) Os conselheiros manifestaram-se contrários à aprovação do orçamento.",
+                    "D) Os documentos foram entregues, conforme disse-nos o diretor.",
+                    "E) Poderia indicar-me o caminho correto para a auditório principal?",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "B) Em se tratando de negociações contratuais, a prudência é indispensável."
+            },
+            {
+                id: 3,
+                pergunta: "Quanto à concordância verbal, assinale a opção inteiramente correta.",
+                tipo: "A-E",
+                opcoes: [
+                    "A) Fazem três anos que o comitê de ética não realiza sessões extraordinárias.",
+                    "B) Sobrou, no cofre central, apenas duas notas de valor elevado.",
+                    "C) Haviam ocorrido graves divergências entre os membros da equipe técnica.",
+                    "D) Tratam-se de processos extremamente complexos e sigilosos.",
+                    "E) Fui eu que propôs a revisão das diretrizes operacionais do projeto.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "C) Haviam ocorrido graves divergências entre os membros da equipe técnica."
+            },
+            {
+                id: 4,
+                pergunta: "Assinale a alternativa que apresenta a concordância em conformidade com a norma-padrão.",
+                tipo: "A-E",
+                opcoes: [
+                    "A) Mais de um auditor contestaram os dados apresentados pelo relatório.",
+                    "B) Grande parte dos funcionários optaram pelo plano de demissão voluntária.",
+                    "C) Qual de nós realizaremos a apresentação dos resultados ao conselho?",
+                    "D) Fui eu quem organizou a estrutura dos arquivos digitais da empresa.",
+                    "E) Houveram equívocos graves na apuração dos índices trimestrais.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "D) Fui eu quem organizou a estrutura dos arquivos digitais da empresa."
+            },
+            {
+                id: 5,
+                pergunta: "Na oração \"Aos alunos mais empenhados, o diretor entregou as medalhas de honra\", a função sintática do termo Aos alunos mais empenhados é:",
+                tipo: "A-E",
+                opcoes: [
+                    "A) Objeto direto preposicionado",
+                    "B) Objeto indireto",
+                    "C) Complemento nominal",
+                    "D) Adjunto adnominal",
+                    "E) Sujeito paciente",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "B) Objeto indireto"
+            },
+            {
+                id: 6,
+                pergunta: "Em \"Permaneceram calados durante toda a sessão os conselheiros regionais\", o termo os conselheiros regionais exerce a função sintática de:",
+                tipo: "A-E",
+                opcoes: [
+                    "A) Sujeito",
+                    "B) Objeto direto",
+                    "C) Predicativo do sujeito",
+                    "D) Agente da passiva",
+                    "E) Adjunto adverbial de companhia",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "A) Sujeito"
+            },
+            {
+                id: 7,
+                pergunta: "Assinale a alternativa em que a oração destacada classifica-se como subordinada substantiva completiva nominal.",
+                tipo: "A-E",
+                opcoes: [
+                    "A) É urgente que os diretores tomem uma decisão formal.",
+                    "B) Ninguém duvidava de que o candidato seria eleito em primeiro turno.",
+                    "C) Tínhamos plena certeza de que os recursos seriam liberados até sexta-feira.",
+                    "D) O parecerista constatou que o orçamento apresentava inconsistências.",
+                    "E) A exigência do conselho era que a ata fosse redigida imediatamente.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "C) Tínhamos plena certeza de que os recursos seriam liberados até sexta-feira."
+            },
+            {
+                id: 8,
+                pergunta: "No período \"O regulamento interno proíbe que os funcionários utilizem os equipamentos sem autorização\", a oração destacada é subordinada:",
+                tipo: "A-E",
+                opcoes: [
+                    "A) Substantiva subjetiva",
+                    "B) Substantiva predicativa",
+                    "C) Substantiva objetiva direta",
+                    "D) Substantiva objetiva indireta",
+                    "E) Adjetiva restritiva",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "C) Substantiva objetiva direta"
+            },
+            {
+                id: 9,
+                pergunta: "No trecho \"O pesquisador submeteu o artigo à revista científica. O acadêmico, no entanto, precisou reescrever a introdução\", o termo destacado atua como mecanismo de coesão lexical por:",
+                tipo: "A-E",
+                opcoes: [
+                    "A) Hiperonímia",
+                    "B) Sinonímia",
+                    "C) Antonímia",
+                    "D) Repetição anafórica estrita",
+                    "E) Metonímia",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "B) Sinonímia"
+            },
+            {
+                id: 10,
+                pergunta: "Assinale a opção em que a substituição do termo sublinhado mantém a coesão por hiperonímia.",
+                tipo: "A-E",
+                opcoes: [
+                    "A) O veículo colidiu no cruzamento. O carro sofreu danos graves na lataria.",
+                    "B) O advogado apresentou a defesa. O causídico obteve parecer favorável.",
+                    "C) A empresa contratou novos auditores. A instituição busca expandir suas atividades.",
+                    "D) O cão latia no quintal. O animal estava assustado com o barulho dos fogos.",
+                    "E) O médico atendeu o paciente. O especialista recomendou repouso absoluto.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "D) O cão latia no quintal. O animal estava assustado com o barulho dos fogos."
+            },
+            {
+                id: 11,
+                pergunta: "Assinale a alternativa em que o verbo destacado está corretamente flexionado no Futuro do Subjuntivo.",
+                tipo: "A-E",
+                opcoes: [
+                    "A) Se o diretor manter a decisão, haverá insatisfação na equipe.",
+                    "B) Quando nós pormos os documentos na pasta, o processo estará concluído.",
+                    "C) Caso a testemunha depor novamente, o juiz encerrará a instrução.",
+                    "D) Se você vir ao escritório amanhã, entregarei os relatórios assinados.",
+                    "E) Se ele prover o cargo com dedicação, alcançará excelentes resultados.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "E) Se ele prover o cargo com dedicação, alcançará excelentes resultados."
+            },
+            {
+                id: 12,
+                pergunta: "O verbo reaver está flexionado de acordo com a norma-padrão em:",
+                tipo: "A-E",
+                opcoes: [
+                    "A) O advogado reaveu os documentos anexados ao processo antigo.",
+                    "B) Se nós reavermos o capital investido, faremos novos aportes.",
+                    "C) Os acionistas reouveram as perdas financeiras após a decisão judicial.",
+                    "D) Espero que a empresa reaveja a posse do imóvel comercial.",
+                    "E) Quando eles reaverem o controle das ações, a reunião será convocada.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "C) Os acionistas reouveram as perdas financeiras após a decisão judicial."
             }
         ];
 
@@ -168,7 +308,6 @@
                         if (ehGabarito) corBarra = "#16a34a";
                         else if (ehChute) corBarra = "#d97706";
 
-                        // A bolinha verde 🟢 agora é exibida SEMPRE no início da linha da alternativa correta!
                         const prefixo = ehGabarito ? '🟢 ' : '';
 
                         resDiv.innerHTML += `
