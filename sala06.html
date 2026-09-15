@@ -2,18 +2,11 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <!-- Meta tag ajustada para permitir rotação e ajuste livre de escala -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Sala 06 | Português Estratégico</title>
 
     <link rel="icon" type="image/png" href="estrategico.jpg">
     <meta name="theme-color" content="#0b0f19">
-
-    <!-- 1. Métrica de Acessos -->
-    <script src="analytics.js"></script>
-
-    <!-- 2. Gerenciador Central de Anúncios -->
-    <script src="anuncios.js"></script>
 
     <style>
         * {
@@ -24,7 +17,8 @@
         }
 
         body {
-            background-color: #e2e8f0; /* Fundo suave, sem brilho excessivo */
+            background-color: #ffffff; /* BRANCO PURO */
+            filter: brightness(0.98);   /* SUAVIZA A INTENSIDADE DO BRILHO PARA NÃO CANSAR A VISTA */
             color: #000000;
             line-height: 1.6;
             min-height: 100vh;
@@ -33,7 +27,7 @@
             width: 100%;
         }
 
-        /* BARRA FIXA SUPERIOR */
+        /* BARRA SUPERIOR (ROLA NORMALMENTE COM A PÁGINA) */
         .top-navbar {
             background-color: #0b0f19;
             padding: 12px 24px;
@@ -41,9 +35,6 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #1e293b;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
         }
 
         .btn-voltar {
@@ -107,6 +98,41 @@
             object-fit: cover;
         }
 
+        /* BLOCO DE BOAS-VINDAS E ADVERTÊNCIA */
+        .secao-boas-vindas {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .subtexto-sala {
+            font-size: 0.95rem;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .saudacao-principal {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #254077;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            white-space: nowrap;
+        }
+
+        .caixa-advertencia {
+            background-color: #fef2f2;
+            border-left: 5px solid #dc2626;
+            border-radius: 8px;
+            padding: 16px 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            color: #7f1d1d;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
         /* CONTEÚDO PRINCIPAL RESPONSIVO */
         .main-container {
             max-width: 900px;
@@ -134,92 +160,44 @@
             gap: 10px;
         }
 
-        /* ESTILO DAS QUESTÕES DO SIMULADO DE MÚLTIPLA ESCOLHA */
-        .quiz-card {
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 28px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        /* QUESTÕES E ENUNCIADOS */
+        .bloco-questao {
+            margin-bottom: 42px;
         }
 
-        .question-number {
+        .enunciado {
+            font-size: 20px;
             font-weight: 800;
-            color: #254077;
-            font-size: 1.05rem;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .question-text {
-            font-size: 1.05rem;
             color: #000000;
             margin-bottom: 18px;
-            line-height: 1.6;
-            text-align: justify;
+            line-height: 1.5;
+            border-left: 5px solid #254077;
+            padding-left: 14px;
+        }
+
+        .lista-frases {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        /* PADRÃO ÚNICO E FIXO PARA TODAS AS FRASES */
+        .lista-frases li {
+            font-size: 18px;
             font-weight: 500;
-        }
-
-        .options-vertical {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-
-        .btn-option-mc {
-            padding: 12px 16px;
-            font-size: 0.98rem;
-            font-weight: 600;
-            border: 2px solid #cbd5e1;
-            background: #ffffff;
             color: #000000;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-align: left;
-            width: 100%;
+            padding: 12px 0;
+            border-bottom: 1px dashed #cbd5e1;
+            line-height: 1.6;
         }
 
-        .btn-option-mc:hover {
-            border-color: #254077;
-            background-color: #f8fafc;
+        .lista-frases li:last-child {
+            border-bottom: none;
         }
 
-        .btn-option-mc.selected {
-            background-color: #254077;
-            color: #ffffff;
-            border-color: #254077;
-        }
-
-        /* CAIXA DE FEEDBACK SEM REVELAR GABARITO */
-        .feedback-box {
-            display: none;
-            padding: 14px 16px;
-            border-radius: 6px;
-            margin-top: 16px;
-            font-size: 1rem;
+        /* ESTILO DOS DESTAQUES DENTRO DAS FRASES */
+        .lista-frases span {
+            font-size: 1.1em;
             font-weight: 700;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .feedback-box.correct {
-            background-color: #f0fdf4;
-            border-left: 5px solid #16a34a;
-            color: #14532d;
-        }
-
-        .feedback-box.incorrect {
-            background-color: #fef2f2;
-            border-left: 5px solid #dc2626;
-            color: #7f1d1d;
         }
 
         /* NOTA DISCRETA DE DIREITOS AUTORAIS */
@@ -244,7 +222,7 @@
             margin-top: auto;
         }
 
-        /* AJUSTES PARA DISPOSITIVOS NA HORIZONTAL E TELAS MENORES */
+        /* AJUSTES DE TELA */
         @media (max-width: 900px) and (orientation: landscape) {
             .header-banner {
                 height: 140px;
@@ -274,8 +252,17 @@
                 bottom: -40px;
             }
 
+            .saudacao-principal {
+                font-size: 1.2rem;
+                white-space: normal;
+            }
+
             .titulo-secao {
                 font-size: 22px;
+            }
+
+            .enunciado {
+                font-size: 18px;
             }
 
             .nota-propriedade {
@@ -286,7 +273,7 @@
 </head>
 <body>
 
-    <!-- BARRA FIXA DE NAVEGAÇÃO -->
+    <!-- BARRA SUPERIOR DE NAVEGAÇÃO -->
     <nav class="top-navbar">
         <a href="index.html" class="btn-voltar">&#8592; Voltar ao Início</a>
         <span class="badge-sala">Sala 06</span>
@@ -305,298 +292,72 @@
         
         <hr class="divisor-linha">
 
+        <!-- BLOCO DE SAUDAÇÃO E ADVERTÊNCIA -->
+        <section class="secao-boas-vindas">
+            <div class="subtexto-sala">(Se esta é a sua sala...)</div>
+            <h2 class="saudacao-principal">SEJA MUITO BEM-VINDO(A)!</h2>
+            
+            <div class="caixa-advertencia">
+                <b>ENTRETANTO</b>, se esta não é a sua sala, você deveria gastar melhor o seu tempo estudando e concluindo as suas próprias missões em sua sala.
+            </div>
+        </section>
+
         <h1 class="titulo-secao">
             Conteúdo da Semana <span style="font-size: 24px;">⬇️</span>
         </h1>
 
         <!-- QUESTÃO 1 -->
-        <article class="quiz-card" id="q1">
-            <span class="question-number">Questão 1</span>
-            <p class="question-text">
-                No trecho "A parsimônia do gestor ao alocar os recursos evitou que a instituição entrasse em colapso financeiro", a palavra em destaque preserva a coesão e o sentido original do texto caso seja substituída por:
-            </p>
-            <div class="options-vertical">
-                <button class="btn-option-mc" onclick="checkAnswerMC('q1', 'A', 'B')">A) prodigalidade.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q1', 'B', 'B')">B) frugalidade.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q1', 'C', 'B')">C) intempestividade.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q1', 'D', 'B')">D) negligência.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q1', 'E', 'B')">E) veemência.</button>
-            </div>
-            <div class="feedback-box"></div>
+        <article class="bloco-questao">
+            <h2 class="enunciado">1) Classifique os substantivos a seguir quanto às suas flexões e categorias (comum ou próprio, concreto ou abstrato, primitivo ou derivado, simples ou composto):</h2>
+            <ul class="lista-frases">
+                <li>1) Honestidade</li>
+                <li>2) Guarda-chuva</li>
+                <li>3) Brasil</li>
+                <li>4) Tristeza</li>
+                <li>5) Pedregulho</li>
+                <li>6) Cachorro</li>
+                <li>7) Coragem</li>
+                <li>8) Flor</li>
+                <li>9) Giroflex</li>
+                <li>10) Saudade</li>
+                <li>11) Padeiro</li>
+                <li>12) Beija-flor</li>
+                <li>13) Justiça</li>
+                <li>14) Árvore</li>
+                <li>15) Amazônia</li>
+                <li>16) Ansiedade</li>
+                <li>17) Couve-flor</li>
+                <li>18) Beleza</li>
+                <li>19) Livro</li>
+                <li>20) Pedreira</li>
+            </ul>
         </article>
 
         <!-- QUESTÃO 2 -->
-        <article class="quiz-card" id="q2">
-            <span class="question-number">Questão 2</span>
-            <p class="question-text">
-                Considere a frase: "O cientista apresentou uma hipótese plausível, contudo os dados demonstraram a ineficácia do método utilizado."<br>
-                Os antônimos das palavras destacadas são, respectivamente:
-            </p>
-            <div class="options-vertical">
-                <button class="btn-option-mc" onclick="checkAnswerMC('q2', 'A', 'C')">A) verossímil e ineficiência.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q2', 'B', 'C')">B) provável e sucesso.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q2', 'C', 'C')">C) inverossímil e eficácia.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q2', 'D', 'C')">D) coerente e validade.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q2', 'E', 'C')">E) absurdo e impropriedade.</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 3 -->
-        <article class="quiz-card" id="q3">
-            <span class="question-number">Questão 3</span>
-            <p class="question-text">
-                Assinale a alternativa que atende plenamente às regras de concordância verbal e nominal estabelecidas pela norma-padrão.
-            </p>
-            <div class="options-vertical">
-                <button class="btn-option-mc" onclick="checkAnswerMC('q3', 'A', 'D')">A) Haviam muitos processos pendentes, mas fazia dois anos que ninguém os analisavam.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q3', 'B', 'D')">B) Segue anexo à petição os documentos exigidos para a inscrição do candidato.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q3', 'C', 'D')">C) É proibido a entrada de pessoas não autorizadas, bastando alguns minutos para que ocorram imprevistos.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q3', 'D', 'D')">D) Trata-se de medidas urgentes, visto que foram dados bastantes oportunidades aos envolvidos.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q3', 'E', 'D')">E) Fazem cinco meses que ocorreram as últimas fiscalizações na sede da empresa.</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 4 -->
-        <article class="quiz-card" id="q4">
-            <span class="question-number">Questão 4</span>
-            <p class="question-text">
-                Em relação à concordância do verbo e dos adjetivos, assinale a opção correta.
-            </p>
-            <div class="options-vertical">
-                <button class="btn-option-mc" onclick="checkAnswerMC('q4', 'A', 'C')">A) A maioria dos servidores públicos protestaram contra o projeto de lei.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q4', 'B', 'C')">B) Vistas as condições do contrato, considerou-se inadequados as cláusulas rescisórias.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q4', 'C', 'C')">C) Ela mesma admitiu que estava meio chateada com a situação.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q4', 'D', 'C')">D) Mais de um funcionário faltaram ao expediente na última segunda-feira.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q4', 'E', 'C')">E) Alunos e professor dedicadas organizaram a exposição pedagógica.</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 5 -->
-        <article class="quiz-card" id="q5">
-            <span class="question-number">Questão 5</span>
-            <p class="question-text">
-                Na frase "A jovem agiu bastante calmamente durante a reunião, demonstrando um bastante conhecimento do assunto", a palavra "bastante" classifica-se, sequencialmente, como:
-            </p>
-            <div class="options-vertical">
-                <button class="btn-option-mc" onclick="checkAnswerMC('q5', 'A', 'C')">A) advérbio e advérbio.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q5', 'B', 'C')">B) pronome adjetivo e advérbio.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q5', 'C', 'C')">C) advérbio e pronome adjetivo.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q5', 'D', 'C')">D) adjetivo e adjetivo.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q5', 'E', 'C')">E) pronome indefinido e adjetivo.</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 6 -->
-        <article class="quiz-card" id="q6">
-            <span class="question-number">Questão 6</span>
-            <p class="question-text">
-                Assinale a alternativa em que todas as palavras estão grafadas corretamente segundo a ortografia oficial vigente.
-            </p>
-            <div class="options-vertical">
-                <button class="btn-option-mc" onclick="checkAnswerMC('q6', 'A', 'B')">A) Paralisação, análise, execeção, obséquio.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q6', 'B', 'B')">B) Pesquisa, beneficente, privilégio, pretensão.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q6', 'C', 'B')">C) Esdrúxulo, ansiedade, cessão (ato de ceder), xícara.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q6', 'D', 'B')">D) Discreção, espontâneo, ascensão, paralizar.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q6', 'E', 'B')">E) Enxada, exceção, compreensão, rejeição.</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 7 -->
-        <article class="quiz-card" id="q7">
-            <span class="question-number">Questão 7</span>
-            <p class="question-text">
-                Assinale a alternativa em que a forma verbal em destaque está corretamente flexionada.
-            </p>
-            <div class="options-vertical">
-                <button class="btn-option-mc" onclick="checkAnswerMC('q7', 'A', 'B')">A) Se o diretor manter a postura rígida, os funcionários farão greve.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q7', 'B', 'B')">B) Quando você vir o relatório financeiro, entenderá os investimentos.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q7', 'C', 'B')">C) Caso a comissão requerer os documentos, entregaremos imediatamente.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q7', 'D', 'B')">D) Se a testemunha depor a favor do réu, o caso será encerrado.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q7', 'E', 'B')">E) Se o técnico intervir na partida, a equipe perderá o controle.</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 8 -->
-        <article class="quiz-card" id="q8">
-            <span class="question-number">Questão 8</span>
-            <p class="question-text">
-                A colocação do pronome oblíquo átono está de acordo com a norma-padrão em:
-            </p>
-            <div class="options-vertical">
-                <button class="btn-option-mc" onclick="checkAnswerMC('q8', 'A', 'D')">A) Jamais entregaria-te os documentos sem a autorização do juiz.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q8', 'B', 'D')">B) Me disseram que a prova seria aplicada no próximo domingo.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q8', 'C', 'D')">C) O jovem que enviou-nos a mensagem não respondeu ao e-mail.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q8', 'D', 'D')">D) Em se tratando de urgência, a equipe médica agiu imediatamente.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q8', 'E', 'D')">E) Não comente nada, pois referem-se ao caso sob segredo de justiça.</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 9 -->
-        <article class="quiz-card" id="q9">
-            <span class="question-number">Questão 9</span>
-            <p class="question-text">
-                Assinale a opção em que o pronome oblíquo átono está incorretamente colocado.
-            </p>
-            <div class="options-vertical">
-                <button class="btn-option-mc" onclick="checkAnswerMC('q9', 'A', 'C')">A) Quem lhe deu permissão para assinar este documento?</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q9', 'B', 'C')">B) Conforme foi dito, far-se-á o levantamento dos dados amanhã.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q9', 'C', 'C')">C) Ninguém orientou-me sobre o preenchimento do formulário.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q9', 'D', 'C')">D) Os alunos se mantiveram calmos durante a explicação.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q9', 'E', 'C')">E) Convidar-nos-iam para a cerimônia, caso houvesse vagas.</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 10 -->
-        <article class="quiz-card" id="q10">
-            <span class="question-number">Questão 10</span>
-            <p class="question-text">
-                Na oração "O diretor da empresa considerou a proposta dos acionistas vantajosa", o termo "vantajosa" exerce a função sintática de:
-            </p>
-            <div class="options-vertical">
-                <button class="btn-option-mc" onclick="checkAnswerMC('q10', 'A', 'D')">A) adjunto adnominal.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q10', 'B', 'D')">B) complemento nominal.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q10', 'C', 'D')">C) predicativo do sujeito.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q10', 'D', 'D')">D) predicativo do objeto.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q10', 'E', 'D')">E) objeto direto.</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 11 -->
-        <article class="quiz-card" id="q11">
-            <span class="question-number">Questão 11</span>
-            <p class="question-text">
-                Em "As opiniões do especialista eram favoráveis aos alunos do colégio", o termo "aos alunos" funciona sintaticamente como:
-            </p>
-            <div class="options-vertical">
-                <button class="btn-option-mc" onclick="checkAnswerMC('q11', 'A', 'B')">A) objeto indireto.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q11', 'B', 'B')">B) complemento nominal.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q11', 'C', 'B')">C) adjunto adnominal.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q11', 'D', 'B')">D) agente da passiva.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q11', 'E', 'B')">E) adjunto adverbial.</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 12 -->
-        <article class="quiz-card" id="q12">
-            <span class="question-number">Questão 12</span>
-            <p class="question-text">
-                Assinale a alternativa em que o predicado é classificado como verbo-nominal.
-            </p>
-            <div class="options-vertical">
-                <button class="btn-option-mc" onclick="checkAnswerMC('q12', 'A', 'C')">A) O paciente permaneceu quieto no leito do hospital.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q12', 'B', 'C')">B) Os atletas corriam bastante no parque da cidade.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q12', 'C', 'C')">C) O professor entregou as notas aos alunos entusiasmado.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q12', 'D', 'C')">D) Todos pareciam ansiosos com o resultado da avaliação.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q12', 'E', 'C')">E) Os cientistas estudam os fenômenos da natureza.</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 13 -->
-        <article class="quiz-card" id="q13">
-            <span class="question-number">Questão 13</span>
-            <p class="question-text">
-                Na frase "A tempestade assustou os moradores daquela vila pacata", o predicado é classificado como:
-            </p>
-            <div class="options-vertical">
-                <button class="btn-option-mc" onclick="checkAnswerMC('q13', 'A', 'B')">A) nominal.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q13', 'B', 'B')">B) verbal.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q13', 'C', 'B')">C) verbo-nominal.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q13', 'D', 'B')">D) predicativo.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q13', 'E', 'B')">E) transitivo.</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 14 -->
-        <article class="quiz-card" id="q14">
-            <span class="question-number">Questão 14</span>
-            <p class="question-text">
-                As palavras girassol, embora e infelizmente são formadas, respectivamente, pelos processos de:
-            </p>
-            <div class="options-vertical">
-                <button class="btn-option-mc" onclick="checkAnswerMC('q14', 'A', 'C')">A) aglutinação, justaposição e derivação sufixal.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q14', 'B', 'C')">B) justaposição, aglutinação e derivação parassintética.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q14', 'C', 'C')">C) justaposição, aglutinação e derivação prefixal e sufixal.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q14', 'D', 'C')">D) derivação prefixal, aglutinação e justaposição.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q14', 'E', 'C')">E) aglutinação, derivação parassintética e composição por justaposição.</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 15 -->
-        <article class="quiz-card" id="q15">
-            <span class="question-number">Questão 15</span>
-            <p class="question-text">
-                Um texto que apresenta estrutura marcada por verbos no imperativo ou no infinitivo, com o objetivo de instruir o leitor sobre a montagem de um móvel ou o uso de um medicamento, pertence predominantemente ao gênero/tipo:
-            </p>
-            <div class="options-vertical">
-                <button class="btn-option-mc" onclick="checkAnswerMC('q15', 'A', 'C')">A) dissertativo-argumentativo.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q15', 'B', 'C')">B) narrativo.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q15', 'C', 'C')">C) injuntivo/instrucional.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q15', 'D', 'C')">D) expositivo.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q15', 'E', 'C')">E) poético.</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 16 -->
-        <article class="quiz-card" id="q16">
-            <span class="question-number">Questão 16</span>
-            <p class="question-text">
-                Assinale a opção que apresenta características do gênero textual crônica.
-            </p>
-            <div class="options-vertical">
-                <button class="btn-option-mc" onclick="checkAnswerMC('q16', 'A', 'B')">A) Apresentação de dados estatísticos rigorosos e linguagem estritamente acadêmica.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q16', 'B', 'B')">B) Narrativa curta, baseada em fatos ou flagrantes do cotidiano, com tom reflexivo, poético ou bem-humorado.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q16', 'C', 'B')">C) Descrição minuciosa de leis e pareceres jurídicos para defesa de um réu.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q16', 'D', 'B')">D) Texto de caráter estritamente comercial focado na venda direta de serviços.</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q16', 'E', 'B')">E) Conjunto de instruções técnicas com passos sequenciais obrigatórios.</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 17 -->
-        <article class="quiz-card" id="q17">
-            <span class="question-number">Questão 17</span>
-            <p class="question-text">
-                Assinale a alternativa em que a separação silábica da palavra está correta de acordo com as normas ortográficas.
-            </p>
-            <div class="options-vertical">
-                <button class="btn-option-mc" onclick="checkAnswerMC('q17', 'A', 'E')">A) sub-li-nhar</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q17', 'B', 'E')">B) psi-có-lo-go</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q17', 'C', 'E')">C) bis-a-vô</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q17', 'D', 'E')">D) trans-a-tlân-ti-co</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q17', 'E', 'E')">E) des-o-cu-pa-do</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 18 -->
-        <article class="quiz-card" id="q18">
-            <span class="question-number">Questão 18</span>
-            <p class="question-text">
-                Assinale a alternativa que preenche corretamente as lacunas da frase abaixo:<br>
-                "O palestrante dirigiu-se ___ comunidade acadêmica e prestou homenagens ___ professoras, ficando ___ espera do resultado das homenagens."
-            </p>
-            <div class="options-vertical">
-                <button class="btn-option-mc" onclick="checkAnswerMC('q18', 'A', 'A')">A) à — às — à</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q18', 'B', 'A')">B) a — as — a</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q18', 'C', 'A')">C) à — as — à</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q18', 'D', 'A')">D) a — às — a</button>
-                <button class="btn-option-mc" onclick="checkAnswerMC('q18', 'E', 'A')">E) à — às — a</button>
-            </div>
-            <div class="feedback-box"></div>
+        <article class="bloco-questao">
+            <h2 class="enunciado">2) Identifique os artigos, substantivos e adjetivos presentes nas frases a seguir:</h2>
+            <ul class="lista-frases">
+                <li>1) O jovem arquiteto apresentou um projeto extremamente ousado para a revitalização do antigo centro histórico.</li>
+                <li>2) Com a chegada inesperada das fortes chuvas, os moradores locais buscaram abrigo nas casas mais altas.</li>
+                <li>3) Aquelas longas reuniões de trabalho deixavam todos os funcionários visivelmente cansados no final do dia.</li>
+                <li>4) Uma brisa suave e gelada soprava pelas ruas cobertas pelas folhas secas do outono.</li>
+                <li>5) O experiente professor explicou um conceito bastante complexo com exemplos simples e práticos.</li>
+                <li>6) Diversos cientistas renomados publicaram um estudo revelador sobre as transformações do clima global.</li>
+                <li>7) As crianças pequenas brincavam alegres no amplo jardim Florido da velha fazenda.</li>
+                <li>8) Um barulho estranho e persistente assustou os passageiros durante a longa viagem de ônibus.</li>
+                <li>9) Os novos diretores da empresa tomaram decisões difíceis para evitar uma crise financeira grave.</li>
+                <li>10) A antiga biblioteca municipal guarda raros documentos históricos sobre a fundação da nossa cidade.</li>
+                <li>11) Um olhar atento e minucioso revelou pequenos falhas no acabamento daquela escultura valiosa.</li>
+                <li>12) Vários turistas entusiasmados admiravam a magnífica paisagem das montanhas sob o céu azul.</li>
+                <li>13) O motorista cauteloso reduziu a velocidade da van por causa da forte neblina na estrada perigosa.</li>
+                <li>14) Uma comida caseira e saborosa sempre traz boas recordações dos tempos felizes da infância.</li>
+                <li>15) Os corajosos bombeiros enfrentaram o incêndio devastador com uma determinação impressionante.</li>
+                <li>16) A nova lei de trânsito gerou intensos debates entre os motoristas e os especialistas em mobilidade.</li>
+                <li>17) Um vento forte derrubou a alta cerca de madeira do terreno vizinho na tarde de ontem.</li>
+                <li>18) Os alunos mais dedicados da turma receberam um prêmio especial pelo excelente desempenho escolar.</li>
+                <li>19) A luz amarela dos postes iluminava as calçadas molhadas da pacata cidade do interior.</li>
+                <li>20) Um grande mistério envolve o desaparecimento daquele valioso quadro do museu central.</li>
+            </ul>
         </article>
 
         <!-- NOTA DE AUTORIA E PROPRIEDADE -->
@@ -610,31 +371,6 @@
     <footer class="footer-site">
         &copy; 2026 SENE. Todos os direitos reservados.
     </footer>
-
-    <!-- SCRIPT DE LÓGICA SEM REVELAR O GABARITO NO ERRO -->
-    <script>
-        function checkAnswerMC(questionId, selectedOption, correctOption) {
-            const card = document.getElementById(questionId);
-            const buttons = card.querySelectorAll('.btn-option-mc');
-            const feedbackBox = card.querySelector('.feedback-box');
-
-            buttons.forEach(btn => {
-                btn.classList.remove('selected');
-                if (btn.innerText.startsWith(selectedOption + ')')) {
-                    btn.classList.add('selected');
-                }
-            });
-
-            feedbackBox.style.display = 'block';
-            if (selectedOption === correctOption) {
-                feedbackBox.className = 'feedback-box correct';
-                feedbackBox.innerHTML = `✓ Resposta Correta!`;
-            } else {
-                feedbackBox.className = 'feedback-box incorrect';
-                feedbackBox.innerHTML = `✕ Resposta Incorreta. Tente novamente!`;
-            }
-        }
-    </script>
 
 </body>
 </html>
