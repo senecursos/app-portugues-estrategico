@@ -20,7 +20,7 @@
         .btn { padding: 10px 18px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.2s; }
         .btn-success { background-color: #16a34a; color: #fff; }
         .btn-danger { background-color: #dc2626; color: #fff; }
-        .btn-secondary { background-color: #475569; color: #fff; }
+        .btn-warning { background-color: #d97706; color: #fff; }
         .btn:hover { opacity: 0.85; }
 
         .barra-progresso-bg { background-color: #0f172a; border-radius: 8px; height: 35px; width: 100%; margin: 8px 0 15px 0; overflow: hidden; position: relative; border: 1px solid #334155; }
@@ -28,6 +28,8 @@
         .barra-texto { position: absolute; top: 0; left: 12px; height: 100%; display: flex; align-items: center; font-weight: 700; font-size: 0.9rem; color: #fff; text-shadow: 1px 1px 2px #000; }
 
         .estatisticas-gerais { font-size: 1.1rem; font-weight: 700; color: #f8fafc; margin-top: 15px; text-align: right; }
+        
+        .botoes-topo { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
     </style>
 </head>
 <body>
@@ -39,7 +41,10 @@
         </header>
 
         <div class="card" style="text-align: center;">
-            <button class="btn btn-danger" onclick="encerrarVotacao()">🛑 Encerrar / Limpar Votação da Tela dos Alunos</button>
+            <div class="botoes-topo">
+                <button class="btn btn-danger" onclick="encerrarVotacao()">🛑 Encerrar Votação Atual</button>
+                <button class="btn btn-warning" onclick="zerarHistoricoVotos()">🧹 Limpar Todo o Histórico de Votos no Firebase</button>
+            </div>
         </div>
 
         <div id="lista-questoes"></div>
@@ -48,11 +53,10 @@
     <!-- FIREBASE REALTIME DATABASE -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getDatabase, ref, set, onValue, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-        // Proteção por senha simples de acesso
         const senha = prompt("Digite a senha do professor:");
-        if (senha !== "123456") { // <--- Altere sua senha de acesso aqui se desejar
+        if (senha !== "123456") {
             alert("Senha incorreta!");
             window.location.href = "auditorio.html";
         }
@@ -71,39 +75,11 @@
         const db = getDatabase(app);
 
         // =========================================================================
-        // BANCO DE QUESTÕES (12 QUESTÕES CARREGADAS)
+        // BANCO DE QUESTÕES (Iniciando do 1)
         // =========================================================================
         const questoes = [
             {
                 id: 1,
-                pergunta: "Assinale a alternativa em que a colocação pronominal atende rigorosamente ao padrão culto da língua.",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Não me disseram que a reunião havia sido cancelada ontem.",
-                    "B) Me disseram que a reunião havia sido cancelada ontem.",
-                    "C) Nunca disseram-me que a reunião havia sido cancelada ontem.",
-                    "D) Disseram-me não que a reunião havia sido cancelada ontem.",
-                    "E) Ninguém havia falado-me sobre o cancelamento da reunião ontem.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "A) Não me disseram que a reunião havia sido cancelada ontem."
-            },
-            {
-                id: 2,
-                pergunta: "A próclise é obrigatória na seguinte opção:",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Entregou os relatórios, posicionando-se contra o parecer final.",
-                    "B) Em se tratando de negociações contratuais, a prudência é indispensável.",
-                    "C) Os conselheiros manifestaram-se contrários à aprovação do orçamento.",
-                    "D) Os documentos foram entregues, conforme disse-nos o diretor.",
-                    "E) Poderia indicar-me o caminho correto para a auditório principal?",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "B) Em se tratando de negociações contratuais, a prudência é indispensável."
-            },
-            {
-                id: 3,
                 pergunta: "Quanto à concordância verbal, assinale a opção inteiramente correta.",
                 tipo: "A-E",
                 opcoes: [
@@ -117,7 +93,7 @@
                 gabarito: "C) Haviam ocorrido graves divergências entre os membros da equipe técnica."
             },
             {
-                id: 4,
+                id: 2,
                 pergunta: "Assinale a alternativa que apresenta a concordância em conformidade com a norma-padrão.",
                 tipo: "A-E",
                 opcoes: [
@@ -129,122 +105,15 @@
                     "🤷🏽‍♂️ Chutei (não tenho certeza.)"
                 ],
                 gabarito: "D) Fui eu quem organizou a estrutura dos arquivos digitais da empresa."
-            },
-            {
-                id: 5,
-                pergunta: "Na oração \"Aos alunos mais empenhados, o diretor entregou as medalhas de honra\", a função sintática do termo Aos alunos mais empenhados é:",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Objeto direto preposicionado",
-                    "B) Objeto indireto",
-                    "C) Complemento nominal",
-                    "D) Adjunto adnominal",
-                    "E) Sujeito paciente",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "B) Objeto indireto"
-            },
-            {
-                id: 6,
-                pergunta: "Em \"Permaneceram calados durante toda a sessão os conselheiros regionais\", o termo os conselheiros regionais exerce a função sintática de:",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Sujeito",
-                    "B) Objeto direto",
-                    "C) Predicativo do sujeito",
-                    "D) Agente da passiva",
-                    "E) Adjunto adverbial de companhia",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "A) Sujeito"
-            },
-            {
-                id: 7,
-                pergunta: "Assinale a alternativa em que a oração destacada classifica-se como subordinada substantiva completiva nominal.",
-                tipo: "A-E",
-                opcoes: [
-                    "A) É urgente que os diretores tomem uma decisão formal.",
-                    "B) Ninguém duvidava de que o candidato seria eleito em primeiro turno.",
-                    "C) Tínhamos plena certeza de que os recursos seriam liberados até sexta-feira.",
-                    "D) O parecerista constatou que o orçamento apresentava inconsistências.",
-                    "E) A exigência do conselho era que a ata fosse redigida imediatamente.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "C) Tínhamos plena certeza de que os recursos seriam liberados até sexta-feira."
-            },
-            {
-                id: 8,
-                pergunta: "No período \"O regulamento interno proíbe que os funcionários utilizem os equipamentos sem autorização\", a oração destacada é subordinada:",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Substantiva subjetiva",
-                    "B) Substantiva predicativa",
-                    "C) Substantiva objetiva direta",
-                    "D) Substantiva objetiva indireta",
-                    "E) Adjetiva restritiva",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "C) Substantiva objetiva direta"
-            },
-            {
-                id: 9,
-                pergunta: "No trecho \"O pesquisador submeteu o artigo à revista científica. O acadêmico, no entanto, precisou reescrever a introdução\", o termo destacado atua como mecanismo de coesão lexical por:",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Hiperonímia",
-                    "B) Sinonímia",
-                    "C) Antonímia",
-                    "D) Repetição anafórica estrita",
-                    "E) Metonímia",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "B) Sinonímia"
-            },
-            {
-                id: 10,
-                pergunta: "Assinale a opção em que a substituição do termo sublinhado mantém a coesão por hiperonímia.",
-                tipo: "A-E",
-                opcoes: [
-                    "A) O veículo colidiu no cruzamento. O carro sofreu danos graves na lataria.",
-                    "B) O advogado apresentou a defesa. O causídico obteve parecer favorável.",
-                    "C) A empresa contratou novos auditores. A instituição busca expandir suas atividades.",
-                    "D) O cão latia no quintal. O animal estava assustado com o barulho dos fogos.",
-                    "E) O médico atendeu o paciente. O especialista recomendou repouso absoluto.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "D) O cão latia no quintal. O animal estava assustado com o barulho dos fogos."
-            },
-            {
-                id: 11,
-                pergunta: "Assinale a alternativa em que o verbo destacado está corretamente flexionado no Futuro do Subjuntivo.",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Se o diretor manter a decisão, haverá insatisfação na equipe.",
-                    "B) Quando nós pormos os documentos na pasta, o processo estará concluído.",
-                    "C) Caso a testemunha depor novamente, o juiz encerrará a instrução.",
-                    "D) Se você vir ao escritório amanhã, entregarei os relatórios assinados.",
-                    "E) Se ele prover o cargo com dedicação, alcançará excelentes resultados.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "E) Se ele prover o cargo com dedicação, alcançará excelentes resultados."
-            },
-            {
-                id: 12,
-                pergunta: "O verbo reaver está flexionado de acordo com a norma-padrão em:",
-                tipo: "A-E",
-                opcoes: [
-                    "A) O advogado reaveu os documentos anexados ao processo antigo.",
-                    "B) Se nós reavermos o capital investido, faremos novos aportes.",
-                    "C) Os acionistas reouveram as perdas financeiras após a decisão judicial.",
-                    "D) Espero que a empresa reaveja a posse do imóvel comercial.",
-                    "E) Quando eles reaverem o controle das ações, a reunião será convocada.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "C) Os acionistas reouveram as perdas financeiras após a decisão judicial."
             }
         ];
 
         const container = document.getElementById("lista-questoes");
+
+        function normalizarTexto(txt) {
+            if (!txt) return "";
+            return txt.trim().toLowerCase().replace(/\s+/g, ' ').replace(/\.$/, '');
+        }
 
         function renderizarQuestoes() {
             container.innerHTML = "";
@@ -278,6 +147,14 @@
             alert("Votação encerrada! A tela dos alunos voltou ao estado padrão.");
         };
 
+        window.zerarHistoricoVotos = function() {
+            if (confirm("Tem certeza que deseja apagar TODOS os votos de testes armazenados no banco de dados?")) {
+                remove(ref(db, "votos")).then(() => {
+                    alert("Histórico de votos limpo com sucesso! Agora os testes começarão 100% do zero.");
+                });
+            }
+        };
+
         function ouvirVotos(questao) {
             const votosRef = ref(db, `votos/${questao.id}`);
             onValue(votosRef, (snapshot) => {
@@ -289,11 +166,10 @@
 
                 Object.values(votos).forEach(v => {
                     if (v && v.opcao) {
-                        // Limpa espaços e pontuações no final para comparação segura
-                        const opcaoLimpaAluno = v.opcao.trim().replace(/\.$/, '');
+                        const opcaoLimpaAluno = normalizarTexto(v.opcao);
                         
                         const chaveEncontrada = questao.opcoes.find(op => 
-                            op.trim().replace(/\.$/, '') === opcaoLimpaAluno
+                            normalizarTexto(op) === opcaoLimpaAluno
                         );
 
                         if (chaveEncontrada) {
@@ -310,8 +186,8 @@
                     questao.opcoes.forEach(op => {
                         const qtd = contagem[op];
                         const pct = totalVotos > 0 ? ((qtd / totalVotos) * 100).toFixed(1) : 0;
-                        const ehGabarito = op === questao.gabarito;
-                        const ehChute = op.includes("Chutei");
+                        const ehGabarito = normalizarTexto(op) === normalizarTexto(questao.gabarito);
+                        const ehChute = normalizarTexto(op).includes("chutei");
                         
                         let corBarra = "#2563eb";
                         if (ehGabarito) corBarra = "#16a34a";

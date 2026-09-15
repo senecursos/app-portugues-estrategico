@@ -332,7 +332,7 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // Identificador Anônimo do Aluno (Garante 1 voto por questão por dispositivo)
+        // Identificador Anônimo do Aluno
         let alunoId = localStorage.getItem("aluno_uid");
         if (!alunoId) {
             alunoId = "aluno_" + Math.random().toString(36).substr(2, 9);
@@ -344,6 +344,12 @@
         const enunciadoEl = document.getElementById("enunciado");
         const opcoesContainer = document.getElementById("opcoes-container");
         const feedbackEl = document.getElementById("feedback");
+
+        // Função auxiliar para normalizar textos e evitar erros de pontuação
+        function normalizarTexto(txt) {
+            if (!txt) return "";
+            return txt.trim().toLowerCase().replace(/\s+/g, ' ').replace(/\.$/, '');
+        }
 
         // Escuta em tempo real qual questão está ativa no painel do professor
         const questaoAtivaRef = ref(db, "sessao/questaoAtiva");
@@ -374,7 +380,7 @@
 
                     if (jaVotou) {
                         btn.disabled = true;
-                        if (opcao === respostaAnterior) {
+                        if (normalizarTexto(opcao) === normalizarTexto(respostaAnterior)) {
                             btn.style.backgroundColor = "#254077";
                             btn.style.color = "#ffffff";
                         }
@@ -403,10 +409,13 @@
         function exibirFeedback(opcaoEscolhida, gabarito) {
             feedbackEl.style.display = "block";
 
-            if (opcaoEscolhida && opcaoEscolhida.includes("Chutei")) {
+            const optNorm = normalizarTexto(opcaoEscolhida);
+            const gabNorm = normalizarTexto(gabarito);
+
+            if (optNorm.includes("chutei")) {
                 feedbackEl.className = "feedback-resposta feedback-chute";
                 feedbackEl.innerHTML = "🤝 Obrigado pela sinceridade. Aguarde pela explicação!";
-            } else if (opcaoEscolhida === gabarito) {
+            } else if (optNorm === gabNorm) {
                 feedbackEl.className = "feedback-resposta feedback-acerto";
                 feedbackEl.innerHTML = "🟢 PARABÉNS! Você acertou!";
             } else {
