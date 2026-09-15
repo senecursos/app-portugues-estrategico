@@ -217,7 +217,6 @@
             border: 1px solid #fca5a5;
         }
 
-        /* FEEDBACK EXCLUSIVO DE CHUTE / INCERTEZA */
         .feedback-chute {
             background-color: #fef3c7;
             color: #92400e;
@@ -303,7 +302,7 @@
 
         <!-- MENSAGEM QUANDO NÃO HÁ QUESTÃO ATIVA -->
         <div id="mensagem-espera" class="caixa-em-breve">
-            📝  Não há evento ou questão ativa no momento, porém haverá em breve. Fique atento(a)! Aguarde pelo professor!
+            📝 Não há evento ou questão ativa no momento, porém haverá em breve. Fique atento(a)! Aguarde pelo professor!
         </div>
 
         <div class="nota-propriedade">
@@ -404,7 +403,6 @@
         function exibirFeedback(opcaoEscolhida, gabarito) {
             feedbackEl.style.display = "block";
 
-            // Se o aluno escolheu a alternativa de chute/incerteza
             if (opcaoEscolhida && opcaoEscolhida.includes("Chutei")) {
                 feedbackEl.className = "feedback-resposta feedback-chute";
                 feedbackEl.innerHTML = "🤝 Obrigado pela sinceridade. Aguarde pela explicação!";
@@ -413,7 +411,7 @@
                 feedbackEl.innerHTML = "🟢 PARABÉNS! Você acertou!";
             } else {
                 feedbackEl.className = "feedback-resposta feedback-erro";
-                feedbackEl.innerHTML = `🔴 INCORRETO! A resposta certa é: <b>${gabarito}</b>`;
+                feedbackEl.innerHTML = "🔴 INCORRETO! (Aguarde pela explicação do professor.)";
             }
         }
     </script>

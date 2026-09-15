@@ -260,7 +260,7 @@
                     <p style="font-size: 0.85rem; color: #4ade80; margin-bottom: 15px;">Gabarito: 🟢 ${q.gabarito}</p>
                     
                     <div id="resultados-q${q.id}"></div>
-                    <div class="estatisticas-gerais" id="total-q${q.id}">Total de Votos: 0</div>
+                    <div class="estatisticas-gerais" id="total-q${q.id}">Total de Respostas: 0</div>
                 `;
                 container.appendChild(card);
                 ouvirVotos(q);
@@ -288,8 +288,17 @@
                 questao.opcoes.forEach(op => contagem[op] = 0);
 
                 Object.values(votos).forEach(v => {
-                    if (contagem[v.opcao] !== undefined) {
-                        contagem[v.opcao]++;
+                    if (v && v.opcao) {
+                        // Limpa espaços e pontuações no final para comparação segura
+                        const opcaoLimpaAluno = v.opcao.trim().replace(/\.$/, '');
+                        
+                        const chaveEncontrada = questao.opcoes.find(op => 
+                            op.trim().replace(/\.$/, '') === opcaoLimpaAluno
+                        );
+
+                        if (chaveEncontrada) {
+                            contagem[chaveEncontrada]++;
+                        }
                     }
                 });
 
