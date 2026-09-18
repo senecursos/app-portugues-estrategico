@@ -192,7 +192,26 @@
 
         .btn-opcao:disabled {
             cursor: not-allowed;
-            opacity: 0.6;
+            opacity: 0.8;
+        }
+
+        /* ESTILOS ESPECÍFICOS DE RESPOSTA DO ALUNO */
+        .btn-opcao.opcao-acerto {
+            background-color: #dcfce7 !important;
+            color: #166534 !important;
+            border-color: #86efac !important;
+        }
+
+        .btn-opcao.opcao-erro {
+            background-color: #fee2e2 !important;
+            color: #991b1b !important;
+            border-color: #fca5a5 !important;
+        }
+
+        .btn-opcao.opcao-chute {
+            background-color: #fef3c7 !important;
+            color: #92400e !important;
+            border-color: #fcd34d !important;
         }
 
         .feedback-resposta {
@@ -332,11 +351,10 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // Identificador Anônimo do Aluno
-        let alunoId = localStorage.getItem("aluno_uid");
+        let alunoId = localStorage.getItem("aluno_uuid");
         if (!alunoId) {
             alunoId = "aluno_" + Math.random().toString(36).substr(2, 9);
-            localStorage.setItem("aluno_uid", alunoId);
+            localStorage.setItem("aluno_uuid", alunoId);
         }
 
         const areaQuiz = document.getElementById("area-quiz");
@@ -345,13 +363,11 @@
         const opcoesContainer = document.getElementById("opcoes-container");
         const feedbackEl = document.getElementById("feedback");
 
-        // Função auxiliar para normalizar textos e evitar erros de pontuação
         function normalizarTexto(txt) {
             if (!txt) return "";
             return txt.trim().toLowerCase().replace(/\s+/g, ' ').replace(/\.$/, '');
         }
 
-        // Escuta em tempo real qual questão está ativa no painel do professor
         const questaoAtivaRef = ref(db, "sessao/questaoAtiva");
         onValue(questaoAtivaRef, (snapshot) => {
             const questao = snapshot.val();
@@ -367,7 +383,6 @@
             opcoesContainer.innerHTML = "";
             feedbackEl.style.display = "none";
 
-            // Verifica se o aluno já respondeu a esta questão específica
             const votoRef = ref(db, `votos/${questao.id}/${alunoId}`);
             get(votoRef).then((votoSnap) => {
                 const jaVotou = votoSnap.exists();
@@ -380,9 +395,19 @@
 
                     if (jaVotou) {
                         btn.disabled = true;
+                        
+                        // Destaque apenas na opção clicada pelo aluno
                         if (normalizarTexto(opcao) === normalizarTexto(respostaAnterior)) {
-                            btn.style.backgroundColor = "#254077";
-                            btn.style.color = "#ffffff";
+                            const optNorm = normalizarTexto(respostaAnterior);
+                            const gabNorm = normalizarTexto(questao.gabarito);
+
+                            if (optNorm.includes("chutei")) {
+                                btn.classList.add("opcao-chute");
+                            } else if (optNorm === gabNorm) {
+                                btn.classList.add("opcao-acerto");
+                            } else {
+                                btn.classList.add("opcao-erro");
+                            }
                         }
                     } else {
                         btn.onclick = () => enviarVoto(questao, opcao);
@@ -401,7 +426,22 @@
             const votoRef = ref(db, `votos/${questao.id}/${alunoId}`);
             set(votoRef, { opcao: opcaoEscolhida }).then(() => {
                 const botoes = opcoesContainer.querySelectorAll("button");
-                botoes.forEach(btn => btn.disabled = true);
+                const optNorm = normalizarTexto(opcaoEscolhida);
+                const gabNorm = normalizarTexto(questao.gabarito);
+
+                botoes.forEach(btn => {
+                    btn.disabled = true;
+                    if (normalizarTexto(btn.innerText) === optNorm) {
+                        if (optNorm.includes("chutei")) {
+                            btn.classList.add("opcao-chute");
+                        } else if (optNorm === gabNorm) {
+                            btn.classList.add("opcao-acerto");
+                        } else {
+                            btn.classList.add("opcao-erro");
+                        }
+                    }
+                });
+
                 exibirFeedback(opcaoEscolhida, questao.gabarito);
             });
         }
