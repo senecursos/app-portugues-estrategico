@@ -2,11 +2,18 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <!-- Meta tag ajustada para permitir rotação e ajuste livre de escala -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Sala 07 | Português Estratégico</title>
 
     <link rel="icon" type="image/png" href="estrategico.jpg">
     <meta name="theme-color" content="#0b0f19">
+
+    <!-- 1. Métrica de Acessos -->
+    <script src="analytics.js"></script>
+
+    <!-- 2. Gerenciador Central de Anúncios -->
+    <script src="anuncios.js"></script>
 
     <style>
         * {
@@ -17,8 +24,7 @@
         }
 
         body {
-            background-color: #ffffff; /* BRANCO PURO */
-            filter: brightness(0.98);   /* SUAVIZA A INTENSIDADE DO BRILHO PARA NÃO CANSAR A VISTA */
+            background-color: #e2e8f0; /* Fundo suave da página */
             color: #000000;
             line-height: 1.6;
             min-height: 100vh;
@@ -27,7 +33,7 @@
             width: 100%;
         }
 
-        /* BARRA SUPERIOR (ROLA NORMALMENTE COM A PÁGINA) */
+        /* BARRA FIXA SUPERIOR */
         .top-navbar {
             background-color: #0b0f19;
             padding: 12px 24px;
@@ -35,6 +41,9 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #1e293b;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .btn-voltar {
@@ -160,17 +169,95 @@
             gap: 10px;
         }
 
-        /* MENSAGEM TEMPORÁRIA DE AGUARDE */
-        .caixa-em-breve {
-            background-color: #f8fafc;
-            border: 2px dashed #cbd5e1;
-            border-radius: 12px;
-            padding: 40px 20px;
+        /* ESTILO DAS QUESTÕES DO SIMULADO (FUNDO BRANCO GELO) */
+        .quiz-card {
+            background-color: #f8fafc; /* BRANCO GELO CONFORTÁVEL */
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .question-number {
+            font-weight: 800;
+            color: #254077;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            color: #000000;
+            margin-bottom: 18px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .btn-option {
+            padding: 12px 24px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border: 2px solid #cbd5e1;
+            background: #ffffff;
+            color: #334155;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex: 1;
+            max-width: 160px;
             text-align: center;
-            color: #64748b;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 40px;
+        }
+
+        .btn-option:hover {
+            border-color: #254077;
+            color: #254077;
+        }
+
+        .btn-option.selected {
+            background-color: #254077;
+            color: #ffffff;
+            border-color: #254077;
+        }
+
+        /* CAIXA DE FEEDBACK */
+        .feedback-box {
+            display: none;
+            padding: 14px 16px;
+            border-radius: 6px;
+            margin-top: 16px;
+            font-size: 0.95rem;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feedback-box.correct {
+            background-color: #f0fdf4;
+            border-left: 5px solid #16a34a;
+            color: #14532d;
+        }
+
+        .feedback-box.incorrect {
+            background-color: #fef2f2;
+            border-left: 5px solid #dc2626;
+            color: #7f1d1d;
+        }
+
+        .feedback-title {
+            font-weight: 800;
+            font-size: 1rem;
         }
 
         /* NOTA DISCRETA DE DIREITOS AUTORAIS */
@@ -195,7 +282,7 @@
             margin-top: auto;
         }
 
-        /* AJUSTES DE TELA */
+        /* AJUSTES PARA DISPOSITIVOS NA HORIZONTAL E TELAS MENORES */
         @media (max-width: 900px) and (orientation: landscape) {
             .header-banner {
                 height: 140px;
@@ -237,12 +324,16 @@
             .nota-propriedade {
                 font-size: 12px;
             }
+
+            .btn-option {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- BARRA SUPERIOR DE NAVEGAÇÃO -->
+    <!-- BARRA FIXA DE NAVEGAÇÃO -->
     <nav class="top-navbar">
         <a href="index.html" class="btn-voltar">&#8592; Voltar ao Início</a>
         <span class="badge-sala">Sala 07</span>
@@ -275,10 +366,148 @@
             Conteúdo da Semana <span style="font-size: 24px;">⬇️</span>
         </h1>
 
-        <!-- MENSAGEM TEMPORÁRIA (SUBSTITUIR PELAS QUESTÕES) -->
-        <div class="caixa-em-breve">
-            📝 O conteúdo desta semana será disponibilizado em breve. Fique atento(a)!
-        </div>
+        <!-- QUESTÃO 01 -->
+        <article class="quiz-card" id="q1">
+            <span class="question-number">Questão 01 — Cebraspe</span>
+            <p class="question-text">
+                Em "Os diretores propuseram novas diretrizes para o setor no início do ano", a forma verbal em destaque encontra-se flexionada na terceira pessoa do plural do pretérito perfeito do modo indicativo.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" onclick="checkAnswer('q1', 'CERTO', 'CERTO')">CERTO</button>
+                <button class="btn-option" onclick="checkAnswer('q1', 'ERRADO', 'CERTO')">ERRADO</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 02 -->
+        <article class="quiz-card" id="q2">
+            <span class="question-number">Questão 02 — Cebraspe</span>
+            <p class="question-text">
+                No trecho "Se os técnicos mantiverem o foco, alcançaremos a meta", a forma verbal "mantiverem" está flexionada na terceira pessoa do plural do pretérito imperfeito do modo indicativo.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" onclick="checkAnswer('q2', 'CERTO', 'ERRADO')">CERTO</button>
+                <button class="btn-option" onclick="checkAnswer('q2', 'ERRADO', 'ERRADO')">ERRADO</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 03 -->
+        <article class="quiz-card" id="q3">
+            <span class="question-number">Questão 03 — Cebraspe</span>
+            <p class="question-text">
+                Na frase "Nós comprazíamos de sua presença nas reuniões do conselho", a forma verbal destacada classifica-se na primeira pessoa do plural do pretérito imperfeito do modo indicativo.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" onclick="checkAnswer('q3', 'CERTO', 'CERTO')">CERTO</button>
+                <button class="btn-option" onclick="checkAnswer('q3', 'ERRADO', 'CERTO')">ERRADO</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 04 -->
+        <article class="quiz-card" id="q4">
+            <span class="question-number">Questão 04 — Cebraspe</span>
+            <p class="question-text">
+                Em "Nenhum dos presentes interveio na discussão durante a sessão", a forma verbal "interveio" está corretamente flexcionada na terceira pessoa do singular do pretérito perfeito do modo indicativo.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" onclick="checkAnswer('q4', 'CERTO', 'CERTO')">CERTO</button>
+                <button class="btn-option" onclick="checkAnswer('q4', 'ERRADO', 'CERTO')">ERRADO</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 05 -->
+        <article class="quiz-card" id="q5">
+            <span class="question-number">Questão 05 — Cebraspe</span>
+            <p class="question-text">
+                No segmento "Quando o réu requerer a juntada de novos documentos, o juiz analisará o pedido", a forma verbal "requerer" encontra-se no pretérito mais-que-perfeito do modo indicativo.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" onclick="checkAnswer('q5', 'CERTO', 'ERRADO')">CERTO</button>
+                <button class="btn-option" onclick="checkAnswer('q5', 'ERRADO', 'ERRADO')">ERRADO</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 06 -->
+        <article class="quiz-card" id="q6">
+            <span class="question-number">Questão 06 — Cebraspe</span>
+            <p class="question-text">
+                Em "Vós fizestes um excelente trabalho no desenvolvimento da pesquisa", a forma verbal destacada encontra-se na segunda pessoa do plural do pretérito perfeito do modo indicativo.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" onclick="checkAnswer('q6', 'CERTO', 'CERTO')">CERTO</button>
+                <button class="btn-option" onclick="checkAnswer('q6', 'ERRADO', 'CERTO')">ERRADO</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 07 -->
+        <article class="quiz-card" id="q7">
+            <span class="question-number">Questão 07 — Cebraspe</span>
+            <p class="question-text">
+                Na oração "A comissão redigira o parecer conclusivo antes da votação oficial", a forma verbal "redigira" está flexcionada na terceira pessoa do singular do pretérito mais-que-perfeito do modo indicativo.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" onclick="checkAnswer('q7', 'CERTO', 'CERTO')">CERTO</button>
+                <button class="btn-option" onclick="checkAnswer('q7', 'ERRADO', 'CERTO')">ERRADO</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 08 -->
+        <article class="quiz-card" id="q8">
+            <span class="question-number">Questão 08 — Cebraspe</span>
+            <p class="question-text">
+                No trecho "Se a equipe prover o almoxarifado a tempo, o trabalho não parará", o termo "prover" é uma forma flexcionada no presente do modo indicativo.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" onclick="checkAnswer('q8', 'CERTO', 'ERRADO')">CERTO</button>
+                <button class="btn-option" onclick="checkAnswer('q8', 'ERRADO', 'ERRADO')">ERRADO</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 09 -->
+        <article class="quiz-card" id="q9">
+            <span class="question-number">Questão 09 — Cebraspe</span>
+            <p class="question-text">
+                Na frase "Nós vínhamos acompanhando os resultados com atenção", a forma verbal em destaque está na primeira pessoa do plural do pretérito imperfeito do modo indicativo.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" onclick="checkAnswer('q9', 'CERTO', 'CERTO')">CERTO</button>
+                <button class="btn-option" onclick="checkAnswer('q9', 'ERRADO', 'CERTO')">ERRADO</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 10 -->
+        <article class="quiz-card" id="q10">
+            <span class="question-number">Questão 10 — Cebraspe</span>
+            <p class="question-text">
+                Em "Quando eles reasserirem seus direitos, a proposta será revista", o verbo encontra-se flexcionado na terceira pessoa do plural do futuro do presente do modo indicativo.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" onclick="checkAnswer('q10', 'CERTO', 'ERRADO')">CERTO</button>
+                <button class="btn-option" onclick="checkAnswer('q10', 'ERRADO', 'ERRADO')">ERRADO</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 11 -->
+        <article class="quiz-card" id="q11">
+            <span class="question-number">Questão 11 — Cebraspe</span>
+            <p class="question-text">
+                No enunciado "Os advogados previram as complicações jurídicas do processo", a forma verbal "previram" corresponde à terceira pessoa do plural do pretérito perfeito do modo indicativo.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" onclick="checkAnswer('q11', 'CERTO', 'CERTO')">CERTO</button>
+                <button class="btn-option" onclick="checkAnswer('q11', 'ERRADO', 'CERTO')">ERRADO</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
 
         <!-- NOTA DE AUTORIA E PROPRIEDADE -->
         <div class="nota-propriedade">
@@ -291,6 +520,29 @@
     <footer class="footer-site">
         &copy; 2026 SENE. Todos os direitos reservados.
     </footer>
+
+    <!-- SCRIPT DE LÓGICA DO SIMULADO -->
+    <script>
+        function checkAnswer(questionId, selectedOption, correctOption) {
+            const card = document.getElementById(questionId);
+            const buttons = card.querySelectorAll('.btn-option');
+            const feedbackBox = card.querySelector('.feedback-box');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('selected');
+                if (btn.innerText === selectedOption) btn.classList.add('selected');
+            });
+
+            feedbackBox.style.display = 'block';
+            if (selectedOption === correctOption) {
+                feedbackBox.className = 'feedback-box correct';
+                feedbackBox.innerHTML = `<div class="feedback-title">✓ Resposta Correta! (Gabarito: ${correctOption})</div>`;
+            } else {
+                feedbackBox.className = 'feedback-box incorrect';
+                feedbackBox.innerHTML = `<div class="feedback-title">✕ Resposta Incorreta. (Gabarito: ${correctOption})</div>`;
+            }
+        }
+    </script>
 
 </body>
 </html>
