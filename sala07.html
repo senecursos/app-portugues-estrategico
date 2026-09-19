@@ -198,23 +198,23 @@
 
         .btn-group {
             display: flex;
-            gap: 12px;
+            flex-direction: column;
+            gap: 10px;
             margin-bottom: 10px;
         }
 
         .btn-option {
-            padding: 12px 24px;
+            padding: 12px 18px;
             font-size: 0.95rem;
-            font-weight: 700;
+            font-weight: 600;
             border: 2px solid #cbd5e1;
             background: #ffffff;
             color: #334155;
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.2s;
-            flex: 1;
-            max-width: 160px;
-            text-align: center;
+            width: 100%;
+            text-align: left;
         }
 
         .btn-option:hover {
@@ -324,10 +324,6 @@
             .nota-propriedade {
                 font-size: 12px;
             }
-
-            .btn-option {
-                max-width: 100%;
-            }
         }
     </style>
 </head>
@@ -368,143 +364,64 @@
 
         <!-- QUESTÃO 01 -->
         <article class="quiz-card" id="q1">
-            <span class="question-number">Questão 01 — Cebraspe</span>
+            <span class="question-number">Questão 01</span>
             <p class="question-text">
-                Em "Os diretores propuseram novas diretrizes para o setor no início do ano", a forma verbal em destaque encontra-se flexionada na terceira pessoa do plural do pretérito perfeito do modo indicativo.
+                Na frase "Os diretores <b>propuseram</b> novas diretrizes para o setor no início do ano", a forma verbal em destaque encontra-se flexcionada em qual tempo, número e pessoa?
             </p>
             <div class="btn-group">
-                <button class="btn-option" onclick="checkAnswer('q1', 'CERTO', 'CERTO')">CERTO</button>
-                <button class="btn-option" onclick="checkAnswer('q1', 'ERRADO', 'CERTO')">ERRADO</button>
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q1', 'A', 'B')">A) Pretérito imperfeito do indicativo, 3ª pessoa do plural</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q1', 'B', 'B')">B) Pretérito perfeito do indicativo, 3ª pessoa do plural</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q1', 'C', 'B')">C) Pretérito mais-que-perfeito do indicativo, 3ª pessoa do plural</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q1', 'D', 'B')">D) Futuro do presente do indicativo, 3ª pessoa do plural</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q1', 'E', 'B')">E) Presente do indicativo, 3ª pessoa do plural</button>
             </div>
             <div class="feedback-box"></div>
         </article>
 
         <!-- QUESTÃO 02 -->
         <article class="quiz-card" id="q2">
-            <span class="question-number">Questão 02 — Cebraspe</span>
+            <span class="question-number">Questão 02</span>
             <p class="question-text">
-                No trecho "Se os técnicos mantiverem o foco, alcançaremos a meta", a forma verbal "mantiverem" está flexionada na terceira pessoa do plural do pretérito imperfeito do modo indicativo.
+                No segmento "Nós <b>comprazíamos</b> de sua presença nas reuniões do conselho", a forma verbal destacada classifica-se como:
             </p>
             <div class="btn-group">
-                <button class="btn-option" onclick="checkAnswer('q2', 'CERTO', 'ERRADO')">CERTO</button>
-                <button class="btn-option" onclick="checkAnswer('q2', 'ERRADO', 'ERRADO')">ERRADO</button>
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q2', 'A', 'C')">A) Pretérito perfeito do indicativo, 1ª pessoa do plural</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q2', 'B', 'C')">B) Pretérito mais-que-perfeito do indicativo, 1ª pessoa do plural</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q2', 'C', 'C')">C) Pretérito imperfeito do indicativo, 1ª pessoa do plural</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q2', 'D', 'C')">D) Futuro do pretérito do indicativo, 1ª pessoa do plural</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q2', 'E', 'C')">E) Presente do indicativo, 1ª pessoa do plural</button>
             </div>
             <div class="feedback-box"></div>
         </article>
 
         <!-- QUESTÃO 03 -->
         <article class="quiz-card" id="q3">
-            <span class="question-number">Questão 03 — Cebraspe</span>
+            <span class="question-number">Questão 03</span>
             <p class="question-text">
-                Na frase "Nós comprazíamos de sua presença nas reuniões do conselho", a forma verbal destacada classifica-se na primeira pessoa do plural do pretérito imperfeito do modo indicativo.
+                Na oração "A comissão <b>redigira</b> o parecer conclusivo antes da votação oficial", o termo em destaque corresponde a:
             </p>
             <div class="btn-group">
-                <button class="btn-option" onclick="checkAnswer('q3', 'CERTO', 'CERTO')">CERTO</button>
-                <button class="btn-option" onclick="checkAnswer('q3', 'ERRADO', 'CERTO')">ERRADO</button>
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q3', 'A', 'A')">A) Pretérito mais-que-perfeito do indicativo, 3ª pessoa do singular</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q3', 'B', 'A')">B) Pretérito perfeito do indicativo, 3ª pessoa do singular</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q3', 'C', 'A')">C) Pretérito imperfeito do indicativo, 3ª pessoa do singular</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q3', 'D', 'A')">D) Futuro do pretérito do indicativo, 3ª pessoa do singular</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q3', 'E', 'A')">E) Presente do indicativo, 3ª pessoa do singular</button>
             </div>
             <div class="feedback-box"></div>
         </article>
 
         <!-- QUESTÃO 04 -->
         <article class="quiz-card" id="q4">
-            <span class="question-number">Questão 04 — Cebraspe</span>
+            <span class="question-number">Questão 04</span>
             <p class="question-text">
-                Em "Nenhum dos presentes interveio na discussão durante a sessão", a forma verbal "interveio" está corretamente flexcionada na terceira pessoa do singular do pretérito perfeito do modo indicativo.
+                No enunciado "Vós <b>pondes</b> os relatórios sobre a mesa ao final da tarde", a forma verbal em destaque encontra-se em qual flexão?
             </p>
             <div class="btn-group">
-                <button class="btn-option" onclick="checkAnswer('q4', 'CERTO', 'CERTO')">CERTO</button>
-                <button class="btn-option" onclick="checkAnswer('q4', 'ERRADO', 'CERTO')">ERRADO</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 05 -->
-        <article class="quiz-card" id="q5">
-            <span class="question-number">Questão 05 — Cebraspe</span>
-            <p class="question-text">
-                No segmento "Quando o réu requerer a juntada de novos documentos, o juiz analisará o pedido", a forma verbal "requerer" encontra-se no pretérito mais-que-perfeito do modo indicativo.
-            </p>
-            <div class="btn-group">
-                <button class="btn-option" onclick="checkAnswer('q5', 'CERTO', 'ERRADO')">CERTO</button>
-                <button class="btn-option" onclick="checkAnswer('q5', 'ERRADO', 'ERRADO')">ERRADO</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 06 -->
-        <article class="quiz-card" id="q6">
-            <span class="question-number">Questão 06 — Cebraspe</span>
-            <p class="question-text">
-                Em "Vós fizestes um excelente trabalho no desenvolvimento da pesquisa", a forma verbal destacada encontra-se na segunda pessoa do plural do pretérito perfeito do modo indicativo.
-            </p>
-            <div class="btn-group">
-                <button class="btn-option" onclick="checkAnswer('q6', 'CERTO', 'CERTO')">CERTO</button>
-                <button class="btn-option" onclick="checkAnswer('q6', 'ERRADO', 'CERTO')">ERRADO</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 07 -->
-        <article class="quiz-card" id="q7">
-            <span class="question-number">Questão 07 — Cebraspe</span>
-            <p class="question-text">
-                Na oração "A comissão redigira o parecer conclusivo antes da votação oficial", a forma verbal "redigira" está flexcionada na terceira pessoa do singular do pretérito mais-que-perfeito do modo indicativo.
-            </p>
-            <div class="btn-group">
-                <button class="btn-option" onclick="checkAnswer('q7', 'CERTO', 'CERTO')">CERTO</button>
-                <button class="btn-option" onclick="checkAnswer('q7', 'ERRADO', 'CERTO')">ERRADO</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 08 -->
-        <article class="quiz-card" id="q8">
-            <span class="question-number">Questão 08 — Cebraspe</span>
-            <p class="question-text">
-                No trecho "Se a equipe prover o almoxarifado a tempo, o trabalho não parará", o termo "prover" é uma forma flexcionada no presente do modo indicativo.
-            </p>
-            <div class="btn-group">
-                <button class="btn-option" onclick="checkAnswer('q8', 'CERTO', 'ERRADO')">CERTO</button>
-                <button class="btn-option" onclick="checkAnswer('q8', 'ERRADO', 'ERRADO')">ERRADO</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 09 -->
-        <article class="quiz-card" id="q9">
-            <span class="question-number">Questão 09 — Cebraspe</span>
-            <p class="question-text">
-                Na frase "Nós vínhamos acompanhando os resultados com atenção", a forma verbal em destaque está na primeira pessoa do plural do pretérito imperfeito do modo indicativo.
-            </p>
-            <div class="btn-group">
-                <button class="btn-option" onclick="checkAnswer('q9', 'CERTO', 'CERTO')">CERTO</button>
-                <button class="btn-option" onclick="checkAnswer('q9', 'ERRADO', 'CERTO')">ERRADO</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 10 -->
-        <article class="quiz-card" id="q10">
-            <span class="question-number">Questão 10 — Cebraspe</span>
-            <p class="question-text">
-                Em "Quando eles reasserirem seus direitos, a proposta será revista", o verbo encontra-se flexcionado na terceira pessoa do plural do futuro do presente do modo indicativo.
-            </p>
-            <div class="btn-group">
-                <button class="btn-option" onclick="checkAnswer('q10', 'CERTO', 'ERRADO')">CERTO</button>
-                <button class="btn-option" onclick="checkAnswer('q10', 'ERRADO', 'ERRADO')">ERRADO</button>
-            </div>
-            <div class="feedback-box"></div>
-        </article>
-
-        <!-- QUESTÃO 11 -->
-        <article class="quiz-card" id="q11">
-            <span class="question-number">Questão 11 — Cebraspe</span>
-            <p class="question-text">
-                No enunciado "Os advogados previram as complicações jurídicas do processo", a forma verbal "previram" corresponde à terceira pessoa do plural do pretérito perfeito do modo indicativo.
-            </p>
-            <div class="btn-group">
-                <button class="btn-option" onclick="checkAnswer('q11', 'CERTO', 'CERTO')">CERTO</button>
-                <button class="btn-option" onclick="checkAnswer('q11', 'ERRADO', 'CERTO')">ERRADO</button>
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q4', 'A', 'D')">A) Pretérito imperfeito do indicativo, 2ª pessoa do plural</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q4', 'B', 'D')">B) Pretérito perfeito do indicativo, 2ª pessoa do plural</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q4', 'C', 'D')">C) Futuro do presente do indicativo, 2ª pessoa do plural</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q4', 'D', 'D')">D) Presente do indicativo, 2ª pessoa do plural</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q4', 'E', 'D')">E) Futuro do pretérito do indicativo, 2ª pessoa do plural</button>
             </div>
             <div class="feedback-box"></div>
         </article>
@@ -523,23 +440,25 @@
 
     <!-- SCRIPT DE LÓGICA DO SIMULADO -->
     <script>
-        function checkAnswer(questionId, selectedOption, correctOption) {
+        function checkAnswer(questionId, selectedLetter, correctLetter) {
             const card = document.getElementById(questionId);
             const buttons = card.querySelectorAll('.btn-option');
             const feedbackBox = card.querySelector('.feedback-box');
 
             buttons.forEach(btn => {
                 btn.classList.remove('selected');
-                if (btn.innerText === selectedOption) btn.classList.add('selected');
+                if (btn.getAttribute('data-letter') === selectedLetter) {
+                    btn.classList.add('selected');
+                }
             });
 
             feedbackBox.style.display = 'block';
-            if (selectedOption === correctOption) {
+            if (selectedLetter === correctLetter) {
                 feedbackBox.className = 'feedback-box correct';
-                feedbackBox.innerHTML = `<div class="feedback-title">✓ Resposta Correta! (Gabarito: ${correctOption})</div>`;
+                feedbackBox.innerHTML = `<div class="feedback-title">✓ Resposta Correta! (Gabarito: Letra ${correctLetter})</div>`;
             } else {
                 feedbackBox.className = 'feedback-box incorrect';
-                feedbackBox.innerHTML = `<div class="feedback-title">✕ Resposta Incorreta. (Gabarito: ${correctOption})</div>`;
+                feedbackBox.innerHTML = `<div class="feedback-title">✕ Resposta Incorreta. (Gabarito: Letra ${correctLetter})</div>`;
             }
         }
     </script>
