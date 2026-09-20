@@ -52,30 +52,31 @@
 
     <!-- FIREBASE REALTIME DATABASE -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getDatabase, ref, set, onValue, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getDatabase, ref, set, onValue, remove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
         const senha = prompt("Digite a senha do professor:");
         if (senha !== "123456") {
             alert("Senha incorreta!");
-            window.location.href = "auditorio.html";
+            window.location.href = "atividades_extras.html";
         }
 
+        // NOVO PROJETO DO FIREBASE (atividade-extra-36f40)
         const firebaseConfig = {
-            apiKey: "AIzaSyBaAP0E4TMCmSzP_-UNOSQn3n1-lQOJWJw",
-            authDomain: "questoes-para-auditorio.firebaseapp.com",
-            databaseURL: "https://questoes-para-auditorio-default-rtdb.firebaseio.com",
-            projectId: "questoes-para-auditorio",
-            storageBucket: "questoes-para-auditorio.firebasestorage.app",
-            messagingSenderId: "199541594520",
-            appId: "1:199541594520:web:66f48f6848fadba8d133ed"
+            apiKey: "AIzaSyC9cRrlARDHnxuABa_zewIbZVEHLTRhJgs",
+            authDomain: "atividade-extra-36f40.firebaseapp.com",
+            databaseURL: "https://atividade-extra-36f40-default-rtdb.firebaseio.com",
+            projectId: "atividade-extra-36f40",
+            storageBucket: "atividade-extra-36f40.firebasestorage.app",
+            messagingSenderId: "1023269799106",
+            appId: "1:1023269799106:web:32bf9685c05d65b90c675b"
         };
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
         // =========================================================================
-        // NOVO BANCO DE QUESTÕES (6 QUESTÕES - ORAÇÕES REDUZIDAS)
+        // BANCO DE QUESTÕES (MANTIDO IDÊNTICO, APENAS SEM O "CHUTEI")
         // =========================================================================
         const questoes = [
             {
@@ -87,8 +88,7 @@
                     "B) Os diretores temiam perder o controle das negociações.",
                     "C) A intenção do conselho era reorganizar o quadro de funcionários.",
                     "D) O advogado tinha certeza de conseguir a liminar favorável.",
-                    "E) Ele nos aconselhou a manter a postura durante a reunião.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                    "E) Ele nos aconselhou a manter a postura durante a reunião."
                 ],
                 gabarito: "A) Convém analisar os pareceres técnicos com urgência."
             },
@@ -101,8 +101,7 @@
                     "B) A proposta apresentada pelos consultores agradou ao conselho.",
                     "C) O jovem, desejando alcançar o topo, empenhou-se nos estudos.",
                     "D) Há muitos relatórios para revisar antes do encerramento.",
-                    "E) Vi os atletas correndo no parque ao amanhecer.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                    "E) Vi os atletas correndo no parque ao amanhecer."
                 ],
                 gabarito: "B) A proposta apresentada pelos consultores agradou ao conselho."
             },
@@ -115,8 +114,7 @@
                     "B) Concessiva",
                     "C) Temporal",
                     "D) Final",
-                    "E) Condicional",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                    "E) Condicional"
                 ],
                 gabarito: "C) Temporal"
             },
@@ -129,8 +127,7 @@
                     "B) Chegando ao escritório, procure imediatamente a recepção.",
                     "C) Trabalhando com empenho, você alcançará a promoção desejada.",
                     "D) Percebendo a gravidade do problema, os técnicos agiram rápido.",
-                    "E) Finalizando o expediente, o gerente trancou todas as portas.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                    "E) Finalizando o expediente, o gerente trancou todas as portas."
                 ],
                 gabarito: "C) Trabalhando com empenho, você alcançará a promoção desejada."
             },
@@ -143,8 +140,7 @@
                     "B) Apesar de ter treinado bastante, o competidor não obteve o primeiro lugar.",
                     "C) Sem estudar a matéria, você não obterá bom rendimento na prova.",
                     "D) Os fiscais compareceram à fábrica para inspecionar as instalações.",
-                    "E) A ponto de desistir do projeto, o pesquisador recebeu novos recursos.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                    "E) A ponto de desistir do projeto, o pesquisador recebeu novos recursos."
                 ],
                 gabarito: "D) Os fiscais compareceram à fábrica para inspecionar as instalações."
             },
@@ -157,8 +153,7 @@
                     "B) Nós tínhamos esperança de alcançar as metas trimestrais da empresa.",
                     "C) O presidente permitiu reorganizar os horários do departamento.",
                     "D) Constou na ata terem sido aprovadas todas as contas do exercício.",
-                    "E) O supervisor chamou os colaboradores para definir as estratégias.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                    "E) O supervisor chamou os colaboradores para definir as estratégias."
                 ],
                 gabarito: "B) Nós tínhamos esperança de alcançar as metas trimestrais da empresa."
             }
@@ -243,12 +238,8 @@
                         const qtd = contagem[op];
                         const pct = totalVotos > 0 ? ((qtd / totalVotos) * 100).toFixed(1) : 0;
                         const ehGabarito = normalizarTexto(op) === normalizarTexto(questao.gabarito);
-                        const ehChute = normalizarTexto(op).includes("chutei");
                         
-                        let corBarra = "#2563eb";
-                        if (ehGabarito) corBarra = "#16a34a";
-                        else if (ehChute) corBarra = "#d97706";
-
+                        let corBarra = ehGabarito ? "#16a34a" : "#2563eb";
                         const prefixo = ehGabarito ? '🟢 ' : '';
 
                         resDiv.innerHTML += `
