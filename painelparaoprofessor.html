@@ -75,92 +75,134 @@
         const db = getDatabase(app);
 
         // =========================================================================
-        // NOVO BANCO DE QUESTÕES (6 QUESTÕES - ORAÇÕES REDUZIDAS)
+        // NOVO BANCO DE QUESTÕES (18 QUESTÕES - CERTO / ERRADO)
         // =========================================================================
         const questoes = [
             {
                 id: 1,
-                pergunta: "Assinale a alternativa em que a oração destacada se classifica como subordinada substantiva subjetiva reduzida de infinitivo.",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Convém analisar os pareceres técnicos com urgência.",
-                    "B) Os diretores temiam perder o controle das negociações.",
-                    "C) A intenção do conselho era reorganizar o quadro de funcionários.",
-                    "D) O advogado tinha certeza de conseguir a liminar favorável.",
-                    "E) Ele nos aconselhou a manter a postura durante a reunião.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "A) Convém analisar os pareceres técnicos com urgência."
+                pergunta: 'No trecho "A frugalidade do gestor ao alocar os recursos evitou que a instituição entrasse em colapso financeiro", a palavra em destaque preserva a coesão e o sentido original do texto caso substitua o vocábulo "parsimônia".',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Certo"
             },
             {
                 id: 2,
-                pergunta: "Assinale a alternativa cuja oração sublinhada é subordinada adjetiva reduzida de particípio.",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Encontramos os alunos estudando na biblioteca do campus.",
-                    "B) A proposta apresentada pelos consultores agradou ao conselho.",
-                    "C) O jovem, desejando alcançar o topo, empenhou-se nos estudos.",
-                    "D) Há muitos relatórios para revisar antes do encerramento.",
-                    "E) Vi os atletas correndo no parque ao amanhecer.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "B) A proposta apresentada pelos consultores agradou ao conselho."
+                pergunta: 'Considere a frase: "O cientista apresentou uma hipótese plausível, contudo os dados demonstraram a ineficácia do método utilizado." Os vocábulos inverossímil e eficácia funcionam como antônimos diretos, respectivamente, das palavras "plausível" e "ineficácia".',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Certo"
             },
             {
                 id: 3,
-                pergunta: "Na frase \"Ao terminar a exposição dos fatos, o juiz concedeu a palavra à defesa\", a oração reduzida em destaque possui valor sintático de subordinada adverbial:",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Causal",
-                    "B) Concessiva",
-                    "C) Temporal",
-                    "D) Final",
-                    "E) Condicional",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "C) Temporal"
+                pergunta: 'A oração "Trata-se de medidas urgentes, visto que foram dados bastantes oportunidades aos envolvidos" atende plenamente às regras de concordância verbal e nominal estabelecidas pela norma-padrão.',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Errado"
             },
             {
                 id: 4,
-                pergunta: "Assinale a opção que apresenta uma oração subordinada adverbial reduzida de gerúndio com valor de condição.",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Mesmo sabendo do perigo, o marinheiro enfrentou a tempestade.",
-                    "B) Chegando ao escritório, procure imediatamente a recepção.",
-                    "C) Trabalhando com empenho, você alcançará a promoção desejada.",
-                    "D) Percebendo a gravidade do problema, os técnicos agiram rápido.",
-                    "E) Finalizando o expediente, o gerente trancou todas as portas.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "C) Trabalhando com empenho, você alcançará a promoção desejada."
+                pergunta: 'No enunciado "A maioria dos servidores públicos protestaram contra o projeto de lei", a concordância verbal efetuada no plural é considerada gramaticalmente incorreta segundo a norma-padrão.',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Errado"
             },
             {
                 id: 5,
-                pergunta: "Assinale a alternativa que contém uma oração subordinada adverbial reduzida de infinitivo com valor final.",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Por ser muito atencioso, o médico conquistou a confiança dos pacientes.",
-                    "B) Apesar de ter treinado bastante, o competidor não obteve o primeiro lugar.",
-                    "C) Sem estudar a matéria, você não obterá bom rendimento na prova.",
-                    "D) Os fiscais compareceram à fábrica para inspecionar as instalações.",
-                    "E) A ponto de desistir do projeto, o pesquisador recebeu novos recursos.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "D) Os fiscais compareceram à fábrica para inspecionar as instalações."
+                pergunta: 'Na frase "A jovem agiu bastante calmamente durante a reunião, demonstrando bastante conhecimento do assunto", a palavra em destaque classifica-se, sequencialmente, como advérbio e como pronome adjetivo (indefinido).',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Certo"
             },
             {
                 id: 6,
-                pergunta: "Assinale a alternativa em que a oração destacada se classifica como subordinada substantiva completiva nominal reduzida de infinitivo.",
-                tipo: "A-E",
-                opcoes: [
-                    "A) A exigência do diretor foi apresentar os relatórios sem rasuras.",
-                    "B) Nós tínhamos esperança de alcançar as metas trimestrais da empresa.",
-                    "C) O presidente permitiu reorganizar os horários do departamento.",
-                    "D) Constou na ata terem sido aprovadas todas as contas do exercício.",
-                    "E) O supervisor chamou os colaboradores para definir as estratégias.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "B) Nós tínhamos esperança de alcançar as metas trimestrais da empresa."
+                pergunta: "Os vocábulos pesquisa, beneficente, privilégio e pretensão encontram-se todos grafados corretamente segundo a ortografia oficial vigente.",
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Certo"
+            },
+            {
+                id: 7,
+                pergunta: 'Na frase "Quando você vir o relatório financeiro, entenderá os investimentos", a forma verbal em destaque encontra-se corretamente flexionada no futuro do subjuntivo do verbo ver.',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Certo"
+            },
+            {
+                id: 8,
+                pergunta: 'A construção "Em se tratando de urgência, a equipe médica agiu imediatamente" atende estritamente às regras de colocação pronominal da norma-padrão.',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Certo"
+            },
+            {
+                id: 9,
+                pergunta: 'No período "Ninguém orientou-me sobre o preenchimento do formulário", a colocação do pronome oblíquo átono em posição enclítica está em conformidade com as regras gramaticais da norma-padrão.',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Errado"
+            },
+            {
+                id: 10,
+                pergunta: 'Na oração "O diretor da empresa considerou a proposta dos acionistas vantajosa", o termo em destaque exerce a função sintática de predicativo do objeto.',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Certo"
+            },
+            {
+                id: 11,
+                pergunta: 'Em "As opiniões do especialista eram favoráveis aos alunos do colégio", o termo em destaque funciona sintaticamente como objeto indireto da oração.',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Errado"
+            },
+            {
+                id: 12,
+                pergunta: 'No enunciado "O professor entregou as notas aos alunos entusiasmado", o predicado da oração classifica-se como verbo-nominal.',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Certo"
+            },
+            {
+                id: 13,
+                pergunta: 'Na frase "A tempestade assustou os moradores daquela vila pacata", o predicado possui classificação nominal.',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Errado"
+            },
+            {
+                id: 14,
+                pergunta: "As palavras girassol, embora e infelizmente são formadas, respectivamente, pelos processos de composição por justaposição, composição por aglutinação e derivação prefixal e sufixal.",
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Certo"
+            },
+            {
+                id: 15,
+                pergunta: "Um texto marcado pela presença de verbos no imperativo ou no infinitivo, cujo intuito é instruir e guiar o leitor sobre um procedimento, pertence predominantemente ao tipo textual injuntivo.",
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Certo"
+            },
+            {
+                id: 16,
+                pergunta: "A crônica caracteriza-se por ser uma narrativa curta, frequentemente inspirada em fatos do cotidiano, podendo apresentar tom reflexivo, poético ou bem-humorado.",
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Certo"
+            },
+            {
+                id: 17,
+                pergunta: "A divisão silábica da palavra sub-li-nhar está em total conformidade com as normas ortográficas vigentes.",
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Errado"
+            },
+            {
+                id: 18,
+                pergunta: 'O emprego do sinal indicativo de crase e a flexão do artigo estão corretos na frase: "O palestrante dirigiu-se à comunidade acadêmica e prestou homenagens às professoras, ficando à espera do resultado das homenagens."',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Certo"
             }
         ];
 
