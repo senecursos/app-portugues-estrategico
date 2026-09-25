@@ -75,131 +75,145 @@
         const db = getDatabase(app);
 
         // =========================================================================
-        // NOVO BANCO DE QUESTÕES (18 QUESTÕES - CERTO / ERRADO)
+        // NOVO BANCO DE QUESTÕES (20 QUESTÕES - CERTO / ERRADO)
         // =========================================================================
         const questoes = [
             {
                 id: 1,
-                pergunta: 'No trecho "A frugalidade do gestor ao alocar os recursos evitou que a instituição entrasse em colapso financeiro", a palavra em destaque preserva a coesão e o sentido original do texto caso substitua o vocábulo "parsimônia".',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Certo"
-            },
-            {
-                id: 2,
-                pergunta: 'Considere a frase: "O cientista apresentou uma hipótese plausível, contudo os dados demonstraram a ineficácia do método utilizado." Os vocábulos inverossímil e eficácia funcionam como antônimos diretos, respectivamente, das palavras "plausível" e "ineficácia".',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Certo"
-            },
-            {
-                id: 3,
-                pergunta: 'A oração "Trata-se de medidas urgentes, visto que foram dados bastantes oportunidades aos envolvidos" atende plenamente às regras de concordância verbal e nominal estabelecidas pela norma-padrão.',
+                pergunta: 'No período "Jamais informaram-me sobre as alterações no cronograma da auditoria", a colocação do pronome oblíquo átono atende rigorosamente às regras da norma-padrão.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
                 gabarito: "Errado"
             },
             {
+                id: 2,
+                pergunta: 'O emprego do sinal indicativo de crase está incorreto no trecho "As exigências do novo edital referem-se àquela norma publicada no mês passado".',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Errado"
+            },
+            {
+                id: 3,
+                pergunta: 'Em "A maioria dos servidores públicos protestaram contra o projeto de lei orçamentária", a concordância do verbo flexcionado no plural atende à norma-padrão.',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Certo"
+            },
+            {
                 id: 4,
-                pergunta: 'No enunciado "A maioria dos servidores públicos protestaram contra o projeto de lei", a concordância verbal efetuada no plural é considerada gramaticalmente incorreta segundo a norma-padrão.',
+                pergunta: 'Em "Durante a sessão plenária de ontem, os parlamentares aprovaram o texto base da reforma", a vírgula empregada após o adjunto adverbial de tempo é facultativa, dada a brevidade da locução.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
                 gabarito: "Errado"
             },
             {
                 id: 5,
-                pergunta: 'Na frase "A jovem agiu bastante calmamente durante a reunião, demonstrando bastante conhecimento do assunto", a palavra em destaque classifica-se, sequencialmente, como advérbio e como pronome adjetivo (indefinido).',
+                pergunta: 'Na oração "Aos pareceres jurídicos mais complexos, o relator não lhes deu a devida atenção", a próclise do pronome oblíquo é de emprego obrigatório.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
                 gabarito: "Certo"
             },
             {
                 id: 6,
-                pergunta: "Os vocábulos pesquisa, beneficente, privilégio e pretensão encontram-se todos grafados corretamente segundo a ortografia oficial vigente.",
+                pergunta: 'Na frase "Alugou-se os galpões industriais da empresa antes da decretação de falência", a concordância do verbo no singular está em conformidade com as exigências da norma-padrão.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Certo"
+                gabarito: "Errado"
             },
             {
                 id: 7,
-                pergunta: 'Na frase "Quando você vir o relatório financeiro, entenderá os investimentos", a forma verbal em destaque encontra-se corretamente flexionada no futuro do subjuntivo do verbo ver.',
+                pergunta: 'Na frase "O candidato declarou à imprensa que responderia à todas as perguntas da bancada", o sinal indicativo de crase foi empregado em estrita observância à norma-padrão.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Certo"
+                gabarito: "Errado"
             },
             {
                 id: 8,
-                pergunta: 'A construção "Em se tratando de urgência, a equipe médica agiu imediatamente" atende estritamente às regras de colocação pronominal da norma-padrão.',
+                pergunta: 'No segmento "Os auditores examinaram, minuciosamente, os relatórios financeiros", o isolamento do advérbio de modo por vírgulas é considerado facultativo pela norma-padrão.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
                 gabarito: "Certo"
             },
             {
                 id: 9,
-                pergunta: 'No período "Ninguém orientou-me sobre o preenchimento do formulário", a colocação do pronome oblíquo átono em posição enclítica está em conformidade com as regras gramaticais da norma-padrão.',
+                pergunta: 'No enunciado "Qual de nós assumiremos a liderança das negociações com os representantes sindicais?", a concordância verbal efetuada na primeira pessoa do plural é correta.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
                 gabarito: "Errado"
             },
             {
                 id: 10,
-                pergunta: 'Na oração "O diretor da empresa considerou a proposta dos acionistas vantajosa", o termo em destaque exerce a função sintática de predicativo do objeto.',
+                pergunta: 'Em "Dir-se-ia que a decisão foi tomada de forma precipitada pela junta médica", o emprego da mesóclise é opção facultativa do redator, sendo igualmente correta a forma "Se diria".',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Certo"
+                gabarito: "Errado"
             },
             {
                 id: 11,
-                pergunta: 'Em "As opiniões do especialista eram favoráveis aos alunos do colégio", o termo em destaque funciona sintaticamente como objeto indireto da oração.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Errado"
-            },
-            {
-                id: 12,
-                pergunta: 'No enunciado "O professor entregou as notas aos alunos entusiasmado", o predicado da oração classifica-se como verbo-nominal.',
+                pergunta: 'Em "O assessor comunicou o fato à sua secretária sem demonstrar preocupação", o uso do sinal indicativo de crase é de caráter facultativo.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
                 gabarito: "Certo"
             },
             {
-                id: 13,
-                pergunta: 'Na frase "A tempestade assustou os moradores daquela vila pacata", o predicado possui classificação nominal.',
+                id: 12,
+                pergunta: 'Na oração "Apenas 1% dos parlamentares votou contra a emenda constitucional no plenário", o verbo no singular está gramaticalmente incorreto, devendo flexcionar-se obrigatoriamente no plural.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
                 gabarito: "Errado"
             },
             {
+                id: 13,
+                pergunta: 'Na frase "A equipe da noite revisou a minuta contratual; a da manhã, os anexos financeiros", a vírgula empregada na segunda oração justifica-se pela elipse do verbo anteriormente expresso.',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Certo"
+            },
+            {
                 id: 14,
-                pergunta: "As palavras girassol, embora e infelizmente são formadas, respectivamente, pelos processos de composição por justaposição, composição por aglutinação e derivação prefixal e sufixal.",
+                pergunta: 'No trecho "O supervisor chamou os colaboradores e orientou-nos sobre os novos procedimentos de segurança", a posição enclítica do pronome oblíquo observa as normas gramaticais.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
                 gabarito: "Certo"
             },
             {
                 id: 15,
-                pergunta: "Um texto marcado pela presença de verbos no imperativo ou no infinitivo, cujo intuito é instruir e guiar o leitor sobre um procedimento, pertence predominantemente ao tipo textual injuntivo.",
+                pergunta: 'No enunciado "O parecerista não fez menção à esta cláusula contratual durante a sessão", o emprego da crase é obrigatorio diante do pronome demonstrativo.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Certo"
+                gabarito: "Errado"
             },
             {
                 id: 16,
-                pergunta: "A crônica caracteriza-se por ser uma narrativa curta, frequentemente inspirada em fatos do cotidiano, podendo apresentar tom reflexivo, poético ou bem-humorado.",
+                pergunta: 'Em "A corrupção, o nepotismo e a ineficiência, nada abalavam a convicção do jovem auditor", a flexão do verbo no plural justifica-se pela presença do sujeito composto antecedente.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Certo"
+                gabarito: "Errado"
             },
             {
                 id: 17,
-                pergunta: "A divisão silábica da palavra sub-li-nhar está em total conformidade com as normas ortográficas vigentes.",
+                pergunta: 'No trecho "Senhor Presidente solicitamos a palavra para responder às acusações da bancada opositora", a ausência de vírgula após o termo inicial mantém a plena correção gramatical do texto.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
                 gabarito: "Errado"
             },
             {
                 id: 18,
-                pergunta: 'O emprego do sinal indicativo de crase e a flexão do artigo estão corretos na frase: "O palestrante dirigiu-se à comunidade acadêmica e prestou homenagens às professoras, ficando à espera do resultado das homenagens."',
+                pergunta: 'No período "Precisa-se de técnicos especializados na manutenção dos equipamentos de informática", o verbo deve flexcionar-se no plural para concordar com o termo "técnicos especializados".',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Errado"
+            },
+            {
+                id: 19,
+                pergunta: 'Em "Houveram casos complexos durante a instrução do processo administrativo sanitário", o verbo está flexcionado corretamente no plural por concordar com o seu sujeito.',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Errado"
+            },
+            {
+                id: 20,
+                pergunta: 'Na oração "O magistrado mandou os peritos assinarem o laudo cautelar imediatamente", a flexão de infinitivo no plural atende perfeitamente à norma-padrão da Língua Portuguesa.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
                 gabarito: "Certo"
