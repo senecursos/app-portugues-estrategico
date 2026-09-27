@@ -75,148 +75,113 @@
         const db = getDatabase(app);
 
         // =========================================================================
-        // NOVO BANCO DE QUESTÕES (20 QUESTÕES - CERTO / ERRADO)
+        // NOVO BANCO DE QUESTÕES (15 QUESTÕES - CERTO / ERRADO)
         // =========================================================================
         const questoes = [
             {
                 id: 1,
-                pergunta: 'No período "Jamais informaram-me sobre as alterações no cronograma da auditoria", a colocação do pronome oblíquo átono atende rigorosamente às regras da norma-padrão.',
+                pergunta: 'Na frase "Houveram muitos questionamentos acerca do contrato firmado pela prefeitura", o verbo destacado encontra-se corretamente flexionado no plural.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
                 gabarito: "Errado"
             },
             {
                 id: 2,
-                pergunta: 'O emprego do sinal indicativo de crase está incorreto no trecho "As exigências do novo edital referem-se àquela norma publicada no mês passado".',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Errado"
-            },
-            {
-                id: 3,
-                pergunta: 'Em "A maioria dos servidores públicos protestaram contra o projeto de lei orçamentária", a concordância do verbo flexcionado no plural atende à norma-padrão.',
+                pergunta: 'No trecho "A proposta apresentada foi a que obteve maior aprovação entre os membros do conselho", a forma em destaque classifica-se como pronome demonstrativo.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
                 gabarito: "Certo"
             },
             {
-                id: 4,
-                pergunta: 'Em "Durante a sessão plenária de ontem, os parlamentares aprovaram o texto base da reforma", a vírgula empregada após o adjunto adverbial de tempo é facultativa, dada a brevidade da locução.',
+                id: 3,
+                pergunta: 'Na oração "Os dados que foram apresentados na reunião comprovam a eficácia da nova gestão", o termo destacado é uma conjunção integrante.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
                 gabarito: "Errado"
             },
             {
+                id: 4,
+                pergunta: 'Na frase "Precisa-se de profissionais especializados para o setor de fiscalização", a partícula em destaque atua como índice de indeterminação do sujeito.',
+                tipo: "Certo / Errado",
+                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "Certo"
+            },
+            {
                 id: 5,
-                pergunta: 'Na oração "Aos pareceres jurídicos mais complexos, o relator não lhes deu a devida atenção", a próclise do pronome oblíquo é de emprego obrigatório.',
+                pergunta: 'Em "Que excelente oportunidade de aprendizado surgiu durante o seminário regional!", o termo destacado classifica-se gramaticalmente como advérbio de intensidade.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
                 gabarito: "Certo"
             },
             {
                 id: 6,
-                pergunta: 'Na frase "Alugou-se os galpões industriais da empresa antes da decretação de falência", a concordância do verbo no singular está em conformidade com as exigências da norma-padrão.',
+                pergunta: 'Na oração "O auditor referiu-se as novas diretrizes orçamentárias com certa preocupação", o termo destacado exerce a função de pronome demonstrativo.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
                 gabarito: "Errado"
             },
             {
                 id: 7,
-                pergunta: 'Na frase "O candidato declarou à imprensa que responderia à todas as perguntas da bancada", o sinal indicativo de crase foi empregado em estrita observância à norma-padrão.',
+                pergunta: 'Em "Os diretores hão de assinar os documentos necessários antes do encerramento da sessão", o verbo em destaque atua como auxiliar e flexiona-se para concordar com o sujeito.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Errado"
+                gabarito: "Certo"
             },
             {
                 id: 8,
-                pergunta: 'No segmento "Os auditores examinaram, minuciosamente, os relatórios financeiros", o isolamento do advérbio de modo por vírgulas é considerado facultativo pela norma-padrão.',
+                pergunta: 'No trecho "Construíram-se novos prédios públicos para abrigar as secretarias municipais", a palavra em destaque classifica-se como partícula apassivadora.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
                 gabarito: "Certo"
             },
             {
                 id: 9,
-                pergunta: 'No enunciado "Qual de nós assumiremos a liderança das negociações com os representantes sindicais?", a concordância verbal efetuada na primeira pessoa do plural é correta.',
+                pergunta: 'No período "O diretor confirmou que os prazos para a entrega dos documentos serão prorrogados", a palavra em destaque atua como pronome relativo.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
                 gabarito: "Errado"
             },
             {
                 id: 10,
-                pergunta: 'Em "Dir-se-ia que a decisão foi tomada de forma precipitada pela junta médica", o emprego da mesóclise é opção facultativa do redator, sendo igualmente correta a forma "Se diria".',
+                pergunta: 'No trecho "Podem haver divergências entre os laudos apresentados pelos peritos", a locução verbal está incorreta, pois o verbo auxiliar deveria flexionar-se no singular.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Errado"
+                gabarito: "Certo"
             },
             {
                 id: 11,
-                pergunta: 'Em "O assessor comunicou o fato à sua secretária sem demonstrar preocupação", o uso do sinal indicativo de crase é de caráter facultativo.',
+                pergunta: 'Em "A empresa comprometeu-se a enviar os relatórios financeiros até o fim do expediente", o termo em destaque é um artigo definido que determina o verbo subsequente.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Certo"
+                gabarito: "Errado"
             },
             {
                 id: 12,
-                pergunta: 'Na oração "Apenas 1% dos parlamentares votou contra a emenda constitucional no plenário", o verbo no singular está gramaticalmente incorreto, devendo flexcionar-se obrigatoriamente no plural.',
+                pergunta: 'Em "O advogado defendeu-se das acusações com argumentos pautados na legislação vigente", o termo em destaque funciona como pronome reflexivo.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Errado"
+                gabarito: "Certo"
             },
             {
                 id: 13,
-                pergunta: 'Na frase "A equipe da noite revisou a minuta contratual; a da manhã, os anexos financeiros", a vírgula empregada na segunda oração justifica-se pela elipse do verbo anteriormente expresso.',
+                pergunta: 'Na oração "Houve-se o parecer com extrema clareza e objetividade técnica", o verbo haver é empregado no sentido de existir, mantendo sua característica impessoal.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Certo"
+                gabarito: "Errado"
             },
             {
                 id: 14,
-                pergunta: 'No trecho "O supervisor chamou os colaboradores e orientou-nos sobre os novos procedimentos de segurança", a posição enclítica do pronome oblíquo observa as normas gramaticais.',
+                pergunta: 'Na frase "Não se sabe se haverá nova convocação dos candidatos aprovados neste concurso", a primeira ocorrência da palavra representa uma conjunção integrante, e a segunda, uma conjunção condicional.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Certo"
+                gabarito: "Errado"
             },
             {
                 id: 15,
-                pergunta: 'No enunciado "O parecerista não fez menção à esta cláusula contratual durante a sessão", o emprego da crase é obrigatorio diante do pronome demonstrativo.',
+                pergunta: 'No período "A decisão a qual os conselheiros chegaram baseou-se em estudos minuciosos", a forma em destaque atua como preposição exigida pelo verbo regente.',
                 tipo: "Certo / Errado",
                 opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
                 gabarito: "Errado"
-            },
-            {
-                id: 16,
-                pergunta: 'Em "A corrupção, o nepotismo e a ineficiência, nada abalavam a convicção do jovem auditor", a flexão do verbo no plural justifica-se pela presença do sujeito composto antecedente.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Errado"
-            },
-            {
-                id: 17,
-                pergunta: 'No trecho "Senhor Presidente solicitamos a palavra para responder às acusações da bancada opositora", a ausência de vírgula após o termo inicial mantém a plena correção gramatical do texto.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Errado"
-            },
-            {
-                id: 18,
-                pergunta: 'No período "Precisa-se de técnicos especializados na manutenção dos equipamentos de informática", o verbo deve flexcionar-se no plural para concordar com o termo "técnicos especializados".',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Errado"
-            },
-            {
-                id: 19,
-                pergunta: 'Em "Houveram casos complexos durante a instrução do processo administrativo sanitário", o verbo está flexcionado corretamente no plural por concordar com o seu sujeito.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Errado"
-            },
-            {
-                id: 20,
-                pergunta: 'Na oração "O magistrado mandou os peritos assinarem o laudo cautelar imediatamente", a flexão de infinitivo no plural atende perfeitamente à norma-padrão da Língua Portuguesa.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Certo"
             }
         ];
 
