@@ -2,11 +2,18 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <!-- Meta tag ajustada para permitir rotação e ajuste livre de escala -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Sala 06 | Português Estratégico</title>
 
     <link rel="icon" type="image/png" href="estrategico.jpg">
     <meta name="theme-color" content="#0b0f19">
+
+    <!-- 1. Métrica de Acessos -->
+    <script src="analytics.js"></script>
+
+    <!-- 2. Gerenciador Central de Anúncios -->
+    <script src="anuncios.js"></script>
 
     <style>
         * {
@@ -17,8 +24,7 @@
         }
 
         body {
-            background-color: #ffffff; /* BRANCO PURO */
-            filter: brightness(0.98);   /* SUAVIZA A INTENSIDADE DO BRILHO PARA NÃO CANSAR A VISTA */
+            background-color: #e2e8f0; /* Fundo suave da página */
             color: #000000;
             line-height: 1.6;
             min-height: 100vh;
@@ -27,7 +33,7 @@
             width: 100%;
         }
 
-        /* BARRA SUPERIOR (ROLA NORMALMENTE COM A PÁGINA) */
+        /* BARRA FIXA SUPERIOR */
         .top-navbar {
             background-color: #0b0f19;
             padding: 12px 24px;
@@ -35,6 +41,9 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #1e293b;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .btn-voltar {
@@ -160,44 +169,95 @@
             gap: 10px;
         }
 
-        /* QUESTÕES E ENUNCIADOS */
-        .bloco-questao {
-            margin-bottom: 42px;
+        /* ESTILO DAS QUESTÕES DO SIMULADO (FUNDO BRANCO GELO) */
+        .quiz-card {
+            background-color: #f8fafc; /* BRANCO GELO CONFORTÁVEL */
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
 
-        .enunciado {
-            font-size: 20px;
+        .question-number {
             font-weight: 800;
+            color: #254077;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .question-text {
+            font-size: 1.05rem;
             color: #000000;
             margin-bottom: 18px;
-            line-height: 1.5;
-            border-left: 5px solid #254077;
-            padding-left: 14px;
-        }
-
-        .lista-frases {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        /* PADRÃO ÚNICO E FIXO PARA TODAS AS FRASES */
-        .lista-frases li {
-            font-size: 18px;
-            font-weight: 500;
-            color: #000000;
-            padding: 12px 0;
-            border-bottom: 1px dashed #cbd5e1;
             line-height: 1.6;
+            text-align: justify;
         }
 
-        .lista-frases li:last-child {
-            border-bottom: none;
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 10px;
         }
 
-        /* ESTILO DOS DESTAQUES DENTRO DAS FRASES */
-        .lista-frases span {
-            font-size: 1.1em;
-            font-weight: 700;
+        .btn-option {
+            padding: 12px 18px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 2px solid #cbd5e1;
+            background: #ffffff;
+            color: #334155;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            text-align: left;
+        }
+
+        .btn-option:hover {
+            border-color: #254077;
+            color: #254077;
+        }
+
+        .btn-option.selected {
+            background-color: #254077;
+            color: #ffffff;
+            border-color: #254077;
+        }
+
+        /* CAIXA DE FEEDBACK */
+        .feedback-box {
+            display: none;
+            padding: 14px 16px;
+            border-radius: 6px;
+            margin-top: 16px;
+            font-size: 0.95rem;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feedback-box.correct {
+            background-color: #f0fdf4;
+            border-left: 5px solid #16a34a;
+            color: #14532d;
+        }
+
+        .feedback-box.incorrect {
+            background-color: #fef2f2;
+            border-left: 5px solid #dc2626;
+            color: #7f1d1d;
+        }
+
+        .feedback-title {
+            font-weight: 800;
+            font-size: 1rem;
         }
 
         /* NOTA DISCRETA DE DIREITOS AUTORAIS */
@@ -222,7 +282,7 @@
             margin-top: auto;
         }
 
-        /* AJUSTES DE TELA */
+        /* AJUSTES PARA DISPOSITIVOS NA HORIZONTAL E TELAS MENORES */
         @media (max-width: 900px) and (orientation: landscape) {
             .header-banner {
                 height: 140px;
@@ -261,10 +321,6 @@
                 font-size: 22px;
             }
 
-            .enunciado {
-                font-size: 18px;
-            }
-
             .nota-propriedade {
                 font-size: 12px;
             }
@@ -273,7 +329,7 @@
 </head>
 <body>
 
-    <!-- BARRA SUPERIOR DE NAVEGAÇÃO -->
+    <!-- BARRA FIXA DE NAVEGAÇÃO -->
     <nav class="top-navbar">
         <a href="index.html" class="btn-voltar">&#8592; Voltar ao Início</a>
         <span class="badge-sala">Sala 06</span>
@@ -306,58 +362,554 @@
             Conteúdo da Semana <span style="font-size: 24px;">⬇️</span>
         </h1>
 
-        <!-- QUESTÃO 1 -->
-        <article class="bloco-questao">
-            <h2 class="enunciado">1) Classifique os substantivos a seguir quanto às suas flexões e categorias (comum ou próprio, concreto ou abstrato, primitivo ou derivado, simples ou composto):</h2>
-            <ul class="lista-frases">
-                <li>1) Honestidade</li>
-                <li>2) Guarda-chuva</li>
-                <li>3) Brasil</li>
-                <li>4) Tristeza</li>
-                <li>5) Pedregulho</li>
-                <li>6) Cachorro</li>
-                <li>7) Coragem</li>
-                <li>8) Flor</li>
-                <li>9) Giroflex</li>
-                <li>10) Saudade</li>
-                <li>11) Padeiro</li>
-                <li>12) Beija-flor</li>
-                <li>13) Justiça</li>
-                <li>14) Árvore</li>
-                <li>15) Amazônia</li>
-                <li>16) Ansiedade</li>
-                <li>17) Couve-flor</li>
-                <li>18) Beleza</li>
-                <li>19) Livro</li>
-                <li>20) Pedreira</li>
-            </ul>
+        <!-- BLOCO 1: EMPREGO DA PARTÍCULA "SE" -->
+
+        <!-- QUESTÃO 01 -->
+        <article class="quiz-card" id="q1">
+            <span class="question-number">Questão 01</span>
+            <p class="question-text">
+                No período "Venderam-se os imóveis comerciais do centro da cidade", a partícula "se" atua como partícula apassivadora, sendo "os imóveis comerciais do centro da cidade" o sujeito paciente da oração.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q1', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q1', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
         </article>
 
-        <!-- QUESTÃO 2 -->
-        <article class="bloco-questao">
-            <h2 class="enunciado">2) Identifique os artigos, substantivos e adjetivos presentes nas frases a seguir:</h2>
-            <ul class="lista-frases">
-                <li>1) O jovem arquiteto apresentou um projeto extremamente ousado para a revitalização do antigo centro histórico.</li>
-                <li>2) Com a chegada inesperada das fortes chuvas, os moradores locais buscaram abrigo nas casas mais altas.</li>
-                <li>3) Aquelas longas reuniões de trabalho deixavam todos os funcionários visivelmente cansados no final do dia.</li>
-                <li>4) Uma brisa suave e gelada soprava pelas ruas cobertas pelas folhas secas do outono.</li>
-                <li>5) O experiente professor explicou um conceito bastante complexo com exemplos simples e práticos.</li>
-                <li>6) Diversos cientistas renomados publicaram um estudo revelador sobre as transformações do clima global.</li>
-                <li>7) As crianças pequenas brincavam alegres no amplo jardim Florido da velha fazenda.</li>
-                <li>8) Um barulho estranho e persistente assustou os passageiros durante a longa viagem de ônibus.</li>
-                <li>9) Os novos diretores da empresa tomaram decisões difíceis para evitar uma crise financeira grave.</li>
-                <li>10) A antiga biblioteca municipal guarda raros documentos históricos sobre a fundação da nossa cidade.</li>
-                <li>11) Um olhar atento e minucioso revelou pequenos falhas no acabamento daquela escultura valiosa.</li>
-                <li>12) Vários turistas entusiasmados admiravam a magnífica paisagem das montanhas sob o céu azul.</li>
-                <li>13) O motorista cauteloso reduziu a velocidade da van por causa da forte neblina na estrada perigosa.</li>
-                <li>14) Uma comida caseira e saborosa sempre traz boas recordações dos tempos felizes da infância.</li>
-                <li>15) Os corajosos bombeiros enfrentaram o incêndio devastador com uma determinação impressionante.</li>
-                <li>16) A nova lei de trânsito gerou intensos debates entre os motoristas e os especialistas em mobilidade.</li>
-                <li>17) Um vento forte derrubou a alta cerca de madeira do terreno vizinho na tarde de ontem.</li>
-                <li>18) Os alunos mais dedicados da turma receberam um prêmio especial pelo excelente desempenho escolar.</li>
-                <li>19) A luz amarela dos postes iluminava as calçadas molhadas da pacata cidade do interior.</li>
-                <li>20) Um grande mistério envolve o desaparecimento daquele valioso quadro do museu central.</li>
-            </ul>
+        <!-- QUESTÃO 02 -->
+        <article class="quiz-card" id="q2">
+            <span class="question-number">Questão 02</span>
+            <p class="question-text">
+                Na oração "Tratam-se de assuntos sigilosos que exigem a atenção da diretoria", a flexão do verbo no plural justifica-se pela necessidade de concordância com o sujeito "assuntos sigilosos".
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q2', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q2', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 03 -->
+        <article class="quiz-card" id="q3">
+            <span class="question-number">Questão 03</span>
+            <p class="question-text">
+                Em "O jovem candidato preparou-se adequadamente para a sabatina do conselho", a palavra "se" exerce a função sintática de índice de indeterminação do sujeito.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q3', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q3', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 04 -->
+        <article class="quiz-card" id="q4">
+            <span class="question-number">Questão 04</span>
+            <p class="question-text">
+                No trecho "Alugou-se os galpões industriais no início do semestre", a concordância praticada atende rigorosamente às regras da norma-padrão da Língua Portuguesa.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q4', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q4', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 05 -->
+        <article class="quiz-card" id="q5">
+            <span class="question-number">Questão 05</span>
+            <p class="question-text">
+                Na frase "Necessita-se de novos pareceres técnicos para a instrução do processo", a partícula "se" funciona como índice de indeterminação do sujeito, razão pela qual o verbo permanece obrigatoriamente no singular.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q5', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q5', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 06 -->
+        <article class="quiz-card" id="q6">
+            <span class="question-number">Questão 06</span>
+            <p class="question-text">
+                Em "Os advogados cumprimentaram-se friamente antes do início da audiência", o pronome "se" expressa uma ação reflexiva recíproca entre os sujeitos da oração.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q6', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q6', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 07 -->
+        <article class="quiz-card" id="q7">
+            <span class="question-number">Questão 07</span>
+            <p class="question-text">
+                No segmento "Vive-se com mais tranquilidade nas cidades de menor porte", a palavra "se" atua como partícula apassivadora, estando o sujeito oculto na frase.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q7', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q7', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 08 -->
+        <article class="quiz-card" id="q8">
+            <span class="question-number">Questão 08</span>
+            <p class="question-text">
+                Em "Fixaram-se os cartazes informativos nos murais do edifício sede", o termo "os cartazes informativos" exerce a função sintática de sujeito paciente na voz passiva sintética.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q8', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q8', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 09 -->
+        <article class="quiz-card" id="q9">
+            <span class="question-number">Questão 09</span>
+            <p class="question-text">
+                No trecho "O acusado declarou-se inocente durante o interrogatório judicial", o elemento "se" desempenha a função de pronome reflexivo.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q9', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q9', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 10 -->
+        <article class="quiz-card" id="q10">
+            <span class="question-number">Questão 10</span>
+            <p class="question-text">
+                Na frase "Divulgou-se ontem as notas definitivas da prova discursiva", a concordância verbal efetuada no singular está correta, pois a partícula "se" indetermina o sujeito da oração.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q10', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q10', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 11 -->
+        <article class="quiz-card" id="q11">
+            <span class="question-number">Questão 11</span>
+            <p class="question-text">
+                Em "Aspira-se a cargos públicos de grande relevância no cenário nacional", o termo "a cargos públicos" funciona como objeto indireto de um verbo acompanhado por índice de indeterminação do sujeito.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q11', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q11', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 12 -->
+        <article class="quiz-card" id="q12">
+            <span class="question-number">Questão 12</span>
+            <p class="question-text">
+                No trecho "As testemunhas contradisseram-se nos depoimentos prestados à autoridade", a partícula "se" classifica-se como partícula apassivadora, já que a ação verbal é sofrida pelo sujeito.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q12', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q12', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 13 -->
+        <article class="quiz-card" id="q13">
+            <span class="question-number">Questão 13</span>
+            <p class="question-text">
+                Na oração "Precisa-se de fiscais de contrato mais atentos às cláusulas operacionais", o termo "fiscais de contrato" exerce a função de sujeito simples da oração.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q13', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q13', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 14 -->
+        <article class="quiz-card" id="q14">
+            <span class="question-number">Questão 14</span>
+            <p class="question-text">
+                Em "Aprovou-se a nova lei de diretrizes orçamentárias na sessão de ontem", a oração encontra-se na voz passiva sintética, sendo o verbo transitivo direto acompanhado de partícula apassivadora.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q14', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q14', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 15 -->
+        <article class="quiz-card" id="q15">
+            <span class="question-number">Questão 15</span>
+            <p class="question-text">
+                No período "O motorista feriu-se gravemente no acidente ocorrido na rodovia", a partícula "se" indica que o sujeito pratica e sofre a ação verbal, configurando a voz reflexiva.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q15', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q15', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 16 -->
+        <article class="quiz-card" id="q16">
+            <span class="question-number">Questão 16</span>
+            <p class="question-text">
+                Na frase "Proíbem-se a entrada e a permanência de pessoas não autorizadas na sala de controle", a concordância verbal do verbo no plural é obrigatória por se tratar de sujeito paciente composto antecedente ou posposto pleno.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q16', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q16', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 17 -->
+        <article class="quiz-card" id="q17">
+            <span class="question-number">Questão 17</span>
+            <p class="question-text">
+                Em "Acredita-se em dias melhores para a economia do país no próximo trimestre", a palavra "se" atua como índice de indeterminação do sujeito, mantendo o verbo obrigatoriamente na terceira pessoa do singular.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q17', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q17', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 18 -->
+        <article class="quiz-card" id="q18">
+            <span class="question-number">Questão 18</span>
+            <p class="question-text">
+                No segmento "Os delegados reuniram-se com o corregedor para alinhar as diretrizes de investigação", a palavra "se" funciona como índice de indeterminação do sujeito.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q18', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q18', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 19 -->
+        <article class="quiz-card" id="q19">
+            <span class="question-number">Questão 19</span>
+            <p class="question-text">
+                Na oração "Proferiu-se decisões conflitantes durante o julgamento dos recursos", a forma verbal no singular atende à norma-padrão, visto que a partícula "se" torna o sujeito indeterminado.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q19', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q19', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 20 -->
+        <article class="quiz-card" id="q20">
+            <span class="question-number">Questão 20</span>
+            <p class="question-text">
+                No trecho "Recorrem-se a estratégias jurídicas ousadas quando os prazos estão escassos", a flexão do verbo no plural está em conformidade com a norma-padrão, pois concorda com "estratégias jurídicas".
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q20', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q20', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 21 -->
+        <article class="quiz-card" id="q21">
+            <span class="question-number">Questão 21</span>
+            <p class="question-text">
+                Em "O conselheiro vestiu-se formalmente para a solenidade de posse", a partícula "se" atua como pronome reflexivo, funcionando sintaticamente como objeto direto.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q21', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q21', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- BLOCO 2: CLASSIFICAÇÃO DO PREDICADO DA ORAÇÃO -->
+
+        <!-- QUESTÃO 22 -->
+        <article class="quiz-card" id="q22">
+            <span class="question-number">Questão 22</span>
+            <p class="question-text">
+                No período "O juiz julgou o réu culpado", o predicado classifica-se como verbo-nominal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q22', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q22', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 23 -->
+        <article class="quiz-card" id="q23">
+            <span class="question-number">Questão 23</span>
+            <p class="question-text">
+                Na oração "Os auditores permaneceram atentos durante toda a sessão", o predicado classifica-se como verbal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q23', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q23', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 24 -->
+        <article class="quiz-card" id="q24">
+            <span class="question-number">Questão 24</span>
+            <p class="question-text">
+                Em "A comissão examinou os relatórios contratuais com rigor", o predicado da oração é classificado como verbal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q24', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q24', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 25 -->
+        <article class="quiz-card" id="q25">
+            <span class="question-number">Questão 25</span>
+            <p class="question-text">
+                No trecho "Os alunos saíram da sala apressados após a prova", o predicado classifica-se como verbo-nominal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q25', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q25', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 26 -->
+        <article class="quiz-card" id="q26">
+            <span class="question-number">Questão 26</span>
+            <p class="question-text">
+                Na frase "A situação do município continua crítica neste trimestre", a oração apresenta predicado nominal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q26', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q26', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 27 -->
+        <article class="quiz-card" id="q27">
+            <span class="question-number">Questão 27</span>
+            <p class="question-text">
+                Em "O governador discursou entusiasmado para os servidores", o predicado da oração classifica-se como exclusivamente verbal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q27', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q27', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 28 -->
+        <article class="quiz-card" id="q28">
+            <span class="question-number">Questão 28</span>
+            <p class="question-text">
+                No segmento "O fiscal andava preocupado com as irregularidades encontradas", o predicado da oração é essencialmente verbal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q28', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q28', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 29 -->
+        <article class="quiz-card" id="q29">
+            <span class="question-number">Questão 29</span>
+            <p class="question-text">
+                Em "O plenário nomeou o auditor relator do processo", a oração conta com um predicado verbo-nominal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q29', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q29', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 30 -->
+        <article class="quiz-card" id="q30">
+            <span class="question-number">Questão 30</span>
+            <p class="question-text">
+                No trecho "Os técnicos apresentaram os laudos ao conselho fiscal", o predicado classifica-se como nominal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q30', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q30', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 31 -->
+        <article class="quiz-card" id="q31">
+            <span class="question-number">Questão 31</span>
+            <p class="question-text">
+                Na oração "A reunião do conselho parece inevitável diante da crise", o predicado é nominal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q31', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q31', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 32 -->
+        <article class="quiz-card" id="q32">
+            <span class="question-number">Questão 32</span>
+            <p class="question-text">
+                Em "Os pareceristas consideraram a proposta inviável", a oração apresenta predicado verbo-nominal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q32', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q32', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 33 -->
+        <article class="quiz-card" id="q33">
+            <span class="question-number">Questão 33</span>
+            <p class="question-text">
+                No período "Choveu muito durante a madrugada no litoral", o predicado da oração é verbo-nominal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q33', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q33', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 34 -->
+        <article class="quiz-card" id="q34">
+            <span class="question-number">Questão 34</span>
+            <p class="question-text">
+                Na frase "A nova lei de licitações virou uma referência nacional", a oração apresenta predicado nominal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q34', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q34', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 35 -->
+        <article class="quiz-card" id="q35">
+            <span class="question-number">Questão 35</span>
+            <p class="question-text">
+                Em "O candidato chegou atrasado ao local de prova", o predicado é classificado como verbal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q35', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q35', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 36 -->
+        <article class="quiz-card" id="q36">
+            <span class="question-number">Questão 36</span>
+            <p class="question-text">
+                No segmento "Os deputados debateram exaustivamente a reforma tributária", o predicado da oração é verbal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q36', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q36', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 37 -->
+        <article class="quiz-card" id="q37">
+            <span class="question-number">Questão 37</span>
+            <p class="question-text">
+                Na oração "Ficamos surpresos com a velocidade do processo", o predicado é nominal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q37', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q37', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 38 -->
+        <article class="quiz-card" id="q38">
+            <span class="question-number">Questão 38</span>
+            <p class="question-text">
+                Em "A diretoria encontrou a sala vazia na manhã de segunda-feira", o predicado classifica-se como nominal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q38', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q38', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 39 -->
+        <article class="quiz-card" id="q39">
+            <span class="question-number">Questão 39</span>
+            <p class="question-text">
+                No trecho "O motorista transitava em alta velocidade pela avenida", o predicado é verbo-nominal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q39', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q39', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 40 -->
+        <article class="quiz-card" id="q40">
+            <span class="question-number">Questão 40</span>
+            <p class="question-text">
+                Na frase "A assembleia permaneceu silenciosa durante o pronunciamento", o predicado é verbal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q40', 'C', 'E')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q40', 'E', 'E')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 41 -->
+        <article class="quiz-card" id="q41">
+            <span class="question-number">Questão 41</span>
+            <p class="question-text">
+                No período "A comissão julgou o parecer incompleto", a oração apresenta predicado verbo-nominal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q41', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q41', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 42 -->
+        <article class="quiz-card" id="q42">
+            <span class="question-number">Questão 42</span>
+            <p class="question-text">
+                Em "Os analistas responderam prontamente aos questionamentos do tribunal", o predicado classifica-se como verbal.
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q42', 'C', 'C')">( C ) Certo</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q42', 'E', 'C')">( E ) Errado</button>
+            </div>
+            <div class="feedback-box"></div>
         </article>
 
         <!-- NOTA DE AUTORIA E PROPRIEDADE -->
@@ -371,6 +923,33 @@
     <footer class="footer-site">
         &copy; 2026 SENE. Todos os direitos reservados.
     </footer>
+
+    <!-- SCRIPT DE LÓGICA DO SIMULADO -->
+    <script>
+        function checkAnswer(questionId, selectedLetter, correctLetter) {
+            const card = document.getElementById(questionId);
+            const buttons = card.querySelectorAll('.btn-option');
+            const feedbackBox = card.querySelector('.feedback-box');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('selected');
+                if (btn.getAttribute('data-letter') === selectedLetter) {
+                    btn.classList.add('selected');
+                }
+            });
+
+            feedbackBox.style.display = 'block';
+            const gabaritoTexto = correctLetter === 'C' ? 'Certo' : 'Errado';
+            
+            if (selectedLetter === correctLetter) {
+                feedbackBox.className = 'feedback-box correct';
+                feedbackBox.innerHTML = `<div class="feedback-title">✓ Resposta Correta! (Gabarito: ${gabaritoTexto})</div>`;
+            } else {
+                feedbackBox.className = 'feedback-box incorrect';
+                feedbackBox.innerHTML = `<div class="feedback-title">✕ Resposta Incorreta. (Gabarito: ${gabaritoTexto})</div>`;
+            }
+        }
+    </script>
 
 </body>
 </html>
