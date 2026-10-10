@@ -368,7 +368,9 @@
 
             msgEspera.style.display = "none";
             areaQuiz.style.display = "block";
-            enunciadoEl.innerText = `${questao.id}. ${questao.pergunta}`;
+            
+            // CORRIGIDO PARA innerHTML PARA RENDERIZAR OS DESTAQUES CORRETAMENTE
+            enunciadoEl.innerHTML = `${questao.id}. ${questao.pergunta}`;
             opcoesContainer.innerHTML = "";
             feedbackEl.style.display = "none";
 
@@ -380,7 +382,9 @@
                 questao.opcoes.forEach((opcao) => {
                     const btn = document.createElement("button");
                     btn.className = "btn-opcao";
-                    btn.innerText = opcao;
+                    
+                    // CORRIGIDO PARA innerHTML PARA AS ALTERNATIVAS
+                    btn.innerHTML = opcao;
 
                     if (jaVotou) {
                         btn.disabled = true;
@@ -418,7 +422,8 @@
 
                 botoes.forEach(btn => {
                     btn.disabled = true;
-                    if (normalizarTexto(btn.innerText) === optNorm) {
+                    // Lendo innerHTML para comparar corretamente com a tag renderizada
+                    if (normalizarTexto(btn.innerHTML) === optNorm) {
                         if (optNorm === gabNorm) {
                             btn.classList.add("opcao-acerto");
                         } else {

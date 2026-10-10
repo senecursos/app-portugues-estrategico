@@ -36,7 +36,7 @@
 
     <div class="container">
         <header>
-            <h1>Painel do Professor - Controle do Auditório</h1>
+            <h1>Painel do Professor - Atividades Extras</h1>
             <p>Selecione a questão para disparar nos celulares dos alunos e veja os resultados em tempo real.</p>
         </header>
 
@@ -58,10 +58,9 @@
         const senha = prompt("Digite a senha do professor:");
         if (senha !== "123456") {
             alert("Senha incorreta!");
-            window.location.href = "atividades_extras.html";
+            window.location.href = "atividadeextra.html";
         }
 
-        // NOVO PROJETO DO FIREBASE (atividade-extra-36f40)
         const firebaseConfig = {
             apiKey: "AIzaSyC9cRrlARDHnxuABa_zewIbZVEHLTRhJgs",
             authDomain: "atividade-extra-36f40.firebaseapp.com",
@@ -75,87 +74,280 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // =========================================================================
-        // BANCO DE QUESTÕES (MANTIDO IDÊNTICO, APENAS SEM O "CHUTEI")
-        // =========================================================================
+        // BANCO DE QUESTÕES COM DESTAQUES EM SUBLINHADO (<u>)
         const questoes = [
             {
                 id: 1,
-                pergunta: "Assinale a alternativa em que a oração destacada se classifica como subordinada substantiva subjetiva reduzida de infinitivo.",
+                pergunta: "Assinale a alternativa em que a concordância nominal está estritamente correta de acordo com a norma-padrão.",
                 tipo: "A-E",
                 opcoes: [
-                    "A) Convém analisar os pareceres técnicos com urgência.",
-                    "B) Os diretores temiam perder o controle das negociações.",
-                    "C) A intenção do conselho era reorganizar o quadro de funcionários.",
-                    "D) O advogado tinha certeza de conseguir a liminar favorável.",
-                    "E) Ele nos aconselhou a manter a postura durante a reunião."
+                    "A) A diretora mesma entregou os documentos confidenciais à banca examinadora.",
+                    "B) É <u>necessário</u> cautela na elaboração dos contratos públicos e termos aditivos.",
+                    "C) Os fiscais enviaram <u>anexo</u> o laudo de vistoria e a planilha orçamentária.",
+                    "D) A chefia considerou <u>desnecessárias</u> as exigências burocráticas e os prazos longos.",
+                    "E) Havia <u>bastantes</u> motivos para o adiamento da sessão plenária."
                 ],
-                gabarito: "A) Convém analisar os pareceres técnicos com urgência."
+                gabarito: "D) A chefia considerou <u>desnecessárias</u> as exigências burocráticas e os prazos longos."
             },
             {
                 id: 2,
-                pergunta: "Assinale a alternativa cuja oração sublinhada é subordinada adjetiva reduzida de particípio.",
+                pergunta: "Assinale a alternativa em que a concordância nominal preenche adequadamente e gramaticalmente a lacuna da frase: \"É ____ entrada de menores desacompanhados no recinto da assembleia.\"",
                 tipo: "A-E",
                 opcoes: [
-                    "A) Encontramos os alunos estudando na biblioteca do campus.",
-                    "B) A proposta apresentada pelos consultores agradou ao conselho.",
-                    "C) O jovem, desejando alcançar o topo, empenhou-se nos estudos.",
-                    "D) Há muitos relatórios para revisar antes do encerramento.",
-                    "E) Vi os atletas correndo no parque ao amanhecer."
+                    "A) proibido",
+                    "B) proibida",
+                    "C) proibidos",
+                    "D) proibidas",
+                    "E) proibido a"
                 ],
-                gabarito: "B) A proposta apresentada pelos consultores agradou ao conselho."
+                gabarito: "B) proibida"
             },
             {
                 id: 3,
-                pergunta: "Na frase \"Ao terminar a exposição dos fatos, o juiz concedeu a palavra à defesa\", a oração reduzida em destaque possui valor sintático de subordinada adverbial:",
+                pergunta: "Assinale a alternativa correta quanto à concordância nominal.",
                 tipo: "A-E",
                 opcoes: [
-                    "A) Causal",
-                    "B) Concessiva",
-                    "C) Temporal",
-                    "D) Final",
-                    "E) Condicional"
+                    "A) Os pareceres jurídicos e técnicos foram <u>aprovados</u> por unanimidade pelo conselho.",
+                    "B) A empresa apresentou proposta e balanço <u>atualizado</u> no mesmo dia.",
+                    "C) Tratava-se de leis e decretos <u>revogadas</u> pela nova gestão municipal.",
+                    "D) Os candidatos demonstraram <u>menos</u> preocupação com o resultado do certame.",
+                    "E) Ficaram <u>mudos</u> a testemunha e o réu durante toda a instrução processual."
                 ],
-                gabarito: "C) Temporal"
+                gabarito: "A) Os pareceres jurídicos e técnicos foram <u>aprovados</u> por unanimidade pelo conselho."
             },
             {
                 id: 4,
-                pergunta: "Assinale a opção que apresenta uma oração subordinada adverbial reduzida de gerúndio com valor de condição.",
+                pergunta: "Assinale a alternativa em que a concordância verbal está correta segundo a norma-padrão.",
                 tipo: "A-E",
                 opcoes: [
-                    "A) Mesmo sabendo do perigo, o marinheiro enfrentou a tempestade.",
-                    "B) Chegando ao escritório, procure imediatamente a recepção.",
-                    "C) Trabalhando com empenho, você alcançará a promoção desejada.",
-                    "D) Percebendo a gravidade do problema, os técnicos agiram rápido.",
-                    "E) Finalizando o expediente, o gerente trancou todas as portas."
+                    "A) Mais de um auditor participou da reunião extraordinária de ontem à tarde.",
+                    "B) Cerca de trinta servidores faltaram ao expediente de segunda-feira.",
+                    "C) A maioria dos candidatos <u>foram aprovados</u> na primeira etapa do concurso.",
+                    "D) 25% dos eleitores <u>votou</u> no candidato da oposição no último pleito.",
+                    "E) Fui eu que <u>resolveu</u> o impasse administrativo na controladoria."
                 ],
-                gabarito: "C) Trabalhando com empenho, você alcançará a promoção desejada."
+                gabarito: "B) Cerca de trinta servidores faltaram ao expediente de segunda-feira."
             },
             {
                 id: 5,
-                pergunta: "Assinale a alternativa que contém uma oração subordinada adverbial reduzida de infinitivo com valor final.",
+                pergunta: "Assinale a alternativa em que a concordância verbal obedece rigorosamente à norma-padrão.",
                 tipo: "A-E",
                 opcoes: [
-                    "A) Por ser muito atencioso, o médico conquistou a confiança dos pacientes.",
-                    "B) Apesar de ter treinado bastante, o competidor não obteve o primeiro lugar.",
-                    "C) Sem estudar a matéria, você não obterá bom rendimento na prova.",
-                    "D) Os fiscais compareceram à fábrica para inspecionar as instalações.",
-                    "E) A ponto de desistir do projeto, o pesquisador recebeu novos recursos."
+                    "A) <u>Houveram</u> muitos protestos na porta da assembleia legislativa durante a votação.",
+                    "B) <u>Fazem</u> dois anos que o regimento interno não é reformulado pelo plenário.",
+                    "C) Deve <u>existir</u> soluções viáveis para o problema orçamentário da autarquia.",
+                    "D) <u>Batiam</u> dez horas no relógio da torre quando o julgamento começou.",
+                    "E) Sobrou <u>apenas</u> os relatórios financeiros para a revisão da auditoria."
                 ],
-                gabarito: "D) Os fiscais compareceram à fábrica para inspecionar as instalações."
+                gabarito: "D) <u>Batiam</u> dez horas no relógio da torre quando o julgamento começou."
             },
             {
                 id: 6,
-                pergunta: "Assinale a alternativa em que a oração destacada se classifica como subordinada substantiva completiva nominal reduzida de infinitivo.",
+                pergunta: "Assinale a alternativa gramaticalmente correta quanto à concordância verbal.",
                 tipo: "A-E",
                 opcoes: [
-                    "A) A exigência do diretor foi apresentar os relatórios sem rasuras.",
-                    "B) Nós tínhamos esperança de alcançar as metas trimestrais da empresa.",
-                    "C) O presidente permitiu reorganizar os horários do departamento.",
-                    "D) Constou na ata terem sido aprovadas todas as contas do exercício.",
-                    "E) O supervisor chamou os colaboradores para definir as estratégias."
+                    "A) Qual de nós <u>assumiremos</u> a direção do órgão fiscalizador?",
+                    "B) Nem um nem outro servidor <u>faltou</u> ao serviço na semana passada.",
+                    "C) O diretor ou o vice-presidente <u>assinará</u> o convênio com o estado.",
+                    "D) Satisfez a todos os presentes as explicações do relator do processo.",
+                    "E) Faltam dez minutos para o término da sessão plenária."
                 ],
-                gabarito: "B) Nós tínhamos esperança de alcançar as metas trimestrais da empresa."
+                gabarito: "E) Faltam dez minutos para o término da sessão plenária."
+            },
+            {
+                id: 7,
+                pergunta: "Assinale a alternativa em que todas as palavras são acentuadas devido à mesma regra de acentuação gráfica (oxítonas).",
+                tipo: "A-E",
+                opcoes: [
+                    "A) parabéns, caatinga, guaraná",
+                    "B) sofá, cajá, vatapá",
+                    "C) pêssego, lampião, árvore",
+                    "D) rubrica, íris, fósforo",
+                    "E) caráter, vírus, útil"
+                ],
+                gabarito: "B) sofá, cajá, vatapá"
+            },
+            {
+                id: 8,
+                pergunta: "Assinale a alternativa em que a acentuação de todas as palavras justifica-se pela regra dos ditongos abertos tônicos em posição oxítona.",
+                tipo: "A-E",
+                opcoes: [
+                    "A) herói, chapéu, anzol",
+                    "B) papéis, troféus, herói",
+                    "C) constrói, ideia, apóio",
+                    "D) chapéu, herói, gratuito",
+                    "E) jibóia, assembleia, heroico"
+                ],
+                gabarito: "B) papéis, troféus, herói"
+            },
+            {
+                id: 9,
+                pergunta: "Assinale a alternativa em que todas as palavras são acentuadas devido à regra do hiato (vogais \"i\" ou \"u\" tônicas sozinhas ou seguidas de \"s\" na sílaba).",
+                tipo: "A-E",
+                opcoes: [
+                    "A) saíra, baú, juiz",
+                    "B) saúde, caída, faísca",
+                    "C) parabéns, piauí, egoísmo",
+                    "D) baú, ruína, papéis",
+                    "E) graúdo, influir, gratuito"
+                ],
+                gabarito: "B) saúde, caída, faísca"
+            },
+            {
+                id: 10,
+                pergunta: "Assinale a alternativa cujos vocábulos tiveram seus acentos gráficos eliminados em decorrência do Acordo Ortográfico da Língua Portuguesa (ditongos abertos em palavras paroxítonas).",
+                tipo: "A-E",
+                opcoes: [
+                    "A) assembleia, ideia, jiboia",
+                    "B) heroico, paranoia, assembleia",
+                    "C) ideia, colmeia, voo",
+                    "D) feiura, juiz, gratuito",
+                    "E) geleia, joia, Piauí"
+                ],
+                gabarito: "A) assembleia, ideia, jiboia"
+            },
+            {
+                id: 11,
+                pergunta: "Assinale a alternativa em que a colocação do pronome oblíquo átono obedece rigorosamente à norma-padrão.",
+                tipo: "A-E",
+                opcoes: [
+                    "A) Não <u>informaram-me</u> sobre as alterações no edital da licitação.",
+                    "B) Jamais <u>revelar-lhe-ei</u> os segredos da auditoria interna.",
+                    "C) Os candidatos que <u>apresentaram-se</u> atrasados foram desclassificados.",
+                    "D) Quando <u>realizou-se</u> a sessão plenária, o quórum era insuficiente.",
+                    "E) Ninguém <u>o</u> advertiu sobre os riscos da operação financeira."
+                ],
+                gabarito: "E) Ninguém <u>o</u> advertiu sobre os riscos da operação financeira."
+            },
+            {
+                id: 12,
+                pergunta: "Assinale a alternativa em que a colocação pronominal viola a norma-padrão por iniciar a oração com pronome oblíquo átono.",
+                tipo: "A-E",
+                opcoes: [
+                    "A) Me disseram que a reunião foi adiada pela mesa diretora.",
+                    "B) Disse-lhe toda a verdade durante a audiência pública.",
+                    "C) Entregaremos-lhe o relatório técnico amanhã sem falta.",
+                    "D) Fazem-se necessários novos estudos orçamentários.",
+                    "E) Obedecer-lhe-emos prontamente em todas as diretrizes."
+                ],
+                gabarito: "A) Me disseram que a reunião foi adiada pela mesa diretora."
+            },
+            {
+                id: 13,
+                pergunta: "Assinale a alternativa em que o emprego da mesóclise está correto e obrigatório segundo a norma-padrão.",
+                tipo: "A-E",
+                opcoes: [
+                    "A) Informar-<u>te-ei</u> sobre todas as mudanças no cronograma da auditoria.",
+                    "B) Não <u>revelar-lhe-ei</u> os dados sigilosos da investigação.",
+                    "C) Se <u>ajudar-te-ia</u> com prazer na elaboração do parecer.",
+                    "D) Quando <u>comunicar-lhe-ão</u> a decisão da junta médica?",
+                    "E) O supervisor <u>entregar-me-á</u> o documento amanhã cedo."
+                ],
+                gabarito: "A) Informar-<u>te-ei</u> sobre todas as mudanças no cronograma da auditoria."
+            },
+            {
+                id: 14,
+                pergunta: "Assinale a alternativa em que a vírgula foi empregada de forma incorreta, violando a estrutura sintática básica da oração.",
+                tipo: "A-E",
+                opcoes: [
+                    "A) Os auditores da controladoria geral examinaram os documentos contábeis.",
+                    "B) Durante a sessão de ontem, os parlamentares aprovaram o projeto de lei.",
+                    "C) A comissão técnica, analisou minuciosamente todas as propostas da licitação.",
+                    "D) Os servidores públicos, exaustos pela carga horária, solicitaram o recesso.",
+                    "E) Conforme determinam as normas vigentes, o processo foi arquivado."
+                ],
+                gabarito: "C) A comissão técnica, analisou minuciosamente todas as propostas da licitação."
+            },
+            {
+                id: 15,
+                pergunta: "Assinale a alternativa em que as vírgulas foram empregadas para isolar um vocativo.",
+                tipo: "A-E",
+                opcoes: [
+                    "A) Senhor Presidente, solicitamos a palavra para esclarecimentos.",
+                    "B) Brasília, capital do país, sediará o congresso internacional.",
+                    "C) Os auditores, que chegaram cedo, iniciaram a análise dos balanços.",
+                    "D) Embora o prazo estivesse encerrado, o recurso foi aceito.",
+                    "E) A decisão foi tomada, mas houve muita divergência no plenário."
+                ],
+                gabarito: "A) Senhor Presidente, solicitamos a palavra para esclarecimentos."
+            },
+            {
+                id: 16,
+                pergunta: "Assinale a alternativa em que a vírgula antes da conjunção \"e\" é obrigatória devido à diferença de sujeitos entre as orações coordenadas.",
+                tipo: "A-E",
+                opcoes: [
+                    "A) O fiscal examinou os documentos e liberou o pagamento do contrato.",
+                    "B) Os servidores concluíram o relatório, e a diretoria aprovou o texto final.",
+                    "C) A equipe trabalhou arduamente e alcançou todas as metas estabelecidas.",
+                    "D) O relator emitiu o parecer e abandonou a sala de reuniões.",
+                    "E) Os candidatos estudaram muito e obtiveram excelentes notas."
+                ],
+                gabarito: "B) Os servidores concluíram o relatório, e a diretoria aprovou o texto final."
+            },
+            {
+                id: 17,
+                pergunta: "Assinale a alternativa em que as vírgulas isolam corretamente uma oração subordinada adjetiva explicativa.",
+                tipo: "A-E",
+                opcoes: [
+                    "A) Os candidatos que obtiveram nota superior a 80% foram convocados.",
+                    "B) Os candidatos, que obtiveram nota superior a 80%, foram convocados.",
+                    "C) A lei que foi aprovada ontem trará grandes impactos econômicos.",
+                    "D) O relatório que o consultor apresentou sanou todas as dúvidas.",
+                    "E) A decisão que tomamos fundamentou-se nos pareceres jurídicos."
+                ],
+                gabarito: "B) Os candidatos, que obtiveram nota superior a 80%, foram convocados."
+            },
+            {
+                id: 18,
+                pergunta: "Assinale a alternativa em que a vírgula após o adjunto adverbial deslocado é obrigatória devido à extensão da locução (três ou mais palavras).",
+                tipo: "A-E",
+                opcoes: [
+                    "A) Ontem, os diretores assinaram o contrato administrativo.",
+                    "B) No prédio da prefeitura, ocorreu a reunião com os secretários.",
+                    "C) No decorrer da última sessão plenária realizada na semana passada, os vereadores aprovaram a medida.",
+                    "D) Aqui, realizam-se importantes auditorias financeiras.",
+                    "E) Frequentemente, a comissão revisa os termos do edital."
+                ],
+                gabarito: "C) No decorrer da última sessão plenária realizada na semana passada, os vereadores aprovaram a medida."
+            },
+            {
+                id: 19,
+                pergunta: "Assinale a alternativa que apresenta a correta reescrita da frase \"O comitê aprovou todas as diretrizes orçamentárias\" na voz passiva analítica.",
+                tipo: "A-E",
+                opcoes: [
+                    "A) Todas as diretrizes orçamentárias foram aprovadas pelo comitê.",
+                    "B) Aprovou-se todas as diretrizes orçamentárias pelo comitê.",
+                    "C) O comitê havia aprovado as diretrizes orçamentárias.",
+                    "D) Todas as diretrizes orçamentárias foram aprovadas com o comitê.",
+                    "E) Foram aprovadas o comitê e as diretrizes orçamentárias."
+                ],
+                gabarito: "A) Todas as diretrizes orçamentárias foram aprovadas pelo comitê."
+            },
+            {
+                id: 20,
+                pergunta: "Assinale a alternativa em que a reescrita da frase \"Caso haja recursos financeiros, o projeto será executado\" mantém o sentido original de condição e a correção gramatical.",
+                tipo: "A-E",
+                opcoes: [
+                    "A) Havendo recursos financeiros, o projeto será executado.",
+                    "B) Houveram recursos financeiros, o projeto será executado.",
+                    "C) Porque há recursos financeiros, o projeto será executado.",
+                    "D) Embora haja recursos financeiros, o projeto será executado.",
+                    "E) Quando houveram recursos financeiros, o projeto foi executado."
+                ],
+                gabarito: "A) Havendo recursos financeiros, o projeto será executado."
+            },
+            {
+                id: 21,
+                pergunta: "Assinale a alternativa em que a substituição dos complementos verbais por pronomes oblíquos na frase \"O supervisor entregue o relatório aos diretores\" foi feita em conformidade com a norma-padrão.",
+                tipo: "A-E",
+                opcoes: [
+                    "A) O supervisor o entregou aos diretores.",
+                    "B) O supervisor entregou-o aos diretores.",
+                    "C) O supervisor lhes entregou o relatório.",
+                    "D) O supervisor entregou-lhes o relatório.",
+                    "E) O supervisor o-lhes entregou."
+                ],
+                gabarito: "B) O supervisor entregou-o aos diretores."
             }
         ];
 
@@ -171,6 +363,22 @@
             questoes.forEach((q) => {
                 const card = document.createElement("div");
                 card.className = "card";
+
+                let opcoesHTML = "";
+                q.opcoes.forEach(op => {
+                    const ehGabarito = normalizarTexto(op) === normalizarTexto(q.gabarito);
+                    const prefixo = ehGabarito ? '🟢 ' : '';
+                    opcoesHTML += `
+                        <div style="font-size: 0.9rem; margin-top: 5px; ${ehGabarito ? 'font-weight: bold; color: #4ade80;' : ''}">
+                            ${prefixo}${op}
+                        </div>
+                        <div class="barra-progresso-bg">
+                            <div class="barra-progresso-fill" style="width: 0%; background-color: ${ehGabarito ? '#16a34a' : '#2563eb'};"></div>
+                            <div class="barra-texto">0% (0 votos)</div>
+                        </div>
+                    `;
+                });
+
                 card.innerHTML = `
                     <div class="card-header">
                         <span class="card-title">Questão ${q.id} (${q.tipo})</span>
@@ -179,7 +387,7 @@
                     <p style="margin-bottom: 15px; color: #f1f5f9;"><b>${q.pergunta}</b></p>
                     <p style="font-size: 0.85rem; color: #4ade80; margin-bottom: 15px;">Gabarito: 🟢 ${q.gabarito}</p>
                     
-                    <div id="resultados-q${q.id}"></div>
+                    <div id="resultados-q${q.id}">${opcoesHTML}</div>
                     <div class="estatisticas-gerais" id="total-q${q.id}">Total de Respostas: 0</div>
                 `;
                 container.appendChild(card);
@@ -190,7 +398,7 @@
         window.ativarQuestao = function(id) {
             const q = questoes.find(item => item.id === id);
             set(ref(db, "sessao/questaoAtiva"), { ...q, ativa: true });
-            alert(`Questão ${id} enviada com sucesso para a tela dos alunos!`);
+            alert(`Questão ${id} enviada com sucesso para os alunos!`);
         };
 
         window.encerrarVotacao = function() {
@@ -218,7 +426,6 @@
                 Object.values(votos).forEach(v => {
                     if (v && v.opcao) {
                         const opcaoLimpaAluno = normalizarTexto(v.opcao);
-                        
                         const chaveEncontrada = questao.opcoes.find(op => 
                             normalizarTexto(op) === opcaoLimpaAluno
                         );
