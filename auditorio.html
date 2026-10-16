@@ -192,7 +192,20 @@
 
         .btn-opcao:disabled {
             cursor: not-allowed;
-            opacity: 0.6;
+            opacity: 0.8;
+        }
+
+        /* ESTILOS ESPECÍFICOS DE RESPOSTA DO ALUNO */
+        .btn-opcao.opcao-acerto {
+            background-color: #dcfce7 !important;
+            color: #166534 !important;
+            border-color: #86efac !important;
+        }
+
+        .btn-opcao.opcao-erro {
+            background-color: #fee2e2 !important;
+            color: #991b1b !important;
+            border-color: #fca5a5 !important;
         }
 
         .feedback-resposta {
@@ -215,13 +228,6 @@
             background-color: #fee2e2;
             color: #991b1b;
             border: 1px solid #fca5a5;
-        }
-
-        /* FEEDBACK EXCLUSIVO DE CHUTE / INCERTEZA */
-        .feedback-chute {
-            background-color: #fef3c7;
-            color: #92400e;
-            border: 1px solid #fcd34d;
         }
 
         .caixa-em-breve {
@@ -303,7 +309,7 @@
 
         <!-- MENSAGEM QUANDO NÃO HÁ QUESTÃO ATIVA -->
         <div id="mensagem-espera" class="caixa-em-breve">
-            📝  Não há evento ou questão ativa no momento, porém haverá em breve. Fique atento(a)! Aguarde pelo professor!
+            📝 Não há evento ou questão ativa no momento, porém haverá em breve. Fique atento(a)! Aguarde pelo professor!
         </div>
 
         <div class="nota-propriedade">
@@ -320,6 +326,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, onValue, set, get } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
+        // CONFIGURAÇÃO ORIGINAL DO AUDITÓRIO
         const firebaseConfig = {
             apiKey: "AIzaSyBaAP0E4TMCmSzP_-UNOSQn3n1-lQOJWJw",
             authDomain: "questoes-para-auditorio.firebaseapp.com",
@@ -333,11 +340,10 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // Identificador Anônimo do Aluno (Garante 1 voto por questão por dispositivo)
-        let alunoId = localStorage.getItem("aluno_uid");
+        let alunoId = localStorage.getItem("aluno_uuid");
         if (!alunoId) {
             alunoId = "aluno_" + Math.random().toString(36).substr(2, 9);
-            localStorage.setItem("aluno_uid", alunoId);
+            localStorage.setItem("aluno_uuid", alunoId);
         }
 
         const areaQuiz = document.getElementById("area-quiz");
@@ -346,7 +352,11 @@
         const opcoesContainer = document.getElementById("opcoes-container");
         const feedbackEl = document.getElementById("feedback");
 
-        // Escuta em tempo real qual questão está ativa no painel do professor
+        function normalizarTexto(txt) {
+            if (!txt) return "";
+            return txt.trim().toLowerCase().replace(/\s+/g, ' ').replace(/\.$/, '');
+        }
+
         const questaoAtivaRef = ref(db, "sessao/questaoAtiva");
         onValue(questaoAtivaRef, (snapshot) => {
             const questao = snapshot.val();
@@ -358,11 +368,12 @@
 
             msgEspera.style.display = "none";
             areaQuiz.style.display = "block";
-            enunciadoEl.innerText = `${questao.id}. ${questao.pergunta}`;
+            
+            // Permite exibir negrito e sublinhado no enunciado
+            enunciadoEl.innerHTML = `${questao.id}. ${questao.pergunta}`;
             opcoesContainer.innerHTML = "";
             feedbackEl.style.display = "none";
 
-            // Verifica se o aluno já respondeu a esta questão específica
             const votoRef = ref(db, `votos/${questao.id}/${alunoId}`);
             get(votoRef).then((votoSnap) => {
                 const jaVotou = votoSnap.exists();
@@ -371,13 +382,22 @@
                 questao.opcoes.forEach((opcao) => {
                     const btn = document.createElement("button");
                     btn.className = "btn-opcao";
-                    btn.innerText = opcao;
+                    btn.innerHTML = opcao;
+                    btn.dataset.opcao = opcao; // Proteção para leitura das tags
 
                     if (jaVotou) {
                         btn.disabled = true;
-                        if (opcao === respostaAnterior) {
-                            btn.style.backgroundColor = "#254077";
-                            btn.style.color = "#ffffff";
+                        
+                        // DESTAQUE APENAS NA OPÇÃO CLICADA (Não mostra a correta se o aluno errar)
+                        if (normalizarTexto(opcao) === normalizarTexto(respostaAnterior)) {
+                            const optNorm = normalizarTexto(respostaAnterior);
+                            const gabNorm = normalizarTexto(questao.gabarito);
+
+                            if (optNorm === gabNorm) {
+                                btn.classList.add("opcao-acerto");
+                            } else {
+                                btn.classList.add("opcao-erro");
+                            }
                         }
                     } else {
                         btn.onclick = () => enviarVoto(questao, opcao);
@@ -396,7 +416,21 @@
             const votoRef = ref(db, `votos/${questao.id}/${alunoId}`);
             set(votoRef, { opcao: opcaoEscolhida }).then(() => {
                 const botoes = opcoesContainer.querySelectorAll("button");
-                botoes.forEach(btn => btn.disabled = true);
+                const optNorm = normalizarTexto(opcaoEscolhida);
+                const gabNorm = normalizarTexto(questao.gabarito);
+
+                botoes.forEach(btn => {
+                    btn.disabled = true;
+                    // Lendo pelo dataset para garantir que nenhuma tag se perca na validação
+                    if (normalizarTexto(btn.dataset.opcao) === optNorm) {
+                        if (optNorm === gabNorm) {
+                            btn.classList.add("opcao-acerto");
+                        } else {
+                            btn.classList.add("opcao-erro");
+                        }
+                    }
+                });
+
                 exibirFeedback(opcaoEscolhida, questao.gabarito);
             });
         }
@@ -404,16 +438,16 @@
         function exibirFeedback(opcaoEscolhida, gabarito) {
             feedbackEl.style.display = "block";
 
-            // Se o aluno escolheu a alternativa de chute/incerteza
-            if (opcaoEscolhida && opcaoEscolhida.includes("Chutei")) {
-                feedbackEl.className = "feedback-resposta feedback-chute";
-                feedbackEl.innerHTML = "🤝 Obrigado pela sinceridade. Aguarde pela explicação!";
-            } else if (opcaoEscolhida === gabarito) {
+            const optNorm = normalizarTexto(opcaoEscolhida);
+            const gabNorm = normalizarTexto(gabarito);
+
+            if (optNorm === gabNorm) {
                 feedbackEl.className = "feedback-resposta feedback-acerto";
                 feedbackEl.innerHTML = "🟢 PARABÉNS! Você acertou!";
             } else {
+                // Apenas exibe o texto de incorreto
                 feedbackEl.className = "feedback-resposta feedback-erro";
-                feedbackEl.innerHTML = `🔴 INCORRETO! A resposta certa é: <b>${gabarito}</b>`;
+                feedbackEl.innerHTML = "🔴 INCORRETO! (Aguarde pela explicação do professor.)";
             }
         }
     </script>
