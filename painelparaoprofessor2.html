@@ -74,280 +74,163 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // BANCO DE QUESTÕES COM DESTAQUES EM SUBLINHADO (<u>)
+        // BANCO DE QUESTÕES (MORFOLOGIA) - COM DESTAQUE DUPLO NEGRITO + SUBLINHADO
         const questoes = [
             {
                 id: 1,
-                pergunta: "Assinale a alternativa em que a concordância nominal está estritamente correta de acordo com a norma-padrão.",
+                pergunta: "Na frase \"O parecer do relator foi considerado <b><u>inconsistente</u></b> pela comissão avaliadora\", a palavra em destaque classifica-se morfologicamente como:",
                 tipo: "A-E",
                 opcoes: [
-                    "A) A diretora mesma entregou os documentos confidenciais à banca examinadora.",
-                    "B) É <u>necessário</u> cautela na elaboração dos contratos públicos e termos aditivos.",
-                    "C) Os fiscais enviaram <u>anexo</u> o laudo de vistoria e a planilha orçamentária.",
-                    "D) A chefia considerou <u>desnecessárias</u> as exigências burocráticas e os prazos longos.",
-                    "E) Havia <u>bastantes</u> motivos para o adiamento da sessão plenária."
+                    "A) Substantivo.",
+                    "B) Adjetivo.",
+                    "C) Advérbio.",
+                    "D) Particípio.",
+                    "E) Pronome."
                 ],
-                gabarito: "D) A chefia considerou <u>desnecessárias</u> as exigências burocráticas e os prazos longos."
+                gabarito: "B) Adjetivo."
             },
             {
                 id: 2,
-                pergunta: "Assinale a alternativa em que a concordância nominal preenche adequadamente e gramaticalmente a lacuna da frase: \"É ____ entrada de menores desacompanhados no recinto da assembleia.\"",
+                pergunta: "Assinale a alternativa em que TODAS as palavras destacadas pertencem à classe dos substantivos:",
                 tipo: "A-E",
                 opcoes: [
-                    "A) proibido",
-                    "B) proibida",
-                    "C) proibidos",
-                    "D) proibidas",
-                    "E) proibido a"
+                    "A) O <b><u>olhar</u></b> da testemunha revelava <b><u>profunda</u></b> tristeza.",
+                    "B) O gestor <b><u>público</u></b> agiu de modo <b><u>transparente</u></b>.",
+                    "C) A <b><u>decisão</u></b> do conselho evitou o <b><u>colapso</u></b> financeiro.",
+                    "D) O <b><u>amanhã</u></b> sempre traz <b><u>novas</u></b> oportunidades.",
+                    "E) Aquela <b><u>jovem</u></b> estudava <b><u>bastante</u></b> para os exames."
                 ],
-                gabarito: "B) proibida"
+                gabarito: "C) A <b><u>decisão</u></b> do conselho evitou o <b><u>colapso</u></b> financeiro."
             },
             {
                 id: 3,
-                pergunta: "Assinale a alternativa correta quanto à concordância nominal.",
+                pergunta: "Na frase \"A comissão convocou os candidatos e informou-<b><u>lhes</u></b> o novo cronograma do certame\", a palavra destacada pertence à classe dos:",
                 tipo: "A-E",
                 opcoes: [
-                    "A) Os pareceres jurídicos e técnicos foram <u>aprovados</u> por unanimidade pelo conselho.",
-                    "B) A empresa apresentou proposta e balanço <u>atualizado</u> no mesmo dia.",
-                    "C) Tratava-se de leis e decretos <u>revogadas</u> pela nova gestão municipal.",
-                    "D) Os candidatos demonstraram <u>menos</u> preocupação com o resultado do certame.",
-                    "E) Ficaram <u>mudos</u> a testemunha e o réu durante toda a instrução processual."
+                    "A) Artigos.",
+                    "B) Advérbios.",
+                    "C) Preposições.",
+                    "D) Pronomes.",
+                    "E) Conjunções."
                 ],
-                gabarito: "A) Os pareceres jurídicos e técnicos foram <u>aprovados</u> por unanimidade pelo conselho."
+                gabarito: "D) Pronomes."
             },
             {
                 id: 4,
-                pergunta: "Assinale a alternativa em que a concordância verbal está correta segundo a norma-padrão.",
+                pergunta: "Identifique a alternativa em que a palavra destacada atua morfologicamente como um verbo no contexto em que se insere:",
                 tipo: "A-E",
                 opcoes: [
-                    "A) Mais de um auditor participou da reunião extraordinária de ontem à tarde.",
-                    "B) Cerca de trinta servidores faltaram ao expediente de segunda-feira.",
-                    "C) A maioria dos candidatos <u>foram aprovados</u> na primeira etapa do concurso.",
-                    "D) 25% dos eleitores <u>votou</u> no candidato da oposição no último pleito.",
-                    "E) Fui eu que <u>resolveu</u> o impasse administrativo na controladoria."
+                    "A) O <b><u>corte</u></b> de despesas foi aprovado em sessão extraordinária.",
+                    "B) O <b><u>trabalho</u></b> em equipe enobrece os resultados do setor.",
+                    "C) A <b><u>fala</u></b> do diretor comoveu todos os presentes no auditório.",
+                    "D) Aquele <b><u>imposto</u></b> sobre mercadorias foi considerado abusivo.",
+                    "E) É fundamental que a testemunha <b><u>fale</u></b> a verdade no depoimento."
                 ],
-                gabarito: "B) Cerca de trinta servidores faltaram ao expediente de segunda-feira."
+                gabarito: "E) É fundamental que a testemunha <b><u>fale</u></b> a verdade no depoimento."
             },
             {
                 id: 5,
-                pergunta: "Assinale a alternativa em que a concordância verbal obedece rigorosamente à norma-padrão.",
+                pergunta: "No trecho \"<b><u>Uns</u></b> questionamentos válidos surgiram após <b><u>o</u></b> encerramento do debate\", os termos destacados classificam-se, respectivamente, como:",
                 tipo: "A-E",
                 opcoes: [
-                    "A) <u>Houveram</u> muitos protestos na porta da assembleia legislativa durante a votação.",
-                    "B) <u>Fazem</u> dois anos que o regimento interno não é reformulado pelo plenário.",
-                    "C) Deve <u>existir</u> soluções viáveis para o problema orçamentário da autarquia.",
-                    "D) <u>Batiam</u> dez horas no relógio da torre quando o julgamento começou.",
-                    "E) Sobrou <u>apenas</u> os relatórios financeiros para a revisão da auditoria."
+                    "A) Pronome indefinido e preposição.",
+                    "B) Artigo indefinido e artigo definido.",
+                    "C) Numeral e pronome oblíquo.",
+                    "D) Adjetivo e artigo definido.",
+                    "E) Substantivo e verbo."
                 ],
-                gabarito: "D) <u>Batiam</u> dez horas no relógio da torre quando o julgamento começou."
+                gabarito: "B) Artigo indefinido e artigo definido."
             },
             {
                 id: 6,
-                pergunta: "Assinale a alternativa gramaticalmente correta quanto à concordância verbal.",
+                pergunta: "Em \"O relator, após analisar detalhadamente o extenso documento, considerou a medida <b><u>precipitada</u></b>\", a palavra destacada é um adjetivo. A qual substantivo esse adjetivo está se referindo sintaticamente?",
                 tipo: "A-E",
                 opcoes: [
-                    "A) Qual de nós <u>assumiremos</u> a direção do órgão fiscalizador?",
-                    "B) Nem um nem outro servidor <u>faltou</u> ao serviço na semana passada.",
-                    "C) O diretor ou o vice-presidente <u>assinará</u> o convênio com o estado.",
-                    "D) Satisfez a todos os presentes as explicações do relator do processo.",
-                    "E) Faltam dez minutos para o término da sessão plenária."
+                    "A) Relator.",
+                    "B) Documento.",
+                    "C) Analisar.",
+                    "D) Medida.",
+                    "E) Extenso."
                 ],
-                gabarito: "E) Faltam dez minutos para o término da sessão plenária."
+                gabarito: "D) Medida."
             },
             {
                 id: 7,
-                pergunta: "Assinale a alternativa em que todas as palavras são acentuadas devido à mesma regra de acentuação gráfica (oxítonas).",
+                pergunta: "Assinale a opção em que a palavra \"A\" funciona exclusivamente como um artigo definido:",
                 tipo: "A-E",
                 opcoes: [
-                    "A) parabéns, caatinga, guaraná",
-                    "B) sofá, cajá, vatapá",
-                    "C) pêssego, lampião, árvore",
-                    "D) rubrica, íris, fósforo",
-                    "E) caráter, vírus, útil"
+                    "A) O fiscal entregou a notificação de autuação <b><u>a</u></b> ele.",
+                    "B) Daqui <b><u>a</u></b> pouco iniciaremos o julgamento dos recursos.",
+                    "C) A candidata aprovada foi <b><u>a</u></b> que apresentou a melhor titulação.",
+                    "D) Encaminhamos <b><u>a</u></b> documentação exigida pela auditoria interna.",
+                    "E) Nunca mais <b><u>a</u></b> vi desde a última reunião de planejamento."
                 ],
-                gabarito: "B) sofá, cajá, vatapá"
+                gabarito: "D) Encaminhamos <b><u>a</u></b> documentação exigida pela auditoria interna."
             },
             {
                 id: 8,
-                pergunta: "Assinale a alternativa em que a acentuação de todas as palavras justifica-se pela regra dos ditongos abertos tônicos em posição oxítona.",
+                pergunta: "Na oração \"Apesar das críticas severas, a gestão manteve <b><u>suas</u></b> diretrizes intactas\", a palavra destacada classifica-se como:",
                 tipo: "A-E",
                 opcoes: [
-                    "A) herói, chapéu, anzol",
-                    "B) papéis, troféus, herói",
-                    "C) constrói, ideia, apóio",
-                    "D) chapéu, herói, gratuito",
-                    "E) jibóia, assembleia, heroico"
+                    "A) Pronome possessivo.",
+                    "B) Artigo definido.",
+                    "C) Adjetivo restritivo.",
+                    "D) Substantivo abstrato.",
+                    "E) Pronome demonstrativo."
                 ],
-                gabarito: "B) papéis, troféus, herói"
+                gabarito: "A) Pronome possessivo."
             },
             {
                 id: 9,
-                pergunta: "Assinale a alternativa em que todas as palavras são acentuadas devido à regra do hiato (vogais \"i\" ou \"u\" tônicas sozinhas ou seguidas de \"s\" na sílaba).",
+                pergunta: "Observe os termos destacados no trecho: \"O gestor <b><u>cauteloso</u></b> <b><u>recuou</u></b> diante da forte instabilidade do mercado.\" A ordem correta da classificação morfológica das duas palavras destacadas é:",
                 tipo: "A-E",
                 opcoes: [
-                    "A) saíra, baú, juiz",
-                    "B) saúde, caída, faísca",
-                    "C) parabéns, piauí, egoísmo",
-                    "D) baú, ruína, papéis",
-                    "E) graúdo, influir, gratuito"
+                    "A) Substantivo e Advérbio.",
+                    "B) Adjetivo e Verbo.",
+                    "C) Advérbio e Verbo.",
+                    "D) Adjetivo e Substantivo.",
+                    "E) Pronome e Verbo."
                 ],
-                gabarito: "B) saúde, caída, faísca"
+                gabarito: "B) Adjetivo e Verbo."
             },
             {
                 id: 10,
-                pergunta: "Assinale a alternativa cujos vocábulos tiveram seus acentos gráficos eliminados em decorrência do Acordo Ortográfico da Língua Portuguesa (ditongos abertos em palavras paroxítonas).",
+                pergunta: "Assinale a alternativa cujas palavras pertencem TODAS à classe dos verbos:",
                 tipo: "A-E",
                 opcoes: [
-                    "A) assembleia, ideia, jiboia",
-                    "B) heroico, paranoia, assembleia",
-                    "C) ideia, colmeia, voo",
-                    "D) feiura, juiz, gratuito",
-                    "E) geleia, joia, Piauí"
+                    "A) Parecer, ofício, trâmite.",
+                    "B) Contratante, fiador, devedor.",
+                    "C) Visto, anexo, quite.",
+                    "D) Intervir, propor, reaver.",
+                    "E) Canto, fala, choro."
                 ],
-                gabarito: "A) assembleia, ideia, jiboia"
+                gabarito: "D) Intervir, propor, reaver."
             },
             {
                 id: 11,
-                pergunta: "Assinale a alternativa em que a colocação do pronome oblíquo átono obedece rigorosamente à norma-padrão.",
+                pergunta: "Em \"<b><u>Aqueles</u></b> que não entregarem o <b><u>seu</u></b> relatório no prazo serão devidamente notificados\", as palavras destacadas pertencem à classe dos:",
                 tipo: "A-E",
                 opcoes: [
-                    "A) Não <u>informaram-me</u> sobre as alterações no edital da licitação.",
-                    "B) Jamais <u>revelar-lhe-ei</u> os segredos da auditoria interna.",
-                    "C) Os candidatos que <u>apresentaram-se</u> atrasados foram desclassificados.",
-                    "D) Quando <u>realizou-se</u> a sessão plenária, o quórum era insuficiente.",
-                    "E) Ninguém <u>o</u> advertiu sobre os riscos da operação financeira."
+                    "A) Substantivos.",
+                    "B) Adjetivos.",
+                    "C) Pronomes.",
+                    "D) Artigos.",
+                    "E) Verbos."
                 ],
-                gabarito: "E) Ninguém <u>o</u> advertiu sobre os riscos da operação financeira."
+                gabarito: "C) Pronomes."
             },
             {
                 id: 12,
-                pergunta: "Assinale a alternativa em que a colocação pronominal viola a norma-padrão por iniciar a oração com pronome oblíquo átono.",
+                pergunta: "Em \"O laudo técnico parecia <b><u>inconsistente</u></b> após a primeira revisão\", se alterarmos o sujeito da frase para o plural (\"Os laudos técnicos...\"), a palavra destacada deverá:",
                 tipo: "A-E",
                 opcoes: [
-                    "A) Me disseram que a reunião foi adiada pela mesa diretora.",
-                    "B) Disse-lhe toda a verdade durante a audiência pública.",
-                    "C) Entregaremos-lhe o relatório técnico amanhã sem falta.",
-                    "D) Fazem-se necessários novos estudos orçamentários.",
-                    "E) Obedecer-lhe-emos prontamente em todas as diretrizes."
+                    "A) Permanecer obrigatoriamente invariável (\"inconsistente\").",
+                    "B) Mudar para a forma adverbial (\"inconsistentemente\").",
+                    "C) Flexionar-se no plural, assumindo a forma \"inconsistentes\".",
+                    "D) Assumir o gênero feminino plural (\"inconsistentes\") independentemente do substantivo.",
+                    "E) Transformar-se em um substantivo abstrato plural."
                 ],
-                gabarito: "A) Me disseram que a reunião foi adiada pela mesa diretora."
-            },
-            {
-                id: 13,
-                pergunta: "Assinale a alternativa em que o emprego da mesóclise está correto e obrigatório segundo a norma-padrão.",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Informar-<u>te-ei</u> sobre todas as mudanças no cronograma da auditoria.",
-                    "B) Não <u>revelar-lhe-ei</u> os dados sigilosos da investigação.",
-                    "C) Se <u>ajudar-te-ia</u> com prazer na elaboração do parecer.",
-                    "D) Quando <u>comunicar-lhe-ão</u> a decisão da junta médica?",
-                    "E) O supervisor <u>entregar-me-á</u> o documento amanhã cedo."
-                ],
-                gabarito: "A) Informar-<u>te-ei</u> sobre todas as mudanças no cronograma da auditoria."
-            },
-            {
-                id: 14,
-                pergunta: "Assinale a alternativa em que a vírgula foi empregada de forma incorreta, violando a estrutura sintática básica da oração.",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Os auditores da controladoria geral examinaram os documentos contábeis.",
-                    "B) Durante a sessão de ontem, os parlamentares aprovaram o projeto de lei.",
-                    "C) A comissão técnica, analisou minuciosamente todas as propostas da licitação.",
-                    "D) Os servidores públicos, exaustos pela carga horária, solicitaram o recesso.",
-                    "E) Conforme determinam as normas vigentes, o processo foi arquivado."
-                ],
-                gabarito: "C) A comissão técnica, analisou minuciosamente todas as propostas da licitação."
-            },
-            {
-                id: 15,
-                pergunta: "Assinale a alternativa em que as vírgulas foram empregadas para isolar um vocativo.",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Senhor Presidente, solicitamos a palavra para esclarecimentos.",
-                    "B) Brasília, capital do país, sediará o congresso internacional.",
-                    "C) Os auditores, que chegaram cedo, iniciaram a análise dos balanços.",
-                    "D) Embora o prazo estivesse encerrado, o recurso foi aceito.",
-                    "E) A decisão foi tomada, mas houve muita divergência no plenário."
-                ],
-                gabarito: "A) Senhor Presidente, solicitamos a palavra para esclarecimentos."
-            },
-            {
-                id: 16,
-                pergunta: "Assinale a alternativa em que a vírgula antes da conjunção \"e\" é obrigatória devido à diferença de sujeitos entre as orações coordenadas.",
-                tipo: "A-E",
-                opcoes: [
-                    "A) O fiscal examinou os documentos e liberou o pagamento do contrato.",
-                    "B) Os servidores concluíram o relatório, e a diretoria aprovou o texto final.",
-                    "C) A equipe trabalhou arduamente e alcançou todas as metas estabelecidas.",
-                    "D) O relator emitiu o parecer e abandonou a sala de reuniões.",
-                    "E) Os candidatos estudaram muito e obtiveram excelentes notas."
-                ],
-                gabarito: "B) Os servidores concluíram o relatório, e a diretoria aprovou o texto final."
-            },
-            {
-                id: 17,
-                pergunta: "Assinale a alternativa em que as vírgulas isolam corretamente uma oração subordinada adjetiva explicativa.",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Os candidatos que obtiveram nota superior a 80% foram convocados.",
-                    "B) Os candidatos, que obtiveram nota superior a 80%, foram convocados.",
-                    "C) A lei que foi aprovada ontem trará grandes impactos econômicos.",
-                    "D) O relatório que o consultor apresentou sanou todas as dúvidas.",
-                    "E) A decisão que tomamos fundamentou-se nos pareceres jurídicos."
-                ],
-                gabarito: "B) Os candidatos, que obtiveram nota superior a 80%, foram convocados."
-            },
-            {
-                id: 18,
-                pergunta: "Assinale a alternativa em que a vírgula após o adjunto adverbial deslocado é obrigatória devido à extensão da locução (três ou mais palavras).",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Ontem, os diretores assinaram o contrato administrativo.",
-                    "B) No prédio da prefeitura, ocorreu a reunião com os secretários.",
-                    "C) No decorrer da última sessão plenária realizada na semana passada, os vereadores aprovaram a medida.",
-                    "D) Aqui, realizam-se importantes auditorias financeiras.",
-                    "E) Frequentemente, a comissão revisa os termos do edital."
-                ],
-                gabarito: "C) No decorrer da última sessão plenária realizada na semana passada, os vereadores aprovaram a medida."
-            },
-            {
-                id: 19,
-                pergunta: "Assinale a alternativa que apresenta a correta reescrita da frase \"O comitê aprovou todas as diretrizes orçamentárias\" na voz passiva analítica.",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Todas as diretrizes orçamentárias foram aprovadas pelo comitê.",
-                    "B) Aprovou-se todas as diretrizes orçamentárias pelo comitê.",
-                    "C) O comitê havia aprovado as diretrizes orçamentárias.",
-                    "D) Todas as diretrizes orçamentárias foram aprovadas com o comitê.",
-                    "E) Foram aprovadas o comitê e as diretrizes orçamentárias."
-                ],
-                gabarito: "A) Todas as diretrizes orçamentárias foram aprovadas pelo comitê."
-            },
-            {
-                id: 20,
-                pergunta: "Assinale a alternativa em que a reescrita da frase \"Caso haja recursos financeiros, o projeto será executado\" mantém o sentido original de condição e a correção gramatical.",
-                tipo: "A-E",
-                opcoes: [
-                    "A) Havendo recursos financeiros, o projeto será executado.",
-                    "B) Houveram recursos financeiros, o projeto será executado.",
-                    "C) Porque há recursos financeiros, o projeto será executado.",
-                    "D) Embora haja recursos financeiros, o projeto será executado.",
-                    "E) Quando houveram recursos financeiros, o projeto foi executado."
-                ],
-                gabarito: "A) Havendo recursos financeiros, o projeto será executado."
-            },
-            {
-                id: 21,
-                pergunta: "Assinale a alternativa em que a substituição dos complementos verbais por pronomes oblíquos na frase \"O supervisor entregue o relatório aos diretores\" foi feita em conformidade com a norma-padrão.",
-                tipo: "A-E",
-                opcoes: [
-                    "A) O supervisor o entregou aos diretores.",
-                    "B) O supervisor entregou-o aos diretores.",
-                    "C) O supervisor lhes entregou o relatório.",
-                    "D) O supervisor entregou-lhes o relatório.",
-                    "E) O supervisor o-lhes entregou."
-                ],
-                gabarito: "B) O supervisor entregou-o aos diretores."
+                gabarito: "C) Flexionar-se no plural, assumindo a forma \"inconsistentes\"."
             }
         ];
 

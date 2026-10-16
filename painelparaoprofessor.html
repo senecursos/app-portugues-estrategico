@@ -75,113 +75,232 @@
         const db = getDatabase(app);
 
         // =========================================================================
-        // NOVO BANCO DE QUESTÕES (15 QUESTÕES - CERTO / ERRADO)
+        // BANCO DE QUESTÕES COMPLETO (16 QUESTÕES)
         // =========================================================================
         const questoes = [
             {
                 id: 1,
-                pergunta: 'Na frase "Houveram muitos questionamentos acerca do contrato firmado pela prefeitura", o verbo destacado encontra-se corretamente flexionado no plural.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Errado"
+                pergunta: 'No período "A lealdade dos servidores foi testada durante a crise institucional", o vocábulo "lealdade" classifica-se morfologicamente como substantivo:',
+                tipo: "A-E",
+                opcoes: [
+                    "A) Comum, abstrato, simples e primitivo.",
+                    "B) Comum, concreto, simples e derivado.",
+                    "C) Comum, abstrato, simples e derivado.",
+                    "D) Próprio, abstrato, composto e derivado.",
+                    "E) Comum, abstrato, composto e primitivo.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "C) Comum, abstrato, simples e derivado."
             },
             {
                 id: 2,
-                pergunta: 'No trecho "A proposta apresentada foi a que obteve maior aprovação entre os membros do conselho", a forma em destaque classifica-se como pronome demonstrativo.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Certo"
+                pergunta: 'Na oração "A extração de granito na pedreira municipal foi suspensa temporariamente", a palavra "pedreira" é um substantivo cuja classificação exata é:',
+                tipo: "A-E",
+                opcoes: [
+                    "A) Comum, concreto, simples e primitivo.",
+                    "B) Comum, abstrato, simples e derivado.",
+                    "C) Próprio, concreto, simples e primitivo.",
+                    "D) Comum, concreto, composto e derivado.",
+                    "E) Comum, concreto, simples e derivado.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "E) Comum, concreto, simples e derivado."
             },
             {
                 id: 3,
-                pergunta: 'Na oração "Os dados que foram apresentados na reunião comprovam a eficácia da nova gestão", o termo destacado é uma conjunção integrante.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Errado"
+                pergunta: 'No trecho "O gestor não conseguiu conter a ira ao ler o relatório fraudulento da autarquia", o substantivo "ira" deve ser classificado como:',
+                tipo: "A-E",
+                opcoes: [
+                    "A) Comum, abstrato, simples e primitivo.",
+                    "B) Comum, abstrato, simples e derivado.",
+                    "C) Comum, concreto, simples e primitivo.",
+                    "D) Próprio, abstrato, simples e derivado.",
+                    "E) Comum, abstrato, composto e primitivo.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "A) Comum, abstrato, simples e primitivo."
             },
             {
                 id: 4,
-                pergunta: 'Na frase "Precisa-se de profissionais especializados para o setor de fiscalização", a partícula em destaque atua como índice de indeterminação do sujeito.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Certo"
+                pergunta: 'Na frase "Brasília apresenta uma configuração arquitetônica singular no cenário mundial", o termo "Brasília" classifica-se morfologicamente como substantivo:',
+                tipo: "A-E",
+                opcoes: [
+                    "A) Próprio, abstrato, simples e primitivo.",
+                    "B) Próprio, concreto, simples e derivado.",
+                    "C) Comum, concreto, simples e derivado.",
+                    "D) Próprio, concreto, composto e primitivo.",
+                    "E) Próprio, concreto, simples e primitivo.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "B) Próprio, concreto, simples e derivado."
             },
             {
                 id: 5,
-                pergunta: 'Em "Que excelente oportunidade de aprendizado surgiu durante o seminário regional!", o termo destacado classifica-se gramaticalmente como advérbio de intensidade.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Certo"
+                pergunta: 'No período "A operação financeira revelou-se extremamente lucrativa para os cofres públicos", a palavra "lucrativa" classifica-se como um adjetivo:',
+                tipo: "A-E",
+                opcoes: [
+                    "A) Simples e primitivo.",
+                    "B) Composto e primitivo.",
+                    "C) Simples e derivado.",
+                    "D) Composto e derivado.",
+                    "E) Pátrio e derivado.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "C) Simples e derivado."
             },
             {
                 id: 6,
-                pergunta: 'Na oração "O auditor referiu-se as novas diretrizes orçamentárias com certa preocupação", o termo destacado exerce a função de pronome demonstrativo.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Errado"
+                pergunta: 'Na oração "O conselho fiscal considerou o prazo justo para a apresentação das defesas", o vocábulo "justo" é classificado morfologicamente como adjetivo:',
+                tipo: "A-E",
+                opcoes: [
+                    "A) Simples e derivado.",
+                    "B) Composto e derivado.",
+                    "C) Composto e primitivo.",
+                    "D) Simples e primitivo.",
+                    "E) Pátrio e primitivo.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "D) Simples e primitivo."
             },
             {
                 id: 7,
-                pergunta: 'Em "Os diretores hão de assinar os documentos necessários antes do encerramento da sessão", o verbo em destaque atua como auxiliar e flexiona-se para concordar com o sujeito.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Certo"
+                pergunta: 'No trecho "O acordo político-econômico beneficiou as exportações no último trimestre", o adjetivo "político-econômico" deve ser classificado como:',
+                tipo: "A-E",
+                opcoes: [
+                    "A) Simples e derivado.",
+                    "B) Composto e derivado.",
+                    "C) Composto e primitivo.",
+                    "D) Simples e primitivo.",
+                    "E) Uniforme e composto.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "B) Composto e derivado."
             },
             {
                 id: 8,
-                pergunta: 'No trecho "Construíram-se novos prédios públicos para abrigar as secretarias municipais", a palavra em destaque classifica-se como partícula apassivadora.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Certo"
+                pergunta: 'Na frase "A atitude do conselheiro durante a votação foi considerada infantil pelos presentes", a palavra "infantil" atua como adjetivo:',
+                tipo: "A-E",
+                opcoes: [
+                    "A) Simples e primitivo.",
+                    "B) Composto e derivado.",
+                    "C) Composto e primitivo.",
+                    "D) Simples e derivado.",
+                    "E) Restritivo e primitivo.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "D) Simples e derivado."
             },
             {
                 id: 9,
-                pergunta: 'No período "O diretor confirmou que os prazos para a entrega dos documentos serão prorrogados", a palavra em destaque atua como pronome relativo.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Errado"
+                pergunta: 'No período "Nenhum candidato conseguiu atingir a pontuação máxima exigida pelo edital", o vocábulo "Nenhum" pertence à classe dos:',
+                tipo: "A-E",
+                opcoes: [
+                    "A) Pronomes relativos.",
+                    "B) Pronomes demonstrativos.",
+                    "C) Pronomes possessivos.",
+                    "D) Pronomes pessoais.",
+                    "E) Pronomes indefinidos.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "E) Pronomes indefinidos."
             },
             {
                 id: 10,
-                pergunta: 'No trecho "Podem haver divergências entre os laudos apresentados pelos peritos", a locução verbal está incorreta, pois o verbo auxiliar deveria flexionar-se no singular.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Certo"
+                pergunta: 'Na oração "O documento que o relator apresentou continha omissões gravíssimas", a palavra "que" classifica-se morfologicamente como:',
+                tipo: "A-E",
+                opcoes: [
+                    "A) Pronome relativo.",
+                    "B) Pronome interrogativo.",
+                    "C) Pronome indefinido.",
+                    "D) Pronome demonstrativo.",
+                    "E) Pronome pessoal oblíquo.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "A) Pronome relativo."
             },
             {
                 id: 11,
-                pergunta: 'Em "A empresa comprometeu-se a enviar os relatórios financeiros até o fim do expediente", o termo em destaque é um artigo definido que determina o verbo subsequente.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Errado"
+                pergunta: 'No trecho "Este ofício deve ser encaminhado ao setor de controladoria imediatamente", o termo "Este" exerce a função de:',
+                tipo: "A-E",
+                opcoes: [
+                    "A) Pronome indefinido.",
+                    "B) Pronome demonstrativo.",
+                    "C) Pronome relativo.",
+                    "D) Pronome possessivo.",
+                    "E) Pronome interrogativo.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "B) Pronome demonstrativo."
             },
             {
                 id: 12,
-                pergunta: 'Em "O advogado defendeu-se das acusações com argumentos pautados na legislação vigente", o termo em destaque funciona como pronome reflexivo.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Certo"
+                pergunta: 'Na frase "A comissão investigadora convocou-o para prestar os devidos esclarecimentos", a palavra "o" anexada ao verbo classifica-se como:',
+                tipo: "A-E",
+                opcoes: [
+                    "A) Artigo definido.",
+                    "B) Pronome demonstrativo.",
+                    "C) Pronome pessoal oblíquo.",
+                    "D) Pronome relativo.",
+                    "E) Pronome de tratamento.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "C) Pronome pessoal oblíquo."
             },
             {
                 id: 13,
-                pergunta: 'Na oração "Houve-se o parecer com extrema clareza e objetividade técnica", o verbo haver é empregado no sentido de existir, mantendo sua característica impessoal.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Errado"
+                pergunta: 'No período "O processo foi mantido sob sigilo absoluto por determinação do tribunal", a palavra "sob" classifica-se morfologicamente como:',
+                tipo: "A-E",
+                opcoes: [
+                    "A) Advérbio de modo.",
+                    "B) Interjeição.",
+                    "C) Conjunção integrante.",
+                    "D) Preposição.",
+                    "E) Artigo definido.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "D) Preposição."
             },
             {
                 id: 14,
-                pergunta: 'Na frase "Não se sabe se haverá nova convocação dos candidatos aprovados neste concurso", a primeira ocorrência da palavra representa uma conjunção integrante, e a segunda, uma conjunção condicional.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Errado"
+                pergunta: 'Na oração "Os recursos da autarquia foram bastante reduzidos no último exercício", o vocábulo "bastante" atua gramaticalmente como:',
+                tipo: "A-E",
+                opcoes: [
+                    "A) Adjetivo.",
+                    "B) Preposição.",
+                    "C) Pronome indefinido.",
+                    "D) Interjeição.",
+                    "E) Advérbio.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "E) Advérbio."
             },
             {
                 id: 15,
-                pergunta: 'No período "A decisão a qual os conselheiros chegaram baseou-se em estudos minuciosos", a forma em destaque atua como preposição exigida pelo verbo regente.',
-                tipo: "Certo / Errado",
-                opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "Errado"
+                pergunta: 'No trecho "Céus! Não previmos essa drástica queda nas ações da companhia", a expressão "Céus!" deve ser classificada como:',
+                tipo: "A-E",
+                opcoes: [
+                    "A) Substantivo abstrato.",
+                    "B) Advérbio de tempo.",
+                    "C) Interjeição.",
+                    "D) Preposição.",
+                    "E) Pronome de tratamento.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "C) Interjeição."
+            },
+            {
+                id: 16,
+                pergunta: 'Na frase "A decisão final foi proferida após o encerramento do expediente", a palavra "após" pertence à classe das:',
+                tipo: "A-E",
+                opcoes: [
+                    "A) Conjunções subordinativas.",
+                    "B) Preposições.",
+                    "C) Interjeições.",
+                    "D) Variáveis nominais.",
+                    "E) Locuções adverbiais.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "B) Preposições."
             }
         ];
 

@@ -192,26 +192,7 @@
 
         .btn-opcao:disabled {
             cursor: not-allowed;
-            opacity: 0.8;
-        }
-
-        /* ESTILOS ESPECÍFICOS DE RESPOSTA DO ALUNO */
-        .btn-opcao.opcao-acerto {
-            background-color: #dcfce7 !important;
-            color: #166534 !important;
-            border-color: #86efac !important;
-        }
-
-        .btn-opcao.opcao-erro {
-            background-color: #fee2e2 !important;
-            color: #991b1b !important;
-            border-color: #fca5a5 !important;
-        }
-
-        .btn-opcao.opcao-chute {
-            background-color: #fef3c7 !important;
-            color: #92400e !important;
-            border-color: #fcd34d !important;
+            opacity: 0.6;
         }
 
         .feedback-resposta {
@@ -236,6 +217,7 @@
             border: 1px solid #fca5a5;
         }
 
+        /* FEEDBACK EXCLUSIVO DE CHUTE / INCERTEZA */
         .feedback-chute {
             background-color: #fef3c7;
             color: #92400e;
@@ -321,7 +303,7 @@
 
         <!-- MENSAGEM QUANDO NÃO HÁ QUESTÃO ATIVA -->
         <div id="mensagem-espera" class="caixa-em-breve">
-            📝 Não há evento ou questão ativa no momento, porém haverá em breve. Fique atento(a)! Aguarde pelo professor!
+            📝  Não há evento ou questão ativa no momento, porém haverá em breve. Fique atento(a)! Aguarde pelo professor!
         </div>
 
         <div class="nota-propriedade">
@@ -351,10 +333,11 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        let alunoId = localStorage.getItem("aluno_uuid");
+        // Identificador Anônimo do Aluno (Garante 1 voto por questão por dispositivo)
+        let alunoId = localStorage.getItem("aluno_uid");
         if (!alunoId) {
             alunoId = "aluno_" + Math.random().toString(36).substr(2, 9);
-            localStorage.setItem("aluno_uuid", alunoId);
+            localStorage.setItem("aluno_uid", alunoId);
         }
 
         const areaQuiz = document.getElementById("area-quiz");
@@ -363,11 +346,7 @@
         const opcoesContainer = document.getElementById("opcoes-container");
         const feedbackEl = document.getElementById("feedback");
 
-        function normalizarTexto(txt) {
-            if (!txt) return "";
-            return txt.trim().toLowerCase().replace(/\s+/g, ' ').replace(/\.$/, '');
-        }
-
+        // Escuta em tempo real qual questão está ativa no painel do professor
         const questaoAtivaRef = ref(db, "sessao/questaoAtiva");
         onValue(questaoAtivaRef, (snapshot) => {
             const questao = snapshot.val();
@@ -383,6 +362,7 @@
             opcoesContainer.innerHTML = "";
             feedbackEl.style.display = "none";
 
+            // Verifica se o aluno já respondeu a esta questão específica
             const votoRef = ref(db, `votos/${questao.id}/${alunoId}`);
             get(votoRef).then((votoSnap) => {
                 const jaVotou = votoSnap.exists();
@@ -395,19 +375,9 @@
 
                     if (jaVotou) {
                         btn.disabled = true;
-                        
-                        // Destaque apenas na opção clicada pelo aluno
-                        if (normalizarTexto(opcao) === normalizarTexto(respostaAnterior)) {
-                            const optNorm = normalizarTexto(respostaAnterior);
-                            const gabNorm = normalizarTexto(questao.gabarito);
-
-                            if (optNorm.includes("chutei")) {
-                                btn.classList.add("opcao-chute");
-                            } else if (optNorm === gabNorm) {
-                                btn.classList.add("opcao-acerto");
-                            } else {
-                                btn.classList.add("opcao-erro");
-                            }
+                        if (opcao === respostaAnterior) {
+                            btn.style.backgroundColor = "#254077";
+                            btn.style.color = "#ffffff";
                         }
                     } else {
                         btn.onclick = () => enviarVoto(questao, opcao);
@@ -426,22 +396,7 @@
             const votoRef = ref(db, `votos/${questao.id}/${alunoId}`);
             set(votoRef, { opcao: opcaoEscolhida }).then(() => {
                 const botoes = opcoesContainer.querySelectorAll("button");
-                const optNorm = normalizarTexto(opcaoEscolhida);
-                const gabNorm = normalizarTexto(questao.gabarito);
-
-                botoes.forEach(btn => {
-                    btn.disabled = true;
-                    if (normalizarTexto(btn.innerText) === optNorm) {
-                        if (optNorm.includes("chutei")) {
-                            btn.classList.add("opcao-chute");
-                        } else if (optNorm === gabNorm) {
-                            btn.classList.add("opcao-acerto");
-                        } else {
-                            btn.classList.add("opcao-erro");
-                        }
-                    }
-                });
-
+                botoes.forEach(btn => btn.disabled = true);
                 exibirFeedback(opcaoEscolhida, questao.gabarito);
             });
         }
@@ -449,18 +404,16 @@
         function exibirFeedback(opcaoEscolhida, gabarito) {
             feedbackEl.style.display = "block";
 
-            const optNorm = normalizarTexto(opcaoEscolhida);
-            const gabNorm = normalizarTexto(gabarito);
-
-            if (optNorm.includes("chutei")) {
+            // Se o aluno escolheu a alternativa de chute/incerteza
+            if (opcaoEscolhida && opcaoEscolhida.includes("Chutei")) {
                 feedbackEl.className = "feedback-resposta feedback-chute";
                 feedbackEl.innerHTML = "🤝 Obrigado pela sinceridade. Aguarde pela explicação!";
-            } else if (optNorm === gabNorm) {
+            } else if (opcaoEscolhida === gabarito) {
                 feedbackEl.className = "feedback-resposta feedback-acerto";
                 feedbackEl.innerHTML = "🟢 PARABÉNS! Você acertou!";
             } else {
                 feedbackEl.className = "feedback-resposta feedback-erro";
-                feedbackEl.innerHTML = "🔴 INCORRETO! (Aguarde pela explicação do professor.)";
+                feedbackEl.innerHTML = `🔴 INCORRETO! A resposta certa é: <b>${gabarito}</b>`;
             }
         }
     </script>
