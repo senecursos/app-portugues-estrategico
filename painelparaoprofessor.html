@@ -75,232 +75,92 @@
         const db = getDatabase(app);
 
         // =========================================================================
-        // BANCO DE QUESTÕES COMPLETO (16 QUESTÕES)
+        // BANCO DE QUESTÕES COMPLETO (12 QUESTÕES)
         // =========================================================================
         const questoes = [
             {
                 id: 1,
-                pergunta: 'No período "A lealdade dos servidores foi testada durante a crise institucional", o vocábulo "lealdade" classifica-se morfologicamente como substantivo:',
+                pergunta: "O relator leu a ementa do projeto de lei e solicitou a imediata votação nominal no plenário.",
                 tipo: "A-E",
-                opcoes: [
-                    "A) Comum, abstrato, simples e primitivo.",
-                    "B) Comum, concreto, simples e derivado.",
-                    "C) Comum, abstrato, simples e derivado.",
-                    "D) Próprio, abstrato, composto e derivado.",
-                    "E) Comum, abstrato, composto e primitivo.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "C) Comum, abstrato, simples e derivado."
+                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "A) Aditiva"
             },
             {
                 id: 2,
-                pergunta: 'Na oração "A extração de granito na pedreira municipal foi suspensa temporariamente", a palavra "pedreira" é um substantivo cuja classificação exata é:',
+                pergunta: "O conselheiro acumulava faltas injustificadas nas sessões ordinárias, logo sua destituição do cargo ocorreu estritamente dentro da legalidade.",
                 tipo: "A-E",
-                opcoes: [
-                    "A) Comum, concreto, simples e primitivo.",
-                    "B) Comum, abstrato, simples e derivado.",
-                    "C) Próprio, concreto, simples e primitivo.",
-                    "D) Comum, concreto, composto e derivado.",
-                    "E) Comum, concreto, simples e derivado.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "E) Comum, concreto, simples e derivado."
+                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "E) Conclusiva"
             },
             {
                 id: 3,
-                pergunta: 'No trecho "O gestor não conseguiu conter a ira ao ler o relatório fraudulento da autarquia", o substantivo "ira" deve ser classificado como:',
+                pergunta: "Ou a empresa apresenta as certidões negativas de débito atualizadas, ou será sumariamente desclassificada do certame.",
                 tipo: "A-E",
-                opcoes: [
-                    "A) Comum, abstrato, simples e primitivo.",
-                    "B) Comum, abstrato, simples e derivado.",
-                    "C) Comum, concreto, simples e primitivo.",
-                    "D) Próprio, abstrato, simples e derivado.",
-                    "E) Comum, abstrato, composto e primitivo.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "A) Comum, abstrato, simples e primitivo."
+                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "C) Alternativa"
             },
             {
                 id: 4,
-                pergunta: 'Na frase "Brasília apresenta uma configuração arquitetônica singular no cenário mundial", o termo "Brasília" classifica-se morfologicamente como substantivo:',
+                pergunta: "Os peritos analisaram meticulosamente as imagens do circuito interno de segurança, porém não identificaram os autores da infração.",
                 tipo: "A-E",
-                opcoes: [
-                    "A) Próprio, abstrato, simples e primitivo.",
-                    "B) Próprio, concreto, simples e derivado.",
-                    "C) Comum, concreto, simples e derivado.",
-                    "D) Próprio, concreto, composto e primitivo.",
-                    "E) Próprio, concreto, simples e primitivo.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "B) Próprio, concreto, simples e derivado."
+                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "B) Adversativa"
             },
             {
                 id: 5,
-                pergunta: 'No período "A operação financeira revelou-se extremamente lucrativa para os cofres públicos", a palavra "lucrativa" classifica-se como um adjetivo:',
+                pergunta: "Evacue o prédio anexo da prefeitura imediatamente, que o laudo estrutural da defesa civil apontou risco iminente de desabamento.",
                 tipo: "A-E",
-                opcoes: [
-                    "A) Simples e primitivo.",
-                    "B) Composto e primitivo.",
-                    "C) Simples e derivado.",
-                    "D) Composto e derivado.",
-                    "E) Pátrio e derivado.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "C) Simples e derivado."
+                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "D) Explicativa"
             },
             {
                 id: 6,
-                pergunta: 'Na oração "O conselho fiscal considerou o prazo justo para a apresentação das defesas", o vocábulo "justo" é classificado morfologicamente como adjetivo:',
+                pergunta: "O prazo legal para a interposição de recursos administrativos expirou, todavia a banca examinadora decidiu aceitar a documentação extemporânea.",
                 tipo: "A-E",
-                opcoes: [
-                    "A) Simples e derivado.",
-                    "B) Composto e derivado.",
-                    "C) Composto e primitivo.",
-                    "D) Simples e primitivo.",
-                    "E) Pátrio e primitivo.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "D) Simples e primitivo."
+                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "B) Adversativa"
             },
             {
                 id: 7,
-                pergunta: 'No trecho "O acordo político-econômico beneficiou as exportações no último trimestre", o adjetivo "político-econômico" deve ser classificado como:',
+                pergunta: "O gestor investigado não apenas assinou o termo de ajustamento de conduta, mas também implementou todas as medidas corretivas solicitadas.",
                 tipo: "A-E",
-                opcoes: [
-                    "A) Simples e derivado.",
-                    "B) Composto e derivado.",
-                    "C) Composto e primitivo.",
-                    "D) Simples e primitivo.",
-                    "E) Uniforme e composto.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "B) Composto e derivado."
+                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "A) Aditiva"
             },
             {
                 id: 8,
-                pergunta: 'Na frase "A atitude do conselheiro durante a votação foi considerada infantil pelos presentes", a palavra "infantil" atua como adjetivo:',
+                pergunta: "A licitação pública apresentou graves indícios de fraude documental, portanto os contratos milionários foram suspensos pela controladoria do estado.",
                 tipo: "A-E",
-                opcoes: [
-                    "A) Simples e primitivo.",
-                    "B) Composto e derivado.",
-                    "C) Composto e primitivo.",
-                    "D) Simples e derivado.",
-                    "E) Restritivo e primitivo.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "D) Simples e derivado."
+                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "E) Conclusiva"
             },
             {
                 id: 9,
-                pergunta: 'No período "Nenhum candidato conseguiu atingir a pontuação máxima exigida pelo edital", o vocábulo "Nenhum" pertence à classe dos:',
+                pergunta: "Os jovens auditores devem agir com extrema cautela neste caso, pois os dados financeiros analisados são altamente sensíveis.",
                 tipo: "A-E",
-                opcoes: [
-                    "A) Pronomes relativos.",
-                    "B) Pronomes demonstrativos.",
-                    "C) Pronomes possessivos.",
-                    "D) Pronomes pessoais.",
-                    "E) Pronomes indefinidos.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "E) Pronomes indefinidos."
+                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "D) Explicativa"
             },
             {
                 id: 10,
-                pergunta: 'Na oração "O documento que o relator apresentou continha omissões gravíssimas", a palavra "que" classifica-se morfologicamente como:',
+                pergunta: "A comissão parlamentar buscou incessantemente novas provas materiais, contudo os arquivos originais da secretaria haviam sido destruídos.",
                 tipo: "A-E",
-                opcoes: [
-                    "A) Pronome relativo.",
-                    "B) Pronome interrogativo.",
-                    "C) Pronome indefinido.",
-                    "D) Pronome demonstrativo.",
-                    "E) Pronome pessoal oblíquo.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "A) Pronome relativo."
+                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "B) Adversativa"
             },
             {
                 id: 11,
-                pergunta: 'No trecho "Este ofício deve ser encaminhado ao setor de controladoria imediatamente", o termo "Este" exerce a função de:',
+                pergunta: "Quer os parlamentares concordem com a reforma administrativa proposta, quer a rejeitem publicamente, o texto seguirá para o poder executivo.",
                 tipo: "A-E",
-                opcoes: [
-                    "A) Pronome indefinido.",
-                    "B) Pronome demonstrativo.",
-                    "C) Pronome relativo.",
-                    "D) Pronome possessivo.",
-                    "E) Pronome interrogativo.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "B) Pronome demonstrativo."
+                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "C) Alternativa"
             },
             {
                 id: 12,
-                pergunta: 'Na frase "A comissão investigadora convocou-o para prestar os devidos esclarecimentos", a palavra "o" anexada ao verbo classifica-se como:',
+                pergunta: "As metas fiscais estabelecidas no último semestre foram rigorosamente cumpridas, por conseguinte o município recuperou sua plena capacidade de investimento.",
                 tipo: "A-E",
-                opcoes: [
-                    "A) Artigo definido.",
-                    "B) Pronome demonstrativo.",
-                    "C) Pronome pessoal oblíquo.",
-                    "D) Pronome relativo.",
-                    "E) Pronome de tratamento.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "C) Pronome pessoal oblíquo."
-            },
-            {
-                id: 13,
-                pergunta: 'No período "O processo foi mantido sob sigilo absoluto por determinação do tribunal", a palavra "sob" classifica-se morfologicamente como:',
-                tipo: "A-E",
-                opcoes: [
-                    "A) Advérbio de modo.",
-                    "B) Interjeição.",
-                    "C) Conjunção integrante.",
-                    "D) Preposição.",
-                    "E) Artigo definido.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "D) Preposição."
-            },
-            {
-                id: 14,
-                pergunta: 'Na oração "Os recursos da autarquia foram bastante reduzidos no último exercício", o vocábulo "bastante" atua gramaticalmente como:',
-                tipo: "A-E",
-                opcoes: [
-                    "A) Adjetivo.",
-                    "B) Preposição.",
-                    "C) Pronome indefinido.",
-                    "D) Interjeição.",
-                    "E) Advérbio.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "E) Advérbio."
-            },
-            {
-                id: 15,
-                pergunta: 'No trecho "Céus! Não previmos essa drástica queda nas ações da companhia", a expressão "Céus!" deve ser classificada como:',
-                tipo: "A-E",
-                opcoes: [
-                    "A) Substantivo abstrato.",
-                    "B) Advérbio de tempo.",
-                    "C) Interjeição.",
-                    "D) Preposição.",
-                    "E) Pronome de tratamento.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "C) Interjeição."
-            },
-            {
-                id: 16,
-                pergunta: 'Na frase "A decisão final foi proferida após o encerramento do expediente", a palavra "após" pertence à classe das:',
-                tipo: "A-E",
-                opcoes: [
-                    "A) Conjunções subordinativas.",
-                    "B) Preposições.",
-                    "C) Interjeições.",
-                    "D) Variáveis nominais.",
-                    "E) Locuções adverbiais.",
-                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
-                ],
-                gabarito: "B) Preposições."
+                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "E) Conclusiva"
             }
         ];
 
