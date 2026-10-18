@@ -208,6 +208,12 @@
             border-color: #fca5a5 !important;
         }
 
+        .btn-opcao.opcao-chute {
+            background-color: #fef3c7 !important;
+            color: #92400e !important;
+            border-color: #fcd34d !important;
+        }
+
         .feedback-resposta {
             margin-top: 20px;
             padding: 16px;
@@ -228,6 +234,12 @@
             background-color: #fee2e2;
             color: #991b1b;
             border: 1px solid #fca5a5;
+        }
+
+        .feedback-chute {
+            background-color: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fcd34d;
         }
 
         .caixa-em-breve {
@@ -388,12 +400,14 @@
                     if (jaVotou) {
                         btn.disabled = true;
                         
-                        // DESTAQUE APENAS NA OPÇÃO CLICADA (Não mostra a correta se o aluno errar)
+                        // DESTAQUE APENAS NA OPÇÃO CLICADA
                         if (normalizarTexto(opcao) === normalizarTexto(respostaAnterior)) {
                             const optNorm = normalizarTexto(respostaAnterior);
                             const gabNorm = normalizarTexto(questao.gabarito);
 
-                            if (optNorm === gabNorm) {
+                            if (optNorm.includes("chutei")) {
+                                btn.classList.add("opcao-chute");
+                            } else if (optNorm === gabNorm) {
                                 btn.classList.add("opcao-acerto");
                             } else {
                                 btn.classList.add("opcao-erro");
@@ -423,7 +437,9 @@
                     btn.disabled = true;
                     // Lendo pelo dataset para garantir que nenhuma tag se perca na validação
                     if (normalizarTexto(btn.dataset.opcao) === optNorm) {
-                        if (optNorm === gabNorm) {
+                        if (optNorm.includes("chutei")) {
+                            btn.classList.add("opcao-chute");
+                        } else if (optNorm === gabNorm) {
                             btn.classList.add("opcao-acerto");
                         } else {
                             btn.classList.add("opcao-erro");
@@ -441,11 +457,13 @@
             const optNorm = normalizarTexto(opcaoEscolhida);
             const gabNorm = normalizarTexto(gabarito);
 
-            if (optNorm === gabNorm) {
+            if (optNorm.includes("chutei")) {
+                feedbackEl.className = "feedback-resposta feedback-chute";
+                feedbackEl.innerHTML = "🟡 Obrigado pela sinceridade. Aguarde pela explicação do professor.";
+            } else if (optNorm === gabNorm) {
                 feedbackEl.className = "feedback-resposta feedback-acerto";
                 feedbackEl.innerHTML = "🟢 PARABÉNS! Você acertou!";
             } else {
-                // Apenas exibe o texto de incorreto
                 feedbackEl.className = "feedback-resposta feedback-erro";
                 feedbackEl.innerHTML = "🔴 INCORRETO! (Aguarde pela explicação do professor.)";
             }
