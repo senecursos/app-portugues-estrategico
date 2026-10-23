@@ -75,92 +75,148 @@
         const db = getDatabase(app);
 
         // =========================================================================
-        // BANCO DE QUESTÕES COMPLETO (12 QUESTÕES)
+        // BANCO DE QUESTÕES COMPLETO (20 QUESTÕES)
         // =========================================================================
         const questoes = [
             {
                 id: 1,
-                pergunta: "O relator leu a ementa do projeto de lei e solicitou a imediata votação nominal no plenário.",
+                pergunta: "Assinale a alternativa que contém exclusivamente verbos:",
                 tipo: "A-E",
-                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "A) Aditiva"
+                opcoes: ["A) parecer, trâmite, deferir, ofício, exarar", "B) relatar, certidão, validar, citação, anular", "C) intervir, reaver, expedia, homologaram, prever", "D) mandato, expedir, averbado, posse, outorgar", "E) requerer, licitação, aprovar, vigência, deferido", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "C) intervir, reaver, expedia, homologaram, prever"
             },
             {
                 id: 2,
-                pergunta: "O conselheiro acumulava faltas injustificadas nas sessões ordinárias, logo sua destituição do cargo ocorreu estritamente dentro da legalidade.",
+                pergunta: "Identifique a opção cujas cinco palavras exercem a função de verbo:",
                 tipo: "A-E",
-                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "E) Conclusiva"
+                opcoes: ["A) interpusera, arguimos, adequassem, reterão, contradisse", "B) impugnação, recorreu, acórdão, legislar, veto", "C) sentenciou, jurisprudência, penaliza, dolo, culposo", "D) instauração, inquérito, absolveu, réu, sentenciar", "E) protelou, embargo, diligência, cumprirá, tempestivo", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "A) interpusera, arguimos, adequassem, reterão, contradisse"
             },
             {
                 id: 3,
-                pergunta: "Ou a empresa apresenta as certidões negativas de débito atualizadas, ou será sumariamente desclassificada do certame.",
+                pergunta: "Assinale a alternativa em que todos os vocábulos pertencem à classe verbal:",
                 tipo: "A-E",
-                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "C) Alternativa"
+                opcoes: ["A) certame, ofício, proferiu, sanção, ratificar", "B) concessão, pleiteou, revelia, citar, litígio", "C) vigora, estatuto, sancionou, portaria, emitir", "D) deliberamos, auferir, revogariam, prescreverá, restituíram", "E) provisão, deferiu, alínea, revogar, parecerista", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "D) deliberamos, auferir, revogariam, prescreverá, restituíram"
             },
             {
                 id: 4,
-                pergunta: "Os peritos analisaram meticulosamente as imagens do circuito interno de segurança, porém não identificaram os autores da infração.",
+                pergunta: "Indique a alternativa formada unicamente por verbos:",
                 tipo: "A-E",
-                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "B) Adversativa"
+                opcoes: ["A) julgamento, procedeu, arquivamento, deferirá, acatamento", "B) averiguar, notificassem, desdobrará, redigimos, interpusesse", "C) relatoria, adiar, tribunal, encerramento, divergir", "D) atestar, anuência, indeferir, recurso, homologar", "E) impetrar, mandado, segurança, concedeu, liminar", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "B) averiguar, notificassem, desdobrará, redigimos, interpusesse"
             },
             {
                 id: 5,
-                pergunta: "Evacue o prédio anexo da prefeitura imediatamente, que o laudo estrutural da defesa civil apontou risco iminente de desabamento.",
+                pergunta: 'Na oração "O auditor alertara a chefia sobre as inconsistências muito antes da deflagração da operação policial", o verbo "alertara" encontra-se no:',
                 tipo: "A-E",
-                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "D) Explicativa"
+                opcoes: ["A) Pretérito imperfeito do indicativo.", "B) Futuro do presente do indicativo.", "C) Pretérito perfeito do indicativo.", "D) Futuro do pretérito do indicativo.", "E) Pretérito mais-que-perfeito do indicativo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "E) Pretérito mais-que-perfeito do indicativo."
             },
             {
                 id: 6,
-                pergunta: "O prazo legal para a interposição de recursos administrativos expirou, todavia a banca examinadora decidiu aceitar a documentação extemporânea.",
+                pergunta: 'No período "A comissão parlamentar aprovaria o texto base da reforma administrativa caso os acordos partidários fossem mantidos", o verbo "aprovaria" está conjugado no:',
                 tipo: "A-E",
-                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "B) Adversativa"
+                opcoes: ["A) Futuro do pretérito do indicativo.", "B) Pretérito imperfeito do indicativo.", "C) Futuro do presente do indicativo.", "D) Pretérito perfeito do indicativo.", "E) Presente do indicativo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "A) Futuro do pretérito do indicativo."
             },
             {
                 id: 7,
-                pergunta: "O gestor investigado não apenas assinou o termo de ajustamento de conduta, mas também implementou todas as medidas corretivas solicitadas.",
+                pergunta: 'Na frase "O conselheiro exigia a apresentação imediata dos relatórios fiscais em todas as reuniões ordinárias do trimestre", a forma verbal "exigia" classifica-se como:',
                 tipo: "A-E",
-                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "A) Aditiva"
+                opcoes: ["A) Futuro do pretérito do indicativo.", "B) Pretérito perfeito do indicativo.", "C) Pretérito mais-que-perfeito do indicativo.", "D) Pretérito imperfeito do indicativo.", "E) Presente do indicativo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "D) Pretérito imperfeito do indicativo."
             },
             {
                 id: 8,
-                pergunta: "A licitação pública apresentou graves indícios de fraude documental, portanto os contratos milionários foram suspensos pela controladoria do estado.",
+                pergunta: 'No trecho "O corregedor-geral requer a instauração imediata de sindicância para apurar as condutas dos servidores envolvidos", o verbo "requer" encontra-se no:',
                 tipo: "A-E",
-                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "E) Conclusiva"
+                opcoes: ["A) Pretérito perfeito do indicativo.", "B) Presente do indicativo.", "C) Futuro do presente do indicativo.", "D) Pretérito imperfeito do indicativo.", "E) Pretérito mais-que-perfeito do indicativo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "B) Presente do indicativo."
             },
             {
                 id: 9,
-                pergunta: "Os jovens auditores devem agir com extrema cautela neste caso, pois os dados financeiros analisados são altamente sensíveis.",
+                pergunta: 'No período "O poder judiciário interveio rapidamente no litígio patrimonial para evitar a dilapidação dos bens da autarquia", a forma verbal "interveio" está flexionada no:',
                 tipo: "A-E",
-                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "D) Explicativa"
+                opcoes: ["A) Pretérito imperfeito do indicativo.", "B) Presente do indicativo.", "C) Futuro do pretérito do indicativo.", "D) Pretérito perfeito do indicativo.", "E) Pretérito mais-que-perfeito do indicativo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "D) Pretérito perfeito do indicativo."
             },
             {
                 id: 10,
-                pergunta: "A comissão parlamentar buscou incessantemente novas provas materiais, contudo os arquivos originais da secretaria haviam sido destruídos.",
+                pergunta: 'Na oração "A procuradoria do estado interporá recurso extraordinário contra a decisão proferida pelo tribunal de justiça", o verbo "interporá" classifica-se como:',
                 tipo: "A-E",
-                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "B) Adversativa"
+                opcoes: ["A) Futuro do presente do indicativo.", "B) Futuro do pretérito do indicativo.", "C) Pretérito mais-que-perfeito do indicativo.", "D) Presente do indicativo.", "E) Pretérito imperfeito do indicativo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "A) Futuro do presente do indicativo."
             },
             {
                 id: 11,
-                pergunta: "Quer os parlamentares concordem com a reforma administrativa proposta, quer a rejeitem publicamente, o texto seguirá para o poder executivo.",
+                pergunta: 'Na oração "Anularam-se as cláusulas abusivas do contrato de prestação de serviços", o verbo encontra-se na:',
                 tipo: "A-E",
-                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "C) Alternativa"
+                opcoes: ["A) Voz ativa.", "B) Voz passiva analítica.", "C) Voz passiva sintética.", "D) Voz reflexiva.", "E) Voz reflexiva recíproca.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "C) Voz passiva sintética."
             },
             {
                 id: 12,
-                pergunta: "As metas fiscais estabelecidas no último semestre foram rigorosamente cumpridas, por conseguinte o município recuperou sua plena capacidade de investimento.",
+                pergunta: 'No período "O plenário do tribunal aprovou a alteração do regimento interno por unanimidade", o verbo está flexionado na:',
                 tipo: "A-E",
-                opcoes: ["A) Aditiva", "B) Adversativa", "C) Alternativa", "D) Explicativa", "E) Conclusiva", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "E) Conclusiva"
+                opcoes: ["A) Voz ativa.", "B) Voz passiva analítica.", "C) Voz passiva sintética.", "D) Voz reflexiva.", "E) Voz reflexiva recíproca.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "A) Voz ativa."
+            },
+            {
+                id: 13,
+                pergunta: 'Na frase "O gestor investigado defendeu-se das graves denúncias de peculato durante a coletiva de imprensa", a voz verbal classifica-se como:',
+                tipo: "A-E",
+                opcoes: ["A) Voz ativa.", "B) Voz passiva analítica.", "C) Voz passiva sintética.", "D) Voz reflexiva.", "E) Voz reflexiva recíproca.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "D) Voz reflexiva."
+            },
+            {
+                id: 14,
+                pergunta: 'No trecho "Os pareceres contábeis foram rejeitados pela auditoria externa na manhã de ontem", o verbo apresenta-se na:',
+                tipo: "A-E",
+                opcoes: ["A) Voz ativa.", "B) Voz passiva analítica.", "C) Voz passiva sintética.", "D) Voz reflexiva.", "E) Voz reflexiva recíproca.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "B) Voz passiva analítica."
+            },
+            {
+                id: 15,
+                pergunta: 'Na oração "Os parlamentares ofenderam-se gravemente no decorrer da comissão parlamentar de inquérito", ocorre o emprego da:',
+                tipo: "A-E",
+                opcoes: ["A) Voz ativa.", "B) Voz passiva analítica.", "C) Voz passiva sintética.", "D) Voz reflexiva.", "E) Voz reflexiva recíproca.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "E) Voz reflexiva recíproca."
+            },
+            {
+                id: 16,
+                pergunta: 'No período "Julgou-se procedente o pedido de indenização formulado pelo servidor público civil", a estrutura verbal configura a:',
+                tipo: "A-E",
+                opcoes: ["A) Voz ativa.", "B) Voz passiva analítica.", "C) Voz passiva sintética.", "D) Voz reflexiva.", "E) Voz reflexiva recíproca.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "C) Voz passiva sintética."
+            },
+            {
+                id: 17,
+                pergunta: 'Na frase "A nova legislação tributária foi sancionada pelo chefe do poder executivo sem vetos", a voz do verbo é classificada como:',
+                tipo: "A-E",
+                opcoes: ["A) Voz ativa.", "B) Voz passiva analítica.", "C) Voz passiva sintética.", "D) Voz reflexiva.", "E) Voz reflexiva recíproca.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "B) Voz passiva analítica."
+            },
+            {
+                id: 18,
+                pergunta: 'No trecho "O procurador-geral arquivou o inquérito civil por absoluta falta de provas documentais", o verbo encontra-se na:',
+                tipo: "A-E",
+                opcoes: ["A) Voz ativa.", "B) Voz passiva analítica.", "C) Voz passiva sintética.", "D) Voz reflexiva.", "E) Voz reflexiva recíproca.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "A) Voz ativa."
+            },
+            {
+                id: 19,
+                pergunta: "Nenhum auditor encontrou falhas graves.",
+                tipo: "A-E",
+                opcoes: ["A) Pronome, adjetivo, verbo, substantivo, advérbio.", "B) Adjetivo, substantivo, verbo, pronome, adjetivo.", "C) Pronome, substantivo, verbo, substantivo, adjetivo.", "D) Advérbio, substantivo, verbo, adjetivo, substantivo.", "E) Substantivo, adjetivo, verbo, substantivo, advérbio.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "C) Pronome, substantivo, verbo, substantivo, adjetivo."
+            },
+            {
+                id: 20,
+                pergunta: "Arquivaram o processo por prescrição.",
+                tipo: "A-E",
+                opcoes: ["A) Verbo, pronome, substantivo, conjunção, adjetivo.", "B) Verbo, artigo, substantivo, preposição, substantivo.", "C) Substantivo, artigo, adjetivo, preposição, verbo.", "D) Verbo, artigo, adjetivo, advérbio, substantivo.", "E) Advérbio, pronome, substantivo, preposição, adjetivo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "B) Verbo, artigo, substantivo, preposição, substantivo."
             }
         ];
 
