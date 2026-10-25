@@ -75,149 +75,30 @@
         const db = getDatabase(app);
 
         // =========================================================================
-        // BANCO DE QUESTÕES COMPLETO (20 QUESTÕES)
+        // BANCO DE QUESTÕES COMPLETO (21 QUESTÕES CERTO/ERRADO)
         // =========================================================================
         const questoes = [
-            {
-                id: 1,
-                pergunta: "Assinale a alternativa que contém exclusivamente verbos:",
-                tipo: "A-E",
-                opcoes: ["A) parecer, trâmite, deferir, ofício, exarar", "B) relatar, certidão, validar, citação, anular", "C) intervir, reaver, expedia, homologaram, prever", "D) mandato, expedir, averbado, posse, outorgar", "E) requerer, licitação, aprovar, vigência, deferido", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "C) intervir, reaver, expedia, homologaram, prever"
-            },
-            {
-                id: 2,
-                pergunta: "Identifique a opção cujas cinco palavras exercem a função de verbo:",
-                tipo: "A-E",
-                opcoes: ["A) interpusera, arguimos, adequassem, reterão, contradisse", "B) impugnação, recorreu, acórdão, legislar, veto", "C) sentenciou, jurisprudência, penaliza, dolo, culposo", "D) instauração, inquérito, absolveu, réu, sentenciar", "E) protelou, embargo, diligência, cumprirá, tempestivo", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "A) interpusera, arguimos, adequassem, reterão, contradisse"
-            },
-            {
-                id: 3,
-                pergunta: "Assinale a alternativa em que todos os vocábulos pertencem à classe verbal:",
-                tipo: "A-E",
-                opcoes: ["A) certame, ofício, proferiu, sanção, ratificar", "B) concessão, pleiteou, revelia, citar, litígio", "C) vigora, estatuto, sancionou, portaria, emitir", "D) deliberamos, auferir, revogariam, prescreverá, restituíram", "E) provisão, deferiu, alínea, revogar, parecerista", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "D) deliberamos, auferir, revogariam, prescreverá, restituíram"
-            },
-            {
-                id: 4,
-                pergunta: "Indique a alternativa formada unicamente por verbos:",
-                tipo: "A-E",
-                opcoes: ["A) julgamento, procedeu, arquivamento, deferirá, acatamento", "B) averiguar, notificassem, desdobrará, redigimos, interpusesse", "C) relatoria, adiar, tribunal, encerramento, divergir", "D) atestar, anuência, indeferir, recurso, homologar", "E) impetrar, mandado, segurança, concedeu, liminar", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "B) averiguar, notificassem, desdobrará, redigimos, interpusesse"
-            },
-            {
-                id: 5,
-                pergunta: 'Na oração "O auditor alertara a chefia sobre as inconsistências muito antes da deflagração da operação policial", o verbo "alertara" encontra-se no:',
-                tipo: "A-E",
-                opcoes: ["A) Pretérito imperfeito do indicativo.", "B) Futuro do presente do indicativo.", "C) Pretérito perfeito do indicativo.", "D) Futuro do pretérito do indicativo.", "E) Pretérito mais-que-perfeito do indicativo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "E) Pretérito mais-que-perfeito do indicativo."
-            },
-            {
-                id: 6,
-                pergunta: 'No período "A comissão parlamentar aprovaria o texto base da reforma administrativa caso os acordos partidários fossem mantidos", o verbo "aprovaria" está conjugado no:',
-                tipo: "A-E",
-                opcoes: ["A) Futuro do pretérito do indicativo.", "B) Pretérito imperfeito do indicativo.", "C) Futuro do presente do indicativo.", "D) Pretérito perfeito do indicativo.", "E) Presente do indicativo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "A) Futuro do pretérito do indicativo."
-            },
-            {
-                id: 7,
-                pergunta: 'Na frase "O conselheiro exigia a apresentação imediata dos relatórios fiscais em todas as reuniões ordinárias do trimestre", a forma verbal "exigia" classifica-se como:',
-                tipo: "A-E",
-                opcoes: ["A) Futuro do pretérito do indicativo.", "B) Pretérito perfeito do indicativo.", "C) Pretérito mais-que-perfeito do indicativo.", "D) Pretérito imperfeito do indicativo.", "E) Presente do indicativo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "D) Pretérito imperfeito do indicativo."
-            },
-            {
-                id: 8,
-                pergunta: 'No trecho "O corregedor-geral requer a instauração imediata de sindicância para apurar as condutas dos servidores envolvidos", o verbo "requer" encontra-se no:',
-                tipo: "A-E",
-                opcoes: ["A) Pretérito perfeito do indicativo.", "B) Presente do indicativo.", "C) Futuro do presente do indicativo.", "D) Pretérito imperfeito do indicativo.", "E) Pretérito mais-que-perfeito do indicativo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "B) Presente do indicativo."
-            },
-            {
-                id: 9,
-                pergunta: 'No período "O poder judiciário interveio rapidamente no litígio patrimonial para evitar a dilapidação dos bens da autarquia", a forma verbal "interveio" está flexionada no:',
-                tipo: "A-E",
-                opcoes: ["A) Pretérito imperfeito do indicativo.", "B) Presente do indicativo.", "C) Futuro do pretérito do indicativo.", "D) Pretérito perfeito do indicativo.", "E) Pretérito mais-que-perfeito do indicativo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "D) Pretérito perfeito do indicativo."
-            },
-            {
-                id: 10,
-                pergunta: 'Na oração "A procuradoria do estado interporá recurso extraordinário contra a decisão proferida pelo tribunal de justiça", o verbo "interporá" classifica-se como:',
-                tipo: "A-E",
-                opcoes: ["A) Futuro do presente do indicativo.", "B) Futuro do pretérito do indicativo.", "C) Pretérito mais-que-perfeito do indicativo.", "D) Presente do indicativo.", "E) Pretérito imperfeito do indicativo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "A) Futuro do presente do indicativo."
-            },
-            {
-                id: 11,
-                pergunta: 'Na oração "Anularam-se as cláusulas abusivas do contrato de prestação de serviços", o verbo encontra-se na:',
-                tipo: "A-E",
-                opcoes: ["A) Voz ativa.", "B) Voz passiva analítica.", "C) Voz passiva sintética.", "D) Voz reflexiva.", "E) Voz reflexiva recíproca.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "C) Voz passiva sintética."
-            },
-            {
-                id: 12,
-                pergunta: 'No período "O plenário do tribunal aprovou a alteração do regimento interno por unanimidade", o verbo está flexionado na:',
-                tipo: "A-E",
-                opcoes: ["A) Voz ativa.", "B) Voz passiva analítica.", "C) Voz passiva sintética.", "D) Voz reflexiva.", "E) Voz reflexiva recíproca.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "A) Voz ativa."
-            },
-            {
-                id: 13,
-                pergunta: 'Na frase "O gestor investigado defendeu-se das graves denúncias de peculato durante a coletiva de imprensa", a voz verbal classifica-se como:',
-                tipo: "A-E",
-                opcoes: ["A) Voz ativa.", "B) Voz passiva analítica.", "C) Voz passiva sintética.", "D) Voz reflexiva.", "E) Voz reflexiva recíproca.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "D) Voz reflexiva."
-            },
-            {
-                id: 14,
-                pergunta: 'No trecho "Os pareceres contábeis foram rejeitados pela auditoria externa na manhã de ontem", o verbo apresenta-se na:',
-                tipo: "A-E",
-                opcoes: ["A) Voz ativa.", "B) Voz passiva analítica.", "C) Voz passiva sintética.", "D) Voz reflexiva.", "E) Voz reflexiva recíproca.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "B) Voz passiva analítica."
-            },
-            {
-                id: 15,
-                pergunta: 'Na oração "Os parlamentares ofenderam-se gravemente no decorrer da comissão parlamentar de inquérito", ocorre o emprego da:',
-                tipo: "A-E",
-                opcoes: ["A) Voz ativa.", "B) Voz passiva analítica.", "C) Voz passiva sintética.", "D) Voz reflexiva.", "E) Voz reflexiva recíproca.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "E) Voz reflexiva recíproca."
-            },
-            {
-                id: 16,
-                pergunta: 'No período "Julgou-se procedente o pedido de indenização formulado pelo servidor público civil", a estrutura verbal configura a:',
-                tipo: "A-E",
-                opcoes: ["A) Voz ativa.", "B) Voz passiva analítica.", "C) Voz passiva sintética.", "D) Voz reflexiva.", "E) Voz reflexiva recíproca.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "C) Voz passiva sintética."
-            },
-            {
-                id: 17,
-                pergunta: 'Na frase "A nova legislação tributária foi sancionada pelo chefe do poder executivo sem vetos", a voz do verbo é classificada como:',
-                tipo: "A-E",
-                opcoes: ["A) Voz ativa.", "B) Voz passiva analítica.", "C) Voz passiva sintética.", "D) Voz reflexiva.", "E) Voz reflexiva recíproca.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "B) Voz passiva analítica."
-            },
-            {
-                id: 18,
-                pergunta: 'No trecho "O procurador-geral arquivou o inquérito civil por absoluta falta de provas documentais", o verbo encontra-se na:',
-                tipo: "A-E",
-                opcoes: ["A) Voz ativa.", "B) Voz passiva analítica.", "C) Voz passiva sintética.", "D) Voz reflexiva.", "E) Voz reflexiva recíproca.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "A) Voz ativa."
-            },
-            {
-                id: 19,
-                pergunta: "Nenhum auditor encontrou falhas graves.",
-                tipo: "A-E",
-                opcoes: ["A) Pronome, adjetivo, verbo, substantivo, advérbio.", "B) Adjetivo, substantivo, verbo, pronome, adjetivo.", "C) Pronome, substantivo, verbo, substantivo, adjetivo.", "D) Advérbio, substantivo, verbo, adjetivo, substantivo.", "E) Substantivo, adjetivo, verbo, substantivo, advérbio.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "C) Pronome, substantivo, verbo, substantivo, adjetivo."
-            },
-            {
-                id: 20,
-                pergunta: "Arquivaram o processo por prescrição.",
-                tipo: "A-E",
-                opcoes: ["A) Verbo, pronome, substantivo, conjunção, adjetivo.", "B) Verbo, artigo, substantivo, preposição, substantivo.", "C) Substantivo, artigo, adjetivo, preposição, verbo.", "D) Verbo, artigo, adjetivo, advérbio, substantivo.", "E) Advérbio, pronome, substantivo, preposição, adjetivo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "B) Verbo, artigo, substantivo, preposição, substantivo."
-            }
+            { id: 1, pergunta: 'No período "Venderam-<b>se</b> os imóveis comerciais do centro da cidade", a partícula "se" atua como partícula apassivadora, sendo "os imóveis comerciais do centro da cidade" o sujeito paciente da oração.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
+            { id: 2, pergunta: 'Na oração "Tratam-<b>se</b> de assuntos sigilosos que exigem a atenção da diretoria", a flexão do verbo no plural justifica-se pela necessidade de concordância com o sujeito "assuntos sigilosos".', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
+            { id: 3, pergunta: 'Em "O jovem candidato preparou-<b>se</b> adequadamente para a sabatina do conselho", a palavra "se" exerce a função sintática de índice de indeterminação do sujeito.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
+            { id: 4, pergunta: 'No trecho "Alugou-<b>se</b> os galpões industriais no início do semestre", a concordância praticada atende rigorosamente às regras da norma-padrão da Língua Portuguesa.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
+            { id: 5, pergunta: 'Na frase "Necessita-<b>se</b> de novos pareceres técnicos para a instrução do processo", a partícula "se" funciona como índice de indeterminação do sujeito, razão pela qual o verbo permanece obrigatoriamente no singular.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
+            { id: 6, pergunta: 'Em "Os advogados cumprimentaram-<b>se</b> friamente antes do início da audiência", o pronome "se" expressa uma ação reflexiva recíproca entre os sujeitos da oração.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
+            { id: 7, pergunta: 'No segmento "Vive-<b>se</b> com mais tranquilidade nas cidades de menor porte", a palavra "se" atua como partícula apassivadora, estando o sujeito oculto na frase.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
+            { id: 8, pergunta: 'Em "Fixaram-<b>se</b> os cartazes informativos nos murais do edifício sede", o termo "os cartazes informativos" exerce a função sintática de sujeito paciente na voz passiva sintética.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
+            { id: 9, pergunta: 'No trecho "O acusado declarou-<b>se</b> inocente durante o interrogatório judicial", o elemento "se" desempenha a função de pronome reflexivo.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
+            { id: 10, pergunta: 'Na frase "Divulgou-<b>se</b> ontem as notas definitivas da prova discursiva", a concordância verbal efetuada no singular está correta, pois a partícula "se" indetermina o sujeito da oração.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
+            { id: 11, pergunta: 'Em "Aspira-<b>se</b> a cargos públicos de grande relevância no cenário nacional", o termo "a cargos públicos" funciona como objeto indireto de um verbo acompanhado por índice de indeterminação do sujeito.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
+            { id: 12, pergunta: 'No trecho "As testemunhas contradisseram-<b>se</b> nos depoimentos prestados à autoridade", a partícula "se" classifica-se como partícula apassivadora, já que a ação verbal é sofrida pelo sujeito.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
+            { id: 13, pergunta: 'Na oração "Precisa-<b>se</b> de fiscais de contrato mais atentos às cláusulas operacionais", o termo "fiscais de contrato" exerce a função de sujeito simples da oração.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
+            { id: 14, pergunta: 'Em "Aprovou-<b>se</b> a nova lei de diretrizes orçamentárias na sessão de ontem", a oração encontra-se na voz passiva sintética, sendo o verbo transitivo direto acompanhado de partícula apassivadora.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
+            { id: 15, pergunta: 'No período "O motorista feriu-<b>se</b> gravemente no acidente ocorrido na rodovia", a partícula "se" indica que o sujeito pratica e sofre a ação verbal, configurando a voz reflexiva.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
+            { id: 16, pergunta: 'Na frase "Proíbem-<b>se</b> a entrada e a permanência de pessoas não autorizadas na sala de controle", a concordância verbal do verbo no plural é obrigatória por se tratar de sujeito paciente composto antecedente ou posposto pleno.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
+            { id: 17, pergunta: 'Em "Acredita-<b>se</b> em dias melhores para a economia do país no próximo trimestre", a palavra "se" atua como índice de indeterminação do sujeito, mantendo o verbo obrigatoriamente na terceira pessoa do singular.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
+            { id: 18, pergunta: 'No segmento "Os delegados reuniram-<b>se</b> com o corregedor para alinhar as diretrizes de investigação", a palavra "se" funciona como índice de indeterminação do sujeito.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
+            { id: 19, pergunta: 'Na oração "Proferiu-<b>se</b> decisões conflitantes durante o julgamento dos recursos", a forma verbal no singular atende à norma-padrão, visto que a partícula "se" torna o sujeito indeterminado.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
+            { id: 20, pergunta: 'No trecho "Recorrem-<b>se</b> a estratégias jurídicas ousadas quando os prazos estão escassos", a flexão do verbo no plural está em conformidade com a norma-padrão, pois concorda com "estratégias jurídicas".', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
+            { id: 21, pergunta: 'Em "O conselheiro vestiu-<b>se</b> formalmente para a solenidade de posse", a partícula "se" atua como pronome reflexivo, funcionando sintaticamente como objeto direto.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" }
         ];
 
         const container = document.getElementById("lista-questoes");
