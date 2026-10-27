@@ -323,10 +323,10 @@
 
     <!-- INTEGRAÇÃO COM O FIREBASE EM TEMPO REAL -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getDatabase, ref, onValue, set, get } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getDatabase, ref, onValue, set, get } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-        // CONFIGURAÇÃO ATUALIZADA DO NOVO PROJETO (atividade-extra-36f40)
+        // CONFIGURAÇÃO DO PROJETO (atividade-extra-36f40)
         const firebaseConfig = {
             apiKey: "AIzaSyC9cRrlARDHnxuABa_zewIbZVEHLTRhJgs",
             authDomain: "atividade-extra-36f40.firebaseapp.com",
@@ -369,7 +369,6 @@
             msgEspera.style.display = "none";
             areaQuiz.style.display = "block";
             
-            // CORRIGIDO PARA innerHTML PARA RENDERIZAR OS DESTAQUES CORRETAMENTE
             enunciadoEl.innerHTML = `${questao.id}. ${questao.pergunta}`;
             opcoesContainer.innerHTML = "";
             feedbackEl.style.display = "none";
@@ -382,14 +381,12 @@
                 questao.opcoes.forEach((opcao) => {
                     const btn = document.createElement("button");
                     btn.className = "btn-opcao";
-                    
-                    // CORRIGIDO PARA innerHTML PARA AS ALTERNATIVAS
                     btn.innerHTML = opcao;
+                    btn.dataset.opcao = opcao;
 
                     if (jaVotou) {
                         btn.disabled = true;
                         
-                        // Destaque apenas na opção clicada pelo aluno
                         if (normalizarTexto(opcao) === normalizarTexto(respostaAnterior)) {
                             const optNorm = normalizarTexto(respostaAnterior);
                             const gabNorm = normalizarTexto(questao.gabarito);
@@ -422,8 +419,7 @@
 
                 botoes.forEach(btn => {
                     btn.disabled = true;
-                    // Lendo innerHTML para comparar corretamente com a tag renderizada
-                    if (normalizarTexto(btn.innerHTML) === optNorm) {
+                    if (normalizarTexto(btn.dataset.opcao) === optNorm) {
                         if (optNorm === gabNorm) {
                             btn.classList.add("opcao-acerto");
                         } else {
