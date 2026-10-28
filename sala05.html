@@ -160,17 +160,96 @@
             gap: 10px;
         }
 
-        /* MENSAGEM TEMPORÁRIA DE AGUARDE */
-        .caixa-em-breve {
+        /* ESTRUTURA DAS TRÊS PARTES */
+        .secao-parte {
+            margin-bottom: 50px;
+        }
+
+        .titulo-parte {
+            font-size: 22px;
+            font-weight: 800;
+            color: #254077;
+            border-bottom: 3px solid #254077;
+            padding-bottom: 8px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-paragrafo {
             background-color: #f8fafc;
-            border: 2px dashed #cbd5e1;
-            border-radius: 12px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #64748b;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 40px;
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid #254077;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .rotulo-paragrafo {
+            font-size: 16px;
+            font-weight: 800;
+            color: #254077;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .sub-rotulo {
+            font-size: 14px;
+            font-weight: 700;
+            color: #475569;
+            text-transform: uppercase;
+            margin-top: 10px;
+            margin-bottom: 6px;
+            display: inline-block;
+            background-color: #e2e8f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .sub-rotulo.destaque-aplicado {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .texto-redacao {
+            font-size: 18px;
+            font-weight: 500;
+            color: #000000;
+            line-height: 1.8;
+            text-align: justify;
+            word-break: break-word;
+        }
+
+        /* DESTAQUE PARA OS TERMOS SUBLINHADOS */
+        .texto-redacao u {
+            text-decoration: underline;
+            text-decoration-color: #254077;
+            text-decoration-thickness: 2px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        /* ESTILO DA REDAÇÃO CORRIDA (FOLHA DE PROVA) */
+        .caixa-folha-prova {
+            background-color: #ffffff;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .paragrafo-corrido {
+            font-size: 18px;
+            font-weight: 500;
+            color: #000000;
+            line-height: 1.9;
+            text-align: justify;
+            text-indent: 2em; /* RECUO TRADICIONAL DE PARÁGRAFO */
+            margin-bottom: 16px;
+        }
+
+        .paragrafo-corrido:last-child {
+            margin-bottom: 0;
         }
 
         /* NOTA DISCRETA DE DIREITOS AUTORAIS */
@@ -234,6 +313,18 @@
                 font-size: 22px;
             }
 
+            .titulo-parte {
+                font-size: 18px;
+            }
+
+            .texto-redacao, .paragrafo-corrido {
+                font-size: 16px;
+            }
+
+            .caixa-folha-prova {
+                padding: 18px;
+            }
+
             .nota-propriedade {
                 font-size: 12px;
             }
@@ -275,10 +366,126 @@
             Conteúdo da Semana <span style="font-size: 24px;">⬇️</span>
         </h1>
 
-        <!-- MENSAGEM TEMPORÁRIA (SUBSTITUIR PELAS QUESTÕES) -->
-        <div class="caixa-em-breve">
-            📝 O conteúdo desta semana será disponibilizado em breve. Fique atento(a)!
-        </div>
+        <!-- PARTE 1: O ESQUELETO COMPLETO -->
+        <section class="secao-parte">
+            <h2 class="titulo-parte">Parte 1 — Modelo Estrutural (Esqueleto Geral)</h2>
+
+            <div class="card-paragrafo">
+                <div class="rotulo-paragrafo">1º Parágrafo — Introdução</div>
+                <p class="texto-redacao">
+                    Atualmente, o tema [TEMA: ....................................................................................................................................] representa um importante desafio para a sociedade brasileira. Nesse contexto, destacam-se como principais fatores [ARGUMENTO 1: ....................................................................................................................................] e [ARGUMENTO 2: ....................................................................................................................................], que merecem atenção.
+                </p>
+            </div>
+
+            <div class="card-paragrafo">
+                <div class="rotulo-paragrafo">2º Parágrafo — Desenvolvimento 1</div>
+                <p class="texto-redacao">
+                    Em primeiro lugar, é importante destacar que [ARGUMENTO 1: ....................................................................................................................................] contribui para essa problemática, uma vez que [EXPLICAÇÃO: ....................................................................................................................................................................................................................................................................................................................]. Dessa maneira, seus impactos afetam diretamente a sociedade.
+                </p>
+            </div>
+
+            <div class="card-paragrafo">
+                <div class="rotulo-paragrafo">3º Parágrafo — Desenvolvimento 2</div>
+                <p class="texto-redacao">
+                    Além disso, [ARGUMENTO 2: ....................................................................................................................................] agrava essa situação. Isso ocorre devido a [EXPLICAÇÃO: ....................................................................................................................................................................................................................................................................................................................], tornando necessária a adoção de medidas eficazes para enfrentar o problema.
+                </p>
+            </div>
+
+            <div class="card-paragrafo">
+                <div class="rotulo-paragrafo">4º Parágrafo — Conclusão</div>
+                <p class="texto-redacao">
+                    Portanto, cabe ao poder público adotar medidas efetivas, por meio de políticas públicas e ações de conscientização, visando reduzir os impactos do problema e promover o bem-estar social.
+                </p>
+            </div>
+        </section>
+
+        <!-- PARTE 2: COMPARAÇÃO PASSO A PASSO -->
+        <section class="secao-parte">
+            <h2 class="titulo-parte">Parte 2 — Análise Comparativa Parágrafo por Parágrafo</h2>
+
+            <!-- 1º PARÁGRAFO -->
+            <div class="card-paragrafo">
+                <div class="rotulo-paragrafo">1º Parágrafo — Introdução</div>
+                
+                <span class="sub-rotulo">Esqueleto:</span>
+                <p class="texto-redacao" style="margin-bottom: 16px;">
+                    Atualmente, o tema [TEMA: ....................................................................................................................................] representa um importante desafio para a sociedade brasileira. Nesse contexto, destacam-se como principais fatores [ARGUMENTO 1: ....................................................................................................................................] e [ARGUMENTO 2: ....................................................................................................................................], que merecem atenção.
+                </p>
+
+                <span class="sub-rotulo destaque-aplicado">Preenchimento Aplicado:</span>
+                <p class="texto-redacao">
+                    Atualmente, o tema <u>os desafios da aplicação da tecnologia na segurança pública</u> representa um importante desafio para a sociedade brasileira. Nesse contexto, destacam-se como principais fatores <u>a infraestrutura digital precária nas corporações</u> e <u>a falta de integração de dados entre as forças policiais</u>, que merecem atenção.
+                </p>
+            </div>
+
+            <!-- 2º PARÁGRAFO -->
+            <div class="card-paragrafo">
+                <div class="rotulo-paragrafo">2º Parágrafo — Desenvolvimento 1</div>
+                
+                <span class="sub-rotulo">Esqueleto:</span>
+                <p class="texto-redacao" style="margin-bottom: 16px;">
+                    Em primeiro lugar, é importante destacar que [ARGUMENTO 1: ....................................................................................................................................] contribui para essa problemática, uma vez que [EXPLICAÇÃO: ....................................................................................................................................................................................................................................................................................................................]. Dessa maneira, seus impactos afetam diretamente a sociedade.
+                </p>
+
+                <span class="sub-rotulo destaque-aplicado">Preenchimento Aplicado:</span>
+                <p class="texto-redacao">
+                    Em primeiro lugar, é importante destacar que <u>a infraestrutura digital precária nas corporações</u> contribui para essa problemática, uma vez que <u>diversas regiões operam com equipamentos obsoletos e sem ferramentas avançadas de inteligência, o que limita a rapidez e a precisão das operações no combate ao crime</u>. Dessa maneira, seus impactos afetam diretamente a sociedade.
+                </p>
+            </div>
+
+            <!-- 3º PARÁGRAFO -->
+            <div class="card-paragrafo">
+                <div class="rotulo-paragrafo">3º Parágrafo — Desenvolvimento 2</div>
+                
+                <span class="sub-rotulo">Esqueleto:</span>
+                <p class="texto-redacao" style="margin-bottom: 16px;">
+                    Além disso, [ARGUMENTO 2: ....................................................................................................................................] agrava essa situação. Isso ocorre devido a [EXPLICAÇÃO: ....................................................................................................................................................................................................................................................................................................................], tornando necessária a adoção de medidas eficazes para enfrentar o problema.
+                </p>
+
+                <span class="sub-rotulo destaque-aplicado">Preenchimento Aplicado:</span>
+                <p class="texto-redacao">
+                    Além disso, <u>a falta de integração de dados entre as forças policiais</u> agrava essa situação. Isso ocorre devido a <u>sistemas operacionais isolados que impedem o cruzamento rápido de informações entre órgãos municipais, estaduais e federais</u>, tornando necessária a adoção de medidas eficazes para enfrentar o problema.
+                </p>
+            </div>
+
+            <!-- 4º PARÁGRAFO -->
+            <div class="card-paragrafo">
+                <div class="rotulo-paragrafo">4º Parágrafo — Conclusão</div>
+                
+                <span class="sub-rotulo">Esqueleto:</span>
+                <p class="texto-redacao" style="margin-bottom: 16px;">
+                    Portanto, cabe ao poder público adotar medidas efetivas, por meio de políticas públicas e ações de conscientização, visando reduzir os impactos do problema e promover o bem-estar social.
+                </p>
+
+                <span class="sub-rotulo destaque-aplicado">Preenchimento Aplicado:</span>
+                <p class="texto-redacao">
+                    Portanto, cabe ao poder público adotar medidas efetivas, por meio de políticas públicas e ações de conscientização, visando reduzir os impactos do problema e promover o bem-estar social.
+                </p>
+            </div>
+        </section>
+
+        <!-- PARTE 3: REDAÇÃO CORRIDA (TEXTO FINAL DE PROVA) -->
+        <section class="secao-parte">
+            <h2 class="titulo-parte">Parte 3 — Texto Final Corrido (Modelo da Prova)</h2>
+
+            <div class="caixa-folha-prova">
+                <p class="paragrafo-corrido">
+                    Atualmente, o tema os desafios da aplicação da tecnologia na segurança pública representa um importante desafio para a sociedade brasileira. Nesse contexto, destacam-se como principais fatores a infraestrutura digital precária nas corporações e a falta de integração de dados entre as forças policiais, que merecem atenção.
+                </p>
+
+                <p class="paragrafo-corrido">
+                    Em primeiro lugar, é importante destacar que a infraestrutura digital precária nas corporações contribui para essa problemática, uma vez que diversas regiões operam com equipamentos obsoletos e sem ferramentas avançadas de inteligência, o que limita a rapidez e a precisão das operações no combate ao crime. Dessa maneira, seus impactos afetam diretamente a sociedade.
+                </p>
+
+                <p class="paragrafo-corrido">
+                    Além disso, a falta de integração de dados entre as forças policiais agrava essa situação. Isso ocorre devido a sistemas operacionais isolados que impedem o cruzamento rápido de informações entre órgãos municipais, estaduais e federais, tornando necessária a adoção de medidas eficazes para enfrentar o problema.
+                </p>
+
+                <p class="paragrafo-corrido">
+                    Portanto, cabe ao poder público adotar medidas efetivas, por meio de políticas públicas e ações de conscientização, visando reduzir os impactos do problema e promover o bem-estar social.
+                </p>
+            </div>
+        </section>
 
         <!-- NOTA DE AUTORIA E PROPRIEDADE -->
         <div class="nota-propriedade">
