@@ -75,30 +75,149 @@
         const db = getDatabase(app);
 
         // =========================================================================
-        // BANCO DE QUESTÕES COMPLETO (21 QUESTÕES CERTO/ERRADO)
+        // BANCO DE QUESTÕES COMPLETO (20 QUESTÕES: SUJEITO E PREDICADO)
         // =========================================================================
         const questoes = [
-            { id: 1, pergunta: 'No período "Venderam-<b>se</b> os imóveis comerciais do centro da cidade", a partícula "se" atua como partícula apassivadora, sendo "os imóveis comerciais do centro da cidade" o sujeito paciente da oração.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
-            { id: 2, pergunta: 'Na oração "Tratam-<b>se</b> de assuntos sigilosos que exigem a atenção da diretoria", a flexão do verbo no plural justifica-se pela necessidade de concordância com o sujeito "assuntos sigilosos".', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
-            { id: 3, pergunta: 'Em "O jovem candidato preparou-<b>se</b> adequadamente para a sabatina do conselho", a palavra "se" exerce a função sintática de índice de indeterminação do sujeito.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
-            { id: 4, pergunta: 'No trecho "Alugou-<b>se</b> os galpões industriais no início do semestre", a concordância praticada atende rigorosamente às regras da norma-padrão da Língua Portuguesa.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
-            { id: 5, pergunta: 'Na frase "Necessita-<b>se</b> de novos pareceres técnicos para a instrução do processo", a partícula "se" funciona como índice de indeterminação do sujeito, razão pela qual o verbo permanece obrigatoriamente no singular.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
-            { id: 6, pergunta: 'Em "Os advogados cumprimentaram-<b>se</b> friamente antes do início da audiência", o pronome "se" expressa uma ação reflexiva recíproca entre os sujeitos da oração.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
-            { id: 7, pergunta: 'No segmento "Vive-<b>se</b> com mais tranquilidade nas cidades de menor porte", a palavra "se" atua como partícula apassivadora, estando o sujeito oculto na frase.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
-            { id: 8, pergunta: 'Em "Fixaram-<b>se</b> os cartazes informativos nos murais do edifício sede", o termo "os cartazes informativos" exerce a função sintática de sujeito paciente na voz passiva sintética.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
-            { id: 9, pergunta: 'No trecho "O acusado declarou-<b>se</b> inocente durante o interrogatório judicial", o elemento "se" desempenha a função de pronome reflexivo.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
-            { id: 10, pergunta: 'Na frase "Divulgou-<b>se</b> ontem as notas definitivas da prova discursiva", a concordância verbal efetuada no singular está correta, pois a partícula "se" indetermina o sujeito da oração.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
-            { id: 11, pergunta: 'Em "Aspira-<b>se</b> a cargos públicos de grande relevância no cenário nacional", o termo "a cargos públicos" funciona como objeto indireto de um verbo acompanhado por índice de indeterminação do sujeito.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
-            { id: 12, pergunta: 'No trecho "As testemunhas contradisseram-<b>se</b> nos depoimentos prestados à autoridade", a partícula "se" classifica-se como partícula apassivadora, já que a ação verbal é sofrida pelo sujeito.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
-            { id: 13, pergunta: 'Na oração "Precisa-<b>se</b> de fiscais de contrato mais atentos às cláusulas operacionais", o termo "fiscais de contrato" exerce a função de sujeito simples da oração.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
-            { id: 14, pergunta: 'Em "Aprovou-<b>se</b> a nova lei de diretrizes orçamentárias na sessão de ontem", a oração encontra-se na voz passiva sintética, sendo o verbo transitivo direto acompanhado de partícula apassivadora.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
-            { id: 15, pergunta: 'No período "O motorista feriu-<b>se</b> gravemente no acidente ocorrido na rodovia", a partícula "se" indica que o sujeito pratica e sofre a ação verbal, configurando a voz reflexiva.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
-            { id: 16, pergunta: 'Na frase "Proíbem-<b>se</b> a entrada e a permanência de pessoas não autorizadas na sala de controle", a concordância verbal do verbo no plural é obrigatória por se tratar de sujeito paciente composto antecedente ou posposto pleno.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
-            { id: 17, pergunta: 'Em "Acredita-<b>se</b> em dias melhores para a economia do país no próximo trimestre", a palavra "se" atua como índice de indeterminação do sujeito, mantendo o verbo obrigatoriamente na terceira pessoa do singular.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" },
-            { id: 18, pergunta: 'No segmento "Os delegados reuniram-<b>se</b> com o corregedor para alinhar as diretrizes de investigação", a palavra "se" funciona como índice de indeterminação do sujeito.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
-            { id: 19, pergunta: 'Na oração "Proferiu-<b>se</b> decisões conflitantes durante o julgamento dos recursos", a forma verbal no singular atende à norma-padrão, visto que a partícula "se" torna o sujeito indeterminado.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
-            { id: 20, pergunta: 'No trecho "Recorrem-<b>se</b> a estratégias jurídicas ousadas quando os prazos estão escassos", a flexão do verbo no plural está em conformidade com a norma-padrão, pois concorda com "estratégias jurídicas".', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Errado" },
-            { id: 21, pergunta: 'Em "O conselheiro vestiu-<b>se</b> formalmente para a solenidade de posse", a partícula "se" atua como pronome reflexivo, funcionando sintaticamente como objeto direto.', tipo: "Certo/Errado", opcoes: ["Certo", "Errado", "🤷🏽‍♂️ Chutei (não tenho certeza.)"], gabarito: "Certo" }
+            {
+                id: 1,
+                pergunta: 'Na oração "Necessita-se de peritos criminais com urgência naquele departamento", a correta classificação do sujeito é:',
+                tipo: "A-E",
+                opcoes: ["A) Sujeito oculto.", "B) Sujeito simples.", "C) Sujeito indeterminado.", "D) Sujeito inexistente.", "E) Sujeito composto.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "C) Sujeito indeterminado."
+            },
+            {
+                id: 2,
+                pergunta: 'No período "A nova legislação tributária entrou em vigor na manhã de hoje", o sujeito classifica-se como:',
+                tipo: "A-E",
+                opcoes: ["A) Sujeito inexistente.", "B) Sujeito composto.", "C) Sujeito oculto.", "D) Sujeito simples.", "E) Sujeito indeterminado.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "D) Sujeito simples."
+            },
+            {
+                id: 3,
+                pergunta: 'Analise a frase "Havia muitas pendências processuais no arquivo morto da secretaria". O sujeito dessa oração deve ser classificado como:',
+                tipo: "A-E",
+                opcoes: ["A) Sujeito composto.", "B) Sujeito inexistente.", "C) Sujeito indeterminado.", "D) Sujeito simples.", "E) Sujeito oculto.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "B) Sujeito inexistente."
+            },
+            {
+                id: 4,
+                pergunta: 'No trecho "Entregaremos os formulários preenchidos ao setor de protocolo amanhã", a estrutura sintática configura um:',
+                tipo: "A-E",
+                opcoes: ["A) Sujeito indeterminado.", "B) Sujeito simples.", "C) Sujeito oculto.", "D) Sujeito composto.", "E) Sujeito inexistente.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "C) Sujeito oculto."
+            },
+            {
+                id: 5,
+                pergunta: 'Na oração "Prefeitos e governadores debateram exaustivamente a distribuição das verbas federais", o sujeito é classificado gramaticalmente como:',
+                tipo: "A-E",
+                opcoes: ["A) Sujeito composto.", "B) Sujeito inexistente.", "C) Sujeito simples.", "D) Sujeito indeterminado.", "E) Sujeito oculto.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "A) Sujeito composto."
+            },
+            {
+                id: 6,
+                pergunta: 'Em relação à frase "Invadiram o sistema de segurança da câmara de vereadores no fim de semana", o sujeito classifica-se como:',
+                tipo: "A-E",
+                opcoes: ["A) Sujeito simples.", "B) Sujeito oculto.", "C) Sujeito inexistente.", "D) Sujeito composto.", "E) Sujeito indeterminado.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "E) Sujeito indeterminado."
+            },
+            {
+                id: 7,
+                pergunta: 'No período "Trovejou demasiadamente durante a madrugada na região serrana", o sujeito da oração é classificado como:',
+                tipo: "A-E",
+                opcoes: ["A) Sujeito inexistente.", "B) Sujeito indeterminado.", "C) Sujeito composto.", "D) Sujeito oculto.", "E) Sujeito simples.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "A) Sujeito inexistente."
+            },
+            {
+                id: 8,
+                pergunta: 'Na frase "Apenas um dos vereadores absteve-se durante a polêmica votação nominal", o sujeito classifica-se sintaticamente como:',
+                tipo: "A-E",
+                opcoes: ["A) Sujeito oculto.", "B) Sujeito simples.", "C) Sujeito composto.", "D) Sujeito inexistente.", "E) Sujeito indeterminado.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "B) Sujeito simples."
+            },
+            {
+                id: 9,
+                pergunta: 'No trecho "Reconheceste o teu equívoco durante a acareação judicial?", a correta classificação do sujeito é:',
+                tipo: "A-E",
+                opcoes: ["A) Sujeito composto.", "B) Sujeito indeterminado.", "C) Sujeito simples.", "D) Sujeito inexistente.", "E) Sujeito oculto.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "E) Sujeito oculto."
+            },
+            {
+                id: 10,
+                pergunta: 'Na oração "A falta de planejamento e o excesso de gastos prejudicaram a gestão municipal", o sujeito deve ser classificado como:',
+                tipo: "A-E",
+                opcoes: ["A) Sujeito inexistente.", "B) Sujeito composto.", "C) Sujeito oculto.", "D) Sujeito indeterminado.", "E) Sujeito simples.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "B) Sujeito composto."
+            },
+            {
+                id: 11,
+                pergunta: 'Na oração "Os auditores deixaram o prédio da controladoria exaustos", o predicado classifica-se como:',
+                tipo: "A-E",
+                opcoes: ["A) Predicado verbal.", "B) Predicado nominal.", "C) Predicado simples.", "D) Predicado verbo-nominal.", "E) Predicado composto.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "D) Predicado verbo-nominal."
+            },
+            {
+                id: 12,
+                pergunta: 'No período "O clima no plenário permaneceu tenso durante a votação", a correta classificação do predicado é:',
+                tipo: "A-E",
+                opcoes: ["A) Predicado nominal.", "B) Predicado verbo-nominal.", "C) Predicado simples.", "D) Predicado verbal.", "E) Predicado composto.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "A) Predicado nominal."
+            },
+            {
+                id: 13,
+                pergunta: 'Analise a frase "A procuradoria arquivou os processos criminais na semana passada". O predicado dessa oração deve ser classificado como:',
+                tipo: "A-E",
+                opcoes: ["A) Predicado verbo-nominal.", "B) Predicado composto.", "C) Predicado verbal.", "D) Predicado nominal.", "E) Predicado adverbial.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "C) Predicado verbal."
+            },
+            {
+                id: 14,
+                pergunta: 'No trecho "O conselho de administração elegeu o servidor público presidente da autarquia", a estrutura sintática configura um:',
+                tipo: "A-E",
+                opcoes: ["A) Predicado verbal.", "B) Predicado nominal.", "C) Predicado verbo-nominal.", "D) Predicado simples.", "E) Predicado composto.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "C) Predicado verbo-nominal."
+            },
+            {
+                id: 15,
+                pergunta: 'Na oração "Os servidores estaduais reivindicaram melhores condições estruturais ao governador", o predicado é classificado gramaticalmente como:',
+                tipo: "A-E",
+                opcoes: ["A) Predicado simples.", "B) Predicado nominal.", "C) Predicado verbo-nominal.", "D) Predicado composto.", "E) Predicado verbal.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "E) Predicado verbal."
+            },
+            {
+                id: 16,
+                pergunta: 'Em relação à frase "A decisão da mesa diretora pareceu precipitada aos olhos atônitos da imprensa", o predicado classifica-se como:',
+                tipo: "A-E",
+                opcoes: ["A) Predicado nominal.", "B) Predicado verbal.", "C) Predicado composto.", "D) Predicado verbo-nominal.", "E) Predicado simples.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "A) Predicado nominal."
+            },
+            {
+                id: 17,
+                pergunta: 'No período "As testemunhas de defesa depuseram bastante nervosas na audiência de instrução", o predicado da oração é classificado como:',
+                tipo: "A-E",
+                opcoes: ["A) Predicado verbal.", "B) Predicado nominal.", "C) Predicado composto.", "D) Predicado verbo-nominal.", "E) Predicado adverbial.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "D) Predicado verbo-nominal."
+            },
+            {
+                id: 18,
+                pergunta: 'Na frase "O prefeito municipal considerou o projeto orçamentário inviável para o próximo exercício", o predicado classifica-se sintaticamente como:',
+                tipo: "A-E",
+                opcoes: ["A) Predicado nominal.", "B) Predicado verbo-nominal.", "C) Predicado verbal.", "D) Predicado simples.", "E) Predicado adverbial.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "B) Predicado verbo-nominal."
+            },
+            {
+                id: 19,
+                pergunta: 'No trecho "A nova sede da secretaria de fazenda continua interditada para reformas urgentes", a correta classificação do predicado é:',
+                tipo: "A-E",
+                opcoes: ["A) Predicado composto.", "B) Predicado verbo-nominal.", "C) Predicado nominal.", "D) Predicado verbal.", "E) Predicado simples.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "C) Predicado nominal."
+            },
+            {
+                id: 20,
+                pergunta: 'Na oração "Os fiscais alfandegários apreenderam diversas mercadorias irregulares no porto seco", o predicado deve ser classificado como:',
+                tipo: "A-E",
+                opcoes: ["A) Predicado verbo-nominal.", "B) Predicado simples.", "C) Predicado nominal.", "D) Predicado verbal.", "E) Predicado composto.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "D) Predicado verbal."
+            }
         ];
 
         const container = document.getElementById("lista-questoes");

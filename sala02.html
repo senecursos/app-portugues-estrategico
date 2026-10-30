@@ -160,17 +160,44 @@
             gap: 10px;
         }
 
-        /* MENSAGEM TEMPORÁRIA DE AGUARDE */
-        .caixa-em-breve {
-            background-color: #f8fafc;
-            border: 2px dashed #cbd5e1;
-            border-radius: 12px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #64748b;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 40px;
+        /* QUESTÕES E ENUNCIADOS */
+        .bloco-questao {
+            margin-bottom: 42px;
+        }
+
+        .enunciado {
+            font-size: 20px;
+            font-weight: 800;
+            color: #000000;
+            margin-bottom: 18px;
+            line-height: 1.5;
+            border-left: 5px solid #254077;
+            padding-left: 14px;
+        }
+
+        .lista-frases {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        /* PADRÃO ÚNICO E FIXO PARA TODAS AS FRASES */
+        .lista-frases li {
+            font-size: 18px;
+            font-weight: 500;
+            color: #000000;
+            padding: 12px 0;
+            border-bottom: 1px dashed #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .lista-frases li:last-child {
+            border-bottom: none;
+        }
+
+        /* ESTILO DOS DESTAQUES DENTRO DAS FRASES */
+        .lista-frases span {
+            font-size: 1.1em;
+            font-weight: 700;
         }
 
         /* NOTA DISCRETA DE DIREITOS AUTORAIS */
@@ -234,6 +261,10 @@
                 font-size: 22px;
             }
 
+            .enunciado {
+                font-size: 18px;
+            }
+
             .nota-propriedade {
                 font-size: 12px;
             }
@@ -275,10 +306,29 @@
             Conteúdo da Semana <span style="font-size: 24px;">⬇️</span>
         </h1>
 
-        <!-- MENSAGEM TEMPORÁRIA (SUBSTITUIR PELAS QUESTÕES) -->
-        <div class="caixa-em-breve">
-            📝 O conteúdo desta semana será disponibilizado em breve. Fique atento(a)!
-        </div>
+        <!-- QUESTÃO 1 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">1) Identifique o predicado das orações abaixo e classifique-o:</h2>
+            <ul class="lista-frases">
+                <li>1) A injustiça aborrece o homem.</li>
+                <li>2) Os trabalhadores voltaram exaustos.</li>
+                <li>3) Perante a lei, somos todos iguais.</li>
+                <li>4) As flores desabrocham lindas na primavera.</li>
+                <li>5) O juiz julgou o réu culpado.</li>
+                <li>6) O povo anda preocupado com o preço dos alimentos.</li>
+                <li>7) O alimento básico da criança é o leite.</li>
+                <li>8) O jogo continuava.</li>
+                <li>9) O jogo continuava animado.</li>
+                <li>10) O caso parecia confuso.</li>
+                <li>11) "De minha varanda vejo, entre árvores e telhados, o mar." (Ru...)</li>
+                <li>12) O aluno respondeu alegre.</li>
+                <li>13) Os fogos de artifício coloriam a noite fria e escura.</li>
+                <li>14) A vizinhança permanecia em estado de alerta.</li>
+                <li>15) Todos nós tremíamos assustados.</li>
+                <li>16) Os investigadores trabalhavam sozinhos.</li>
+                <li>17) A criança saiu acompanhada.</li>
+            </ul>
+        </article>
 
         <!-- NOTA DE AUTORIA E PROPRIEDADE -->
         <div class="nota-propriedade">
