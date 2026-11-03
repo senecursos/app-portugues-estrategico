@@ -2,11 +2,18 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <!-- Meta tag ajustada para permitir rotação e ajuste livre de escala -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Sala 09 | Português Estratégico</title>
 
     <link rel="icon" type="image/png" href="estrategico.jpg">
     <meta name="theme-color" content="#0b0f19">
+
+    <!-- 1. Métrica de Acessos -->
+    <script src="analytics.js"></script>
+
+    <!-- 2. Gerenciador Central de Anúncios -->
+    <script src="anuncios.js"></script>
 
     <style>
         * {
@@ -17,8 +24,7 @@
         }
 
         body {
-            background-color: #ffffff; /* BRANCO PURO */
-            filter: brightness(0.98);   /* SUAVIZA A INTENSIDADE DO BRILHO PARA NÃO CANSAR A VISTA */
+            background-color: #e2e8f0; /* Fundo suave da página */
             color: #000000;
             line-height: 1.6;
             min-height: 100vh;
@@ -27,7 +33,7 @@
             width: 100%;
         }
 
-        /* BARRA SUPERIOR (ROLA NORMALMENTE COM A PÁGINA) */
+        /* BARRA FIXA SUPERIOR */
         .top-navbar {
             background-color: #0b0f19;
             padding: 12px 24px;
@@ -35,6 +41,9 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #1e293b;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .btn-voltar {
@@ -160,17 +169,95 @@
             gap: 10px;
         }
 
-        /* MENSAGEM TEMPORÁRIA DE AGUARDE */
-        .caixa-em-breve {
-            background-color: #f8fafc;
-            border: 2px dashed #cbd5e1;
-            border-radius: 12px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #64748b;
-            font-size: 1.1rem;
+        /* ESTILO DAS QUESTÕES DO SIMULADO (FUNDO BRANCO GELO) */
+        .quiz-card {
+            background-color: #f8fafc; /* BRANCO GELO CONFORTÁVEL */
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .question-number {
+            font-weight: 800;
+            color: #254077;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            color: #000000;
+            margin-bottom: 18px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn-option {
+            padding: 12px 18px;
+            font-size: 0.95rem;
             font-weight: 600;
-            margin-bottom: 40px;
+            border: 2px solid #cbd5e1;
+            background: #ffffff;
+            color: #334155;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            text-align: left;
+        }
+
+        .btn-option:hover {
+            border-color: #254077;
+            color: #254077;
+        }
+
+        .btn-option.selected {
+            background-color: #254077;
+            color: #ffffff;
+            border-color: #254077;
+        }
+
+        /* CAIXA DE FEEDBACK */
+        .feedback-box {
+            display: none;
+            padding: 14px 16px;
+            border-radius: 6px;
+            margin-top: 16px;
+            font-size: 0.95rem;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feedback-box.correct {
+            background-color: #f0fdf4;
+            border-left: 5px solid #16a34a;
+            color: #14532d;
+        }
+
+        .feedback-box.incorrect {
+            background-color: #fef2f2;
+            border-left: 5px solid #dc2626;
+            color: #7f1d1d;
+        }
+
+        .feedback-title {
+            font-weight: 800;
+            font-size: 1rem;
         }
 
         /* NOTA DISCRETA DE DIREITOS AUTORAIS */
@@ -195,7 +282,7 @@
             margin-top: auto;
         }
 
-        /* AJUSTES DE TELA */
+        /* AJUSTES PARA DISPOSITIVOS NA HORIZONTAL E TELAS MENORES */
         @media (max-width: 900px) and (orientation: landscape) {
             .header-banner {
                 height: 140px;
@@ -242,7 +329,7 @@
 </head>
 <body>
 
-    <!-- BARRA SUPERIOR DE NAVEGAÇÃO -->
+    <!-- BARRA FIXA DE NAVEGAÇÃO -->
     <nav class="top-navbar">
         <a href="index.html" class="btn-voltar">&#8592; Voltar ao Início</a>
         <span class="badge-sala">Sala 09</span>
@@ -275,10 +362,325 @@
             Conteúdo da Semana <span style="font-size: 24px;">⬇️</span>
         </h1>
 
-        <!-- MENSAGEM TEMPORÁRIA (SUBSTITUIR PELAS QUESTÕES) -->
-        <div class="caixa-em-breve">
-            📝 O conteúdo desta semana será disponibilizado em breve. Fique atento(a)!
-        </div>
+        <!-- QUESTÃO 01 -->
+        <article class="quiz-card" id="q1">
+            <span class="question-number">Questão 01</span>
+            <p class="question-text">
+                Na frase "O mandado de segurança, instrumento constitucional de proteção, foi deferido pelo juiz", o aposto presente classifica-se como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q1', 'A', 'A')">A) Aposto explicativo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q1', 'B', 'A')">B) Aposto recapitulativo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q1', 'C', 'A')">C) Aposto enumerativo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q1', 'D', 'A')">D) Aposto especificativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q1', 'E', 'A')">E) Aposto comparativo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 02 -->
+        <article class="quiz-card" id="q2">
+            <span class="question-number">Questão 02</span>
+            <p class="question-text">
+                No período "Desvios, fraudes e nepotismo, nada passará despercebido pela nova corregedoria", o aposto nela contido exerce a função de:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q2', 'A', 'C')">A) Aposto comparativo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q2', 'B', 'C')">B) Aposto distributivo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q2', 'C', 'C')">C) Aposto recapitulativo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q2', 'D', 'C')">D) Aposto explicativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q2', 'E', 'C')">E) Aposto especificativo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 03 -->
+        <article class="quiz-card" id="q3">
+            <span class="question-number">Questão 03</span>
+            <p class="question-text">
+                Na oração "O município de Barbalha receberá novos recursos federais para a infraestrutura escolar", o aposto atua sintaticamente como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q3', 'A', 'B')">A) Aposto enumerativo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q3', 'B', 'B')">B) Aposto especificativo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q3', 'C', 'B')">C) Aposto explicativo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q3', 'D', 'B')">D) Aposto recapitulativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q3', 'E', 'B')">E) Aposto distributivo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 04 -->
+        <article class="quiz-card" id="q4">
+            <span class="question-number">Questão 04</span>
+            <p class="question-text">
+                No trecho "O tribunal de contas exigiu três certidões: a federal, a estadual e a municipal", o aposto classifica-se como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q4', 'A', 'D')">A) Aposto distributivo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q4', 'B', 'D')">B) Aposto recapitulativo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q4', 'C', 'D')">C) Aposto comparativo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q4', 'D', 'D')">D) Aposto enumerativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q4', 'E', 'D')">E) Aposto explicativo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 05 -->
+        <article class="quiz-card" id="q5">
+            <span class="question-number">Questão 05</span>
+            <p class="question-text">
+                Na frase "O auditor e o contador analisaram o balanço financeiro; este focou nas despesas, aquele nas receitas", a estrutura que funciona como aposto é classificada como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q5', 'A', 'E')">A) Aposto recapitulativo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q5', 'B', 'E')">B) Aposto comparativo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q5', 'C', 'E')">C) Aposto especificativo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q5', 'D', 'E')">D) Aposto explicativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q5', 'E', 'E')">E) Aposto distributivo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 06 -->
+        <article class="quiz-card" id="q6">
+            <span class="question-number">Questão 06</span>
+            <p class="question-text">
+                Em "A corrupção, um câncer no tecido social, deve ser combatida rigorosamente por todas as esferas de poder", o aposto presente classifica-se como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q6', 'A', 'A')">A) Aposto comparativo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q6', 'B', 'A')">B) Aposto distributivo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q6', 'C', 'A')">C) Aposto enumerativo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q6', 'D', 'A')">D) Aposto especificativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q6', 'E', 'A')">E) Aposto recapitulativo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 07 -->
+        <article class="quiz-card" id="q7">
+            <span class="question-number">Questão 07</span>
+            <p class="question-text">
+                Na oração "O corregedor-geral, autoridade máxima da pasta, determinou a imediata abertura de sindicância", o aposto atua como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q7', 'A', 'C')">A) Aposto especificativo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q7', 'B', 'C')">B) Aposto enumerativo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q7', 'C', 'C')">C) Aposto explicativo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q7', 'D', 'C')">D) Aposto comparativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q7', 'E', 'C')">E) Aposto distributivo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 08 -->
+        <article class="quiz-card" id="q8">
+            <span class="question-number">Questão 08</span>
+            <p class="question-text">
+                No período "O governador Tarcísio vetou integralmente a medida provisória debatida no plenário", o aposto exerce a função sintática de:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q8', 'A', 'B')">A) Aposto recapitulativo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q8', 'B', 'B')">B) Aposto especificativo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q8', 'C', 'B')">C) Aposto explicativo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q8', 'D', 'B')">D) Aposto enumerativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q8', 'E', 'B')">E) Aposto comparativo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 09 -->
+        <article class="quiz-card" id="q9">
+            <span class="question-number">Questão 09</span>
+            <p class="question-text">
+                Analise o trecho "Computadores, mesas, cadeiras e antigos arquivos de aço, tudo foi leiloado pela autarquia estadual". O aposto presente é classificado como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q9', 'A', 'D')">A) Aposto distributivo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q9', 'B', 'D')">B) Aposto comparativo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q9', 'C', 'D')">C) Aposto enumerativo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q9', 'D', 'D')">D) Aposto recapitulativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q9', 'E', 'D')">E) Aposto explicativo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 10 -->
+        <article class="quiz-card" id="q10">
+            <span class="question-number">Questão 10</span>
+            <p class="question-text">
+                Na frase "Foram convocados os seguintes servidores efetivos: analistas, técnicos e auxiliares administrativos", o aposto nela contido atua como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q10', 'A', 'A')">A) Aposto enumerativo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q10', 'B', 'A')">B) Aposto especificativo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q10', 'C', 'A')">C) Aposto comparativo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q10', 'D', 'A')">D) Aposto distributivo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q10', 'E', 'A')">E) Aposto recapitulativo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 11 -->
+        <article class="quiz-card" id="q11">
+            <span class="question-number">Questão 11</span>
+            <p class="question-text">
+                Em "O relator e o revisor emitiram seus pareceres técnicos; um pela absolvição sumária, o outro pela condenação", a estrutura que atua como aposto classifica-se como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q11', 'A', 'B')">A) Aposto explicativo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q11', 'B', 'B')">B) Aposto distributivo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q11', 'C', 'B')">C) Aposto recapitulativo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q11', 'D', 'B')">D) Aposto enumerativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q11', 'E', 'B')">E) Aposto especificativo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 12 -->
+        <article class="quiz-card" id="q12">
+            <span class="question-number">Questão 12</span>
+            <p class="question-text">
+                No período "A burocracia excessiva, verdadeira âncora para o desenvolvimento econômico, foi alvo de duras críticas", o aposto exerce a função de:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q12', 'A', 'A')">A) Aposto comparativo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q12', 'B', 'A')">B) Aposto recapitulativo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q12', 'C', 'A')">C) Aposto distributivo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q12', 'D', 'A')">D) Aposto especificativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q12', 'E', 'A')">E) Aposto enumerativo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 13 -->
+        <article class="quiz-card" id="q13">
+            <span class="question-number">Questão 13</span>
+            <p class="question-text">
+                Na oração "O estado de Pernambuco sediará o próximo fórum regional de gestores públicos", o aposto presente atua sintaticamente como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q13', 'A', 'C')">A) Aposto enumerativo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q13', 'B', 'C')">B) Aposto distributivo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q13', 'C', 'C')">C) Aposto especificativo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q13', 'D', 'C')">D) Aposto explicativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q13', 'E', 'C')">E) Aposto recapitulativo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 14 -->
+        <article class="quiz-card" id="q14">
+            <span class="question-number">Questão 14</span>
+            <p class="question-text">
+                No trecho "A Constituição Federal, lei maior do ordenamento jurídico brasileiro, assegura os princípios da administração pública", o aposto é classificado como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q14', 'A', 'D')">A) Aposto especificativo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q14', 'B', 'D')">B) Aposto comparativo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q14', 'C', 'D')">C) Aposto recapitulativo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q14', 'D', 'D')">D) Aposto explicativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q14', 'E', 'D')">E) Aposto distributivo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 15 -->
+        <article class="quiz-card" id="q15">
+            <span class="question-number">Questão 15</span>
+            <p class="question-text">
+                Analise a frase "Vereadores, prefeitos e secretários estaduais, ninguém se opôs ao novo regimento interno". O aposto presente classifica-se como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q15', 'A', 'A')">A) Aposto recapitulativo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q15', 'B', 'A')">B) Aposto enumerativo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q15', 'C', 'A')">C) Aposto explicativo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q15', 'D', 'A')">D) Aposto especificativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q15', 'E', 'A')">E) Aposto comparativo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 16 -->
+        <article class="quiz-card" id="q16">
+            <span class="question-number">Questão 16</span>
+            <p class="question-text">
+                Em "O edital previu vagas de provimento imediato para três áreas distintas: medicina, engenharia e docência", a estrutura que funciona como aposto classifica-se como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q16', 'A', 'D')">A) Aposto comparativo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q16', 'B', 'D')">B) Aposto especificativo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q16', 'C', 'D')">C) Aposto distributivo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q16', 'D', 'D')">D) Aposto enumerativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q16', 'E', 'D')">E) Aposto explicativo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 17 -->
+        <article class="quiz-card" id="q17">
+            <span class="question-number">Questão 17</span>
+            <p class="question-text">
+                Na oração "A defesa e a acusação apresentaram seus argumentos preliminares; aquela baseada em provas periciais, esta em depoimentos orais", o aposto presente atua como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q17', 'A', 'B')">A) Aposto enumerativo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q17', 'B', 'B')">B) Aposto distributivo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q17', 'C', 'B')">C) Aposto recapitulativo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q17', 'D', 'B')">D) Aposto comparativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q17', 'E', 'B')">E) Aposto explicativo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 18 -->
+        <article class="quiz-card" id="q18">
+            <span class="question-number">Questão 18</span>
+            <p class="question-text">
+                No período "Os juros da dívida pública, uma bola de neve incontrolável, preocupam severamente a equipe econômica", o aposto é classificado como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q18', 'A', 'C')">A) Aposto explicativo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q18', 'B', 'C')">B) Aposto distributivo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q18', 'C', 'C')">C) Aposto comparativo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q18', 'D', 'C')">D) Aposto especificativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q18', 'E', 'C')">E) Aposto recapitulativo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 19 -->
+        <article class="quiz-card" id="q19">
+            <span class="question-number">Questão 19</span>
+            <p class="question-text">
+                Na frase "A cidade de Juazeiro do Norte registrou um aumento substancial na arrecadação tributária anual", o aposto exerce a função sintática de:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q19', 'A', 'A')">A) Aposto especificativo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q19', 'B', 'A')">B) Aposto enumerativo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q19', 'C', 'A')">C) Aposto recapitulativo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q19', 'D', 'A')">D) Aposto explicativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q19', 'E', 'A')">E) Aposto comparativo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 20 -->
+        <article class="quiz-card" id="q20">
+            <span class="question-number">Questão 20</span>
+            <p class="question-text">
+                No trecho "O pregão eletrônico, modalidade de licitação extremamente ágil, reduziu os custos operacionais da máquina pública", o aposto classifica-se como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q20', 'A', 'E')">A) Aposto distributivo.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q20', 'B', 'E')">B) Aposto comparativo.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q20', 'C', 'E')">C) Aposto especificativo.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q20', 'D', 'E')">D) Aposto recapitulativo.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q20', 'E', 'E')">E) Aposto explicativo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
 
         <!-- NOTA DE AUTORIA E PROPRIEDADE -->
         <div class="nota-propriedade">
@@ -291,6 +693,31 @@
     <footer class="footer-site">
         &copy; 2026 SENE. Todos os direitos reservados.
     </footer>
+
+    <!-- SCRIPT DE LÓGICA DO SIMULADO -->
+    <script>
+        function checkAnswer(questionId, selectedLetter, correctLetter) {
+            const card = document.getElementById(questionId);
+            const buttons = card.querySelectorAll('.btn-option');
+            const feedbackBox = card.querySelector('.feedback-box');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('selected');
+                if (btn.getAttribute('data-letter') === selectedLetter) {
+                    btn.classList.add('selected');
+                }
+            });
+
+            feedbackBox.style.display = 'block';
+            if (selectedLetter === correctLetter) {
+                feedbackBox.className = 'feedback-box correct';
+                feedbackBox.innerHTML = `<div class="feedback-title">✓ Resposta Correta!</div>`;
+            } else {
+                feedbackBox.className = 'feedback-box incorrect';
+                feedbackBox.innerHTML = `<div class="feedback-title">✕ Resposta Incorreta.</div>`;
+            }
+        }
+    </script>
 
 </body>
 </html>
