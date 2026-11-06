@@ -160,17 +160,44 @@
             gap: 10px;
         }
 
-        /* MENSAGEM TEMPORÁRIA DE AGUARDE */
-        .caixa-em-breve {
-            background-color: #f8fafc;
-            border: 2px dashed #cbd5e1;
-            border-radius: 12px;
-            padding: 40px 20px;
-            text-align: center;
-            color: #64748b;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 40px;
+        /* QUESTÕES E ENUNCIADOS */
+        .bloco-questao {
+            margin-bottom: 42px;
+        }
+
+        .enunciado {
+            font-size: 20px;
+            font-weight: 800;
+            color: #000000;
+            margin-bottom: 18px;
+            line-height: 1.5;
+            border-left: 5px solid #254077;
+            padding-left: 14px;
+        }
+
+        .lista-frases {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        /* PADRÃO ÚNICO E FIXO PARA TODAS AS FRASES */
+        .lista-frases li {
+            font-size: 18px;
+            font-weight: 500;
+            color: #000000;
+            padding: 12px 0;
+            border-bottom: 1px dashed #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .lista-frases li:last-child {
+            border-bottom: none;
+        }
+
+        /* ESTILO DOS DESTAQUES DENTRO DAS FRASES */
+        .lista-frases span {
+            font-size: 1.1em;
+            font-weight: 700;
         }
 
         /* NOTA DISCRETA DE DIREITOS AUTORAIS */
@@ -234,6 +261,10 @@
                 font-size: 22px;
             }
 
+            .enunciado {
+                font-size: 18px;
+            }
+
             .nota-propriedade {
                 font-size: 12px;
             }
@@ -275,10 +306,90 @@
             Conteúdo da Semana <span style="font-size: 24px;">⬇️</span>
         </h1>
 
-        <!-- MENSAGEM TEMPORÁRIA (SUBSTITUIR PELAS QUESTÕES) -->
-        <div class="caixa-em-breve">
-            📝 O conteúdo desta semana será disponibilizado em breve. Fique atento(a)!
-        </div>
+        <!-- QUESTÃO 1 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">1) Classifique cada verbo como Verbo Intransitivo (VI) ou Verbo Transitivo (VT).</h2>
+            <ul class="lista-frases">
+                <li>1) Durante a votação do orçamento, o líder do governo hesitou...</li>
+                <li>2) A comissão parlamentar de inquérito convocou...</li>
+                <li>3) O departamento de recursos humanos advertiu...</li>
+                <li>4) Após o longo tratamento médico, o servidor aposentado faleceu...</li>
+                <li>5) O conselho de administração da autarquia aprovou...</li>
+                <li>6) Diante das evidências apresentadas no relatório, o esquema fraudulento ruiu...</li>
+                <li>7) Apesar das inúmeras tentativas de prorrogação, a medida provisória caducou...</li>
+                <li>8) O experiente procurador da república solicitou...</li>
+                <li>9) A equipe de auditores fiscais confiscou...</li>
+                <li>10) Durante o rigoroso interrogatório, a testemunha ocular chorou...</li>
+            </ul>
+        </article>
+
+        <!-- QUESTÃO 2 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">2) Indique se a oração possui um Objeto Direto ou um Predicativo do Sujeito.</h2>
+            <ul class="lista-frases">
+                <li>1) O diretor do departamento apresentou justificativas plausíveis.</li>
+                <li>2) O diretor do departamento pareceu preocupado durante a reunião.</li>
+                <li>3) A comissão investigadora continuou calada ao longo do depoimento.</li>
+                <li>4) A comissão investigadora ouviu as testemunhas de defesa.</li>
+                <li>5) O tribunal de contas suspendeu os repasses estaduais.</li>
+                <li>6) Os repasses estaduais tornaram-se inviáveis neste trimestre.</li>
+                <li>7) A equipe de fiscalização encontrou graves irregularidades contratuais.</li>
+                <li>8) A nova secretária de finanças andava apreensiva com o orçamento.</li>
+                <li>9) Os parlamentares aprovaram o pacote de medidas emergenciais.</li>
+                <li>10) O clima na assembleia legislativa ficou insustentável.</li>
+            </ul>
+        </article>
+
+        <!-- QUESTÃO 3 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">3) Indique se o termo destacado é objeto indireto ou complemento nominal.</h2>
+            <ul class="lista-frases">
+                <li>1) A decisão do tribunal regional foi favorável <b><u>aos servidores públicos</u></b>.</li>
+                <li>2) O governador do estado respondeu <b><u>aos questionamentos da imprensa</u></b>.</li>
+                <li>3) A nova secretária de finanças não obedeceu <b><u>às diretrizes orçamentárias</u></b>.</li>
+                <li>4) A população do município mantinha a esperança <b><u>de melhorias estruturais</u></b>.</li>
+                <li>5) O diretor do departamento resistiu <b><u>às pressões políticas externas</u></b>.</li>
+                <li>6) O relatório oficial da corregedoria fez menção <b><u>aos desvios de verba</u></b>.</li>
+                <li>7) O promotor de justiça tinha plena convicção <b><u>da culpa do investigado</u></b>.</li>
+                <li>8) Os experientes fiscais alfandegários desconfiaram <b><u>das notas fiscais apresentadas</u></b>.</li>
+                <li>9) O conselho de ética aludiu <b><u>às infrações cometidas durante o mandato</u></b>.</li>
+                <li>10) A atitude precipitada do gestor foi prejudicial <b><u>ao andamento do certame</u></b>.</li>
+            </ul>
+        </article>
+
+        <!-- QUESTÃO 4 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">4) Identifique se a frase possui um verbo transitivo direto com um complemento nominal ou um verbo transitivo direto e indireto.</h2>
+            <ul class="lista-frases">
+                <li>1) O gestor demonstrou necessidade de novos recursos.</li>
+                <li>2) O auditor entregou o relatório oficial ao conselho de ética.</li>
+                <li>3) O departamento de recursos humanos enviou a notificação aos servidores.</li>
+                <li>4) A comissão parlamentar exigiu o cumprimento rigoroso da lei orçamentária.</li>
+                <li>5) O tribunal regional comunicou a decisão absolutória à imprensa.</li>
+                <li>6) O plenário da câmara aprovou a isenção temporária de impostos.</li>
+                <li>7) O novo diretor manifestou obediência estrita às normas do regimento.</li>
+                <li>8) O chefe do executivo concedeu reajuste salarial aos professores estaduais.</li>
+                <li>9) O conselheiro do tribunal atribuiu o erro contábil ao antigo gestor.</li>
+                <li>10) A testemunha revelou o seu medo constante de represálias criminosas.</li>
+            </ul>
+        </article>
+
+        <!-- QUESTÃO 5 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">5) Identifique se a oração possui predicativo do objeto ou agente da passiva.</h2>
+            <ul class="lista-frases">
+                <li>1) O relatório da auditoria interna foi rejeitado pelo conselho fiscal.</li>
+                <li>2) O corregedor-geral considerou a justificativa apresentada insuficiente.</li>
+                <li>3) O colegiado nomeou o experiente servidor público diretor da autarquia.</li>
+                <li>4) A nova legislação tributária foi sancionada pelo chefe do poder executivo.</li>
+                <li>5) O procurador do estado julgou o recurso administrativo improcedente.</li>
+                <li>6) Os documentos confidenciais foram apreendidos pela polícia federal.</li>
+                <li>7) O alvará de funcionamento do prédio será emitido pela secretaria municipal.</li>
+                <li>8) A comissão de ética declarou o servidor investigado inocente.</li>
+                <li>9) O depoimento inesperado da testemunha deixou o plenário da câmara perplexo.</li>
+                <li>10) As contas anuais do município foram aprovadas pelo tribunal de contas.</li>
+            </ul>
+        </article>
 
         <!-- NOTA DE AUTORIA E PROPRIEDADE -->
         <div class="nota-propriedade">

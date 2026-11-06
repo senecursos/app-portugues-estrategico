@@ -75,148 +75,92 @@
         const db = getDatabase(app);
 
         // =========================================================================
-        // BANCO DE QUESTÕES COMPLETO (20 QUESTÕES: MORFOLOGIA E SINTAXE)
+        // BANCO DE QUESTÕES COMPLETO (12 QUESTÕES: SINTAXE - FUNÇÕES SINTÁTICAS)
         // =========================================================================
         const questoes = [
             {
                 id: 1,
-                pergunta: 'Na frase "O amanhã trará respostas definitivas para o impasse do conselho", a palavra "amanhã" classifica-se morfologicamente como:',
+                pergunta: '(Estilo AOCP) Na oração "O inquérito policial permaneceu sigiloso durante toda a investigação", o termo "sigiloso" exerce a função sintática de:',
                 tipo: "A-E",
-                opcoes: ["A) Advérbio de tempo.", "B) Substantivo.", "C) Adjetivo.", "D) Conjunção coordenada.", "E) Preposição.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "B) Substantivo."
+                opcoes: ["A) Objeto direto.", "B) Predicativo do sujeito.", "C) Predicativo do objeto.", "D) Adjunto adnominal.", "E) Complemento nominal.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "B) Predicativo do sujeito."
             },
             {
                 id: 2,
-                pergunta: 'No trecho "A testemunha do caso depôs alto durante a acareação judicial", a palavra "alto" atua gramaticalmente como:',
+                pergunta: '(Estilo Cebraspe) Considerando as relações morfossintáticas do período "O mandado de busca e apreensão foi expedido pelo juiz da comarca", a expressão "pelo juiz da comarca" atua como o agente da ação verbal estruturada na voz passiva. Assinale a opção que indica a correta classificação desse termo:',
                 tipo: "A-E",
-                opcoes: ["A) Adjetivo.", "B) Substantivo.", "C) Advérbio.", "D) Preposição.", "E) Pronome indefinido.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "C) Advérbio."
+                opcoes: ["A) Sujeito simples.", "B) Objeto indireto.", "C) Adjunto adverbial de causa.", "D) Agente da passiva.", "E) Complemento nominal.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "D) Agente da passiva."
             },
             {
                 id: 3,
-                pergunta: 'Na oração "Entreguei a notificação a ela e nunca mais a vi", as palavras "a", "a" e "a" classificam-se, na exata ordem em que aparecem, como:',
+                pergunta: '(Estilo AOCP) Na frase "A comissão de delegados concluiu o minucioso relatório final na manhã de hoje", o termo "o minucioso relatório final" é classificado sintaticamente como:',
                 tipo: "A-E",
-                opcoes: ["A) Artigo, artigo, pronome.", "B) Preposição, artigo, preposição.", "C) Artigo, preposição, pronome.", "D) Pronome, preposição, artigo.", "E) Preposição, preposição, pronome.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "C) Artigo, preposição, pronome."
+                opcoes: ["A) Objeto direto.", "B) Predicativo do sujeito.", "C) Sujeito simples.", "D) Complemento nominal.", "E) Objeto indireto.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "A) Objeto direto."
             },
             {
                 id: 4,
-                pergunta: 'Na frase "Os auditores estavam muito cansados, pois analisaram muitos documentos", as palavras "muito" e "muitos" pertencem, respectivamente, às seguintes classes:',
+                pergunta: '(Estilo Cebraspe) No trecho "A equipe de investigação demonstrou necessidade de apoio tático imediato", o termo "de apoio tático imediato" liga-se a um nome transitivo (um substantivo abstrato) que integra o complemento do verbo. Dessa forma, a sua correta função sintática é:',
                 tipo: "A-E",
-                opcoes: ["A) Advérbio e pronome indefinido.", "B) Pronome indefinido e advérbio.", "C) Adjetivo e pronome indefinido.", "D) Advérbio e adjetivo.", "E) Pronome indefinido e adjetivo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "A) Advérbio e pronome indefinido."
+                opcoes: ["A) Objeto direto.", "B) Objeto indireto.", "C) Complemento nominal.", "D) Adjunto adnominal.", "E) Predicativo do objeto.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "C) Complemento nominal."
             },
             {
                 id: 5,
-                pergunta: 'No período "Apenas um candidato apresentou a documentação exigida no prazo", a palavra "um" exerce rigorosamente a função morfológica de:',
+                pergunta: '(Estilo AOCP) Na oração "O tribunal de justiça considerou o recurso da defesa improcedente", o termo "improcedente" exerce a função sintática de:',
                 tipo: "A-E",
-                opcoes: ["A) Artigo indefinido.", "B) Pronome demonstrativo.", "C) Pronome indefinido.", "D) Numeral.", "E) Substantivo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "D) Numeral."
+                opcoes: ["A) Complemento nominal.", "B) Adjunto adnominal.", "C) Predicativo do sujeito.", "D) Objeto indireto.", "E) Predicativo do objeto.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "E) Predicativo do objeto."
             },
             {
                 id: 6,
-                pergunta: 'Na oração "O julgamento, pois, foi adiado para o próximo semestre letivo", a palavra "pois" pertence à classe das:',
+                pergunta: '(Estilo Cebraspe) Tendo em vista a regência do verbo no trecho "O corregedor-geral da corporação não obedeceu aos prazos processuais estipulados", o segmento "aos prazos processuais estipulados" funciona sintaticamente como:',
                 tipo: "A-E",
-                opcoes: ["A) Preposições acidentais.", "B) Interjeições.", "C) Conjunções coordenadas aditivas.", "D) Conjunções coordenadas explicativas.", "E) Conjunções coordenadas conclusivas.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "E) Conjunções coordenadas conclusivas."
+                opcoes: ["A) Objeto indireto.", "B) Complemento nominal.", "C) Agente da passiva.", "D) Adjunto adverbial.", "E) Objeto direto preposicionado.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "A) Objeto indireto."
             },
             {
                 id: 7,
-                pergunta: 'Em "A secretária de finanças mostrou-se meio confusa diante das novas diretrizes orçamentárias", o termo "meio" classifica-se como:',
+                pergunta: '(Estilo AOCP) No período "As viaturas descaracterizadas foram identificadas pelos peritos criminais", o termo "pelos peritos criminais" classifica-se sintaticamente como:',
                 tipo: "A-E",
-                opcoes: ["A) Adjetivo.", "B) Numeral fracionário.", "C) Substantivo.", "D) Advérbio.", "E) Pronome indefinido.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "D) Advérbio."
+                opcoes: ["A) Sujeito simples.", "B) Objeto indireto.", "C) Agente da passiva.", "D) Adjunto adverbial de meio.", "E) Complemento nominal.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "C) Agente da passiva."
             },
             {
                 id: 8,
-                pergunta: 'Na frase "Os seguranças do patrimônio permaneceram alerta durante toda a madrugada", a palavra "alerta" atua morfologicamente como:',
+                pergunta: '(Estilo Cebraspe) Na oração "Durante a operação deflagrada na madrugada, os agentes de segurança apreenderam vasto material ilícito", o segmento "vasto material ilícito" completa o sentido de um verbo nocional transitivo sem o auxílio de preposição obrigatória. Esse termo classifica-se como:',
                 tipo: "A-E",
-                opcoes: ["A) Substantivo.", "B) Verbo.", "C) Adjetivo.", "D) Advérbio.", "E) Interjeição.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "D) Advérbio."
+                opcoes: ["A) Sujeito composto.", "B) Predicativo do objeto.", "C) Adjunto adverbial de tempo.", "D) Objeto indireto.", "E) Objeto direto.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "E) Objeto direto."
             },
             {
                 id: 9,
-                pergunta: 'No trecho "O que a controladoria decidiu foi imediatamente acatado pelo prefeito", a palavra "O" posicionada no início da frase classifica-se como:',
+                pergunta: '(Estilo AOCP) Na frase "O secretário de segurança pública atribuiu a falha operacional ao antigo comandante", o termo "ao antigo comandante" exerce a função sintática de:',
                 tipo: "A-E",
-                opcoes: ["A) Artigo definido.", "B) Pronome pessoal oblíquo.", "C) Pronome demonstrativo.", "D) Pronome relativo.", "E) Preposição acidental.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "C) Pronome demonstrativo."
+                opcoes: ["A) Complemento nominal.", "B) Objeto indireto.", "C) Predicativo do objeto.", "D) Agente da passiva.", "E) Adjunto adnominal.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "B) Objeto indireto."
             },
             {
                 id: 10,
-                pergunta: 'Em "Nossa! O relatório orçamentário apresenta falhas grotescas", a palavra "Nossa" atua no contexto como:',
+                pergunta: '(Estilo Cebraspe) No segmento "A imprensa local nomeou o experiente investigador chefe da força-tarefa", a expressão "chefe da força-tarefa" atribui uma qualidade ou estado ao termo que sofre a ação verbal na estrutura transitiva. Essa função sintática é denominada:',
                 tipo: "A-E",
-                opcoes: ["A) Pronome possessivo.", "B) Pronome demonstrativo.", "C) Interjeição.", "D) Adjetivo.", "E) Substantivo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "C) Interjeição."
+                opcoes: ["A) Sujeito.", "B) Predicativo do sujeito.", "C) Complemento nominal.", "D) Predicativo do objeto.", "E) Aposto explicativo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "D) Predicativo do objeto."
             },
             {
                 id: 11,
-                pergunta: 'Na frase "Mediante acordo prévio entre as partes, as cláusulas penais foram alteradas", a palavra "Mediante" classifica-se morfologicamente como:',
+                pergunta: '(Estilo AOCP) No trecho "Os candidatos aprovados no concurso da polícia civil visavam a cargos de alta gestão", o termo "a cargos de alta gestão" classifica-se como:',
                 tipo: "A-E",
-                opcoes: ["A) Advérbio de modo.", "B) Conjunção coordenada.", "C) Adjetivo.", "D) Verbo.", "E) Preposição.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "E) Preposição."
+                opcoes: ["A) Objeto direto.", "B) Complemento nominal.", "C) Predicativo do sujeito.", "D) Adjunto adverbial.", "E) Objeto indireto.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "E) Objeto indireto."
             },
             {
                 id: 12,
-                pergunta: 'Na oração "A autarquia dispunha de bastantes recursos para investir em infraestrutura", o termo "bastantes" atua como:',
+                pergunta: '(Estilo Cebraspe) No contexto da oração "Após o extenso interrogatório, a principal testemunha do caso parecia atônita", o vocábulo "atônita" exprime um estado atribuído ao núcleo do sujeito da oração por intermédio de um verbo relacional. Sintaticamente, classifica-se como:',
                 tipo: "A-E",
-                opcoes: ["A) Advérbio de intensidade.", "B) Pronome indefinido.", "C) Adjetivo qualificativo.", "D) Substantivo comum.", "E) Preposição essencial.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "B) Pronome indefinido."
-            },
-            {
-                id: 13,
-                pergunta: 'Na frase "Constatou-se a grave falha na prestação de contas do gestor", a função do vocábulo "se" e a classificação do sujeito da oração são, respectivamente:',
-                tipo: "A-E",
-                opcoes: ["A) Índice de indeterminação do sujeito / Sujeito indeterminado.", "B) Pronome reflexivo / Sujeito oculto.", "C) Partícula apassivadora / Sujeito simples.", "D) Partícula integrante do verbo / Sujeito inexistente.", "E) Partícula apassivadora / Sujeito composto.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "C) Partícula apassivadora / Sujeito simples."
-            },
-            {
-                id: 14,
-                pergunta: 'Em "Necessita-se de novos equipamentos de segurança no setor de triagem", a oração apresenta:',
-                tipo: "A-E",
-                opcoes: ["A) Partícula apassivadora e sujeito simples.", "B) Índice de indeterminação do sujeito e sujeito indeterminado.", "C) Pronome reflexivo e sujeito indeterminado.", "D) Índice de indeterminação do sujeito e oração sem sujeito.", "E) Partícula de realce e sujeito oculto.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "B) Índice de indeterminação do sujeito e sujeito indeterminado."
-            },
-            {
-                id: 15,
-                pergunta: 'No período "Os conselheiros consideraram a prova técnica exaustiva", a classificação correta do predicado é:',
-                tipo: "A-E",
-                opcoes: ["A) Predicado verbal.", "B) Predicado simples.", "C) Predicado nominal.", "D) Predicado verbo-nominal.", "E) Predicado composto.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "D) Predicado verbo-nominal."
-            },
-            {
-                id: 16,
-                pergunta: 'Na oração "Houve diversos questionamentos ríspidos durante a sessão plenária", o sujeito classifica-se sintaticamente como:',
-                tipo: "A-E",
-                opcoes: ["A) Sujeito composto.", "B) Sujeito simples.", "C) Sujeito indeterminado.", "D) Sujeito oculto.", "E) Sujeito inexistente (oração sem sujeito).", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "E) Sujeito inexistente (oração sem sujeito)."
-            },
-            {
-                id: 17,
-                pergunta: 'Em "Os parlamentares ofenderam-se gravemente no decorrer do debate", a voz verbal e a função do termo "se" são, respectivamente:',
-                tipo: "A-E",
-                opcoes: ["A) Voz passiva sintética / Partícula apassivadora.", "B) Voz ativa / Índice de indeterminação do sujeito.", "C) Voz reflexiva recíproca / Pronome reflexivo.", "D) Voz passiva analítica / Pronome demonstrativo.", "E) Voz reflexiva / Partícula integrante do verbo.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "C) Voz reflexiva recíproca / Pronome reflexivo."
-            },
-            {
-                id: 18,
-                pergunta: 'Na frase "O edital de licitação foi impugnado pelo conselho regional de engenharia", a voz do verbo e o tipo de sujeito são:',
-                tipo: "A-E",
-                opcoes: ["A) Voz passiva sintética / Sujeito composto.", "B) Voz ativa / Sujeito simples.", "C) Voz reflexiva / Sujeito indeterminado.", "D) Voz passiva analítica / Sujeito simples.", "E) Voz ativa / Sujeito oculto.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "D) Voz passiva analítica / Sujeito simples."
-            },
-            {
-                id: 19,
-                pergunta: 'Em "O diretor do departamento andava preocupado com as novas metas fiscais", o predicado classifica-se como:',
-                tipo: "A-E",
-                opcoes: ["A) Predicado verbo-nominal.", "B) Predicado verbal.", "C) Predicado simples.", "D) Predicado nominal.", "E) Predicado composto.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "D) Predicado nominal."
-            },
-            {
-                id: 20,
-                pergunta: 'Analise a estrutura "Alugaram-se várias salas comerciais no centro da capital". A oração encontra-se na:',
-                tipo: "A-E",
-                opcoes: ["A) Voz passiva sintética, possuindo sujeito simples.", "B) Voz ativa, possuindo sujeito indeterminado.", "C) Voz passiva analítica, possuindo sujeito composto.", "D) Voz ativa, possuindo sujeito simples.", "E) Voz reflexiva, possuindo sujeito inexistente.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "A) Voz passiva sintética, possuindo sujeito simples."
+                opcoes: ["A) Predicativo do sujeito.", "B) Adjunto adverbial de modo.", "C) Predicativo do objeto.", "D) Objeto direto.", "E) Adjunto adnominal.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
+                gabarito: "A) Predicativo do sujeito."
             }
         ];
 
