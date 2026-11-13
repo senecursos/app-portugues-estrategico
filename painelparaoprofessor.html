@@ -75,113 +75,148 @@
         const db = getDatabase(app);
 
         // =========================================================================
-        // BANCO DE QUESTÕES COMPLETO (15 QUESTÕES)
+        // BANCO DE QUESTÕES (10 QUESTÕES: TERMOS ACESSÓRIOS E APOSTOS)
         // =========================================================================
         const questoes = [
             {
                 id: 1,
-                pergunta: 'Na oração "Apurou-se rigorosamente a denúncia de fraude no processo licitatório", a partícula "se" exerce a mesma função sintática que na seguinte oração:',
+                pergunta: 'Assinale a alternativa em que a expressão destacada exerce a função sintática de adjunto adnominal, e não de complemento nominal.',
                 tipo: "A-E",
-                opcoes: ["A) O corregedor arrependeu-se da decisão precipitada.", "B) Precisa-se de novos investigadores para o departamento de inteligência.", "C) Consertam-se viaturas danificadas na garagem central.", "D) O suspeito feriu-se durante a perseguição policial.", "E) Os parlamentares ofenderam-se durante a sessão plenária.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "C) Consertam-se viaturas danificadas na garagem central."
+                opcoes: [
+                    "A) O combate AO CRIME ORGANIZADO é prioridade.",
+                    "B) A leitura DO MANDADO foi feita pelo escrivão.",
+                    "C) O depoimento DA VÍTIMA esclareceu o caso.",
+                    "D) A apreensão DE ENTORPECENTES bateu recorde.",
+                    "E) A condenação DO RÉU encerrou o processo.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "C) O depoimento DA VÍTIMA esclareceu o caso."
             },
             {
                 id: 2,
-                pergunta: 'Assinale a alternativa que apresenta a oração escrita de acordo com a norma-padrão de concordância verbal.',
+                pergunta: 'Considerando as estruturas sintáticas das orações "O sargento capturou o suspeito perigoso" e "A sociedade julgou o suspeito perigoso", assinale a opção correta quanto à classificação do termo PERIGOSO em cada uma delas, respectivamente.',
                 tipo: "A-E",
-                opcoes: ["A) Fazem dez anos que o último edital da polícia civil foi publicado.", "B) Havia muitos candidatos preparados aguardando a convocação final.", "C) Deve existir falhas graves no inquérito remetido ao Ministério Público.", "D) Tratam-se de questões extremamente complexas sobre direito penal.", "E) Faltou, durante a operação de busca e apreensão, mandados específicos.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "B) Havia muitos candidatos preparados aguardando a convocação final."
+                opcoes: [
+                    "A) Adjunto adnominal e adjunto adnominal.",
+                    "B) Predicativo do objeto e predicativo do objeto.",
+                    "C) Adjunto adnominal e predicativo do objeto.",
+                    "D) Predicativo do objeto e adjunto adnominal.",
+                    "E) Predicativo do sujeito e adjunto adnominal.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "C) Adjunto adnominal e predicativo do objeto."
             },
             {
                 id: 3,
-                pergunta: 'O verbo "implicar" possui regências distintas a depender do seu significado. Assinale a alternativa em que a regência aplicada está estritamente correta segundo a norma culta, no sentido de acarretar/produzir como consequência.',
+                pergunta: 'Em "A cidade DE BARBALHA sediará o novo curso de formação", o termo em destaque classifica-se sintaticamente como:',
                 tipo: "A-E",
-                opcoes: ["A) A ausência de provas materiais implicará na absolvição sumária do réu.", "B) O corte no orçamento da segurança implicou em redução do policiamento.", "C) A desobediência civil implica graves sanções legais aos envolvidos.", "D) O novo decreto implicará sobre as regras de aposentadoria dos policiais.", "E) A falta de treinamento implicou aos recrutas um péssimo desempenho.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "C) A desobediência civil implica graves sanções legais aos envolvidos."
+                opcoes: [
+                    "A) Adjunto adnominal.",
+                    "B) Complemento nominal.",
+                    "C) Aposto especificativo.",
+                    "D) Adjunto adverbial de lugar.",
+                    "E) Aposto explicativo.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "C) Aposto especificativo."
             },
             {
                 id: 4,
-                pergunta: 'No trecho "Os peritos criminais, na manhã de ontem, entregaram o laudo cadavérico ao delegado", o uso das vírgulas justifica-se pela mesma regra aplicada em:',
+                pergunta: 'No trecho "Armas, munições, radiocomunicadores e coletes balísticos, TUDO foi apreendido durante a operação", o pronome destacado exerce a função sintática de:',
                 tipo: "A-E",
-                opcoes: ["A) O governador, o prefeito e os secretários assinaram o acordo de segurança.", "B) A arma do crime, um revólver calibre 38, foi localizada no terreno baldio.", "C) Concluída a investigação, o inquérito foi rapidamente remetido à justiça.", "D) O relatório final da corporação, por questões éticas, foi mantido em sigilo.", "E) O Ministério Público, instituição fundamental ao Estado, pediu a prisão.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "D) O relatório final da corporação, por questões éticas, foi mantido em sigilo."
+                opcoes: [
+                    "A) Sujeito composto.",
+                    "B) Aposto resumitivo (ou recapitulativo).",
+                    "C) Objeto direto.",
+                    "D) Adjunto adnominal.",
+                    "E) Predicativo do sujeito.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "B) Aposto resumitivo (ou recapitulativo)."
             },
             {
                 id: 5,
-                pergunta: 'A ocorrência do acento indicativo de crase é rigorosamente proibida em qual das orações abaixo?',
+                pergunta: 'Assinale a alternativa em que o adjunto adverbial destacado exprime circunstância de causa.',
                 tipo: "A-E",
-                opcoes: ["A) O promotor referiu-se à mesma testemunha ouvida ontem.", "B) O governo estadual concedeu reajuste salarial àquela categoria.", "C) O suspeito permaneceu calado frente a frente com o investigador.", "D) As equipes retornaram à base logo após a deflagração da operação.", "E) A decisão do tribunal foi favorável às medidas cautelares propostas.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "C) O suspeito permaneceu calado frente a frente com o investigador."
+                opcoes: [
+                    "A) O réu permaneceu calado POR ORIENTAÇÃO DO ADVOGADO.",
+                    "B) O sistema do tribunal foi atualizado PARA MAIOR SEGURANÇA.",
+                    "C) A barricada foi erguida COM ENTULHO E PNEUS VELHOS.",
+                    "D) A viatura descaracterizada acompanhou o alvo SILENCIOSAMENTE.",
+                    "E) O mandado de busca e apreensão expirou ONTEM À NOITE.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "A) O réu permaneceu calado POR ORIENTAÇÃO DO ADVOGADO."
             },
             {
                 id: 6,
-                pergunta: 'Na frase "Conquanto o orçamento estivesse reduzido, o departamento adquiriu novos armamentos", a conjunção "Conquanto" pode ser substituída, sem prejuízo do sentido original e da correção gramatical, por:',
+                pergunta: 'Na oração "A viatura descaracterizada, UM FANTASMA NAS RUAS DO CENTRO, acompanhava o alvo silenciosamente", o termo entre vírgulas classifica-se como:',
                 tipo: "A-E",
-                opcoes: ["A) Porquanto.", "B) Contudo.", "C) Portanto.", "D) Embora.", "E) Desde que.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "D) Embora."
+                opcoes: [
+                    "A) Adjunto adverbial de modo.",
+                    "B) Aposto explicativo.",
+                    "C) Predicativo do sujeito.",
+                    "D) Aposto comparativo.",
+                    "E) Vocativo.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "D) Aposto comparativo."
             },
             {
                 id: 7,
-                pergunta: 'Assinale a alternativa em que a colocação do pronome oblíquo átono obedece rigorosamente à norma-padrão.',
+                pergunta: 'Assinale a alternativa em que o termo destacado funciona sintaticamente como vocativo.',
                 tipo: "A-E",
-                opcoes: ["A) Lhe informarei todos os detalhes da investigação amanhã cedo.", "B) Os documentos que encontram-se na gaveta são sigilosos.", "C) Nunca se exigiu tanta dedicação dos novos servidores públicos.", "D) O escrivão tinha ausentado-se do cartório durante o expediente.", "E) Me disseram que a prova do concurso será extremamente difícil.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "C) Nunca se exigiu tanta dedicação dos novos servidores públicos."
+                opcoes: [
+                    "A) O DELEGADO, João, assumiu o plantão noturno.",
+                    "B) A equipe tática localizou O SUSPEITO, João.",
+                    "C) JOÃO, o delegado assumiu o plantão noturno.",
+                    "D) O plantão noturno foi assumido POR JOÃO.",
+                    "E) O DELEGADO JOÃO assumiu o plantão noturno.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "C) JOÃO, o delegado assumiu o plantão noturno."
             },
             {
                 id: 8,
-                pergunta: 'Na oração "A comissão investigadora tem absoluta certeza de que a fraude ocorreu em 2024", o termo "que" atua morfologicamente como:',
+                pergunta: 'No período "O tenente e o sargento apresentaram o relatório; ESTE detalhou as apreensões, AQUELE justificou as prisões", os termos destacados atuam sintaticamente como:',
                 tipo: "A-E",
-                opcoes: ["A) Pronome relativo.", "B) Conjunção subordinativa integrante.", "C) Conjunção subordinativa adverbial causal.", "D) Pronome interrogativo.", "E) Partícula de realce.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "B) Conjunção subordinativa integrante."
+                opcoes: [
+                    "A) Sujeitos simples e pronomes demonstrativos.",
+                    "B) Apostos distributivos.",
+                    "C) Adjuntos adnominais.",
+                    "D) Apostos enumerativos.",
+                    "E) Predicativos do sujeito.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "B) Apostos distributivos."
             },
             {
                 id: 9,
-                pergunta: 'Assinale a alternativa que apresenta a correta transposição da oração "O governo estadual suspenderá as férias dos policiais" para a voz passiva analítica.',
+                pergunta: 'Na oração "O sistema do fórum falhou POR SOBRECARGA", a expressão destacada tem o mesmo valor semântico e sintático do termo sublinhado em:',
                 tipo: "A-E",
-                opcoes: ["A) As férias dos policiais seriam suspensas pelo governo estadual.", "B) As férias dos policiais foram suspensas pelo governo estadual.", "C) As férias dos policiais são suspensas pelo governo estadual.", "D) As férias dos policiais serão suspensas pelo governo estadual.", "E) Suspender-se-ão as férias dos policiais pelo governo estadual.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "D) As férias dos policiais serão suspensas pelo governo estadual."
+                opcoes: [
+                    "A) O perito cortou a cerca COM UM ALICATE.",
+                    "B) O foragido viajou DE TREM para despistar a polícia.",
+                    "C) O comércio fechou POR MEDO da facção.",
+                    "D) O projeto foi aprovado POR UNANIMIDADE.",
+                    "E) O detetive caminhou POR DUAS HORAS.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "C) O comércio fechou POR MEDO da facção."
             },
             {
                 id: 10,
-                pergunta: 'No período "A atuação do núcleo de inteligência é imprescindível, pois não prescinde de tecnologia avançada", o termo "prescinde" pode ser substituído, mantendo o sentido original de "não abrir mão/não dispensar", por:',
+                pergunta: 'Assinale a opção que apresenta um adjunto adnominal, um aposto explicativo e um adjunto adverbial, nessa ordem.',
                 tipo: "A-E",
-                opcoes: ["A) Carece.", "B) Dispensa.", "C) Exige.", "D) Necessita.", "E) Demanda.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "B) Dispensa."
-            },
-            {
-                id: 11,
-                pergunta: 'Assinale a frase que respeita a norma culta quanto à concordância nominal.',
-                tipo: "A-E",
-                opcoes: ["A) A testemunha principal parecia meio confusa durante a acareação.", "B) É proibido a entrada de pessoas não autorizadas na cena do crime.", "C) Segue anexo ao e-mail as certidões criminais solicitadas pelo juiz.", "D) A própria vítima forneceu bastantes detalhes precisos, ela mesmo.", "E) Os policiais militares mantiveram-se alertas durante toda a madrugada.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "A) A testemunha principal parecia meio confusa durante a acareação."
-            },
-            {
-                id: 12,
-                pergunta: 'No trecho "O delegado remeteu os autos ao juiz, o qual determinou a prisão preventiva", o pronome "o qual" exerce o papel coesivo de retomar a qual antecedente?',
-                tipo: "A-E",
-                opcoes: ["A) O delegado.", "B) Os autos.", "C) O juiz.", "D) A prisão preventiva.", "E) O remetente.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "C) O juiz."
-            },
-            {
-                id: 13,
-                pergunta: 'A regência nominal está corretamente aplicada na frase:',
-                tipo: "A-E",
-                opcoes: ["A) O gestor tem verdadeira aversão por burocracias desnecessárias.", "B) O servidor recém-empossado demonstrou estar apto em suas funções.", "C) A atitude do motorista embriagado foi incompatível a legislação.", "D) O comandante estava ansioso para o início da operação policial.", "E) A decisão judicial foi simultânea com a publicação no diário oficial.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "A) O gestor tem verdadeira aversão por burocracias desnecessárias."
-            },
-            {
-                id: 14,
-                pergunta: 'Na frase "O escrivão finalizou os depoimentos, não os enviou, porém, ao fórum", a conjunção deslocada entre vírgulas estabelece com a oração anterior um sentido de:',
-                tipo: "A-E",
-                opcoes: ["A) Adição.", "B) Explicação.", "C) Conclusão.", "D) Alternância.", "E) Adversidade.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "E) Adversidade."
-            },
-            {
-                id: 15,
-                pergunta: 'Na oração "A crítica do advogado irritou profundamente a promotoria", o termo "do advogado" classifica-se sintaticamente como:',
-                tipo: "A-E",
-                opcoes: ["A) Complemento nominal.", "B) Objeto indireto.", "C) Agente da passiva.", "D) Adjunto adnominal.", "E) Predicativo do sujeito.", "🤷🏽‍♂️ Chutei (não tenho certeza.)"],
-                gabarito: "D) Adjunto adnominal."
+                opcoes: [
+                    "A) O novo investigador, profissional dedicado, trabalhou muito.",
+                    "B) O investigador de polícia agiu com rapidez, um verdadeiro herói.",
+                    "C) Trabalhou muito o investigador, profissional dedicado.",
+                    "D) O profissional dedicado, um verdadeiro herói, agiu de madrugada.",
+                    "E) Rapidamente, o novo investigador trabalhou com dedicação.",
+                    "🤷🏽‍♂️ Chutei (não tenho certeza.)"
+                ],
+                gabarito: "A) O novo investigador, profissional dedicado, trabalhou muito."
             }
         ];
 
