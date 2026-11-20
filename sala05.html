@@ -40,7 +40,7 @@
         .btn-voltar {
             color: #94a3b8;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
@@ -55,7 +55,7 @@
         .badge-sala {
             background-color: #254077;
             color: #ffffff;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
             padding: 6px 16px;
             border-radius: 20px;
@@ -105,20 +105,19 @@
         }
 
         .subtexto-sala {
-            font-size: 0.95rem;
+            font-size: 16px;
             color: #64748b;
             font-weight: 600;
             margin-bottom: 6px;
         }
 
         .saudacao-principal {
-            font-size: 1.5rem;
+            font-size: 24px;
             font-weight: 900;
             color: #254077;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 16px;
-            white-space: nowrap;
         }
 
         .caixa-advertencia {
@@ -128,8 +127,8 @@
             padding: 16px 20px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             color: #7f1d1d;
-            font-size: 0.95rem;
-            line-height: 1.5;
+            font-size: 16px;
+            line-height: 1.6;
             text-align: justify;
         }
 
@@ -160,96 +159,44 @@
             gap: 10px;
         }
 
-        /* ESTRUTURA DAS TRÊS PARTES */
-        .secao-parte {
-            margin-bottom: 50px;
+        /* QUESTÕES E ENUNCIADOS */
+        .bloco-questao {
+            margin-bottom: 42px;
         }
 
-        .titulo-parte {
-            font-size: 22px;
+        .enunciado {
+            font-size: 20px;
             font-weight: 800;
-            color: #254077;
-            border-bottom: 3px solid #254077;
-            padding-bottom: 8px;
-            margin-bottom: 24px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .card-paragrafo {
-            background-color: #f8fafc;
-            border: 1px solid #e2e8f0;
+            color: #000000;
+            margin-bottom: 18px;
+            line-height: 1.5;
             border-left: 5px solid #254077;
-            border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 20px;
+            padding-left: 14px;
         }
 
-        .rotulo-paragrafo {
-            font-size: 16px;
-            font-weight: 800;
-            color: #254077;
-            margin-bottom: 12px;
-            text-transform: uppercase;
+        .lista-frases {
+            list-style: none;
+            padding-left: 0;
         }
 
-        .sub-rotulo {
-            font-size: 14px;
-            font-weight: 700;
-            color: #475569;
-            text-transform: uppercase;
-            margin-top: 10px;
-            margin-bottom: 6px;
-            display: inline-block;
-            background-color: #e2e8f0;
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-
-        .sub-rotulo.destaque-aplicado {
-            background-color: #dbeafe;
-            color: #1e40af;
-        }
-
-        .texto-redacao {
+        /* PADRÃO ÚNICO E FIXO PARA TODAS AS FRASES */
+        .lista-frases li {
             font-size: 18px;
             font-weight: 500;
             color: #000000;
-            line-height: 1.8;
-            text-align: justify;
-            word-break: break-word;
+            padding: 14px 0;
+            border-bottom: 1px dashed #cbd5e1;
+            line-height: 1.6;
         }
 
-        /* DESTAQUE PARA OS TERMOS SUBLINHADOS */
-        .texto-redacao u {
-            text-decoration: underline;
-            text-decoration-color: #254077;
-            text-decoration-thickness: 2px;
+        .lista-frases li:last-child {
+            border-bottom: none;
+        }
+
+        /* ESTILO DOS DESTAQUES DENTRO DAS FRASES */
+        .lista-frases span {
+            font-size: 1.1em;
             font-weight: 700;
-            color: #0f172a;
-        }
-
-        /* ESTILO DA REDAÇÃO CORRIDA (FOLHA DE PROVA) */
-        .caixa-folha-prova {
-            background-color: #ffffff;
-            border: 2px solid #cbd5e1;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        .paragrafo-corrido {
-            font-size: 18px;
-            font-weight: 500;
-            color: #000000;
-            line-height: 1.9;
-            text-align: justify;
-            text-indent: 2em; /* RECUO TRADICIONAL DE PARÁGRAFO */
-            margin-bottom: 16px;
-        }
-
-        .paragrafo-corrido:last-child {
-            margin-bottom: 0;
         }
 
         /* NOTA DISCRETA DE DIREITOS AUTORAIS */
@@ -257,7 +204,7 @@
             margin-top: 50px;
             padding-top: 20px;
             border-top: 1px solid #cbd5e1;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             color: #475569;
             text-align: center;
@@ -270,11 +217,11 @@
             color: #94a3b8;
             text-align: center;
             padding: 20px;
-            font-size: 13px;
+            font-size: 14px;
             margin-top: auto;
         }
 
-        /* AJUSTES DE TELA */
+        /* AJUSTES DE TELA (APENAS ESTRUTURA DE CAPA/PERFIL, SEM ALTERAR TAMANHO DE FONTE) */
         @media (max-width: 900px) and (orientation: landscape) {
             .header-banner {
                 height: 140px;
@@ -302,31 +249,6 @@
                 width: 95px;
                 height: 95px;
                 bottom: -40px;
-            }
-
-            .saudacao-principal {
-                font-size: 1.2rem;
-                white-space: normal;
-            }
-
-            .titulo-secao {
-                font-size: 22px;
-            }
-
-            .titulo-parte {
-                font-size: 18px;
-            }
-
-            .texto-redacao, .paragrafo-corrido {
-                font-size: 16px;
-            }
-
-            .caixa-folha-prova {
-                padding: 18px;
-            }
-
-            .nota-propriedade {
-                font-size: 12px;
             }
         }
     </style>
@@ -366,126 +288,42 @@
             Conteúdo da Semana <span style="font-size: 24px;">⬇️</span>
         </h1>
 
-        <!-- PARTE 1: O ESQUELETO COMPLETO -->
-        <section class="secao-parte">
-            <h2 class="titulo-parte">Parte 1 — Modelo Estrutural (Esqueleto Geral)</h2>
-
-            <div class="card-paragrafo">
-                <div class="rotulo-paragrafo">1º Parágrafo — Introdução</div>
-                <p class="texto-redacao">
-                    Atualmente, o tema [TEMA: ....................................................................................................................................] representa um importante desafio para a sociedade brasileira. Nesse contexto, destacam-se como principais fatores [ARGUMENTO 1: ....................................................................................................................................] e [ARGUMENTO 2: ....................................................................................................................................], que merecem atenção.
-                </p>
-            </div>
-
-            <div class="card-paragrafo">
-                <div class="rotulo-paragrafo">2º Parágrafo — Desenvolvimento 1</div>
-                <p class="texto-redacao">
-                    Em primeiro lugar, é importante destacar que [ARGUMENTO 1: ....................................................................................................................................] contribui para essa problemática, uma vez que [EXPLICAÇÃO: ....................................................................................................................................................................................................................................................................................................................]. Dessa maneira, seus impactos afetam diretamente a sociedade.
-                </p>
-            </div>
-
-            <div class="card-paragrafo">
-                <div class="rotulo-paragrafo">3º Parágrafo — Desenvolvimento 2</div>
-                <p class="texto-redacao">
-                    Além disso, [ARGUMENTO 2: ....................................................................................................................................] agrava essa situação. Isso ocorre devido a [EXPLICAÇÃO: ....................................................................................................................................................................................................................................................................................................................], tornando necessária a adoção de medidas eficazes para enfrentar o problema.
-                </p>
-            </div>
-
-            <div class="card-paragrafo">
-                <div class="rotulo-paragrafo">4º Parágrafo — Conclusão</div>
-                <p class="texto-redacao">
-                    Portanto, cabe ao poder público adotar medidas efetivas, por meio de políticas públicas e ações de conscientização, visando reduzir os impactos do problema e promover o bem-estar social.
-                </p>
-            </div>
-        </section>
-
-        <!-- PARTE 2: COMPARAÇÃO PASSO A PASSO -->
-        <section class="secao-parte">
-            <h2 class="titulo-parte">Parte 2 — Análise Comparativa Parágrafo por Parágrafo</h2>
-
-            <!-- 1º PARÁGRAFO -->
-            <div class="card-paragrafo">
-                <div class="rotulo-paragrafo">1º Parágrafo — Introdução</div>
-                
-                <span class="sub-rotulo">Esqueleto:</span>
-                <p class="texto-redacao" style="margin-bottom: 16px;">
-                    Atualmente, o tema [TEMA: ....................................................................................................................................] representa um importante desafio para a sociedade brasileira. Nesse contexto, destacam-se como principais fatores [ARGUMENTO 1: ....................................................................................................................................] e [ARGUMENTO 2: ....................................................................................................................................], que merecem atenção.
-                </p>
-
-                <span class="sub-rotulo destaque-aplicado">Preenchimento Aplicado:</span>
-                <p class="texto-redacao">
-                    Atualmente, o tema <u>os desafios da aplicação da tecnologia na segurança pública</u> representa um importante desafio para a sociedade brasileira. Nesse contexto, destacam-se como principais fatores <u>a infraestrutura digital precária nas corporações</u> e <u>a falta de integração de dados entre as forças policiais</u>, que merecem atenção.
-                </p>
-            </div>
-
-            <!-- 2º PARÁGRAFO -->
-            <div class="card-paragrafo">
-                <div class="rotulo-paragrafo">2º Parágrafo — Desenvolvimento 1</div>
-                
-                <span class="sub-rotulo">Esqueleto:</span>
-                <p class="texto-redacao" style="margin-bottom: 16px;">
-                    Em primeiro lugar, é importante destacar que [ARGUMENTO 1: ....................................................................................................................................] contribui para essa problemática, uma vez que [EXPLICAÇÃO: ....................................................................................................................................................................................................................................................................................................................]. Dessa maneira, seus impactos afetam diretamente a sociedade.
-                </p>
-
-                <span class="sub-rotulo destaque-aplicado">Preenchimento Aplicado:</span>
-                <p class="texto-redacao">
-                    Em primeiro lugar, é importante destacar que <u>a infraestrutura digital precária nas corporações</u> contribui para essa problemática, uma vez que <u>diversas regiões operam com equipamentos obsoletos e sem ferramentas avançadas de inteligência, o que limita a rapidez e a precisão das operações no combate ao crime</u>. Dessa maneira, seus impactos afetam diretamente a sociedade.
-                </p>
-            </div>
-
-            <!-- 3º PARÁGRAFO -->
-            <div class="card-paragrafo">
-                <div class="rotulo-paragrafo">3º Parágrafo — Desenvolvimento 2</div>
-                
-                <span class="sub-rotulo">Esqueleto:</span>
-                <p class="texto-redacao" style="margin-bottom: 16px;">
-                    Além disso, [ARGUMENTO 2: ....................................................................................................................................] agrava essa situação. Isso ocorre devido a [EXPLICAÇÃO: ....................................................................................................................................................................................................................................................................................................................], tornando necessária a adoção de medidas eficazes para enfrentar o problema.
-                </p>
-
-                <span class="sub-rotulo destaque-aplicado">Preenchimento Aplicado:</span>
-                <p class="texto-redacao">
-                    Além disso, <u>a falta de integração de dados entre as forças policiais</u> agrava essa situação. Isso ocorre devido a <u>sistemas operacionais isolados que impedem o cruzamento rápido de informações entre órgãos municipais, estaduais e federais</u>, tornando necessária a adoção de medidas eficazes para enfrentar o problema.
-                </p>
-            </div>
-
-            <!-- 4º PARÁGRAFO -->
-            <div class="card-paragrafo">
-                <div class="rotulo-paragrafo">4º Parágrafo — Conclusão</div>
-                
-                <span class="sub-rotulo">Esqueleto:</span>
-                <p class="texto-redacao" style="margin-bottom: 16px;">
-                    Portanto, cabe ao poder público adotar medidas efetivas, por meio de políticas públicas e ações de conscientização, visando reduzir os impactos do problema e promover o bem-estar social.
-                </p>
-
-                <span class="sub-rotulo destaque-aplicado">Preenchimento Aplicado:</span>
-                <p class="texto-redacao">
-                    Portanto, cabe ao poder público adotar medidas efetivas, por meio de políticas públicas e ações de conscientização, visando reduzir os impactos do problema e promover o bem-estar social.
-                </p>
-            </div>
-        </section>
-
-        <!-- PARTE 3: REDAÇÃO CORRIDA (TEXTO FINAL DE PROVA) -->
-        <section class="secao-parte">
-            <h2 class="titulo-parte">Parte 3 — Texto Final Corrido (Modelo da Prova)</h2>
-
-            <div class="caixa-folha-prova">
-                <p class="paragrafo-corrido">
-                    Atualmente, o tema os desafios da aplicação da tecnologia na segurança pública representa um importante desafio para a sociedade brasileira. Nesse contexto, destacam-se como principais fatores a infraestrutura digital precária nas corporações e a falta de integração de dados entre as forças policiais, que merecem atenção.
-                </p>
-
-                <p class="paragrafo-corrido">
-                    Em primeiro lugar, é importante destacar que a infraestrutura digital precária nas corporações contribui para essa problemática, uma vez que diversas regiões operam com equipamentos obsoletos e sem ferramentas avançadas de inteligência, o que limita a rapidez e a precisão das operações no combate ao crime. Dessa maneira, seus impactos afetam diretamente a sociedade.
-                </p>
-
-                <p class="paragrafo-corrido">
-                    Além disso, a falta de integração de dados entre as forças policiais agrava essa situação. Isso ocorre devido a sistemas operacionais isolados que impedem o cruzamento rápido de informações entre órgãos municipais, estaduais e federais, tornando necessária a adoção de medidas eficazes para enfrentar o problema.
-                </p>
-
-                <p class="paragrafo-corrido">
-                    Portanto, cabe ao poder público adotar medidas efetivas, por meio de políticas públicas e ações de conscientização, visando reduzir os impactos do problema e promover o bem-estar social.
-                </p>
-            </div>
-        </section>
+        <!-- QUESTÃO 1 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">1) Identifique se as orações abaixo são subordinadas substantivas, adjetivas ou adverbiais.</h2>
+            <ul class="lista-frases">
+                <li>1) O perito criminal confirmou que a assinatura no contrato era falsa.</li>
+                <li>2) Convém que o delegado analise todas as imagens das câmeras.</li>
+                <li>3) A audiência foi adiada, visto que o advogado de defesa faltou.</li>
+                <li>4) Os policiais mantiveram o cerco, ainda que a chuva dificultasse a visibilidade.</li>
+                <li>5) A viatura que patrulhava o centro interceptou o veículo roubado.</li>
+                <li>6) Os investigadores tinham certeza de que o suspeito fugiria pela rodovia.</li>
+                <li>7) O código penal, que sofreu alterações recentes, prevê penas mais severas.</li>
+                <li>8) Os documentos que o perito recolheu no escritório comprovaram a fraude.</li>
+                <li>9) O juiz decretou o sigilo do processo para que ninguém atrapalhasse as buscas.</li>
+                <li>10) A arma de fogo de que o criminoso se desfez caiu no córrego.</li>
+                <li>11) O delegado titular, que coordenou toda a operação, concedeu entrevista.</li>
+                <li>12) O suspeito ficou tão nervoso durante o interrogatório que caiu em contradição.</li>
+                <li>13) O prejuízo causado pelo golpe foi maior que o perito estimava inicialmente.</li>
+                <li>14) O réu responderá ao processo em liberdade, desde que cumpra as medidas cautelares.</li>
+                <li>15) O depoimento em que o réu confessou o delito foi anexado aos autos.</li>
+                <li>16) A equipe tática invadiu o galpão assim que recebeu a ordem judicial.</li>
+                <li>17) A verdade é que as provas materiais desmontaram o álibi do réu.</li>
+                <li>18) O promotor fez apenas uma exigência: que todas as testemunhas depusessem hoje.</li>
+                <li>19) O comandante insistiu em que os recrutas refizessem o treinamento tático.</li>
+                <li>20) A tensão aumentava no pátio à medida que os manifestantes avançavam.</li>
+                <li>21) A testemunha a que o advogado se referiu mora em outro estado.</li>
+                <li>22) O inquérito foi arquivado pelo ministério público, já que faltavam provas cabais.</li>
+                <li>23) A polícia científica, que atua com rigor técnico, esclareceu a dinâmica do fato.</li>
+                <li>24) Sabe-se que a quadrilha atuava na região fronteiriça há anos.</li>
+                <li>25) O escrivão informou ao juiz que o laudo toxicológico chegaria amanhã.</li>
+                <li>26) As munições que estavam escondidas no fundo falso foram apreendidas.</li>
+                <li>27) A corporação sente orgulho de que seus agentes agiram com bravura.</li>
+                <li>28) A perícia encontrou vestígios tão nítidos que identificou o autor imediatamente.</li>
+                <li>29) É fundamental que a equipe preserve o isolamento da cena do crime.</li>
+                <li>30) O banco assaltado ontem possui câmeras que gravam em alta definição.</li>
+            </ul>
+        </article>
 
         <!-- NOTA DE AUTORIA E PROPRIEDADE -->
         <div class="nota-propriedade">
