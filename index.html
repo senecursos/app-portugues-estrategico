@@ -141,11 +141,13 @@
             text-align: center;
         }
 
-        /* GRADE PARA OS 10 BOTÕES MENORES DAS SALAS */
+        /* GRADE PARA OS 24 BOTÕES MENORES DAS SALAS (3 COLUNAS VERTICAIS DE 8) */
         .salas-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(8, auto);
+            grid-auto-flow: column;
+            gap: 6px;
             margin-bottom: 10px;
         }
 
@@ -173,6 +175,14 @@
             transition: background-color 0.2s;
             text-shadow: 
                 -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        }
+
+        /* AJUSTE COMPACTO APENAS PARA OS BOTÕES DAS 24 SALAS */
+        .salas-grid .btn-link {
+            padding: 7px 4px;
+            font-size: 12px;
+            border-radius: 8px;
+            white-space: nowrap;
         }
 
         .btn-link:hover {
@@ -410,16 +420,35 @@
                     <div class="salas-title-header">🏫 Salas de Aula</div>
                 </div>
                 <div class="salas-grid">
+                    <!-- Coluna 1: Salas 01 a 08 -->
                     <a href="sala01.html" class="btn-link">Sala 01</a>
-                    <a href="sala06.html" class="btn-link">Sala 06</a>
                     <a href="sala02.html" class="btn-link">Sala 02</a>
-                    <a href="sala07.html" class="btn-link">Sala 07</a>
                     <a href="sala03.html" class="btn-link">Sala 03</a>
-                    <a href="sala08.html" class="btn-link">Sala 08</a>
                     <a href="sala04.html" class="btn-link">Sala 04</a>
-                    <a href="sala09.html" class="btn-link">Sala 09</a>
                     <a href="sala05.html" class="btn-link">Sala 05</a>
+                    <a href="sala06.html" class="btn-link">Sala 06</a>
+                    <a href="sala07.html" class="btn-link">Sala 07</a>
+                    <a href="sala08.html" class="btn-link">Sala 08</a>
+
+                    <!-- Coluna 2: Salas 09 a 16 -->
+                    <a href="sala09.html" class="btn-link">Sala 09</a>
                     <a href="sala10.html" class="btn-link">Sala 10</a>
+                    <a href="sala11.html" class="btn-link">Sala 11</a>
+                    <a href="sala12.html" class="btn-link">Sala 12</a>
+                    <a href="sala13.html" class="btn-link">Sala 13</a>
+                    <a href="sala14.html" class="btn-link">Sala 14</a>
+                    <a href="sala15.html" class="btn-link">Sala 15</a>
+                    <a href="sala16.html" class="btn-link">Sala 16</a>
+
+                    <!-- Coluna 3: Salas 17 a 24 -->
+                    <a href="sala17.html" class="btn-link">Sala 17</a>
+                    <a href="sala18.html" class="btn-link">Sala 18</a>
+                    <a href="sala19.html" class="btn-link">Sala 19</a>
+                    <a href="sala20.html" class="btn-link">Sala 20</a>
+                    <a href="sala21.html" class="btn-link">Sala 21</a>
+                    <a href="sala22.html" class="btn-link">Sala 22</a>
+                    <a href="sala23.html" class="btn-link">Sala 23</a>
+                    <a href="sala24.html" class="btn-link">Sala 24</a>
                 </div>
                 <!-- BOTÃO GRANDE AUDITÓRIO -->
                 <a href="auditorio.html" class="btn-link" style="margin-bottom: 10px;">Auditório</a>

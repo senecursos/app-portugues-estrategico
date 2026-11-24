@@ -8,6 +8,12 @@
     <link rel="icon" type="image/png" href="estrategico.jpg">
     <meta name="theme-color" content="#0b0f19">
 
+    <!-- 1. Métrica de Acessos -->
+    <script src="analytics.js"></script>
+
+    <!-- 2. Gerenciador Central de Anúncios -->
+    <script src="anuncios.js"></script>
+
     <style>
         * {
             box-sizing: border-box;
@@ -160,7 +166,7 @@
             gap: 10px;
         }
 
-        /* QUESTÕES E ENUNCIADOS */
+        /* BLOCO 1: QUESTÕES E ENUNCIADOS EM LISTA */
         .bloco-questao {
             margin-bottom: 42px;
         }
@@ -198,6 +204,97 @@
         .lista-frases span {
             font-size: 1.1em;
             font-weight: 700;
+        }
+
+        /* BLOCO 2: ESTILO DAS QUESTÕES INTERATIVAS (FUNDO BRANCO GELO) */
+        .quiz-card {
+            background-color: #f8fafc; /* BRANCO GELO CONFORTÁVEL */
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .question-number {
+            font-weight: 800;
+            color: #254077;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            color: #000000;
+            margin-bottom: 18px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn-option {
+            padding: 12px 18px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 2px solid #cbd5e1;
+            background: #ffffff;
+            color: #334155;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            text-align: left;
+        }
+
+        .btn-option:hover {
+            border-color: #254077;
+            color: #254077;
+        }
+
+        .btn-option.selected {
+            background-color: #254077;
+            color: #ffffff;
+            border-color: #254077;
+        }
+
+        /* CAIXA DE FEEDBACK */
+        .feedback-box {
+            display: none;
+            padding: 14px 16px;
+            border-radius: 6px;
+            margin-top: 16px;
+            font-size: 0.95rem;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feedback-box.correct {
+            background-color: #f0fdf4;
+            border-left: 5px solid #16a34a;
+            color: #14532d;
+        }
+
+        .feedback-box.incorrect {
+            background-color: #fef2f2;
+            border-left: 5px solid #dc2626;
+            color: #7f1d1d;
+        }
+
+        .feedback-title {
+            font-weight: 800;
+            font-size: 1rem;
         }
 
         /* NOTA DISCRETA DE DIREITOS AUTORAIS */
@@ -302,6 +399,7 @@
             </div>
         </section>
 
+        <!-- PARTE 1: CONTEÚDO DA SEMANA -->
         <h1 class="titulo-secao">
             Conteúdo da Semana <span style="font-size: 24px;">⬇️</span>
         </h1>
@@ -391,6 +489,253 @@
             </ul>
         </article>
 
+        <hr class="divisor-linha" style="margin-top: 50px;">
+
+        <!-- PARTE 2: EXERCÍCIOS INTERATIVOS -->
+        <h2 class="titulo-secao">
+            Exercícios Interativos <span style="font-size: 24px;">⬇️</span>
+        </h2>
+
+        <!-- QUESTÃO 01 -->
+        <article class="quiz-card" id="q1">
+            <span class="question-number">Questão 01</span>
+            <p class="question-text">
+                Na frase "O conselho de ética julgou a proposta inviável", o termo "inviável" exerce a função sintática de:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q1', 'A', 'C')">A) Predicativo do sujeito.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q1', 'B', 'C')">B) Adjunto adnominal.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q1', 'C', 'C')">C) Predicativo do objeto.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q1', 'D', 'C')">D) Complemento nominal.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q1', 'E', 'C')">E) Objeto direto.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 02 -->
+        <article class="quiz-card" id="q2">
+            <span class="question-number">Questão 02</span>
+            <p class="question-text">
+                Em relação à oração "Precisa-se de novos técnicos para o laboratório central", o sujeito classifica-se como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q2', 'A', 'C')">A) Simples.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q2', 'B', 'C')">B) Oculto.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q2', 'C', 'C')">C) Indeterminado.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q2', 'D', 'C')">D) Inexistente.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q2', 'E', 'C')">E) Composto.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 03 -->
+        <article class="quiz-card" id="q3">
+            <span class="question-number">Questão 03</span>
+            <p class="question-text">
+                No trecho "A prefeitura municipal entregou os alvarás de funcionamento", o termo "os alvarás de funcionamento" representa sintaticamente o:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q3', 'A', 'D')">A) Objeto indireto.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q3', 'B', 'D')">B) Sujeito simples.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q3', 'C', 'D')">C) Complemento nominal.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q3', 'D', 'D')">D) Objeto direto.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q3', 'E', 'D')">E) Predicativo do sujeito.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 04 -->
+        <article class="quiz-card" id="q4">
+            <span class="question-number">Questão 04</span>
+            <p class="question-text">
+                Na oração "O secretário demonstrou profunda confiança nas decisões da justiça", a expressão "nas decisões da justiça" atua como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q4', 'A', 'E')">A) Objeto indireto.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q4', 'B', 'E')">B) Adjunto adverbial.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q4', 'C', 'E')">C) Predicativo do objeto.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q4', 'D', 'E')">D) Agente da passiva.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q4', 'E', 'E')">E) Complemento nominal.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 05 -->
+        <article class="quiz-card" id="q5">
+            <span class="question-number">Questão 05</span>
+            <p class="question-text">
+                Em "Os candidatos permaneceram tranquilos durante a prova discursiva", a palavra "tranquilos" funciona como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q5', 'A', 'C')">A) Adjunto adnominal.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q5', 'B', 'C')">B) Predicativo do objeto.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q5', 'C', 'C')">C) Predicativo do sujeito.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q5', 'D', 'C')">D) Objeto direto.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q5', 'E', 'C')">E) Adjunto adverbial de modo.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 06 -->
+        <article class="quiz-card" id="q6">
+            <span class="question-number">Questão 06</span>
+            <p class="question-text">
+                A expressão "pela câmara de vereadores" no período "O relatório financeiro foi aprovado pela câmara de vereadores" possui a função sintática de:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q6', 'A', 'D')">A) Sujeito composto.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q6', 'B', 'D')">B) Objeto indireto.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q6', 'C', 'D')">C) Adjunto adverbial.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q6', 'D', 'D')">D) Agente da passiva.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q6', 'E', 'D')">E) Complemento nominal.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 07 -->
+        <article class="quiz-card" id="q7">
+            <span class="question-number">Questão 07</span>
+            <p class="question-text">
+                Analise o predicado da oração "Os auditores chegaram exaustos ao edifício sede". A sua correta classificação é:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q7', 'A', 'C')">A) Nominal.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q7', 'B', 'C')">B) Verbal.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q7', 'C', 'C')">C) Verbo-nominal.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q7', 'D', 'C')">D) Simples.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q7', 'E', 'C')">E) Composto.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 08 -->
+        <article class="quiz-card" id="q8">
+            <span class="question-number">Questão 08</span>
+            <p class="question-text">
+                Na frase "O diretor do departamento não obedeceu às novas normas de segurança", o termo "às novas normas de segurança" exerce a função sintática de:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q8', 'A', 'E')">A) Objeto direto.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q8', 'B', 'E')">B) Complemento nominal.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q8', 'C', 'E')">C) Adjunto adverbial.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q8', 'D', 'E')">D) Predicativo do sujeito.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q8', 'E', 'E')">E) Objeto indireto.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 09 -->
+        <article class="quiz-card" id="q9">
+            <span class="question-number">Questão 09</span>
+            <p class="question-text">
+                No período "A comissão investigadora considerou o réu inocente", a palavra "inocente" atua sintaticamente como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q9', 'A', 'B')">A) Adjunto adnominal.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q9', 'B', 'B')">B) Predicativo do objeto.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q9', 'C', 'B')">C) Predicativo do sujeito.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q9', 'D', 'B')">D) Objeto direto.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q9', 'E', 'B')">E) Complemento nominal.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 10 -->
+        <article class="quiz-card" id="q10">
+            <span class="question-number">Questão 10</span>
+            <p class="question-text">
+                Na oração "Fazia muitos anos que o prédio público não recebia manutenção", focando exclusivamente na estrutura "Fazia muitos anos", o sujeito classifica-se como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q10', 'A', 'C')">A) Indeterminado.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q10', 'B', 'C')">B) Oculto.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q10', 'C', 'C')">C) Inexistente (oração sem sujeito).</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q10', 'D', 'C')">D) Simples.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q10', 'E', 'C')">E) Composto.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 11 -->
+        <article class="quiz-card" id="q11">
+            <span class="question-number">Questão 11</span>
+            <p class="question-text">
+                O termo "a lei orçamentária anual" no período "Os parlamentares aprovaram, com ressalvas, a lei orçamentária anual" funciona como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q11', 'A', 'C')">A) Sujeito simples.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q11', 'B', 'C')">B) Complemento nominal.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q11', 'C', 'C')">C) Objeto direto.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q11', 'D', 'C')">D) Objeto indireto.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q11', 'E', 'C')">E) Aposto.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 12 -->
+        <article class="quiz-card" id="q12">
+            <span class="question-number">Questão 12</span>
+            <p class="question-text">
+                Em "A população mantinha a esperança de melhorias na infraestrutura local", a expressão "de melhorias" complementa o sentido de um nome, caracterizando-se sintaticamente como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q12', 'A', 'B')">A) Objeto indireto.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q12', 'B', 'B')">B) Complemento nominal.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q12', 'C', 'B')">C) Adjunto adnominal.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q12', 'D', 'B')">D) Predicativo do objeto.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q12', 'E', 'B')">E) Agente da passiva.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 13 -->
+        <article class="quiz-card" id="q13">
+            <span class="question-number">Questão 13</span>
+            <p class="question-text">
+                Sintaticamente, o termo "por uma equipe especializada" na oração "As provas do concurso público serão elaboradas por uma equipe especializada" é classificado como:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q13', 'A', 'E')">A) Adjunto adverbial de meio.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q13', 'B', 'E')">B) Objeto indireto.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q13', 'C', 'E')">C) Sujeito simples.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q13', 'D', 'E')">D) Complemento nominal.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q13', 'E', 'E')">E) Agente da passiva.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 14 -->
+        <article class="quiz-card" id="q14">
+            <span class="question-number">Questão 14</span>
+            <p class="question-text">
+                Na frase "A nova sede da secretaria parece bastante espaçosa", a palavra "espaçosa" exerce a função de:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q14', 'A', 'A')">A) Predicativo do sujeito.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q14', 'B', 'A')">B) Predicativo do objeto.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q14', 'C', 'A')">C) Adjunto adnominal.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q14', 'D', 'A')">D) Complemento nominal.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q14', 'E', 'A')">E) Objeto direto.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
+        <!-- QUESTÃO 15 -->
+        <article class="quiz-card" id="q15">
+            <span class="question-number">Questão 15</span>
+            <p class="question-text">
+                O termo "aos questionamentos da imprensa", presente na oração "O governador do estado respondeu aos questionamentos da imprensa", exerce a função sintática de:
+            </p>
+            <div class="btn-group">
+                <button class="btn-option" data-letter="A" onclick="checkAnswer('q15', 'A', 'D')">A) Objeto direto.</button>
+                <button class="btn-option" data-letter="B" onclick="checkAnswer('q15', 'B', 'D')">B) Complemento nominal.</button>
+                <button class="btn-option" data-letter="C" onclick="checkAnswer('q15', 'C', 'D')">C) Agente da passiva.</button>
+                <button class="btn-option" data-letter="D" onclick="checkAnswer('q15', 'D', 'D')">D) Objeto indireto.</button>
+                <button class="btn-option" data-letter="E" onclick="checkAnswer('q15', 'E', 'D')">E) Adjunto adverbial.</button>
+            </div>
+            <div class="feedback-box"></div>
+        </article>
+
         <!-- NOTA DE AUTORIA E PROPRIEDADE -->
         <div class="nota-propriedade">
             Todo o material contido nesta página é de autoria e propriedade do professor William Queiroz.
@@ -402,6 +747,31 @@
     <footer class="footer-site">
         &copy; 2026 SENE. Todos os direitos reservados.
     </footer>
+
+    <!-- SCRIPT DE LÓGICA DO SIMULADO -->
+    <script>
+        function checkAnswer(questionId, selectedLetter, correctLetter) {
+            const card = document.getElementById(questionId);
+            const buttons = card.querySelectorAll('.btn-option');
+            const feedbackBox = card.querySelector('.feedback-box');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('selected');
+                if (btn.getAttribute('data-letter') === selectedLetter) {
+                    btn.classList.add('selected');
+                }
+            });
+
+            feedbackBox.style.display = 'block';
+            if (selectedLetter === correctLetter) {
+                feedbackBox.className = 'feedback-box correct';
+                feedbackBox.innerHTML = `<div class="feedback-title">✓ Resposta Correta!</div>`;
+            } else {
+                feedbackBox.className = 'feedback-box incorrect';
+                feedbackBox.innerHTML = `<div class="feedback-title">✕ Resposta Incorreta.</div>`;
+            }
+        }
+    </script>
 
 </body>
 </html>
