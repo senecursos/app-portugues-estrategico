@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Sala 11 | Português Estratégico</title>
+
+    <link rel="icon" type="image/png" href="estrategico.jpg">
+    <meta name="theme-color" content="#0b0f19">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff; /* BRANCO PURO */
+            filter: brightness(0.98);   /* SUAVIZA A INTENSIDADE DO BRILHO PARA NÃO CANSAR A VISTA */
+            color: #000000;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        /* BARRA SUPERIOR (ROLA NORMALMENTE COM A PÁGINA) */
+        .top-navbar {
+            background-color: #0b0f19;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .btn-voltar {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .btn-voltar:hover {
+            color: #ffffff;
+        }
+
+        .badge-sala {
+            background-color: #254077;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        /* CABEÇALHO DA PÁGINA (CAPA E PERFIL CIRCULAR) */
+        .header-banner {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background-color: #0b0f19;
+            margin-bottom: 70px;
+        }
+
+        .capa-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+        }
+
+        .perfil-container {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 120px;
+            background-color: #ffffff;
+            border: 4px solid #0b0f19;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .perfil-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* BLOCO DE BOAS-VINDAS E ADVERTÊNCIA */
+        .secao-boas-vindas {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .subtexto-sala {
+            font-size: 16px;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .saudacao-principal {
+            font-size: 24px;
+            font-weight: 900;
+            color: #254077;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .caixa-advertencia {
+            background-color: #fef2f2;
+            border-left: 5px solid #dc2626;
+            border-radius: 8px;
+            padding: 16px 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            color: #7f1d1d;
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* CONTEÚDO PRINCIPAL RESPONSIVO */
+        .main-container {
+            max-width: 900px;
+            width: 92%;
+            margin: 0 auto 60px auto;
+            flex: 1;
+        }
+
+        .divisor-linha {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #94a3b8, transparent);
+            margin-bottom: 28px;
+        }
+
+        .titulo-secao {
+            font-size: 28px;
+            font-weight: 800;
+            color: #000000;
+            text-align: center;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* QUESTÕES E ENUNCIADOS */
+        .bloco-questao {
+            margin-bottom: 42px;
+        }
+
+        .enunciado {
+            font-size: 20px;
+            font-weight: 800;
+            color: #000000;
+            margin-bottom: 18px;
+            line-height: 1.5;
+            border-left: 5px solid #254077;
+            padding-left: 14px;
+        }
+
+        /* CAIXA DE INSTRUÇÕES / GATILHOS DO ENUNCIADO */
+        .caixa-instrucoes {
+            background-color: #f1f5f9;
+            border-left: 5px solid #254077;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 22px;
+            color: #0f172a;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .caixa-instrucoes p {
+            margin-bottom: 8px;
+        }
+
+        .caixa-instrucoes p:last-child {
+            margin-bottom: 0;
+        }
+
+        .lista-frases {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        /* PADRÃO ÚNICO E FIXO PARA TODAS AS FRASES */
+        .lista-frases li {
+            font-size: 18px;
+            font-weight: 500;
+            color: #000000;
+            padding: 14px 0;
+            border-bottom: 1px dashed #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .lista-frases li:last-child {
+            border-bottom: none;
+        }
+
+        /* ESTILO DOS DESTAQUES DENTRO DAS FRASES */
+        .lista-frases span {
+            font-size: 1.1em;
+            font-weight: 700;
+        }
+
+        /* NOTA DISCRETA DE DIREITOS AUTORAIS */
+        .nota-propriedade {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #cbd5e1;
+            font-size: 14px;
+            font-weight: 600;
+            color: #475569;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* RODAPÉ INSTITUCIONAL */
+        .footer-site {
+            background-color: #0b0f19;
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            margin-top: auto;
+        }
+
+        /* AJUSTES DE TELA (APENAS ESTRUTURA DE CAPA/PERFIL, SEM ALTERAR TAMANHO DE FONTE) */
+        @media (max-width: 900px) and (orientation: landscape) {
+            .header-banner {
+                height: 140px;
+                margin-bottom: 50px;
+            }
+
+            .perfil-container {
+                width: 90px;
+                height: 90px;
+                bottom: -35px;
+            }
+
+            .main-container {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-banner {
+                height: 160px;
+                margin-bottom: 55px;
+            }
+
+            .perfil-container {
+                width: 95px;
+                height: 95px;
+                bottom: -40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR DE NAVEGAÇÃO -->
+    <nav class="top-navbar">
+        <a href="index.html" class="btn-voltar">&#8592; Voltar ao Início</a>
+        <span class="badge-sala">Sala 11</span>
+    </nav>
+
+    <!-- CABEÇALHO (CAPA E PERFIL CIRCULAR) -->
+    <header class="header-banner">
+        <img class="capa-img" src="imagem1.jpg" alt="Capa Português Estratégico">
+        <div class="perfil-container">
+            <img class="perfil-img" src="imagem2.jpg" alt="Prof. William Queiroz">
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-container">
+        
+        <hr class="divisor-linha">
+
+        <!-- BLOCO DE SAUDAÇÃO E ADVERTÊNCIA -->
+        <section class="secao-boas-vindas">
+            <div class="subtexto-sala">(Se esta é a sua sala...)</div>
+            <h2 class="saudacao-principal">SEJA MUITO BEM-VINDO(A)!</h2>
+            
+            <div class="caixa-advertencia">
+                <b>ENTRETANTO</b>, se esta não é a sua sala, você deveria gastar melhor o seu tempo estudando e concluindo as suas próprias missões em sua sala.
+            </div>
+        </section>
+
+        <h1 class="titulo-secao">
+            Conteúdo da Semana <span style="font-size: 24px;">⬇️</span>
+        </h1>
+
+        <!-- QUESTÃO 1 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">1) Escreva frases cuja a construção das mesmas deve conter os dois termos de cada item na sequência em que estão postos logo abaixo.</h2>
+            <ul class="lista-frases">
+                <li>1) Pistola / Arma de fogo</li>
+                <li>2) Veículo / Viatura</li>
+                <li>3) Crime / Peculato</li>
+                <li>4) Escrivão / Servidor público</li>
+                <li>5) Documento / Mandado de busca</li>
+                <li>6) Suborno / Corrupção</li>
+                <li>7) Fuzil / Armamento</li>
+                <li>8) Entorpecente / Cocaína</li>
+                <li>9) Sanção disciplinar / Demissão</li>
+                <li>10) Interrogatório / Procedimento policial</li>
+            </ul>
+        </article>
+
+        <!-- QUESTÃO 2 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">2) Reescreva cada período abaixo de três formas diferentes, preservando integralmente o sentido original e a correção gramatical, obedecendo aos gatilhos:</h2>
+            <div class="caixa-instrucoes">
+                <p><strong>A)</strong> Inicie o período pela circunstância de lugar.</p>
+                <p><strong>B)</strong> Inicie o período transformando o verbo em destaque (MAIÚSCULO) em substantivo.</p>
+                <p><strong>C)</strong> Inverta a ordem lógica: comece pelo elemento que sofre a ação (efeito) e termine com o agente (causa).</p>
+            </div>
+            <ul class="lista-frases">
+                <li>1) Os algoritmos das redes sociais RADICALIZAM o debate público no ambiente digital.</li>
+                <li>2) A precarização das relações trabalhistas COMPROMETE a saúde mental entre os jovens brasileiros.</li>
+                <li>3) A ocupação desordenada do solo urbano INTENSIFICA as enchentes nas grandes metrópoles.</li>
+                <li>4) A falta de investimentos na educação básica PERPETUA a desigualdade socioeconômica no país.</li>
+            </ul>
+        </article>
+
+        <!-- QUESTÃO 3 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">3) A partir de cada oração-núcleo abaixo, construa um único período longo em três etapas acumulativas (cada etapa aproveita o que foi escrito na anterior, colocando ponto final apenas ao concluir a terceira):</h2>
+            <div class="caixa-instrucoes">
+                <p><strong>Etapa 1 (Especificação):</strong> Qualifique ou restrinja o sujeito e o complemento.</p>
+                <p><strong>Etapa 2 (Circunstância):</strong> Insira uma circunstância de tempo, lugar ou meio.</p>
+                <p><strong>Etapa 3 (Desdobramento):</strong> Acrescente uma consequência ou finalidade para fechar o período.</p>
+            </div>
+            <ul class="lista-frases">
+                <li>1) O consumo excessivo gera impactos.</li>
+                <li>2) A mídia molda comportamentos.</li>
+                <li>3) O Estado omite direitos.</li>
+                <li>4) A tecnologia transforma relações.</li>
+            </ul>
+        </article>
+
+        <!-- NOTA DE AUTORIA E PROPRIEDADE -->
+        <div class="nota-propriedade">
+            Todo o material contido nesta página é de autoria e propriedade do professor William Queiroz.
+        </div>
+
+    </main>
+
+    <!-- RODAPÉ INSTITUCIONAL -->
+    <footer class="footer-site">
+        &copy; 2026 SENE. Todos os direitos reservados.
+    </footer>
+
+</body>
+</html>
