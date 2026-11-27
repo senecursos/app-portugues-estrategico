@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Sala 12 | Português Estratégico</title>
+
+    <link rel="icon" type="image/png" href="estrategico.jpg">
+    <meta name="theme-color" content="#0b0f19">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff; /* BRANCO PURO */
+            filter: brightness(0.98);   /* SUAVIZA A INTENSIDADE DO BRILHO PARA NÃO CANSAR A VISTA */
+            color: #000000;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        /* BARRA SUPERIOR (ROLA NORMALMENTE COM A PÁGINA) */
+        .top-navbar {
+            background-color: #0b0f19;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .btn-voltar {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .btn-voltar:hover {
+            color: #ffffff;
+        }
+
+        .badge-sala {
+            background-color: #254077;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        /* CABEÇALHO DA PÁGINA (CAPA E PERFIL CIRCULAR) */
+        .header-banner {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background-color: #0b0f19;
+            margin-bottom: 70px;
+        }
+
+        .capa-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+        }
+
+        .perfil-container {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 120px;
+            background-color: #ffffff;
+            border: 4px solid #0b0f19;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .perfil-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* BLOCO DE BOAS-VINDAS E ADVERTÊNCIA */
+        .secao-boas-vindas {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .subtexto-sala {
+            font-size: 16px;
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .saudacao-principal {
+            font-size: 24px;
+            font-weight: 900;
+            color: #254077;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .caixa-advertencia {
+            background-color: #fef2f2;
+            border-left: 5px solid #dc2626;
+            border-radius: 8px;
+            padding: 16px 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            color: #7f1d1d;
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* CONTEÚDO PRINCIPAL RESPONSIVO */
+        .main-container {
+            max-width: 900px;
+            width: 92%;
+            margin: 0 auto 60px auto;
+            flex: 1;
+        }
+
+        .divisor-linha {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #94a3b8, transparent);
+            margin-bottom: 28px;
+        }
+
+        .titulo-secao {
+            font-size: 28px;
+            font-weight: 800;
+            color: #000000;
+            text-align: center;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* QUESTÕES E ENUNCIADOS */
+        .bloco-questao {
+            margin-bottom: 42px;
+        }
+
+        .enunciado {
+            font-size: 20px;
+            font-weight: 800;
+            color: #000000;
+            margin-bottom: 18px;
+            line-height: 1.5;
+            border-left: 5px solid #254077;
+            padding-left: 14px;
+        }
+
+        .lista-frases {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        /* PADRÃO ÚNICO E FIXO PARA TODAS AS FRASES */
+        .lista-frases li {
+            font-size: 18px;
+            font-weight: 500;
+            color: #000000;
+            padding: 14px 0;
+            border-bottom: 1px dashed #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .lista-frases li:last-child {
+            border-bottom: none;
+        }
+
+        /* ESTILO DOS DESTAQUES DENTRO DAS FRASES */
+        .lista-frases span {
+            font-size: 1.1em;
+            font-weight: 700;
+        }
+
+        /* NOTA DISCRETA DE DIREITOS AUTORAIS */
+        .nota-propriedade {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #cbd5e1;
+            font-size: 14px;
+            font-weight: 600;
+            color: #475569;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* RODAPÉ INSTITUCIONAL */
+        .footer-site {
+            background-color: #0b0f19;
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            margin-top: auto;
+        }
+
+        /* AJUSTES DE TELA (APENAS ESTRUTURA DE CAPA/PERFIL, SEM ALTERAR TAMANHO DE FONTE) */
+        @media (max-width: 900px) and (orientation: landscape) {
+            .header-banner {
+                height: 140px;
+                margin-bottom: 50px;
+            }
+
+            .perfil-container {
+                width: 90px;
+                height: 90px;
+                bottom: -35px;
+            }
+
+            .main-container {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-banner {
+                height: 160px;
+                margin-bottom: 55px;
+            }
+
+            .perfil-container {
+                width: 95px;
+                height: 95px;
+                bottom: -40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR DE NAVEGAÇÃO -->
+    <nav class="top-navbar">
+        <a href="index.html" class="btn-voltar">&#8592; Voltar ao Início</a>
+        <span class="badge-sala">Sala 12</span>
+    </nav>
+
+    <!-- CABEÇALHO (CAPA E PERFIL CIRCULAR) -->
+    <header class="header-banner">
+        <img class="capa-img" src="imagem1.jpg" alt="Capa Português Estratégico">
+        <div class="perfil-container">
+            <img class="perfil-img" src="imagem2.jpg" alt="Prof. William Queiroz">
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-container">
+        
+        <hr class="divisor-linha">
+
+        <!-- BLOCO DE SAUDAÇÃO E ADVERTÊNCIA -->
+        <section class="secao-boas-vindas">
+            <div class="subtexto-sala">(Se esta é a sua sala...)</div>
+            <h2 class="saudacao-principal">SEJA MUITO BEM-VINDO(A)!</h2>
+            
+            <div class="caixa-advertencia">
+                <b>ENTRETANTO</b>, se esta não é a sua sala, você deveria gastar melhor o seu tempo estudando e concluindo as suas próprias missões em sua sala.
+            </div>
+        </section>
+
+        <h1 class="titulo-secao">
+            Conteúdo da Semana <span style="font-size: 24px;">⬇️</span>
+        </h1>
+
+        <!-- QUESTÃO 1 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">1) Classifique cada uma das orações subordinadas das frases abaixo como completiva nominal ou objetiva indireta.</h2>
+            <ul class="lista-frases">
+                <li>1) O delegado titular tinha plena convicção de que o suspeito ocultava a arma do crime.</li>
+                <li>2) O comandante do batalhão insistiu em que todos os agentes refizessem o treinamento tático.</li>
+                <li>3) A perícia criminal necessita de que o laboratório entregue os exames toxicológicos hoje.</li>
+                <li>4) Os investigadores estavam seguros de que as impressões digitais comprovariam a autoria.</li>
+                <li>5) O promotor de justiça lembrou-se de que uma das testemunhas ainda não havia deposto.</li>
+                <li>6) A corporação sentia orgulho de que seus policiais agissem com rigoroso respeito à lei.</li>
+                <li>7) O juiz mostrou-se favorável a que o processo tramitasse em segredo de justiça.</li>
+                <li>8) O advogado de defesa convenceu o magistrado de que o réu agira em legítima defesa.</li>
+                <li>9) A corregedoria desconfiava de que alguns servidores vazavam informações sigilosas.</li>
+                <li>10) Há urgente necessidade de que o Estado amplie o efetivo da polícia científica.</li>
+            </ul>
+        </article>
+
+        <!-- QUESTÃO 2 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">2) Classifique cada uma das orações subordinadas das frases abaixo como subjetiva ou predicativa.</h2>
+            <ul class="lista-frases">
+                <li>1) Convém que o delegado analise todas as gravações antes de encerrar o inquérito.</li>
+                <li>2) A verdade é que as provas materiais desmontaram completamente o álibi do réu.</li>
+                <li>3) O maior problema da investigação foi que nenhuma testemunha aceitou depor em juízo.</li>
+                <li>4) Sabe-se que a organização criminosa atuava na região portuária há vários anos.</li>
+                <li>5) A impressão dos peritos era que o incêndio no galpão havia sido provocado.</li>
+                <li>6) É imprescindível que a equipe preserve o isolamento absoluto da cena do crime.</li>
+                <li>7) Ficou comprovado nos autos que a assinatura do contrato havia sido falsificada.</li>
+                <li>8) O temor da corporação é que os suspeitos fujam do país antes da expedição do mandado.</li>
+                <li>9) O fato incontestável é que o servidor público violou o sigilo funcional do processo.</li>
+                <li>10) Urge que o Ministério Público ofereça denúncia formal contra os envolvidos no esquema.</li>
+            </ul>
+        </article>
+
+        <!-- QUESTÃO 3 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">3) Classifique cada uma das orações subordinadas substantivas das frases abaixo como objetiva direta, objetiva indireta, completiva nominal, subjetiva, predicativa ou apositiva.</h2>
+            <ul class="lista-frases">
+                <li>1) O principal receio da diretoria era que os recursos financeiros acabassem antes do fim do trimestre.</li>
+                <li>2) Os auditores internos discordaram de que o balanço patrimonial fosse aprovado sem ressalvas.</li>
+                <li>3) Consta nos registros oficiais que a embarcação zarpou do porto durante a madrugada.</li>
+                <li>4) O diretor-geral tomou uma decisão drástica: que todos os contratos terceirizados fossem imediatamente suspensos.</li>
+                <li>5) A comissão organizadora anunciou ontem que o cronograma das provas sofrerá alterações.</li>
+                <li>6) Os moradores do bairro estão cientes de que as obras de saneamento durarão seis meses.</li>
+                <li>7) A banca examinadora incumbiu o coordenador regional de que fiscalizasse a abertura dos malotes.</li>
+                <li>8) Parece evidente que a falta de planejamento comprometeu a execução do projeto público.</li>
+                <li>9) A impressão dos analistas econômicos é que a taxa de juros permanecerá estável neste semestre.</li>
+                <li>10) O tribunal de contas verificou se as despesas da prefeitura respeitavam o limite legal.</li>
+                <li>11) Apenas uma dúvida persistia entre os engenheiros: se a estrutura metálica suportaria o peso adicional.</li>
+                <li>12) O conselho administrativo manifestou receio de que a greve paralisasse o transporte ferroviário.</li>
+                <li>13) Divulgou-se pela imprensa oficial que o novo concurso público oferecerá quatrocentas vagas.</li>
+                <li>14) Os pesquisadores concluíram que o novo medicamento reduz drasticamente os efeitos colaterais.</li>
+                <li>15) O combinado entre os membros da equipe foi que cada setor entregaria seu relatório na sexta-feira.</li>
+                <li>16) O sindicato da categoria opôs-se firmemente a que a jornada de trabalho fosse ampliada sem reajuste.</li>
+                <li>17) A população local mantém a esperança de que o hospital regional seja inaugurado ainda este ano.</li>
+                <li>18) Os parlamentares aprovaram uma emenda fundamental: que parte da verba fosse destinada à educação básica.</li>
+                <li>19) Ninguém soube explicar por que o sistema de monitoramento falhou exatamente naquele horário.</li>
+                <li>20) Torna-se indispensável que os gestores públicos prestem contas detalhadas de cada investimento.</li>
+                <li>21) O secretário estadual mostrou-se contrário a que o evento ocorresse em área de preservação ambiental.</li>
+                <li>22) Os servidores aposentados anseiam por que o governo regulamente o pagamento dos benefícios atrasados.</li>
+                <li>23) O regulamento interno estabelece uma norma rigorosa: que nenhum visitante ingresse no prédio sem identificação.</li>
+                <li>24) A expectativa dos coordenadores do projeto é que todos os municípios adiram ao programa de vacinação.</li>
+                <li>25) O departamento jurídico recomendou que a empresa revisasse todas as cláusulas do acordo comercial.</li>
+                <li>26) Os engenheiros responsáveis ficaram admirados de que a obra tenha sido concluída antes do prazo previsto.</li>
+                <li>27) Foi acordado durante a assembleia geral que as reuniões ordinárias acontecerão mensalmente.</li>
+                <li>28) O grande dilema da administração municipal parece ser que a arrecadação atual não cobre os custos fixos.</li>
+                <li>29) O diretor financeiro esqueceu-se de que o prazo para o envio da declaração fiscal encerrava ontem.</li>
+                <li>30) Todos os envolvidos concordaram com uma condição essencial: que as negociações ocorressem de forma transparente.</li>
+            </ul>
+        </article>
+
+        <!-- QUESTÃO 4 -->
+        <article class="bloco-questao">
+            <h2 class="enunciado">4) Classifique cada uma das orações subordinadas adjetivas das frases abaixo como restritiva ou explicativa.</h2>
+            <ul class="lista-frases">
+                <li>1) O Código Penal brasileiro, que entrou em vigor na década de quarenta, passou por diversas reformas legislativas.</li>
+                <li>2) Os documentos que foram recolhidos durante a busca judicial comprovaram o desvio de verbas públicas.</li>
+                <li>3) O servidor público cujo patrimônio cresceu de forma incompatível responderá a processo administrativo.</li>
+                <li>4) A Polícia Científica, que atua com rigoroso critério técnico, esclareceu a causa exata do incêndio.</li>
+                <li>5) A viatura em que os suspeitos fugiram após o assalto foi localizada em uma estrada vicinal.</li>
+                <li>6) O Ministério Público, cuja função institucional é defender a ordem jurídica, ofereceu denúncia contra os envolvidos.</li>
+                <li>7) O Tribunal de Justiça do Estado, que julgou o recurso em sessão extraordinária, manteve a decisão anterior.</li>
+                <li>8) O delegado arquivou o inquérito policial a que faltavam elementos mínimos de autoria e materialidade.</li>
+                <li>9) Os peritos analisaram todas as amostras biológicas que permaneceram intactas no local do crime.</li>
+                <li>10) A Constituição Federal de 1988, a qual assegura o direito à ampla defesa, orienta todo o processo penal.</li>
+            </ul>
+        </article>
+
+        <!-- NOTA DE AUTORIA E PROPRIEDADE -->
+        <div class="nota-propriedade">
+            Todo o material contido nesta página é de autoria e propriedade do professor William Queiroz.
+        </div>
+
+    </main>
+
+    <!-- RODAPÉ INSTITUCIONAL -->
+    <footer class="footer-site">
+        &copy; 2026 SENE. Todos os direitos reservados.
+    </footer>
+
+</body>
+</html>
